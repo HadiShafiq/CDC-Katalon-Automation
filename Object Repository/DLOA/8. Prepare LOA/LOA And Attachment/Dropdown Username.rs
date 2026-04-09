@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Dropdown Username</name>
+   <tag></tag>
+   <elementGuidId>f8519d61-d71a-4404-a7cc-07d4eb194ed1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//div[contains(@class,'ui-selectonemenu-trigger')])[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div.ui-selectonemenu-trigger.ui-state-default.ui-corner-right</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>3cf4354a-0f71-4302-a235-4dd8687e1dd0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-selectonemenu-trigger ui-state-default ui-corner-right</value>
+      <webElementGuid>d046a2d2-d0d0-4bb9-a431-ca9299f615ef</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt659:j_idt665&quot;)/div[@class=&quot;ui-selectonemenu-trigger ui-state-default ui-corner-right&quot;]</value>
+      <webElementGuid>6a7fe150-01b0-4444-9faa-d409fe809ede</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt659:j_idt665']/div[3]</value>
+      <webElementGuid>e6c1f2a5-a21b-44e2-be04-327faf45dfe3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='- Select One -'])[2]/following::div[1]</value>
+      <webElementGuid>79e5b1b5-61ff-4451-9dbf-40b82a42a3fc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Search'])[1]/following::div[5]</value>
+      <webElementGuid>b426d61f-7404-4595-891c-5dee263b7e72</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Search'])[2]/preceding::div[1]</value>
+      <webElementGuid>3a2b5e56-eee3-42b7-a5d5-c79dbf0db525</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Reset'])[1]/preceding::div[1]</value>
+      <webElementGuid>ead1a11a-9510-4ed9-81de-fde82fce6d3c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/div/div[3]</value>
+      <webElementGuid>c2b4b843-f5bb-4c04-91e5-79b08c64bcbb</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

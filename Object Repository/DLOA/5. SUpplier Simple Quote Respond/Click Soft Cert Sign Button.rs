@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Soft Cert Sign Button</name>
+   <tag></tag>
+   <elementGuidId>355b7468-1969-4d18-ad0d-6caec9584e76</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id='_ReviewSupplierView_WAR_NGePportlet_:form:spkiPopup:spkiSign']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>9b6845d1-e841-4b8f-b2ac-2c01388f2eda</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>menuItemLink</value>
+      <webElementGuid>770a4002-df3c-4b5a-a57f-f65b98528303</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/web/epapp/catalogue-search</value>
+      <webElementGuid>4b409cf8-e42d-4d30-b7b2-b818c6d2d86f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Catalogue Search</value>
+      <webElementGuid>f1cc7ff0-0048-4a27-bee2-93fd6947dc02</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;quicklink&quot;)/div[@class=&quot;mainparent grid&quot;]/div[@class=&quot;layoutitem grid-item&quot;]/ul[@class=&quot;subparent&quot;]/li[@class=&quot;layoutsubitem&quot;]/div[2]/a[@class=&quot;menuItemLink&quot;]</value>
+      <webElementGuid>1ac64bad-f369-4e9b-9de7-076c9f146c49</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='quicklink']/div/div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>ba8fc55f-a75f-4d66-be59-4b478df3266c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'Catalogue Search')]</value>
+      <webElementGuid>5680cd20-c063-4e16-9f06-532c5a6005b4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Finalization Committee Maintenance'])[1]/following::a[1]</value>
+      <webElementGuid>275e971b-523d-4d87-879f-600acaac4f1d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Direct Purchase Maintenance'])[1]/preceding::a[1]</value>
+      <webElementGuid>7d72e2bc-709a-43f9-a9d7-3a51aab7c9a7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Catalogue Search']/parent::*</value>
+      <webElementGuid>9a33611d-d578-442d-a2c5-64eb98961e1e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/web/epapp/catalogue-search')]</value>
+      <webElementGuid>79d538b3-3b3d-4e45-94b9-dfd8a2d6ce74</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>ab20d27b-3996-49ee-8909-7678b7d157f2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/web/epapp/catalogue-search' and (text() = 'Catalogue Search' or . = 'Catalogue Search')]</value>
+      <webElementGuid>c6d1afb2-55b2-4320-a54f-47929687ae14</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

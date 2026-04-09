@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Date Picker icon</name>
+   <tag></tag>
+   <elementGuidId>c1d5fd8d-e82e-4dd9-a27d-12a35a7f3ae5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:effdate']/button/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-icon-calendar</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>b511d4cb-1565-412a-9d46-124422453dab</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-icon-calendar</value>
+      <webElementGuid>72e9f110-6e2c-44f5-8e75-99f357046a83</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:effdate&quot;)/button[@class=&quot;ui-datepicker-trigger ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-state-focus ui-state-hover&quot;]/span[@class=&quot;ui-button-icon-left ui-icon ui-icon-calendar&quot;]</value>
+      <webElementGuid>75da729b-b318-41e0-80a9-727d245d2b16</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//span[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:effdate']/button/span</value>
+      <webElementGuid>fe36306f-6d8b-4cd6-8812-7562dd614568</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[2]/span/button/span</value>
+      <webElementGuid>3e892efb-2c2c-4331-b032-768cf5c3d449</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Side Menu Category Code</name>
+   <tag></tag>
+   <elementGuidId>86699000-22b0-4a34-bfc1-4f3b804ebb74</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[span[normalize-space(.)='Category Code']]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>1603df09-683b-452c-8023-a17b4710439e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt63</value>
+      <webElementGuid>7ca14ac1-850e-424a-beb7-d2bddb6fbd75</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-link ui-corner-all</value>
+      <webElementGuid>10326532-22c6-434f-ad00-1840d9cfe032</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>javascript:void(0)</value>
+      <webElementGuid>48cca14c-69e3-4987-8253-ef542d1b1bc5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>PrimeFaces.ab({source:'_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt63',update:'_scReviewManualSourcing_WAR_NGePportlet_:form',formId:'_scReviewManualSourcing_WAR_NGePportlet_:form'});return false;</value>
+      <webElementGuid>8f3d74c6-6ee4-4096-9bba-9f1423b2e9b9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Payment Deduction</value>
+      <webElementGuid>a8ca1e33-053d-4f7b-8a70-5891193a906c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt63&quot;)</value>
+      <webElementGuid>0a1e2954-dc7a-4cd4-a522-473f30370643</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt63']</value>
+      <webElementGuid>52b3687c-0bb8-4840-86b9-7912ce1bd382</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:menuTab']/ul/li[4]/a</value>
+      <webElementGuid>15d790fe-caa6-4165-820c-af45f917a318</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Zone / Item Details'])[1]/following::a[1]</value>
+      <webElementGuid>ddaf894d-97fe-41da-95d8-51c00c971883</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Letter Of Acceptance And Attachment'])[1]/following::a[2]</value>
+      <webElementGuid>46681a38-a4ee-46df-ae25-f472cc334ee1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Bank Details'])[1]/preceding::a[1]</value>
+      <webElementGuid>c104d137-6f87-44ab-8fd0-622770743a39</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>(//a[contains(@href, 'javascript:void(0)')])[6]</value>
+      <webElementGuid>44134a01-a7f1-428c-8e9c-9eaff0b48718</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/div/ul/li[4]/a</value>
+      <webElementGuid>74dded79-7203-4575-980c-fc882d4247cc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@id = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt63' and @href = 'javascript:void(0)' and (text() = 'Payment Deduction' or . = 'Payment Deduction')]</value>
+      <webElementGuid>162bfc35-e938-4b5c-bb3a-977db34e02c3</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

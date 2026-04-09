@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Choose File</name>
+   <tag></tag>
+   <elementGuidId>78b4408f-c355-4b95-bf15-4fbc32c92256</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//input[@type='file' and contains(@id,'_scCreateManualSourcing_WAR_NGePportlet_:form:') and substring(@id, string-length(@id) - 5) = '_input']&#xd;
+&#xd;
+&#xd;
+&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>input</value>
+      <webElementGuid>7eb05828-2934-4e13-8c48-187a11e71389</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>type</name>
+      <type>Main</type>
+      <value>file</value>
+      <webElementGuid>1b2aafcf-3b86-4158-9b98-a96f2975074a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input</value>
+      <webElementGuid>b965bd45-eb4d-4533-b7cb-42d30d1a21de</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input</value>
+      <webElementGuid>3ff967cd-2064-41ef-bd4a-a4cff6199e08</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>title</name>
+      <type>Main</type>
+      <value>Please click to upload file(s)</value>
+      <webElementGuid>9106dd6f-e2ba-4c39-b926-9ee2f320f74d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input&quot;)</value>
+      <webElementGuid>3920676e-7de7-4f23-b23d-f7342281ee0f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//input[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input']</value>
+      <webElementGuid>fe86c9d5-3a5b-462d-9bbb-c2ad92461a8d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU']/div/label/input</value>
+      <webElementGuid>11adc819-acfe-4b56-a242-956c893f9bff</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//label/input</value>
+      <webElementGuid>7bdafea9-6a8a-457a-9109-537b52178cf9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//input[@type = 'file' and @id = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input' and @name = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU_input' and @title = 'Please click to upload file(s)']</value>
+      <webElementGuid>9805b54e-af42-4dc9-a691-876903d52fb1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

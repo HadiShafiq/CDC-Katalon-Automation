@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click TaskList Description</name>
+   <tag></tag>
+   <elementGuidId>25d22689-a250-49a1-8492-f7c330fbfad3</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[contains(@id,'_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:')]&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>2a12dba2-2271-43a1-9570-fc20ec6b03e2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:j_idt174</value>
+      <webElementGuid>4a5a8967-5e46-4fd5-967b-2d0c1d000914</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>#</value>
+      <webElementGuid>de349cab-9bf9-41be-bb27-7577264ab310</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-commandlink ui-widget</value>
+      <webElementGuid>35a27e5d-1eb4-4d01-9c52-39258b51797b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>blockWidget.show();;PrimeFaces.ab({source:'_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:j_idt174',oncomplete:function(xhr,status,args){;},params:[{name:'taskId',value:'fc9111ee-429e-4405-b166-19a013941725'},{name:'process',value:'StartManualQTCreation'},{name:'taskName',value:'Submit Manual QT'},{name:'docType',value:'QT'},{name:'isClaim',value:'true'},{name:'docNo',value:'LA260000000000460'}]});return false;</value>
+      <webElementGuid>ca4a8250-3a1b-4c54-9f15-1d980dc74df4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>kementerian Keselematan Testing</value>
+      <webElementGuid>60fd0773-8e80-4fd1-bf86-8fb9e47379a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:j_idt174&quot;)</value>
+      <webElementGuid>596dd269-7d82-4b9f-acba-a1e466ebf423</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:j_idt174']</value>
+      <webElementGuid>3b0916f0-8a68-40c5-bebb-6bb8b351ce57</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//tbody[@id='_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId_data']/tr/td[3]/a</value>
+      <webElementGuid>7625b52b-a5d6-4741-8125-d3612e49eb1e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'kementerian Keselematan Testing')]</value>
+      <webElementGuid>139e5bbb-01df-4ad1-8c57-7d6721a7b5ec</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Quotation/Tender'])[4]/following::a[1]</value>
+      <webElementGuid>b14553a6-3052-49a8-89c6-3641efda9461</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='LA260000000000460'])[1]/following::a[1]</value>
+      <webElementGuid>4614e871-aea7-4ba6-ba04-0326b4f131c9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Pending Letter Of Acceptance Submission'])[1]/preceding::a[1]</value>
+      <webElementGuid>d8dd3c36-80b5-4fd2-b849-9806cc6a530f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='kementerian Keselematan Testing']/parent::*</value>
+      <webElementGuid>9ae300dc-7f13-4767-9a33-a7542976170a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>(//a[contains(@href, '#')])[14]</value>
+      <webElementGuid>987306d9-2999-4a36-853f-66f69ab72821</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[12]/div/table/tbody/tr/td[3]/a</value>
+      <webElementGuid>73069dc3-3235-4715-9d66-18c5812dd373</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@id = '_BpmTaskList_WAR_NGePportlet_:form:taskListMyTaskId:0:j_idt174' and @href = '#' and (text() = 'kementerian Keselematan Testing' or . = 'kementerian Keselematan Testing')]</value>
+      <webElementGuid>3cdc6e59-3410-4b3d-9349-2451c218233f</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

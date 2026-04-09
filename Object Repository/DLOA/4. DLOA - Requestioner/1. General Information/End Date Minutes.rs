@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>End Date Minutes</name>
+   <tag></tag>
+   <elementGuidId>d12d85da-bd05-46ae-994e-24369c7a9bc8</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[@id='_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>ce242608-9ed4-461d-871d-9627f4141fc3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin</value>
+      <webElementGuid>fa1b7c90-29f0-4ce9-95a8-2d89987627f9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin</value>
+      <webElementGuid>328a441c-a3b3-432f-b544-e9548bf8d979</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>size</name>
+      <type>Main</type>
+      <value>1</value>
+      <webElementGuid>1e679bb5-bf9a-4519-8d3b-8e5d008bf3b3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onchange</name>
+      <type>Main</type>
+      <value>PrimeFaces.ab({source:this,event:'change',process:'_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin',update:'_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin',partialSubmit:true,oncomplete:function(xhr,status,args){endDate0SetValue();;}}, arguments[1]);</value>
+      <webElementGuid>e753872c-90d3-49a2-bc52-92e7fbad84fc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>	Minute
+	00
+	15
+	30
+	45
+</value>
+      <webElementGuid>26a80d52-97e8-4a18-97ae-ac3c92fc25da</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin&quot;)</value>
+      <webElementGuid>52aabf4b-ef6e-48d9-bdc4-5a72463dcc3b</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//select[@id='_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin']</value>
+      <webElementGuid>b7024537-215c-41b1-8c5f-dc61bd1b3c25</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//span[@id='_Catalogue_WAR_NGePportlet_:form:endDatesb:endDate']/select[2]</value>
+      <webElementGuid>f8f9cd4a-6793-475b-bd35-c0bb53555781</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='ui-button'])[3]/following::select[2]</value>
+      <webElementGuid>66efc5b2-b468-4270-b5b6-b3a7664dff1f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='*'])[8]/following::select[2]</value>
+      <webElementGuid>33ac6456-a27a-4ca5-9a35-4e0641faf6c7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Duration'])[1]/preceding::select[1]</value>
+      <webElementGuid>b1ad91eb-335f-444b-9eb1-57878045619f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Days'])[1]/preceding::select[1]</value>
+      <webElementGuid>61484da5-7e45-47c0-ab6e-a586823ae3d0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[4]/span/select[2]</value>
+      <webElementGuid>257c7a25-bec5-4ee7-9207-4540816eefe1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@id = '_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin' and @name = '_Catalogue_WAR_NGePportlet_:form:endDatesb:calMin' and (text() = '	Minute
+	00
+	15
+	30
+	45
+' or . = '	Minute
+	00
+	15
+	30
+	45
+')]</value>
+      <webElementGuid>8e03b794-c132-415a-b9db-7fec380d4fe7</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

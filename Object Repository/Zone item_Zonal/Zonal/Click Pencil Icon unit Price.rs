@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Pencil Icon unit Price</name>
+   <tag></tag>
+   <elementGuidId>d949b8eb-16ca-4321-a080-f63133055a25</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:ratePerUomBtn']/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>fb6e9888-8226-4081-a34a-28c7b61dde3c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-pencil</value>
+      <webElementGuid>a0ce2d1d-8d51-45b1-a372-5d2d118d5ce7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:ratePerUomBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-pencil&quot;]</value>
+      <webElementGuid>5ca52bc9-a321-4b6f-8aee-d93a8d92c572</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:ratePerUomBtn']/span</value>
+      <webElementGuid>62ba8dc6-ce2a-41f2-9cc6-aca104816f00</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[5]/span/button/span</value>
+      <webElementGuid>5bc5f0d1-554d-4fb4-92d0-e69b1e1034e2</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

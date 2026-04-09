@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Action Button for Result</name>
+   <tag></tag>
+   <elementGuidId>15e0a7e7-7c5c-4f4f-a4b4-65593354bd6a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//img[contains(@id,':itemTable2ID:') and not(contains(@id,'_panel'))]&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>bd377323-2b3e-46ce-81bb-936e2596303e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:itemTable2ID:0:j_idt106</value>
+      <webElementGuid>7f5d79d0-773d-4856-86bd-d820899cb440</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/NGeP-portlet/css/images/design/add.png</value>
+      <webElementGuid>97b5ad43-4f72-49cd-9e6a-47e36770c19d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:itemTable2ID:0:j_idt106&quot;)</value>
+      <webElementGuid>4cb05e58-5a7f-4b53-9be6-4abe6328665a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//img[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:itemTable2ID:0:j_idt106']</value>
+      <webElementGuid>17b87af9-a75c-4121-ba11-c0e9fb10612c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:itemTable2ID:0:j_idt105']/img</value>
+      <webElementGuid>98990c3b-0bc4-437f-b776-f6749f6e5515</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[5]/a/img</value>
+      <webElementGuid>e6c32c1f-49b1-4a0f-8897-2c168c333b5b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@id = '_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:itemTable2ID:0:j_idt106' and @src = '/NGeP-portlet/css/images/design/add.png']</value>
+      <webElementGuid>52c957b4-4731-46b8-81d0-b9dc17ebc700</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

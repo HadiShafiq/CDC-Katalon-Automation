@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Upload Icon LOA Signer Document</name>
+   <tag></tag>
+   <elementGuidId>b4bc830c-96f8-4726-9458-728d084532fb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//button[contains(@class,'ui-button') and .//span[contains(@class,'ui-icon-arrowreturnthick-1-n')]])[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-icon.ui-icon-arrowreturnthick-1-n</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>d306de6e-46a6-44a7-9275-453cfc267623</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n</value>
+      <webElementGuid>cb89780c-b9d3-43c7-af94-7fbe628b6aa6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU&quot;)/div[@class=&quot;fileupload-content ui-widget-content ui-corner-bottom&quot;]/table[@class=&quot;files&quot;]/tbody[1]/tr[@class=&quot;template-upload&quot;]/td[@class=&quot;start&quot;]/button[@class=&quot;ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-state-hover&quot;]/span[@class=&quot;ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n&quot;]</value>
+      <webElementGuid>edb7017b-49f6-428d-a4e5-1eed847a75c2</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU']/div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>d3dae001-096c-4f01-8b26-75d413d27fcc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>51906891-14c3-4214-9a36-4dbdf25dc30a</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

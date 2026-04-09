@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Lampiran 7 - Surat Akuan Pembida Berjaya</name>
+   <tag></tag>
+   <elementGuidId>0e1145d6-1385-4668-b484-16fcc2fc2075</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:2:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn']/span&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>16fd9eaa-995e-453c-a8b1-a3ce6ae29419</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-upload</value>
+      <webElementGuid>abe7e6f8-e521-41ce-beb5-39c445d633ae</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:2:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-upload&quot;]</value>
+      <webElementGuid>d8794b72-084e-4035-9461-7515db11da2a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:2:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn']/span</value>
+      <webElementGuid>c04b76e5-c50a-4533-9c9b-88005af392ad</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//tr[3]/td[2]/span/button/span</value>
+      <webElementGuid>3bd4f6ab-b9c4-4960-bb5d-493f0fdffbe8</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

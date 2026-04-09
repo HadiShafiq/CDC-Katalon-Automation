@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Upload File icon</name>
+   <tag></tag>
+   <elementGuidId>f2a2d4b6-801e-4024-852b-b0a8902e6fc7</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//*[starts-with(@id,'_scLoaSupplierResponse_WAR_NGePportlet_:form:') and contains(@id,'FU')]&#xd;
+  //table//tr/td[5]//button)[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-icon.ui-icon-arrowreturnthick-1-n</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>e97d2f83-4e2e-4766-9eaa-cc148e96889a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n</value>
+      <webElementGuid>56d702dd-14dd-4b40-91e1-f1a0e2c71ba3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt449:j_idt449FU&quot;)/div[@class=&quot;fileupload-content ui-widget-content ui-corner-bottom&quot;]/table[@class=&quot;files&quot;]/tbody[1]/tr[@class=&quot;template-upload&quot;]/td[@class=&quot;start&quot;]/button[@class=&quot;ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-state-hover&quot;]/span[@class=&quot;ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n&quot;]</value>
+      <webElementGuid>ac9afd50-1a6a-43a1-bdaa-1b68c0203b31</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt449:j_idt449FU']/div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>51e5346e-e26b-4c54-894d-a3a4a1f065dd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[5]/button/span</value>
+      <webElementGuid>fa7b7008-575b-4c35-8804-d54a07622454</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

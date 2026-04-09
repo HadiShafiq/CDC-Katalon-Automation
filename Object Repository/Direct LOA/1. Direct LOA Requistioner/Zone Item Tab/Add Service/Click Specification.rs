@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Specification</name>
+   <tag></tag>
+   <elementGuidId>d2ea3c36-89b0-43e0-a420-917df28d372d</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//div[(contains(@class,'ui-menu') or contains(@class,'ui-tieredmenu') or contains(@class,'ui-contextmenu'))&#xd;
+      and not(contains(@style,'display: none'))]&#xd;
+ //a[.//span[@class='ui-menuitem-text' and normalize-space(.)='Specification']])[last()]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>5cd4559b-f1a1-4cd7-aefe-34db42d7b0d0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1208</value>
+      <webElementGuid>28ca49be-b455-46bf-8518-24199c3e027b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-link ui-corner-all ui-state-hover</value>
+      <webElementGuid>57102489-704e-4168-bd20-3fbe605ebc4b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>javascript:void(0)</value>
+      <webElementGuid>c86de2de-53fd-497a-99a6-1aaca75f5755</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>PrimeFaces.ab({source:'_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1208',process:'_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl',update:'_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl',partialSubmit:true,oncomplete:function(xhr,status,args){;},formId:'_scReviewManualSourcing_WAR_NGePportlet_:form'});return false;</value>
+      <webElementGuid>53d69b13-8636-4d75-89ae-4d029f958fac</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Specification</value>
+      <webElementGuid>f654d391-adc0-44ab-b9fd-e6f217df0e83</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1208&quot;)</value>
+      <webElementGuid>8018e7c9-c117-4d89-9b59-9b8197fa2901</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1208']</value>
+      <webElementGuid>94b3532a-c180-4f9d-8f2f-254de4e987ae</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1206']/ul/li[2]/a</value>
+      <webElementGuid>a0d594fb-0a4f-46bc-a13f-9a331b775d28</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Item'])[3]/following::a[1]</value>
+      <webElementGuid>dee43f23-42ee-4797-ad4b-0511a7672fd9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Specification'])[2]/following::a[2]</value>
+      <webElementGuid>ebb1b1d8-463d-487d-84e8-8c11e87878ef</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>(//a[contains(@href, 'javascript:void(0)')])[23]</value>
+      <webElementGuid>17c754be-2b6f-426e-8a6c-6a8844c946a2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[41]/ul/li[2]/a</value>
+      <webElementGuid>cf2de013-1edc-4bf7-bcd3-a7829b5af5cc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@id = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1108:questionTbl:0:j_idt1208' and @href = 'javascript:void(0)' and (text() = 'Specification' or . = 'Specification')]</value>
+      <webElementGuid>84c7ac7a-04fc-4834-99a5-fc259d7d13b1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

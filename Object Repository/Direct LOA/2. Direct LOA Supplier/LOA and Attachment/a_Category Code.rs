@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_Category Code</name>
+   <tag></tag>
+   <elementGuidId>69c7fbd7-ca56-4830-a0ea-bc105d367b97</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>9569788d-15f4-40ad-b0e1-fa744ec2e182</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65</value>
+      <webElementGuid>04f3912b-b1f3-4623-b06e-020d695ee2c6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-link ui-corner-all</value>
+      <webElementGuid>45b0b965-42b3-4951-90bf-4d25c8026632</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>PrimeFaces.ab({source:'_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65',update:'_scManualSourcingSupplierResponse_WAR_NGePportlet_:form',params:[{name:'disableValidation',value:'true'}],formId:'_scManualSourcingSupplierResponse_WAR_NGePportlet_:form'});return false;</value>
+      <webElementGuid>29d23309-16ad-4ee2-853c-9d9ebaa9c217</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Category Code</value>
+      <webElementGuid>a51c7096-7341-4473-92a6-1caa36c19e58</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65&quot;)</value>
+      <webElementGuid>2d1e355d-828a-45fe-b0ba-4180cc386d66</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65']</value>
+      <webElementGuid>48f68e4a-cd56-4094-bb74-261c21509fb8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt62']/ul/li[2]/a</value>
+      <webElementGuid>680b4071-df8c-4470-998c-e75c8975b2f8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='General Information'])[1]/following::a[1]</value>
+      <webElementGuid>6098238b-3a36-40c6-8ee9-6649a1cd84dd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Automated'])[1]/following::a[2]</value>
+      <webElementGuid>52655d41-df20-4314-b910-8e326a0a0955</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Letter Of Acceptance And Attachment'])[1]/preceding::a[1]</value>
+      <webElementGuid>81dc20f2-16a2-4914-865a-4fd68734334f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/div/ul/li[2]/a</value>
+      <webElementGuid>2658a25c-1296-42a8-a12c-7bf1e57c48ad</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@id = '_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt65' and (text() = 'Category Code' or . = 'Category Code')]</value>
+      <webElementGuid>9abe83fc-eef7-4afd-b579-865da1969a1f</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

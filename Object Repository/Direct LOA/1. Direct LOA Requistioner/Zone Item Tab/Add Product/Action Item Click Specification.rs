@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Action Item Click Specification</name>
+   <tag></tag>
+   <elementGuidId>7b303f6c-808b-4438-9705-db152ac63af7</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[substring(@id, string-length(@id) - string-length(':addBtn') + 1) = ':addBtn']//span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>641281ab-afbc-46c4-b274-5598d409b1dc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-add</value>
+      <webElementGuid>99bdc483-75d2-473f-8567-9aa9c586da1c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:addBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-add&quot;]</value>
+      <webElementGuid>b324b0fe-f0fa-440a-af5a-a9c7f3694f3d</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:addBtn']/span</value>
+      <webElementGuid>94972af4-312f-4805-9a28-0a79a028f8e9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[7]/button/span</value>
+      <webElementGuid>1eb648d7-17f1-4702-9a4e-7b643084c4b7</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

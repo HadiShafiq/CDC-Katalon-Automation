@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>PR Note One Off</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>176b9b3d-7c47-45b0-a4e8-9c22e3a0e9d7</dataFileGUID>
+   <dataSourceUrl>C:\Users\hadishafiq\Desktop\DP LOA Excel Data Prep\DATA WIP DP LOA\FL\Prepare Request Note - One Off DP-PR.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>TestData</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

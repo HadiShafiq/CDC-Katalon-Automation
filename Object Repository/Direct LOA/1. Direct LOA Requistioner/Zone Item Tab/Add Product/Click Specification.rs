@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Specification</name>
+   <tag></tag>
+   <elementGuidId>414baa26-20a1-4c11-ab46-646ce8884f31</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[contains(@class,'ui-menuitem-link') and .//span[normalize-space(.)='Specification']]&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>14bb3b21-a7f9-4886-9c4b-353a21dd65ea</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-text</value>
+      <webElementGuid>1a597c00-5e9a-49a3-8966-8c21f1dcfecb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Specification</value>
+      <webElementGuid>e7c7cbbc-4b24-4623-bfa1-e2d6dffabb79</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:j_idt1095&quot;)/span[@class=&quot;ui-menuitem-text&quot;]</value>
+      <webElementGuid>816c0bdf-779e-4708-a284-f8bb9667205c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:j_idt1095']/span</value>
+      <webElementGuid>5dd8fb76-3d2e-4598-a084-7ef4815e80c7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Item'])[1]/following::span[1]</value>
+      <webElementGuid>dce3d285-83ed-4b79-abaa-991a01a0310f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Re-Finalization'])[2]/following::span[2]</value>
+      <webElementGuid>ee063eb7-efae-4cb9-b1d2-9b09d9a547e6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[37]/ul/li[2]/a/span</value>
+      <webElementGuid>2dacd0e9-8c4d-4ec1-8051-17d082593af1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Specification' or . = 'Specification')]</value>
+      <webElementGuid>422400d7-9e0d-445a-b368-13fb3a64572f</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

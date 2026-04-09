@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Side Menu Verification And Approval</name>
+   <tag></tag>
+   <elementGuidId>139188dd-4bb7-40aa-9e7e-dd6157beb208</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[.//span[normalize-space()='Verification And Approval']]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>ffb62841-2b7e-459f-bccd-5b3e915e77c4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt61</value>
+      <webElementGuid>7c4adb12-3d61-4df4-8135-69a66c553c2c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-link ui-corner-all</value>
+      <webElementGuid>e7f4564f-4293-4009-9e88-7ed6446fddf5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>javascript:void(0)</value>
+      <webElementGuid>42b8dfa7-23ba-473d-b4da-1f21922b2727</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>PrimeFaces.ab({source:'_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt61',update:'_scCreateManualSourcing_WAR_NGePportlet_:form',formId:'_scCreateManualSourcing_WAR_NGePportlet_:form'});return false;</value>
+      <webElementGuid>c3fce717-3e65-4329-a46e-b5620bc49a46</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Letter Of Acceptance And Attachment</value>
+      <webElementGuid>5f1855cb-7478-437b-ae9f-360b58ba56bf</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt61&quot;)</value>
+      <webElementGuid>6b3c1d41-50f2-4672-9457-828d6b62a0c5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt61']</value>
+      <webElementGuid>884b9190-2c8d-466c-8d7b-7ce62f748cdd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:menuTab']/ul/li[2]/a</value>
+      <webElementGuid>b98b9baf-3026-4a73-a1aa-ecafd2f3deb7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='General Information'])[1]/following::a[1]</value>
+      <webElementGuid>4ecbefa2-98c7-4b3c-a640-d6340bbbd3a2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Sign W/O GPKI'])[1]/following::a[2]</value>
+      <webElementGuid>5b5f30bf-aabb-493c-a6ab-24eb05ee6841</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Zone / Item Details'])[1]/preceding::a[1]</value>
+      <webElementGuid>1030115a-1b38-467b-948a-b7969756d64b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>(//a[contains(@href, 'javascript:void(0)')])[4]</value>
+      <webElementGuid>cabaa5e8-fc11-4a56-8b32-28c44489e263</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/div/ul/li[2]/a</value>
+      <webElementGuid>404d7954-d621-4394-b0b1-66072ab12134</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@id = '_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt61' and @href = 'javascript:void(0)' and (text() = 'Letter Of Acceptance And Attachment' or . = 'Letter Of Acceptance And Attachment')]</value>
+      <webElementGuid>cff90696-3a35-435d-bab6-d2833291e04c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

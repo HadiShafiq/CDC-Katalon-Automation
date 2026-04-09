@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Side Menu item List</name>
+   <tag></tag>
+   <elementGuidId>1a6c1d2f-568a-408c-a881-28d0012fdc9f</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:mainTabMenu']/ul/li[3]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>li.ui-tabmenuitem.ui-state-default.ui-state-active.ui-corner-top</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>li</value>
+      <webElementGuid>0237437c-c9c8-4bcc-b9be-82bc4f39be51</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-tabmenuitem ui-state-default ui-state-active ui-corner-top</value>
+      <webElementGuid>8be0b4e5-2155-4e95-9068-ed2c4cd15c2a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>tab</value>
+      <webElementGuid>aa30af88-df00-4fd0-8787-871bf6ef9228</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>aria-expanded</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>525b130a-5f0b-40d2-baa5-fcd2b3aa96d1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Item List</value>
+      <webElementGuid>78e12e75-4c02-49eb-a161-bd4389bb6ae7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:mainTabMenu&quot;)/ul[@class=&quot;ui-tabmenu-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all&quot;]/li[@class=&quot;ui-tabmenuitem ui-state-default ui-state-active ui-corner-top&quot;]</value>
+      <webElementGuid>281360f7-751b-412c-90c0-cc3a3c13f1dd</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:mainTabMenu']/ul/li[3]</value>
+      <webElementGuid>5df2c819-542e-40c5-95ab-cc07b41f19be</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Zone'])[1]/following::li[1]</value>
+      <webElementGuid>7a93fcef-8554-4ea4-9d43-3b6676a35c00</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='General Information'])[1]/following::li[2]</value>
+      <webElementGuid>71abe902-7126-4780-aa58-59fd121ef3b4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Criteria and Supplier List'])[1]/preceding::li[1]</value>
+      <webElementGuid>a0e057f4-0ca8-45da-ba5a-40c2c17a248e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/div/ul/li[3]</value>
+      <webElementGuid>6950cc4a-d947-4015-8200-378b504457dc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//li[(text() = 'Item List' or . = 'Item List')]</value>
+      <webElementGuid>14f4bd78-039d-4153-94df-a78dd9fd39cd</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

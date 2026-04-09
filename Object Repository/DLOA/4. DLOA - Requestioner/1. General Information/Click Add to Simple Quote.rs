@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Add to Simple Quote</name>
+   <tag></tag>
+   <elementGuidId>9d6c8176-1017-495c-9185-b963e6b80f0e</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[contains(@id,':supplierItemID:0:')]/span[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>4efdb271-18c5-468c-8527-ecbf24036c51</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-text</value>
+      <webElementGuid>43b9d611-4cc4-4f23-9323-d986f2770900</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Add to Simple Quote</value>
+      <webElementGuid>d8d1a5e4-d476-45f8-9db1-3fea37f84e39</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:j_idt7:supplierItemID:0:j_idt154&quot;)/span[@class=&quot;ui-menuitem-text&quot;]</value>
+      <webElementGuid>49353f28-d429-4e37-972f-67f2bc1720cc</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='_Catalogue_WAR_NGePportlet_:form:j_idt7:supplierItemID:0:j_idt154']/span[2]</value>
+      <webElementGuid>1626cb2f-5534-4cc7-a9e2-c003ead8b717</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Best Price is only applicable for non-contracted item'])[1]/following::span[2]</value>
+      <webElementGuid>d7f57888-390c-4257-8472-db0dd93dc900</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='/'])[8]/following::span[2]</value>
+      <webElementGuid>d84a9af2-29e1-4119-af82-9948447a2530</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add to Compare'])[1]/preceding::span[2]</value>
+      <webElementGuid>cec9f8bf-c69d-4b92-acdb-563a50cd2dc3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Select Item to be list in the Request Note'])[1]/preceding::span[3]</value>
+      <webElementGuid>c2125ad1-6113-42b5-ad51-3075876dfb9c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Add to Simple Quote']/parent::*</value>
+      <webElementGuid>c4e2b510-f292-4e08-b61a-c3a354cca1e3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[20]/ul/li/a/span[2]</value>
+      <webElementGuid>cba9dac7-5a4f-4ef4-9d0b-7965f2ef6ef5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Add to Simple Quote' or . = 'Add to Simple Quote')]</value>
+      <webElementGuid>2541c3c3-8d95-4121-b6a8-dcd33a480b90</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

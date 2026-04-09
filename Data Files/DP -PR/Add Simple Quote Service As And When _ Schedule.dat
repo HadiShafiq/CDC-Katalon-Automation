@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>Add Simple Quote Service As And When _ Schedule</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>2515a2d6-75b3-4f51-aee9-13b4d98c939e</dataFileGUID>
+   <dataSourceUrl>C:\Users\hadishafiq\Desktop\DP LOA Excel Data Prep\DATA WIP DP LOA\FL\FL Add Simple Quote All ( As And When_Schedule) Fail and Run Again and Again.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>TestData</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

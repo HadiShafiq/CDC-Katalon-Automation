@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Upload Icon LOA Signer Document</name>
+   <tag></tag>
+   <elementGuidId>c4914781-926e-4dfa-89dc-dfeacefea1af</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_scCreateManualSourcing_WAR_NGePportlet_:form:') and substring(@id, string-length(@id) - 1) = 'FU']//table//tbody/tr/td[5]//button//span&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-icon.ui-icon-arrowreturnthick-1-n</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>aca52f0e-9cf6-449b-bae5-8da4ce3c218b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n</value>
+      <webElementGuid>2687c6e6-8a59-421d-9058-e42d1255ea6f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU&quot;)/div[@class=&quot;fileupload-content ui-widget-content ui-corner-bottom&quot;]/table[@class=&quot;files&quot;]/tbody[1]/tr[@class=&quot;template-upload&quot;]/td[@class=&quot;start&quot;]/button[@class=&quot;ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-state-hover&quot;]/span[@class=&quot;ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n&quot;]</value>
+      <webElementGuid>176958aa-96de-46ea-a8a8-27ad709dab1e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt588:j_idt588FU']/div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>84511a96-eaf6-4335-9b8a-8388a37f84ec</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>455e31ee-640b-4a82-957d-66c484c0b265</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

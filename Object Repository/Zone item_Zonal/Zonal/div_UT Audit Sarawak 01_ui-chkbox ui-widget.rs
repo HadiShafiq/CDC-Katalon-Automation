@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_UT Audit Sarawak 01_ui-chkbox ui-widget</name>
+   <tag></tag>
+   <elementGuidId>2aeebcb6-8555-47ca-a084-09177bdcbefb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//li[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:36']/span/div</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>e8989c93-3a19-4976-ab78-c9a54d692785</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-chkbox ui-widget</value>
+      <webElementGuid>b8886218-f16e-4235-ad1a-c78579825c2b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:36&quot;)/span[@class=&quot;ui-treenode-content ui-tree-selectable&quot;]/div[@class=&quot;ui-chkbox ui-widget&quot;]</value>
+      <webElementGuid>35eda203-3169-4fa9-802a-95493b691f28</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//li[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:36']/span/div</value>
+      <webElementGuid>1cc208b7-e237-4704-b1c0-9a9a25ca3fcf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='UT Audit Sarawak 01'])[1]/following::div[1]</value>
+      <webElementGuid>3216c6ab-0ee6-45d5-9fc9-f27832759806</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Test State'])[1]/following::div[3]</value>
+      <webElementGuid>0afbce96-732a-4753-92c2-0649009b2ecd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='WILAYAH PERSEKUTUAN KUALA LUMPUR'])[1]/preceding::div[2]</value>
+      <webElementGuid>847b9504-49ee-49d2-891c-a5e467e739a7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='WILAYAH PERSEKUTUAN LABUAN'])[1]/preceding::div[4]</value>
+      <webElementGuid>b17e51cb-a7f1-4a30-850c-82b921ae90ac</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[37]/span/div</value>
+      <webElementGuid>53cfbb00-ba03-49d9-9ffb-591f70440e07</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

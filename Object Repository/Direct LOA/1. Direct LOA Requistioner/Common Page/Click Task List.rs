@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Task List</name>
+   <tag></tag>
+   <elementGuidId>13a9ce45-dae4-444c-8192-71e4402ea325</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[@role='menuitem' and normalize-space(.)='Task List']&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#yui_patched_v3_11_0_1_1770088051709_539</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c5648ec9-9279-4a62-814a-475c751e9cc4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>yui_patched_v3_11_0_1_1770088051709_539</value>
+      <webElementGuid>fef86031-0fe3-466b-afe5-55edf6d44ac4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Task List </value>
+      <webElementGuid>9848e9f0-68e1-4dab-98a4-6bce32d9734d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;yui_patched_v3_11_0_1_1770088051709_539&quot;)</value>
+      <webElementGuid>16764b11-0fe9-44bb-a107-b73e9050ef07</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='yui_patched_v3_11_0_1_1770088051709_539']</value>
+      <webElementGuid>361f45bb-b1ef-43c6-879d-87df41ee5cce</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='yui_patched_v3_11_0_1_1770088051709_411']/span</value>
+      <webElementGuid>6dd04970-ad70-4769-b29f-eb1a6ff98243</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Audit'])[1]/following::span[1]</value>
+      <webElementGuid>8e3889ec-83f0-4435-8eed-a2820da813f9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Template Maintenance'])[1]/following::span[1]</value>
+      <webElementGuid>871342ea-ab15-44a9-9eb7-8fe9902ec88a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Notice Board'])[1]/preceding::span[1]</value>
+      <webElementGuid>f2b78340-a956-40e8-a5c9-5cbf1608ee9e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Information'])[1]/preceding::span[2]</value>
+      <webElementGuid>6f6fd613-5b95-479d-bf27-0629d01d6048</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Task List']/parent::*</value>
+      <webElementGuid>4909946d-0f50-4f5b-8825-183674400882</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[3]/a/span</value>
+      <webElementGuid>064d3457-5e17-462b-9828-ea8674e8a2cf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'yui_patched_v3_11_0_1_1770088051709_539' and (text() = ' Task List ' or . = ' Task List ')]</value>
+      <webElementGuid>8204521c-a480-4acc-b0e3-c8d5dd552eab</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>DP - PR - Supplier SQ Respond - One Off</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>07cc400d-6939-4567-b2e5-5fdfb41aa85c</testSuiteGuid>
+   <testCaseLink>
+      <guid>f7b1a726-b43f-4649-bee1-aad2ca3b9362</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA/2. Supplier Simple Quote Respond</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/DP -PR/Supplier SQ Respond - One Off</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>d8891639-3875-4c40-9a70-58f46002b578</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>15ab54fe-6bcf-4fc2-932b-027712a787ed</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UnitPrice</value>
+         <variableId>ba37e92b-1403-4ddb-8c10-226495b82500</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>sqNo</value>
+         <variableId>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0583b8f7-5f3a-4ef7-8826-1acb974b70ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UnitPrice2</value>
+         <variableId>e4dd633c-a0e9-4175-851c-9cebc7d629ec</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

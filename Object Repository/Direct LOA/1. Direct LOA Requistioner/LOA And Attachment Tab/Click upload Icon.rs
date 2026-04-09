@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click upload Icon</name>
+   <tag></tag>
+   <elementGuidId>8f5cb225-efbc-4dd5-b0ea-06e98e48186a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:contentsTbl:0:scDocUploadBtn:scDocUploadBtnBtn']/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-upload</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>908408dd-30ff-4fc7-88b4-67c410b6c79f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-upload</value>
+      <webElementGuid>830015b7-a671-4ed3-9555-7de6a3932a92</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:contentsTbl:0:scDocUploadBtn:scDocUploadBtnBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-upload&quot;]</value>
+      <webElementGuid>b6a73c5e-f396-4860-baef-921a7550d448</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:contentsTbl:0:scDocUploadBtn:scDocUploadBtnBtn']/span</value>
+      <webElementGuid>aac70bcd-7c9a-430c-8032-6608a7e701be</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[3]/span/button/span</value>
+      <webElementGuid>349c74a2-c49e-4ea0-a026-0dda04fdb3bc</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

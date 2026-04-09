@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click the Supplier</name>
+   <tag></tag>
+   <elementGuidId>c951a0f5-2f26-4539-92c4-6d64c2a6be05</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//tbody[contains(@id,'lovTb_data')]/tr[1]/td[2]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>tr.ui-widget-content.ui-datatable-even.ui-state-hover > td:nth-of-type(2)</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>td</value>
+      <webElementGuid>507bff6d-1027-4ccf-b0e1-9506259a231f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>gridcell</value>
+      <webElementGuid>ee1ab833-6ee1-4b6a-b1b5-c1d64224bf25</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>
+						eP-1008I048X
+				</value>
+      <webElementGuid>0f096503-c4c2-4b24-a4e8-ad49674d7165</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:lovTb_data&quot;)/tr[@class=&quot;ui-widget-content ui-datatable-even ui-state-hover&quot;]/td[2]</value>
+      <webElementGuid>02e2fe43-afea-46f9-a6d7-5f4f2f70b4cf</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//tbody[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:lovTb_data']/tr/td[2]</value>
+      <webElementGuid>aa4771b3-fc59-490e-b114-153afb486f21</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='BUMI WARISAN MAJU SDN BHD'])[1]/following::td[1]</value>
+      <webElementGuid>cfccf320-0a1d-4c7c-bcbd-a79bdcc29042</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='MOF No.'])[2]/following::td[2]</value>
+      <webElementGuid>f02a74a7-0b1a-4222-8380-5a90cbd82766</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='NSA BUMIPUTRA SDN BHD'])[1]/preceding::td[3]</value>
+      <webElementGuid>5ff1f59a-2bee-494b-af0f-fe2608cc1d59</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='eP-1601I004V'])[1]/preceding::td[4]</value>
+      <webElementGuid>d919187a-bc35-478d-b245-a0446147f629</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='eP-1008I048X']/parent::*</value>
+      <webElementGuid>123dbce7-1936-4450-bfce-af6a0df39332</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/span/div/div/table/tbody/tr/td[2]</value>
+      <webElementGuid>fa84703d-fd74-4ef9-a3fc-8b82d79376dd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//td[(text() = '
+						eP-1008I048X
+				' or . = '
+						eP-1008I048X
+				')]</value>
+      <webElementGuid>455d2d4e-72b6-484a-bfb9-8fbd78171491</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

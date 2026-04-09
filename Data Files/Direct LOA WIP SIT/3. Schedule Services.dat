@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>3. Schedule Services</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>1adcd946-9184-443f-8f4e-1aad6cd390c1</dataFileGUID>
+   <dataSourceUrl>C:\Users\hadishafiq\Desktop\DP LOA Excel Data Prep\DATA WIP DP LOA\WIP- DL - CR\Schedule Service DL CR 2. xlsx.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>Sheet1</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>

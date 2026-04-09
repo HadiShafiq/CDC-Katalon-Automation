@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Side Menu Supplier LOA Attachment</name>
+   <tag></tag>
+   <elementGuidId>ed970934-8760-4912-a7f8-e9e3dfb5d422</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[.//span[normalize-space(.)='Letter Of Acceptance And Attachment']]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>53669662-9b04-4dc6-bccc-71a1f051b7ec</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-menuitem-text</value>
+      <webElementGuid>e09a9e29-bd81-4498-a2e0-6696d94624bd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Letter Of Acceptance And Attachment</value>
+      <webElementGuid>fbf9afbb-aa1e-4372-b184-7b64543dff15</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt67&quot;)/span[@class=&quot;ui-menuitem-text&quot;]</value>
+      <webElementGuid>4cffb12f-19ae-4405-8d92-3d1e702db579</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt67']/span</value>
+      <webElementGuid>dffc0faf-d5f2-48b2-b708-c072be8c79cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Category Code'])[1]/following::span[1]</value>
+      <webElementGuid>73f813e2-cd32-49c9-b1c2-6fa5dafd962a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='General Information'])[1]/following::span[2]</value>
+      <webElementGuid>5b760f3a-7c22-4086-90f1-4c3348f8253f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Zone / Item Details'])[1]/preceding::span[1]</value>
+      <webElementGuid>f2e0fa3d-6713-4fd2-af7e-f88c784595b3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Payment Deduction'])[1]/preceding::span[2]</value>
+      <webElementGuid>deaaa046-c1ea-4a2c-8085-055841cf9bac</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Letter Of Acceptance And Attachment']/parent::*</value>
+      <webElementGuid>c7c6602d-b193-4ee6-b423-6152a1327f9f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/div/ul/li[3]/a/span</value>
+      <webElementGuid>ecbe5971-904a-4309-9c0a-bdf1ce24db51</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Letter Of Acceptance And Attachment' or . = 'Letter Of Acceptance And Attachment')]</value>
+      <webElementGuid>f676d5c4-ac40-4f99-a7d7-2a4b9a800450</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

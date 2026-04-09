@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Offered Total Amount(RM)_ui-button-ico_f4f065</name>
+   <tag></tag>
+   <elementGuidId>db6bc6de-ac76-4ae2-a1c5-18e8462aabdb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-add</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>10</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>586c859c-fe9a-46b0-9271-b462f6f95784</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-add</value>
+      <webElementGuid>29c4e81c-d66f-4928-986d-baf2e8505120</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:addTopBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-add&quot;]</value>
+      <webElementGuid>79651d4d-8a75-4202-95ee-4de3566738e5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:addTopBtn']/span</value>
+      <webElementGuid>662cd6b6-0a70-4bfc-8ff9-c4c655868d7d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//th[7]/span/button/span</value>
+      <webElementGuid>88e906ca-0bd2-4b57-aed2-5b0fdf890fa5</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

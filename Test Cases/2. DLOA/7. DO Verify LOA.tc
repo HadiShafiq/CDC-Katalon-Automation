@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>7. DO Verify LOA</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>930a7f6e-079c-462e-867a-c3130b195f38</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>3b04dbe5-7584-4447-b13b-a237829d706b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b9dc2c49-4ff4-4ed9-bd84-bc29d138ba61</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>80f0fd3d-1072-48e3-b09e-12bd79218035</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'881204115188'</defaultValue>
+      <description></description>
+      <id>3b04dbe5-7584-4447-b13b-a237829d706b</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>b9dc2c49-4ff4-4ed9-bd84-bc29d138ba61</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'LA260000000000969'</defaultValue>
+      <description></description>
+      <id>80f0fd3d-1072-48e3-b09e-12bd79218035</id>
+      <masked>false</masked>
+      <name>Document_Number</name>
+   </variable>
+</TestCaseEntity>

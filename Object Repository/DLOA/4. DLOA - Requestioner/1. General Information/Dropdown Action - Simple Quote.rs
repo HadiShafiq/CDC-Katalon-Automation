@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Dropdown Action - Simple Quote</name>
+   <tag></tag>
+   <elementGuidId>fc6f2a2e-c056-497b-b5f3-c424c31cf671</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[starts-with(@id, '_Catalogue_WAR_NGePportlet_:form:') and contains(@id, 'supplierItemID')]/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-triangle-1-s</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c3b6f33a-d8c7-4d45-a74c-6994b84b7aea</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-triangle-1-s</value>
+      <webElementGuid>569f4fda-d9b7-4c19-b360-9fbfe40cd647</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:j_idt7:supplierItemID:0:j_idt152_button&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-triangle-1-s&quot;]</value>
+      <webElementGuid>0331b481-fc5c-48d3-92b3-bd283c8f9227</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_Catalogue_WAR_NGePportlet_:form:j_idt7:supplierItemID:0:j_idt152_button']/span</value>
+      <webElementGuid>a420ccdb-ce14-49ac-9bdd-3dfbfd21f871</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/button/span</value>
+      <webElementGuid>3b47998f-df1c-4d4f-aa36-4ba3830695e8</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

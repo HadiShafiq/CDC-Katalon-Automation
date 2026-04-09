@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Branch Information</name>
+   <tag></tag>
+   <elementGuidId>3bdae089-adf3-4157-b6b3-3a72c94866e5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;_scLoaSupplierResponse_WAR_NGePportlet_:form:loaSuppUploadBtn:loaSuppUploadBtnBtn&quot;]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-upload</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c77cf002-9e50-4313-897f-3f7879f05e74</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-upload</value>
+      <webElementGuid>e1c88ed3-35cf-44ec-b273-e03fe1bc381a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:dnBranchInfoUploadBtn:dnBranchInfoUploadBtnBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-upload&quot;]</value>
+      <webElementGuid>5cdaede5-e439-402f-b8c3-ed4466c45491</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:dnBranchInfoUploadBtn:dnBranchInfoUploadBtnBtn']/span</value>
+      <webElementGuid>d60d17f2-74fc-4fa7-8fe4-389f80c808c4</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/button/span</value>
+      <webElementGuid>42fd1459-46f9-4589-a8fe-d2727799a600</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

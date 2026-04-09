@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>5. Prepare LOA</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>3a66872f-48de-4e01-bf8a-93314094e24f</testSuiteGuid>
+   <testCaseLink>
+      <guid>0cb25388-1762-4410-920a-6d230899ca39</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA/5. Prepare LOA</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>feda7556-b3e9-4906-8ff2-16f699709c13</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/DP LOA/5. Prepare LOA</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>feda7556-b3e9-4906-8ff2-16f699709c13</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>a2006292-188a-46a1-af1b-8f6ab7efabef</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>feda7556-b3e9-4906-8ff2-16f699709c13</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>906a869d-6446-45ab-9248-64eb5191d341</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>feda7556-b3e9-4906-8ff2-16f699709c13</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
+         <variableId>b9cac366-99f1-479e-bec4-ee07ff043065</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>feda7556-b3e9-4906-8ff2-16f699709c13</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FileReference1</value>
+         <variableId>f8fdb46e-da1f-49b1-a3a6-e88df41c81a9</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>feda7556-b3e9-4906-8ff2-16f699709c13</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FileReference2</value>
+         <variableId>9823215e-b500-4028-ac87-ea1674c553cd</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c526d4e1-396e-4024-960c-4dd9a857a7ce</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>83ad7b03-0205-4426-8499-1d788df0d18a</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

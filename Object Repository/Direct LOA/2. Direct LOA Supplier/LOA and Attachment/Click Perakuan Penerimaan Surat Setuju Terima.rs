@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Perakuan Penerimaan Surat Setuju Terima</name>
+   <tag></tag>
+   <elementGuidId>d5882318-a801-40e4-b9fd-84c7ad2c8a3d</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:1:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn']/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-upload</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>fecfc7f8-451a-4373-ac80-19877274cae7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-upload</value>
+      <webElementGuid>e302c840-9762-4458-9e80-da8b1d1a2028</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:1:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-upload&quot;]</value>
+      <webElementGuid>48711acc-7f67-4ad9-934b-11cd43599536</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:contentsTbl:1:dnSuppFileUploadDlgBtn:dnSuppFileUploadDlgBtnBtn']/span</value>
+      <webElementGuid>2bad3d89-5cf7-47b1-a9e8-b73a9b6e9322</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//span/button/span</value>
+      <webElementGuid>7b3ee988-3ef7-45ce-bd5d-ea97d04e5112</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

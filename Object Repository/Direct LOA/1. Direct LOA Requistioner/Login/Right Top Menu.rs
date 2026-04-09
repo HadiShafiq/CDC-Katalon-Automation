@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Right Top Menu</name>
+   <tag></tag>
+   <elementGuidId>6c7980d0-0010-4768-b70e-69d1548ca743</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//li[@id='sfiw_']/a/span&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.nav-item-label</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>f6583cf5-2193-4232-bb91-ba9eae5e61d7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>nav-item-label</value>
+      <webElementGuid>42ca8f07-a3d1-4087-bc56-19cf1cdc78cb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value> Log Masuk </value>
+      <webElementGuid>1d4da2d7-0ca2-457e-915d-af130b67ca64</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;sfiw_&quot;)/a[1]/span[@class=&quot;nav-item-label&quot;]</value>
+      <webElementGuid>be926e9a-a6e9-47e8-aa2d-f0b39aad7214</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//li[@id='sfiw_']/a/span</value>
+      <webElementGuid>e6bd8b89-f85d-401f-a89b-e7a58821cc9d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Skip to Content'])[1]/following::span[4]</value>
+      <webElementGuid>e6946c9d-c07f-4ca1-8f90-b430858921ba</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Portal dikemaskini kali terakhir pada 22 Januari 2026 12:58:05 PM'])[1]/preceding::span[2]</value>
+      <webElementGuid>260c3964-ebd1-4339-9991-037307c11723</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='UTAMA'])[1]/preceding::span[2]</value>
+      <webElementGuid>f5e3f256-3b6e-4b61-8ba0-c100cea111cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Log Masuk']/parent::*</value>
+      <webElementGuid>86974420-2b8b-4247-b496-3ee74f300d51</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//a/span</value>
+      <webElementGuid>e78e8f9d-4f96-4cc8-9def-d47819db60ed</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = ' Log Masuk ' or . = ' Log Masuk ')]</value>
+      <webElementGuid>a80ffacc-eb05-443e-94ec-35e7163a5204</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Simple Quote Respond</name>
+   <tag></tag>
+   <elementGuidId>837dd8b9-7980-4039-91db-bff9385e55b5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[contains(@href,'/web/epapp/simple-quote-respond')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>e30debbc-dbde-42cf-9eea-ae7ba4f79ac2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>menuItemLink</value>
+      <webElementGuid>71fff092-42c5-4f8e-be6c-9904620a00d6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/web/epapp/catalogue-search</value>
+      <webElementGuid>266a7089-a038-4b89-9cc9-121546f56530</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Catalogue Search</value>
+      <webElementGuid>b1baa215-529f-4d51-bac1-b496eccd33c8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;quicklink&quot;)/div[@class=&quot;mainparent grid&quot;]/div[@class=&quot;layoutitem grid-item&quot;]/ul[@class=&quot;subparent&quot;]/li[@class=&quot;layoutsubitem&quot;]/div[2]/a[@class=&quot;menuItemLink&quot;]</value>
+      <webElementGuid>fac96018-c9f2-464b-b3e0-226a1a42e643</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='quicklink']/div/div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>1cd7c9b9-b44f-427b-9ea2-f45299877e00</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'Catalogue Search')]</value>
+      <webElementGuid>3def5d17-90b2-4ede-b09b-48f2836ff5a6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Finalization Committee Maintenance'])[1]/following::a[1]</value>
+      <webElementGuid>08c7d4b9-8835-4f95-a3de-24982d9dcc85</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Direct Purchase Maintenance'])[1]/preceding::a[1]</value>
+      <webElementGuid>0ec72df6-9740-499f-845a-cca29b5f2d2f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Catalogue Search']/parent::*</value>
+      <webElementGuid>c0324fb8-d775-4648-9a7c-59e884431937</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/web/epapp/catalogue-search')]</value>
+      <webElementGuid>507a038e-cf3a-46d6-ae84-d2f7438822c9</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>507410d1-ccac-44bb-a268-314442cb009b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/web/epapp/catalogue-search' and (text() = 'Catalogue Search' or . = 'Catalogue Search')]</value>
+      <webElementGuid>c082ab48-244e-4436-8ded-c82c711caff3</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

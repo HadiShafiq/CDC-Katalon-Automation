@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_WILAYAH PERSEKUTUAN KUALA LUMPUR_ui-chk_6d9dd0</name>
+   <tag></tag>
+   <elementGuidId>5be0a967-ab48-4b15-b40c-5b9302ac7d13</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div.ui-chkbox-box.ui-widget.ui-corner-all.ui-state-default.ui-state-hover</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//li[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:37']/span/div/div</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>2a72bfbd-2d73-4c2b-a113-1c4167ce0735</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-hover</value>
+      <webElementGuid>b42b330d-b40b-4ec6-8d44-012c3910252f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:37&quot;)/span[@class=&quot;ui-treenode-content ui-tree-selectable&quot;]/div[@class=&quot;ui-chkbox ui-widget&quot;]/div[@class=&quot;ui-chkbox-box ui-widget ui-corner-all ui-state-default ui-state-hover&quot;]</value>
+      <webElementGuid>6ad932ad-85c2-4caa-8f4d-f224f3e4e48f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//li[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:37']/span/div/div</value>
+      <webElementGuid>ee7e7b11-2d15-4f7e-937e-6c6427e77ebf</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='WILAYAH PERSEKUTUAN KUALA LUMPUR'])[1]/following::div[2]</value>
+      <webElementGuid>2a4dffd9-434e-4988-8b09-e82e7a389a91</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='UT Audit Sarawak 01'])[1]/following::div[4]</value>
+      <webElementGuid>3461d764-17d9-4eed-af59-7f60fb8a464a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='WILAYAH PERSEKUTUAN LABUAN'])[1]/preceding::div[1]</value>
+      <webElementGuid>706b09b3-b513-485b-8a92-d2f6438cef57</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='WILAYAH PERSEKUTUAN PUTRAJAYA'])[1]/preceding::div[3]</value>
+      <webElementGuid>4977c535-ce7d-4d8a-a2d2-8528db2cf8f7</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[38]/span/div/div</value>
+      <webElementGuid>37d1ee0f-556e-419f-abc1-4934f2a01974</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

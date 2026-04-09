@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Right Top Menu Login</name>
+   <tag></tag>
+   <elementGuidId>09816168-5fd5-4ba5-b664-be37a2ed853b</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//a[@id='']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#muwt_ > a</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>476e24bd-c936-4624-8e6b-b613e1b99667</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/web/epapp/dashboard</value>
+      <webElementGuid>2ba405ad-19d6-47eb-b709-16ec451001d9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>menuitem</value>
+      <webElementGuid>1216c5aa-ba0c-4cc9-aeff-d62f74ea37da</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>   Log Masuk  </value>
+      <webElementGuid>4ca33709-d7bf-437e-a679-873296ac4db0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;muwt_&quot;)/a[1]</value>
+      <webElementGuid>6bf10971-b8fd-49ff-8673-ec784ac8adc3</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//a[@id='']</value>
+      <webElementGuid>0c09de22-1696-49e4-8804-d9de3087e13f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//li[@id='muwt_']/a</value>
+      <webElementGuid>d4181645-96c5-4933-b2fc-06d377c1a686</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Skip to Content'])[1]/following::a[4]</value>
+      <webElementGuid>7db86f23-6cd0-4fc0-97cf-743e73bb5b9c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Portal dikemaskini kali terakhir pada 2 Disember 2025 12:18:38 PM'])[1]/preceding::a[2]</value>
+      <webElementGuid>47cdf064-55e2-4e07-99a2-f95ebc621d1b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/web/epapp/dashboard')]</value>
+      <webElementGuid>7727c302-cf17-4469-b568-04e58dba04ee</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[7]/a</value>
+      <webElementGuid>b7d39ac2-385e-4c17-be11-64fd86fe654f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/web/epapp/dashboard' and (text() = '   Log Masuk  ' or . = '   Log Masuk  ')]</value>
+      <webElementGuid>e6a4bea1-b018-41df-acd9-3abdb59e1e4a</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

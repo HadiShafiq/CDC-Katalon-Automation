@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Procument Tittle</name>
+   <tag></tag>
+   <elementGuidId>0e4c7fa4-f5f2-4532-8427-14325d57a119</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//*[starts-with(@id,'_scSupplierInvitationSq_WAR_NGePportlet_:form:scSuppInviteTblId:0:')]/span)[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>1f43cd69-e4f3-439a-b466-e3c4d2b8fa29</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>menuItemLink</value>
+      <webElementGuid>09620212-a594-4006-8a1d-715c911f21da</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>/web/epapp/catalogue-search</value>
+      <webElementGuid>09e9643c-6d35-456e-bf86-f8d4027363d3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Catalogue Search</value>
+      <webElementGuid>078e071f-e4ae-4e75-8e6d-7a42f8838af9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;quicklink&quot;)/div[@class=&quot;mainparent grid&quot;]/div[@class=&quot;layoutitem grid-item&quot;]/ul[@class=&quot;subparent&quot;]/li[@class=&quot;layoutsubitem&quot;]/div[2]/a[@class=&quot;menuItemLink&quot;]</value>
+      <webElementGuid>d9e77e3f-0b44-41c8-a970-3a18b0fc203e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='quicklink']/div/div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>a9d2a0c1-da70-43cb-aaee-1218a6c1171f</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:link</name>
+      <type>Main</type>
+      <value>//a[contains(text(),'Catalogue Search')]</value>
+      <webElementGuid>fec81114-4642-4372-b321-5fade9e4345a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Finalization Committee Maintenance'])[1]/following::a[1]</value>
+      <webElementGuid>4789b74a-7618-46e8-ac7d-d36448848f0b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Direct Purchase Maintenance'])[1]/preceding::a[1]</value>
+      <webElementGuid>6148af52-1af7-44ac-98b8-26041ce31290</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Catalogue Search']/parent::*</value>
+      <webElementGuid>aee44772-6782-4f40-8af3-53c5fb3d2929</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:href</name>
+      <type>Main</type>
+      <value>//a[contains(@href, '/web/epapp/catalogue-search')]</value>
+      <webElementGuid>b23da18c-b569-48d7-ade7-1c90659a2d28</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/ul/li/div[2]/a</value>
+      <webElementGuid>551be4fe-c744-426e-902d-ad9cb04c2c2e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '/web/epapp/catalogue-search' and (text() = 'Catalogue Search' or . = 'Catalogue Search')]</value>
+      <webElementGuid>d1ec051d-aa16-4fd1-8911-d76cf771ee7c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Grand Total (RM)_ui-button-icon-left u_2834a0</name>
+   <tag></tag>
+   <elementGuidId>4924acf7-bd99-4bc0-9c64-b0aaae7b95e3</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-c.ui-icon-pencil</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:zoneQtyBtn']/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>9d7c0465-3757-4a65-ad84-e140fd5f70a7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-c ui-icon-pencil</value>
+      <webElementGuid>adbf7fc6-6e39-410e-b79d-e010201ff628</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:zoneQtyBtn&quot;)/span[@class=&quot;ui-button-icon-left ui-icon ui-c ui-icon-pencil&quot;]</value>
+      <webElementGuid>d92dc6d7-b4fb-44aa-b9d8-56605c4b3af4</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt867:questionTbl:0:zoneQtyBtn']/span</value>
+      <webElementGuid>af422035-fab7-413e-8392-020c08801f28</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div/table/tbody/tr/td[4]/span/button/span</value>
+      <webElementGuid>8426ef33-61fc-410b-acf0-a42f759e75de</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

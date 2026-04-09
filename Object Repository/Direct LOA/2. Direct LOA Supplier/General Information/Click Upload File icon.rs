@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Upload File icon</name>
+   <tag></tag>
+   <elementGuidId>f2a2d4b6-801e-4024-852b-b0a8902e6fc7</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[contains(@id,'_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:') and substring(@id,string-length(@id)-string-length('FU')+1)='FU']//table//tr//td[5]//button//span&#xd;
+</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-button-icon-left.ui-icon.ui-icon.ui-icon-arrowreturnthick-1-n</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c3a4b3d4-b0c9-4a49-8d34-c2c17ee19580</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n</value>
+      <webElementGuid>5a7c2a0c-1536-4cc9-9a7d-7e395825dcd2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt449:j_idt449FU&quot;)/div[@class=&quot;fileupload-content ui-widget-content ui-corner-bottom&quot;]/table[@class=&quot;files&quot;]/tbody[1]/tr[@class=&quot;template-upload&quot;]/td[@class=&quot;start&quot;]/button[@class=&quot;ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-state-hover&quot;]/span[@class=&quot;ui-button-icon-left ui-icon ui-icon ui-icon-arrowreturnthick-1-n&quot;]</value>
+      <webElementGuid>c2faac7a-8094-473a-9f12-5f18756740a5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt449:j_idt449FU']/div[2]/table/tbody/tr/td[5]/button/span</value>
+      <webElementGuid>aec416f7-3a93-4cb7-86f9-bf2091c37f0d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td[5]/button/span</value>
+      <webElementGuid>74cc2325-e1e8-4848-bfac-9bc26b0280cd</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

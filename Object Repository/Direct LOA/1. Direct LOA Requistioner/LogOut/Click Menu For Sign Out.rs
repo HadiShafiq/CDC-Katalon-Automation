@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Click Menu For Sign Out</name>
+   <tag></tag>
+   <elementGuidId>9c28a998-7b4f-48d0-8c69-adc608e06d10</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id=&quot;_145_userAvatar&quot;]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#yui_patched_v3_11_0_1_1771869191682_499 > i.icon-caret-down</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>i</value>
+      <webElementGuid>63dafdae-562b-4ab6-8a23-3fb370e571c4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>icon-caret-down</value>
+      <webElementGuid>862bc4b8-44ab-4201-9f8b-66c027a15b1d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;yui_patched_v3_11_0_1_1771869191682_499&quot;)/i[@class=&quot;icon-caret-down&quot;]</value>
+      <webElementGuid>155fd420-34e3-4e4f-84e4-d4ea3f9a96a5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//a[@id='yui_patched_v3_11_0_1_1771869191682_499']/i</value>
+      <webElementGuid>8367446a-c637-476c-a2ba-1ceb066c54d6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[10]/a/i</value>
+      <webElementGuid>be230aa1-d68f-4234-850b-1a012dd6b72d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
