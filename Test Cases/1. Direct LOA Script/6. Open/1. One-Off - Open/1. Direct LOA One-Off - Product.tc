@@ -124,6 +124,30 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>0eab07da-2e12-4da0-9ffc-c00baff85b21</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>fe415739-c235-473c-85ba-9c00006dd3aa</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>fae84c68-00ea-4ad8-9740-39449a94bc55</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d2d4bcea-7613-4e9f-bc37-08eb14095e2c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>6cf577b5-8675-43a9-8108-f4e8b9ca2501</variableId>
    </variableLinks>
    <variableLinks>
@@ -220,7 +244,7 @@
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test00000000001'</defaultValue>
+      <defaultValue>'Test00000000012'</defaultValue>
       <description></description>
       <id>b4b3595d-492a-439e-b486-73b295c1b165</id>
       <masked>false</masked>
@@ -234,7 +258,7 @@
       <name>FileReference2</name>
    </variable>
    <variable>
-      <defaultValue>'3,300,000'</defaultValue>
+      <defaultValue>'3300000'</defaultValue>
       <description></description>
       <id>f61cdcba-0dbb-4a74-a309-20681c5a4f30</id>
       <masked>false</masked>
@@ -288,6 +312,34 @@
       <id>6ed21f4c-c880-4d76-bd91-f11ee8f65a50</id>
       <masked>false</masked>
       <name>LOASigner</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>0eab07da-2e12-4da0-9ffc-c00baff85b21</id>
+      <masked>false</masked>
+      <name>ZoneLocation</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>fe415739-c235-473c-85ba-9c00006dd3aa</id>
+      <masked>false</masked>
+      <name>ZonalCoverage</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>fae84c68-00ea-4ad8-9740-39449a94bc55</id>
+      <masked>false</masked>
+      <name>ZoneName</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>d2d4bcea-7613-4e9f-bc37-08eb14095e2c</id>
+      <masked>false</masked>
+      <name>ZoneIndex</name>
    </variable>
    <variable>
       <defaultValue>'Product'</defaultValue>
