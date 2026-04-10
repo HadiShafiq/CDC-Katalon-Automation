@@ -18,6 +18,9 @@ import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
+
 
 
 /* =========================
@@ -170,6 +173,7 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
+
 /* =========================
  * BROWSER SETUP
  * Purpose:
@@ -188,11 +192,23 @@ import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import com.kms.katalon.core.webui.driver.DriverFactory
 
-String userDataDir = Files.createTempDirectory("katalon-clean").toString()
+String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+
+System.setProperty("webdriver.chrome.driver", chromeDriverPath)
+
+String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 
 ChromeOptions options = new ChromeOptions()
+options.setBinary(chromeBinary)
+
+//Bypass security pop up for google chrome 
+options.setAcceptInsecureCerts(true)
+
+options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
+
 options.addArguments("--guest")
-options.addArguments("--incognito")
+//options.addArguments("--incognito")
 options.addArguments("--user-data-dir=" + userDataDir)
 options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
 options.addArguments("--disable-save-password-bubble")
@@ -201,11 +217,12 @@ options.addArguments("--no-first-run")
 options.addArguments("--no-default-browser-check")
 options.addArguments("--remote-allow-origins=*")
 
-options.setExperimentalOption("prefs", [
-	"credentials_enable_service": false,
-	"profile.password_manager_enabled": false,
-	"profile.default_content_setting_values.notifications": 2
-])
+Map<String, Object> prefs = new HashMap<>()
+prefs.put("credentials_enable_service", false)
+prefs.put("profile.password_manager_enabled", false)
+prefs.put("profile.default_content_setting_values.notifications", 2)
+options.setExperimentalOption("prefs", prefs)
+
 
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
@@ -367,9 +384,11 @@ t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Genera
 
 TestObject loaPrice = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)')
 t(loaPrice, LOAOfferedPrice, 20)
+//WebUI.sendKeys(loaPrice, Keys.chord(Keys.TAB))
 WebUI.sendKeys(loaPrice, Keys.chord(Keys.TAB))
 WebUI.delay(1)
 waitBlockUI(20)
+
 
 /* =========================
  * CONTRACT DETAILS
@@ -408,6 +427,8 @@ clickRequiredOnlineVerification(RequiredOnlineVerification)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
 
 t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'), ContractPeriod, 20)
+WebUI.delay(1)
+waitBlockUI(20)
 
 /* =========================
  * DATE PICKER
@@ -416,7 +437,10 @@ t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Genera
  * ========================= */
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Date Picker icon'), 20)
 WebUI.delay(1)
+waitBlockUI(20)
+
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Click Date'), 20)
+WebUI.delay(1)
 waitBlockUI(20)
 
 /* =========================
@@ -555,6 +579,70 @@ waitBlockUI(30)
 
 
 /* =========================
+ * ZONE ITEM - Zonal
+ * Purpose:
+ * To choose radio button for zonal
+ * 
+ * ========================= */
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
+
+
+def clickZoneLocRadio(int option) {
+	String xpath
+
+	switch(option) {
+		case 1:
+			// Yes
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[1]/div/div[2]"
+			break
+
+		case 2:
+			// No
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[3]/div/div[2]"
+			break
+
+		default:
+			throw new Exception("Invalid option. Use 1 for Yes or 2 for No.")
+	}
+
+	TestObject obj = new TestObject("zoneLocRadio")
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	c(obj, 20)
+}
+
+// 1 = Yes
+// 2 = No
+clickZoneLocRadio(ZoneLocation)
+
+//Zonal Coverage DropDown
+
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zonal Coverage DropDown'), ZonalCoverage)
+waitBlockUI(30)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
+waitBlockUI(30)
+WebUI.delay(0.5)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name'), ZoneName)
+waitBlockUI(30)
+WebUI.delay(0.5)
+
+
+def tickZoneTreeByIndex(int index) {
+	String xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:${index}']/span/div"
+
+	TestObject obj = new TestObject("zoneTreeTick_" + index)
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	c(obj, 20)
+}
+
+// Example variable
+
+tickZoneTreeByIndex(ZoneIndex)
+/* =========================
  * ZONE ITEM - PRODUCT (LOOPING)
  * Purpose:
  * - open product section
@@ -562,7 +650,6 @@ waitBlockUI(30)
  * ========================= */
 
 // Click Side Menu Zone Item
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
 waitBlockUI(30)
 WebUI.delay(1)
 
