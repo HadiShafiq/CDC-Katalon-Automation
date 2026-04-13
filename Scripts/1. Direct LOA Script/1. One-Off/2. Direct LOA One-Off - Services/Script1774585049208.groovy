@@ -177,25 +177,52 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
-String userDataDir = Files.createTempDirectory('katalon-clean').toString()
+import java.nio.file.Files
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import com.kms.katalon.core.webui.driver.DriverFactory
+
+import java.nio.file.Files
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+import com.kms.katalon.core.webui.driver.DriverFactory
+
+String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+
+System.setProperty("webdriver.chrome.driver", chromeDriverPath)
+
+String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 
 ChromeOptions options = new ChromeOptions()
-options.addArguments('--guest')
-options.addArguments('--incognito')
-options.addArguments('--user-data-dir=' + userDataDir)
-options.addArguments('--disable-features=PasswordLeakDetection,PasswordManagerOnboarding')
-options.addArguments('--disable-save-password-bubble')
-options.addArguments('--no-first-run')
-options.addArguments('--no-default-browser-check')
-options.setExperimentalOption('prefs', [
-	('credentials_enable_service') : false,
-	('profile.password_manager_enabled') : false,
-	('profile.default_content_setting_values.notifications') : 2
-])
+options.setBinary(chromeBinary)
+
+//Bypass security pop up for google chrome 
+options.setAcceptInsecureCerts(true)
+
+options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
+
+options.addArguments("--guest")
+//options.addArguments("--incognito")
+options.addArguments("--user-data-dir=" + userDataDir)
+options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
+options.addArguments("--disable-save-password-bubble")
+options.addArguments("--disable-notifications")
+options.addArguments("--no-first-run")
+options.addArguments("--no-default-browser-check")
+options.addArguments("--remote-allow-origins=*")
+
+Map<String, Object> prefs = new HashMap<>()
+prefs.put("credentials_enable_service", false)
+prefs.put("profile.password_manager_enabled", false)
+prefs.put("profile.default_content_setting_values.notifications", 2)
+options.setExperimentalOption("prefs", prefs)
+
 
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
-
 /* =========================
  * OPEN APPLICATION
  * Purpose:

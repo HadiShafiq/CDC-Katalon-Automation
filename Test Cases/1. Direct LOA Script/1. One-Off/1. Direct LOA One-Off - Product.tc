@@ -192,7 +192,7 @@
       <name>ProcurementMethod</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>7</defaultValue>
       <description></description>
       <id>4f4993c6-a9a4-44f2-b63e-dc60b19709db</id>
       <masked>false</masked>
@@ -220,7 +220,7 @@
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test00000000001'</defaultValue>
+      <defaultValue>'Test00000000012'</defaultValue>
       <description></description>
       <id>9f6cbfa5-1f76-41aa-8a96-4c82fd1325de</id>
       <masked>false</masked>
