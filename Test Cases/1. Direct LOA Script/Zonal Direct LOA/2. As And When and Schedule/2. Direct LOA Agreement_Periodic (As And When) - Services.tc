@@ -136,7 +136,19 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>9374b7e9-026c-4c93-9bff-598dd9572656</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>c5465b2b-0479-4fd1-b995-68bdd13864e6</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>e407b8ef-27ff-4f40-92a0-2394860e469c</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -148,13 +160,37 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>9374b7e9-026c-4c93-9bff-598dd9572656</variableId>
+      <variableId>d45a52a6-5048-4545-9265-e53654eb3ee4</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
       <variableId>3d9ddfcc-e7a3-4e53-bec7-ea9be2208603</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c67e7506-6904-4b51-9cf7-0fa29ef6ee8a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>14fe500c-8e08-44ce-8096-50dec4a29bb8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>782d167e-46f8-4697-b1f1-64b50bc80a2a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b5f7dcce-7192-41b2-aa1f-1498657109fd</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
@@ -192,7 +228,7 @@
       <name>ProcurementMethod</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>7</defaultValue>
       <description></description>
       <id>4b9e1530-b964-4b2c-92df-9b32aa712000</id>
       <masked>false</masked>
@@ -290,7 +326,7 @@
       <name>LOASigner</name>
    </variable>
    <variable>
-      <defaultValue>'Service 1'</defaultValue>
+      <defaultValue>'Service '</defaultValue>
       <description></description>
       <id>9f4277fd-f08c-40f6-95cb-46c500db87f5</id>
       <masked>false</masked>
@@ -306,29 +342,71 @@
    <variable>
       <defaultValue>'1'</defaultValue>
       <description></description>
-      <id>c5465b2b-0479-4fd1-b995-68bdd13864e6</id>
-      <masked>false</masked>
-      <name>ServiceQty</name>
-   </variable>
-   <variable>
-      <defaultValue>'30000'</defaultValue>
-      <description></description>
-      <id>6c58def8-cd47-42d1-ba9a-534e2c661122</id>
-      <masked>false</masked>
-      <name>ServiceUnitPrice</name>
-   </variable>
-   <variable>
-      <defaultValue>'1'</defaultValue>
-      <description></description>
       <id>9374b7e9-026c-4c93-9bff-598dd9572656</id>
       <masked>false</masked>
       <name>FreqperUOM</name>
    </variable>
    <variable>
-      <defaultValue>'Product 2'</defaultValue>
+      <defaultValue>'100'</defaultValue>
+      <description></description>
+      <id>c5465b2b-0479-4fd1-b995-68bdd13864e6</id>
+      <masked>false</masked>
+      <name>ServiceQuaty1</name>
+   </variable>
+   <variable>
+      <defaultValue>'100'</defaultValue>
+      <description></description>
+      <id>e407b8ef-27ff-4f40-92a0-2394860e469c</id>
+      <masked>false</masked>
+      <name>ServiceQuaty2</name>
+   </variable>
+   <variable>
+      <defaultValue>'3000'</defaultValue>
+      <description></description>
+      <id>6c58def8-cd47-42d1-ba9a-534e2c661122</id>
+      <masked>false</masked>
+      <name>ServiceUnitPrice1</name>
+   </variable>
+   <variable>
+      <defaultValue>'3000'</defaultValue>
+      <description></description>
+      <id>d45a52a6-5048-4545-9265-e53654eb3ee4</id>
+      <masked>false</masked>
+      <name>ServiceUnitPrice2</name>
+   </variable>
+   <variable>
+      <defaultValue>'Spec'</defaultValue>
       <description></description>
       <id>3d9ddfcc-e7a3-4e53-bec7-ea9be2208603</id>
       <masked>false</masked>
       <name>ServiceSpecification2</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>c67e7506-6904-4b51-9cf7-0fa29ef6ee8a</id>
+      <masked>false</masked>
+      <name>ZoneLocation</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>14fe500c-8e08-44ce-8096-50dec4a29bb8</id>
+      <masked>false</masked>
+      <name>ZonalCoverage</name>
+   </variable>
+   <variable>
+      <defaultValue>'Utara'</defaultValue>
+      <description></description>
+      <id>782d167e-46f8-4697-b1f1-64b50bc80a2a</id>
+      <masked>false</masked>
+      <name>ZoneName</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>b5f7dcce-7192-41b2-aa1f-1498657109fd</id>
+      <masked>false</masked>
+      <name>ZoneIndex</name>
    </variable>
 </TestCaseEntity>
