@@ -148,7 +148,19 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>3dd1c0eb-8c22-4da0-9906-9c7a34da4062</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>a1cd415e-59e0-4c64-a41b-525357368464</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>b66590f1-1e22-4b50-b578-6f7c5c020eb8</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -339,14 +351,28 @@
       <description></description>
       <id>a87a02bc-3823-4c96-9a09-baa0426061e5</id>
       <masked>false</masked>
-      <name>ProductQuaty</name>
+      <name>ProductQuaty1</name>
+   </variable>
+   <variable>
+      <defaultValue>'100'</defaultValue>
+      <description></description>
+      <id>3dd1c0eb-8c22-4da0-9906-9c7a34da4062</id>
+      <masked>false</masked>
+      <name>ProductQuaty2</name>
    </variable>
    <variable>
       <defaultValue>'3000'</defaultValue>
       <description></description>
       <id>a1cd415e-59e0-4c64-a41b-525357368464</id>
       <masked>false</masked>
-      <name>ProductUnitPrice</name>
+      <name>ProductUnitPrice1</name>
+   </variable>
+   <variable>
+      <defaultValue>'3000'</defaultValue>
+      <description></description>
+      <id>b66590f1-1e22-4b50-b578-6f7c5c020eb8</id>
+      <masked>false</masked>
+      <name>ProductUnitPrice2</name>
    </variable>
    <variable>
       <defaultValue>'Product 2\r\n'</defaultValue>
