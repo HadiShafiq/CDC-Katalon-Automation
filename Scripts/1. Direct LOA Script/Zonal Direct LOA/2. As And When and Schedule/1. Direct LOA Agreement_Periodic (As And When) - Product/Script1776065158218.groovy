@@ -1,30 +1,31 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import org.openqa.selenium.Keys
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
+import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 
-import com.kms.katalon.core.webui.common.WebUiCommonHelper
-import org.openqa.selenium.WebElement
-import java.util.Arrays
+
+
 /* =========================
  * HELPERS
  * Purpose:
@@ -100,6 +101,57 @@ def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
 }
 
 // upload with wait
@@ -181,17 +233,6 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
-
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
 
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
@@ -357,7 +398,11 @@ WebUI.sendKeys(ministryTA, Keys.chord(Keys.TAB))
 WebUI.delay(1)
 
 t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_1'), FileReference1, 20)
+WebUI.delay(1)
+
 t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
+WebUI.delay(1)
+
 
 TestObject loaPrice = findTestObject(
     'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)'
@@ -376,10 +421,10 @@ WebUI.executeJavaScript(
 )
 
 waitBlockUI(20)
-WebUI.delay(1)
+WebUI.delay(3)
 
-String finalValue2 = WebUI.getAttribute(loaPrice, 'value')
-println("Final LOA Offered Price = " + finalValue2)
+String finalValue1 = WebUI.getAttribute(loaPrice, 'value')
+println("Final LOA Offered Price = " + finalValue1)
 
 /* =========================
  * CONTRACT DETAILS
@@ -415,7 +460,27 @@ clickRequiredOnlineVerification(RequiredOnlineVerification)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'), ContractPeriod, 20)
+// Month Duration
+TestObject durationObj = findTestObject(
+	'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'
+)
+WebUI.waitForElementVisible(durationObj, 20)
+WebElement durationEl = WebUiCommonHelper.findWebElement(durationObj, 20)
+
+WebUI.executeJavaScript(
+    """
+    arguments[0].value = arguments[1];
+    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+    """,
+    Arrays.asList(durationEl, ContractPeriod)
+)
+
+waitBlockUI(20)
+WebUI.delay(1)
+
+String finalValue2 = WebUI.getAttribute(durationObj, 'value')
+println("Final Duration = " + finalValue2)
 
 /* =========================
  * DATE PICKER
@@ -604,44 +669,57 @@ selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA
 waitBlockUI(30)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
-waitBlockUI(30)
-WebUI.delay(1)
-
-TestObject zoneNameObj = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name')
-WebElement zoneNameEl = WebUiCommonHelper.findWebElement(zoneNameObj, 20)
-
-WebUI.executeJavaScript(
-	"arguments[0].value = arguments[1];",
-	Arrays.asList(zoneNameEl, ZoneName)
-)
-
-WebUI.delay(1)
-
+def zoneGroups = [
+    "Zone A": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "Zone B": [10, 11, 12, 13, 14, 15, 16]
+]
 
 def tickZoneTreeByIndex(int index) {
-	String xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:${index}']//div[contains(@class,'ui-chkbox-box')]"
+    String xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:${index}']//div[contains(@class,'ui-chkbox-box')]"
 
-	TestObject obj = new TestObject("zoneTreeTick_" + index)
-	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+    TestObject obj = new TestObject("zoneTreeTick_" + index)
+    obj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-	WebUI.waitForElementVisible(obj, 20)
-	WebUI.waitForElementClickable(obj, 20)
-	WebUI.scrollToElement(obj, 20)
-	WebUI.click(obj)
+    WebUI.waitForElementVisible(obj, 20)
+    WebUI.waitForElementClickable(obj, 20)
+    WebUI.scrollToElement(obj, 20)
+    WebUI.click(obj)
 
-	waitBlockUI(30)
-	WebUI.delay(1)
+    waitBlockUI(30)
+    WebUI.delay(0.5)
 }
-// Example variable
 
-tickZoneTreeByIndex(ZoneIndex)
-waitBlockUI(30)
-WebUI.delay(1)
+// MAIN LOOP
+zoneGroups.each { zoneName, indexes ->
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Locality'), 20)
-waitBlockUI(30)
+    WebUI.comment("Processing " + zoneName)
 
+    // open popup
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
+    waitBlockUI(30)
+    WebUI.delay(1)
+
+    // set zone name
+    TestObject zoneNameObj = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name')
+    WebElement zoneNameEl = WebUiCommonHelper.findWebElement(zoneNameObj, 20)
+
+    WebUI.executeJavaScript(
+        "arguments[0].value = arguments[1];",
+        Arrays.asList(zoneNameEl, zoneName)
+    )
+
+    WebUI.delay(1)
+
+    // tick all indexes for this zone
+    indexes.each { idx ->
+        tickZoneTreeByIndex(idx)
+    }
+
+    // click add locality
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Locality'))
+    waitBlockUI(30)
+    WebUI.delay(1)
+}
 /* =========================
  * ZONE ITEM - PRODUCT (LOOPING)
  * Purpose:
@@ -650,7 +728,7 @@ waitBlockUI(30)
  * ========================= */
 
 // Set number of loops (1-10)
-int loopCount = 2  // Set how many times you want the loop to run (1-10)
+int loopCount = 3  // Set how many times you want the loop to run (1-10)
 
 for (int i = 1; i <= loopCount; i++) {
 	WebUI.comment("Loop #${i} of ${loopCount}")
@@ -700,11 +778,13 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(0.5)
 	
 	// Input Quantity
-	TestObject ProductQty = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Input Quantity')
-	t(ProductQty, ProductQuaty, 20)
-	WebUI.sendKeys(ProductQty, Keys.chord(Keys.TAB))
-	waitBlockUI(30)
-	WebUI.delay(1)
+		// 2 quantity values
+		List qtyList = [ProductQuaty1, ProductQuaty2]
+		
+		// fill tbl0 and tbl1
+		qtyList.eachWithIndex { qty, idx ->
+		    setZoneQtyByRow(idx, qty)
+		}
 	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Quantity OK Button'))
 	waitBlockUI(30)
@@ -715,27 +795,12 @@ for (int i = 1; i <= loopCount; i++) {
 	waitBlockUI(30)
 	WebUI.delay(0.5)
 	
-	TestObject unitPrice = findTestObject(
-	    'Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Input Unit Price'
-	)
+	// fill tbl0 and tbl1
+	List unitPriceList = [ProductUnitPrice1, ProductUnitPrice2]
 	
-	WebUI.waitForElementVisible(unitPrice, 20)
-	WebElement unitPriceEl = WebUiCommonHelper.findWebElement(unitPrice, 20)
-	
-	WebUI.executeJavaScript(
-	    """
-	    arguments[0].value = arguments[1];
-	    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-	    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-	    """,
-	    Arrays.asList(unitPriceEl, ProductUnitPrice)
-	)
-	
-	waitBlockUI(30)
-	WebUI.delay(1)
-	
-	String finalValue = WebUI.getAttribute(unitPrice, 'value')
-	println("Final Unit Price = " + finalValue)
+	unitPriceList.eachWithIndex { price, idx ->
+	    setUnitPriceByRow(idx, price)
+	}
 	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Unit Price OK Button'))
 	waitBlockUI(30)
