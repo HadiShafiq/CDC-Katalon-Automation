@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Direct LOA Agreement_Periodic (As And When_And_Schedule) - Product</name>
+   <name>1. Open Direct LOA Agreement_Periodic (As And When_And_Schedule) - Product</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
