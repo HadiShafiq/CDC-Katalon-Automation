@@ -1,25 +1,30 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import org.openqa.selenium.Keys
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
+import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.FileInputStream
-import java.io.FileOutputStream
+
+
+
 
 /* =========================
  * HELPERS
@@ -96,6 +101,57 @@ def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
 }
 
 // upload with wait
@@ -177,17 +233,6 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
-
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
 
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
@@ -353,13 +398,33 @@ WebUI.sendKeys(ministryTA, Keys.chord(Keys.TAB))
 WebUI.delay(1)
 
 t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_1'), FileReference1, 20)
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
-
-TestObject loaPrice = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)')
-t(loaPrice, LOAOfferedPrice, 20)
-WebUI.sendKeys(loaPrice, Keys.chord(Keys.TAB))
 WebUI.delay(1)
+
+t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
+WebUI.delay(1)
+
+
+TestObject loaPrice = findTestObject(
+    'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)'
+)
+
+WebUI.waitForElementVisible(loaPrice, 20)
+WebElement loaPriceEl = WebUiCommonHelper.findWebElement(loaPrice, 20)
+
+WebUI.executeJavaScript(
+    """
+    arguments[0].value = arguments[1];
+    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+    """,
+    Arrays.asList(loaPriceEl, LOAOfferedPrice)
+)
+
 waitBlockUI(20)
+WebUI.delay(3)
+
+String finalValue1 = WebUI.getAttribute(loaPrice, 'value')
+println("Final LOA Offered Price = " + finalValue1)
 
 /* =========================
  * CONTRACT DETAILS
@@ -395,7 +460,27 @@ clickRequiredOnlineVerification(RequiredOnlineVerification)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'), ContractPeriod, 20)
+// Month Duration
+TestObject durationObj = findTestObject(
+	'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'
+)
+WebUI.waitForElementVisible(durationObj, 20)
+WebElement durationEl = WebUiCommonHelper.findWebElement(durationObj, 20)
+
+WebUI.executeJavaScript(
+    """
+    arguments[0].value = arguments[1];
+    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+    """,
+    Arrays.asList(durationEl, ContractPeriod)
+)
+
+waitBlockUI(20)
+WebUI.delay(1)
+
+String finalValue2 = WebUI.getAttribute(durationObj, 'value')
+println("Final Duration = " + finalValue2)
 
 /* =========================
  * DATE PICKER
@@ -542,6 +627,100 @@ c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA An
 waitBlockUI(30)
 
 /* =========================
+ * ZONE ITEM - Zonal
+ * Purpose:
+ * To choose radio button for zonal
+ *
+ * ========================= */
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
+
+
+def clickZoneLocRadio(int option) {
+	String xpath
+
+	switch(option) {
+		case 1:
+			// Yes
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[1]/div/div[2]"
+			break
+
+		case 2:
+			// No
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[3]/div/div[2]"
+			break
+
+		default:
+			throw new Exception("Invalid option. Use 1 for Yes or 2 for No.")
+	}
+
+	TestObject obj = new TestObject("zoneLocRadio")
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	c(obj, 20)
+}
+
+// 1 = Yes
+// 2 = No
+clickZoneLocRadio(ZoneLocation)
+
+//Zonal Coverage DropDown
+
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zonal Coverage DropDown'), ZonalCoverage)
+waitBlockUI(30)
+WebUI.delay(0.5)
+
+def zoneGroups = [
+	"Zone A": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+	"Zone B": [10, 11, 12, 13, 14, 15, 16]
+]
+
+def tickZoneTreeByIndex(int index) {
+	String xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:${index}']//div[contains(@class,'ui-chkbox-box')]"
+
+	TestObject obj = new TestObject("zoneTreeTick_" + index)
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(obj, 20)
+	WebUI.waitForElementClickable(obj, 20)
+	WebUI.scrollToElement(obj, 20)
+	WebUI.click(obj)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+// MAIN LOOP
+zoneGroups.each { zoneName, indexes ->
+
+	WebUI.comment("Processing " + zoneName)
+
+	// open popup
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
+	waitBlockUI(30)
+	WebUI.delay(1)
+
+	// set zone name
+	TestObject zoneNameObj = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name')
+	WebElement zoneNameEl = WebUiCommonHelper.findWebElement(zoneNameObj, 20)
+
+	WebUI.executeJavaScript(
+		"arguments[0].value = arguments[1];",
+		Arrays.asList(zoneNameEl, zoneName)
+	)
+
+	WebUI.delay(1)
+
+	// tick all indexes for this zone
+	indexes.each { idx ->
+		tickZoneTreeByIndex(idx)
+	}
+
+	// click add locality
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Locality'))
+	waitBlockUI(30)
+	WebUI.delay(1)
+}
+/* =========================
  * ZONE ITEM - SERVICES (LOOPING)
  * Purpose:
  * - open services section
@@ -554,7 +733,7 @@ waitBlockUI(30)
 WebUI.delay(1)
 
 // Set number of loops (1-10)
-int loopCount = 4  // Set how many times you want the loop to run (1-10)
+int loopCount = 3  // Set how many times you want the loop to run (1-10)
 
 for (int i = 1; i <= loopCount; i++) {
     WebUI.comment("Loop #${i} of ${loopCount}")
@@ -590,15 +769,39 @@ for (int i = 1; i <= loopCount; i++) {
 	waitBlockUI(30)
 	WebUI.delay(1)
 
-    // Input Service Quantity
-    t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Quantity'), ServiceQty, 20)
-    waitBlockUI(30)
-    WebUI.delay(1)
+	//Click Pencil icon Quantity
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Product Quantity Pencil Icon'))
+	waitBlockUI(30)
+	WebUI.delay(0.5)
 	
-	// Input Service Unit Price(RM)
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Unit Price(RM)'), ServiceUnitPrice, 20)
+    // Input Quantity
+		// 2 quantity values
+		List qtyList = [ServiceQuaty1, ServiceQuaty2]
+		
+		// fill tbl0 and tbl1
+		qtyList.eachWithIndex { qty, idx ->
+		    setZoneQtyByRow(idx, qty)
+		}
+	
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Quantity OK Button'))
 	waitBlockUI(30)
 	WebUI.delay(1)
+	
+	//Click Pencil icon unit Price
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Product Unit Price Pencil Icon'))
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+	
+	// fill tbl0 and tbl1
+	List unitPriceList = [ServiceUnitPrice1, ServiceUnitPrice2]
+	
+	unitPriceList.eachWithIndex { price, idx ->
+	    setUnitPriceByRow(idx, price)
+	}
+	
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/1. Product/Unit Price OK Button'))
+	waitBlockUI(30)
+	WebUI.delay(2)
 
 	/* =========================
 	 * ADDITIONAL SPECIFICATION
@@ -684,7 +887,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA__As And When_Product_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\LOA_Zonal_PK7_Service_AsAndWhen_Shedule_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
