@@ -1,25 +1,30 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import org.openqa.selenium.Keys
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
+import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.FileInputStream
-import java.io.FileOutputStream
+
+
+
 
 /* =========================
  * HELPERS
@@ -96,6 +101,57 @@ def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
 }
 
 // upload with wait
@@ -177,17 +233,6 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
-
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
 
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
