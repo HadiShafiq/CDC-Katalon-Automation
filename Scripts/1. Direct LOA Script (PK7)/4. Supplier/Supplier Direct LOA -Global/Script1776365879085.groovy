@@ -481,76 +481,59 @@ for (int i = 1; i <= totalLoop; i++) {
 /* =========================
  * Zone Item Service
  * ========================= */
-// ===== SET HOW MANY LOOPS YOU WANT =====
-int loopCount = 2
-// Example:
-// int loopCount = ProductLoopCount.toString().trim().toInteger()
 
-// Base XPath for Assign button under Product header
+// ===== SET HOW MANY LOOPS YOU WANT =====
+int sloopCount = 2
+// Example:
+// int sloopCount = ServiceLoopCount.toString().trim().toInteger()
+
+// Base XPath for Assign button under Service header
 String serviceAssignXpath = "(//div[contains(@id,':spg_header')][.//span[normalize-space(.)='Service']]/following::button[contains(@id,':questionTbl:') and .//span[normalize-space(.)='Assign']])"
 
-// Count all Assign buttons under Product
+// Count all Assign buttons under Service
 TestObject allServiceAssignButtons = new TestObject("allServiceAssignButtons")
 allServiceAssignButtons.addProperty(
-	"xpath",
-	ConditionType.EQUALS,
-	serviceAssignXpath
+    "xpath",
+    ConditionType.EQUALS,
+    serviceAssignXpath
 )
 
-List<WebElement> serviceAssignList = WebUiCommonHelper.findWebElements(allProductAssignButtons, 20)
-int assignCount = serviceAssignList.size()
+List<WebElement> serviceAssignList = WebUiCommonHelper.findWebElements(allServiceAssignButtons, 20)
+int serviceAssignCount = serviceAssignList.size()
 
-WebUI.comment("Total Service Assign buttons found: " + assignCount)
+WebUI.comment("Total Service Assign buttons found: " + serviceAssignCount)
 
 // Prevent loop from exceeding actual button count
-int totalLoop = Math.min(loopCount, assignCount)
-WebUI.comment("Total loop to execute: " + totalLoop)
+int stotalLoop = Math.min(sloopCount, serviceAssignCount)
+WebUI.comment("Total Service loop to execute: " + stotalLoop)
 
 // Loop based on manual loop count
-for (int i = 1; i <= totalLoop; i++) {
+for (int i = 1; i <= stotalLoop; i++) {
 
-	WebUI.comment("Processing Assign button " + i + " of " + totalLoop)
+    WebUI.comment("Processing Service Assign button " + i + " of " + stotalLoop)
 
-	// Rebuild dynamic Assign button each round
-	TestObject assignBtn = new TestObject("assignBtn_" + i)
-	assignBtn.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		productAssignXpath + "[" + i + "]"
-	)
+    // Rebuild dynamic Assign button each round
+    TestObject assignBtn = new TestObject("serviceAssignBtn_" + i)
+    assignBtn.addProperty(
+        "xpath",
+        ConditionType.EQUALS,
+        serviceAssignXpath + "[" + i + "]"
+    )
 
-	c(assignBtn)
-	WebUI.delay(1)
+    c(assignBtn)
+    WebUI.delay(1)
 
-	t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Input Item Code'),
-		P_Item_Code)
+    WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Input Item Code for Services'),
+		S_Item_Code)
 
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Item Code'))
-
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Item Code'))
-
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Type'),
-		DropdownType)
-
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Measurement'),
-		Dropdown_Measurement)
-
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown brand'),
-		Dropdown_brand)
-
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Color'),
-		Dropdown_Color)
-
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Extension Attribute'))
-
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Radio Button Assign Code'))
-
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product 1'))
-
+    WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Search Item Code'))
+	
+	WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
+	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
-
-	WebUI.delay(1)
+	
 }
+    WebUI.delay(1)
 /* =========================
  * Accept and Reject Button
  * ========================= */
@@ -611,7 +594,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_Product_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_ProductPLusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
