@@ -88,6 +88,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>68f1e4a3-e9e2-49f1-83ce-8a92dce79b3f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>7d83c409-fbbb-4dab-b417-c7b0159a0fd6</variableId>
    </variableLinks>
    <variableLinks>
@@ -232,7 +238,7 @@
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test00000000012'</defaultValue>
+      <defaultValue>'Test00000000011'</defaultValue>
       <description></description>
       <id>9f6cbfa5-1f76-41aa-8a96-4c82fd1325de</id>
       <masked>false</masked>
@@ -246,7 +252,7 @@
       <name>FileReference2</name>
    </variable>
    <variable>
-      <defaultValue>'3,300,000'</defaultValue>
+      <defaultValue>'3,000,000'</defaultValue>
       <description></description>
       <id>a06665a1-310e-4252-8afa-94868e147ba6</id>
       <masked>false</masked>
@@ -258,6 +264,13 @@
       <id>c62ae1e1-0b5d-411a-92de-7d38a0c4b63a</id>
       <masked>false</masked>
       <name>FulfilmentType</name>
+   </variable>
+   <variable>
+      <defaultValue>'3,000'</defaultValue>
+      <description></description>
+      <id>68f1e4a3-e9e2-49f1-83ce-8a92dce79b3f</id>
+      <masked>false</masked>
+      <name>SalesTaxValue</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
@@ -344,14 +357,14 @@
       <name>ProductSpecification2</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>4b969582-87f6-443d-b404-fdbd915b3c36</id>
       <masked>false</masked>
       <name>ZoneLocation</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>d96f8d2c-d599-42f7-97c7-ed3dfa5591d8</id>
       <masked>false</masked>

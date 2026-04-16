@@ -1,25 +1,27 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import org.openqa.selenium.Keys
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
+import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.FileInputStream
-import java.io.FileOutputStream
 
 /* =========================
  * HELPERS
@@ -98,6 +100,56 @@ def t(TestObject obj, def value, int timeout = 1) {
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
 // upload with wait
 def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
@@ -177,17 +229,6 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
-
-import java.nio.file.Files
-import org.openqa.selenium.WebDriver
-import org.openqa.selenium.chrome.ChromeDriver
-import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
 
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
@@ -223,6 +264,7 @@ options.setExperimentalOption("prefs", prefs)
 
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
+
 /* =========================
  * OPEN APPLICATION
  * Purpose:
@@ -336,10 +378,17 @@ WebUI.delay(2)
 selectDropdownByIndex(DPM, ProcurementMethod)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/DropDown Procurement Type Category'), ProcurementTypeCategory)
+waitBlockUI(20)
+WebUI.delay(0.5)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Quotation_Tender Type'), QuotationTenderType)
+waitBlockUI(20)
+WebUI.delay(0.5)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Reason PK 7'), Reason)
+waitBlockUI(20)
+WebUI.delay(0.5)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Procurement Category'), ProcurementCategory)
-
+waitBlockUI(20)
+WebUI.delay(0.5)
 /* =========================
  * GENERAL INFORMATION - INPUTS
  * Purpose:
@@ -351,14 +400,129 @@ t(ministryTA, TitleLetterofAcceptance, 20)
 WebUI.sendKeys(ministryTA, Keys.chord(Keys.TAB))
 WebUI.delay(1)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_1'), FileReference1, 20)
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
 
-TestObject loaPrice = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)')
-t(loaPrice, LOAOfferedPrice, 20)
-WebUI.sendKeys(loaPrice, Keys.chord(Keys.TAB))
+/* =========================
+ * File Reference
+ * ========================= */
+TestObject safeArea = new TestObject('safeArea')
+safeArea.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//label[normalize-space()='File Reference No.']"
+)
+
+TestObject fileRef1 = findTestObject(
+    'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_1'
+)
+
+String ref1Input = FileReference1.toString().trim()
+
+WebUI.waitForElementVisible(fileRef1, 20)
+WebUI.waitForElementClickable(fileRef1, 20)
+WebUI.click(fileRef1)
+WebUI.delay(0.5)
+
+WebUI.sendKeys(fileRef1, Keys.chord(Keys.CONTROL, 'a'))
+WebUI.delay(0.3)
+WebUI.sendKeys(fileRef1, Keys.chord(Keys.BACK_SPACE))
+WebUI.delay(0.5)
+
+for (char ch : ref1Input.toCharArray()) {
+    WebUI.sendKeys(fileRef1, ch.toString())
+    WebUI.delay(0.15)
+}
+
+WebUI.click(safeArea, FailureHandling.OPTIONAL)
+
+waitBlockUI(10)
 WebUI.delay(1)
-waitBlockUI(20)
+
+String finalRef1 = WebUI.getAttribute(fileRef1, 'value')
+println("Final File Reference No_1 = " + finalRef1)
+
+t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
+WebUI.delay(1)
+
+/* =========================
+ * LOA Price
+ * ========================= */
+
+TestObject loaSafeArea = new TestObject('loaSafeArea')
+loaSafeArea.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//label[contains(normalize-space(),'LOA Offered Price')]"
+)
+TestObject loaPrice = findTestObject(
+    'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/LOA Offered Price (RM)'
+)
+
+String rawInput = LOAOfferedPrice.toString().replace(",", "").trim()
+
+WebUI.waitForElementVisible(loaPrice, 20)
+WebUI.waitForElementClickable(loaPrice, 20)
+WebUI.click(loaPrice)
+WebUI.delay(0.5)
+
+WebUI.sendKeys(loaPrice, Keys.chord(Keys.CONTROL, 'a'))
+WebUI.delay(0.3)
+WebUI.sendKeys(loaPrice, Keys.chord(Keys.BACK_SPACE))
+WebUI.delay(0.5)
+
+for (char ch : rawInput.toCharArray()) {
+    WebUI.sendKeys(loaPrice, ch.toString())
+    WebUI.delay(0.2)
+}
+
+// click label instead of body
+WebUI.click(loaSafeArea, FailureHandling.OPTIONAL)
+
+
+waitBlockUI(10)
+WebUI.delay(1)
+
+String finalValue1 = WebUI.getAttribute(loaPrice, 'value')
+println("Final LOA Offered Price = " + finalValue1)
+
+/* =========================
+ * Service Tax
+ * ========================= */
+
+TestObject taxSafeArea = new TestObject('taxSafeArea')
+taxSafeArea.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//label[contains(normalize-space(),'Sales Tax / Service Tax (RM)')]"
+)
+
+TestObject serviceTax = findTestObject(
+    'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Service Tax'
+)
+
+String rawInput1 = SalesTaxValue.toString().replace(",", "").trim()
+
+WebUI.waitForElementVisible(serviceTax, 20)
+WebUI.waitForElementClickable(serviceTax, 20)
+WebUI.click(serviceTax)
+WebUI.delay(0.5)
+
+WebUI.sendKeys(serviceTax, Keys.chord(Keys.CONTROL, 'a'))
+WebUI.delay(0.3)
+WebUI.sendKeys(serviceTax, Keys.chord(Keys.BACK_SPACE))
+WebUI.delay(0.5)
+
+for (char ch : rawInput1.toCharArray()) {
+    WebUI.sendKeys(serviceTax, ch.toString())
+    WebUI.delay(0.2)
+}
+
+WebUI.click(taxSafeArea, FailureHandling.OPTIONAL)
+
+waitBlockUI(10)
+WebUI.delay(1)
+
+String finalValue3 = WebUI.getAttribute(serviceTax, 'value')
+println("Final Sales Tax / Service Tax (RM) = " + finalValue3)
 
 /* =========================
  * CONTRACT DETAILS
@@ -367,7 +531,10 @@ waitBlockUI(20)
  * - input duration
  * ========================= */
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Fullfilment Type'), FulfilmentType)
+WebUI.delay(1)
+
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond'), PerformanceBond)
+WebUI.delay(5)
 
 //Verification Radio Button
 // value: 1 = Yes, 2 = No
@@ -394,7 +561,28 @@ clickRequiredOnlineVerification(RequiredOnlineVerification)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'), ContractPeriod, 20)
+// Month Duration
+TestObject durationObj = findTestObject(
+	'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'
+)
+WebUI.waitForElementVisible(durationObj, 20)
+WebElement durationEl = WebUiCommonHelper.findWebElement(durationObj, 20)
+
+WebUI.executeJavaScript(
+    """
+    arguments[0].value = arguments[1];
+    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+	arguments[0].blur();
+    """,
+    Arrays.asList(durationEl, ContractPeriod)
+)
+
+waitBlockUI(20)
+WebUI.delay(1)
+
+String finalValue2 = WebUI.getAttribute(durationObj, 'value')
+println("Final Duration = " + finalValue2)
 
 /* =========================
  * DATE PICKER
@@ -539,6 +727,113 @@ up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA A
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
+
+/* =========================
+ * ZONE ITEM - Zonal
+ * Purpose:
+ * To choose radio button for zonal
+ *
+ * ========================= */
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
+
+
+def clickZoneLocRadio(int option) {
+	String xpath
+
+	switch(option) {
+		case 1:
+			// Yes
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[1]/div/div[2]"
+			break
+
+		case 2:
+			// No
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:zoneLocFlg']/tbody/tr/td[3]/div/div[2]"
+			break
+
+		default:
+			throw new Exception("Invalid option. Use 1 for Yes or 2 for No.")
+	}
+
+	TestObject obj = new TestObject("zoneLocRadio")
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	c(obj, 20)
+}
+
+// 1 = Yes
+// 2 = No
+clickZoneLocRadio(ZoneLocation)
+waitBlockUI(30)
+WebUI.delay(1)
+
+if (ZoneLocation.toString().trim() == "1") {
+
+	// Zonal Coverage DropDown
+	selectDropdownByIndex(
+		findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zonal Coverage DropDown'),
+		ZonalCoverage
+	)
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+
+	def zoneGroups = [
+		"Zone A": [1, 2, 3, 4, 5, 6, 7, 8, 9],
+		"Zone B": [10, 11, 12, 13, 14, 15, 16]
+	]
+
+	def tickZoneTreeByIndex = { int index ->
+		String xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:treeZoneGeneralPopup:${index}']//div[contains(@class,'ui-chkbox-box')]"
+
+		TestObject obj = new TestObject("zoneTreeTick_" + index)
+		obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+		WebUI.waitForElementVisible(obj, 20)
+		WebUI.waitForElementClickable(obj, 20)
+		WebUI.scrollToElement(obj, 20)
+		WebUI.click(obj)
+
+		waitBlockUI(30)
+		WebUI.delay(0.5)
+	}
+
+	// MAIN LOOP
+	zoneGroups.each { zoneName, indexes ->
+
+		WebUI.comment("Processing " + zoneName)
+
+		// open popup
+		c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
+		waitBlockUI(30)
+		WebUI.delay(1)
+
+		// set zone name
+		TestObject zoneNameObj = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name')
+		WebElement zoneNameEl = WebUiCommonHelper.findWebElement(zoneNameObj, 20)
+
+		WebUI.executeJavaScript(
+			"arguments[0].value = arguments[1];",
+			Arrays.asList(zoneNameEl, zoneName)
+		)
+
+		WebUI.delay(1)
+
+		// tick all indexes for this zone
+		indexes.each { idx ->
+			tickZoneTreeByIndex(idx)
+		}
+
+		// click add locality
+		c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Locality'))
+		waitBlockUI(30)
+		WebUI.delay(1)
+	}
+
+} else if (ZoneLocation.toString().trim() == "2") {
+
+	WebUI.comment("Zone Location = No. Skip zonal coverage and zone locality section.")
+
+}
 
 /* =========================
  * ZONE ITEM - SERVICES (LOOPING)
