@@ -6,12 +6,12 @@
    <elementGuidId>b5bda5f6-faee-45a8-9d6a-bc691ea8bf67</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-      </entry>
-      <entry>
          <key>XPATH</key>
          <value>//a[contains(@class,'ui-menuitem-link') and .//span[normalize-space(.)='Specification']]&#xd;
 </value>
+      </entry>
+      <entry>
+         <key>CSS</key>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>ee84c210-0080-475a-ad99-fd5015a51dff</webElementGuid>
+      <webElementGuid>01b1df87-0883-40d7-a720-ebe228fdf75f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +31,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-menuitem-text</value>
-      <webElementGuid>c4f3f6b2-5f4b-4f5e-9980-9b82529f9bd2</webElementGuid>
+      <webElementGuid>bab1ac3b-830f-40e5-9ff8-c78666e4f026</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,7 +39,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Specification</value>
-      <webElementGuid>5e75b3f0-6137-4907-9aff-c4f3802152a1</webElementGuid>
+      <webElementGuid>36e717ed-887c-458f-9606-8b5ae0a6a0eb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +47,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:j_idt1095&quot;)/span[@class=&quot;ui-menuitem-text&quot;]</value>
-      <webElementGuid>fbef3364-2c9d-4393-a4d3-111d95157479</webElementGuid>
+      <webElementGuid>132484e4-9eee-4758-85a7-c049f9dc990c</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -55,7 +55,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//a[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:0:j_idt1095']/span</value>
-      <webElementGuid>09d362bf-baaa-413e-8e9a-21c66d1c58c6</webElementGuid>
+      <webElementGuid>0ec881f1-763e-4b88-b4a4-924b6cb8bb8f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Item'])[1]/following::span[1]</value>
-      <webElementGuid>fe42fd19-9db1-4222-a3a9-2ce8c2528e28</webElementGuid>
+      <webElementGuid>32f4c769-a5f1-47f4-9145-29eadc9d82f8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Re-Finalization'])[2]/following::span[2]</value>
-      <webElementGuid>21328443-288a-465b-bffc-7d5f93f117e3</webElementGuid>
+      <webElementGuid>b1181506-3b30-4cf9-a2b1-d20d528ab893</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[37]/ul/li[2]/a/span</value>
-      <webElementGuid>06171b1a-d310-4cdd-b948-fc6a1b55507b</webElementGuid>
+      <webElementGuid>725000a9-6bc2-4173-b171-03d0853f3136</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,6 +87,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//span[(text() = 'Specification' or . = 'Specification')]</value>
-      <webElementGuid>c479abeb-c5de-4d31-818f-ed365783e5b2</webElementGuid>
+      <webElementGuid>0553abe1-355f-4d31-932a-3c5c31470f4f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
