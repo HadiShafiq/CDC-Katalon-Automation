@@ -561,28 +561,50 @@ clickRequiredOnlineVerification(RequiredOnlineVerification)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
 
-// Month Duration
+/* =========================
+ * Period Month
+ * ========================= */
 TestObject durationObj = findTestObject(
-	'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'
+    'Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Duration'
 )
+
+// Safe click area for Month Period / Duration label
+TestObject durationSafeArea = new TestObject('durationSafeArea')
+durationSafeArea.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//label[contains(normalize-space(),'Month Period') or contains(normalize-space(),'Contract Type')]"
+)
+
+// value to input
+String rawDuration = ContractPeriod.toString().replace(",", "").trim()
+
 WebUI.waitForElementVisible(durationObj, 20)
-WebElement durationEl = WebUiCommonHelper.findWebElement(durationObj, 20)
+WebUI.waitForElementClickable(durationObj, 20)
+WebUI.click(durationObj)
+WebUI.delay(0.5)
 
-WebUI.executeJavaScript(
-    """
-    arguments[0].value = arguments[1];
-    arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-    arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-	arguments[0].blur();
-    """,
-    Arrays.asList(durationEl, ContractPeriod)
-)
+// clear existing value
+WebUI.sendKeys(durationObj, Keys.chord(Keys.CONTROL, 'a'))
+WebUI.delay(0.3)
+WebUI.sendKeys(durationObj, Keys.chord(Keys.BACK_SPACE))
+WebUI.delay(0.5)
 
-waitBlockUI(20)
+// type one by one
+for (char ch : rawDuration.toCharArray()) {
+    WebUI.sendKeys(durationObj, ch.toString())
+    WebUI.delay(0.2)
+}
+
+// click outside to trigger blur/save format
+WebUI.click(durationSafeArea, FailureHandling.OPTIONAL)
+
+waitBlockUI(10)
 WebUI.delay(1)
 
-String finalValue2 = WebUI.getAttribute(durationObj, 'value')
-println("Final Duration = " + finalValue2)
+// verify final value
+String finalDuration = WebUI.getAttribute(durationObj, 'value')
+println("Final Month Period / Duration = " + finalDuration)
 
 /* =========================
  * DATE PICKER
@@ -995,7 +1017,7 @@ for (int i = 1; i <= loopCountService; i++) {
 	WebUI.waitForElementClickable(specBtn, 20)
 	WebUI.click(specBtn)
 	
-	TestObject clickSpec = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Click Specification Services')
+	TestObject clickSpec = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Add Product and Service Click Specification')
 	WebUI.waitForElementClickable(clickSpec, 20)
 	WebUI.click(clickSpec)
 
