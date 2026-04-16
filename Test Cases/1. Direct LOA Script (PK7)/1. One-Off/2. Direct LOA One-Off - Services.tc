@@ -357,14 +357,14 @@
       <name>ServiceSpecification2</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>886cfe89-f8e2-4cda-95e3-459cece334b3</id>
       <masked>false</masked>
       <name>ZoneLocation</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>fd42dbe4-e209-432d-9d6d-9fa2cd3c8119</id>
       <masked>false</masked>

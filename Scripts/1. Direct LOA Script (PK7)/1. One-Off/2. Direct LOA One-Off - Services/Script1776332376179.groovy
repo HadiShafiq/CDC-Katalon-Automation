@@ -847,7 +847,7 @@ waitBlockUI(30)
 WebUI.delay(1)
 
 // Set number of loops (1-10)
-int loopCount = 4  // Set how many times you want the loop to run (1-10)
+int loopCount = 2  // Set how many times you want the loop to run (1-10)
 
 for (int i = 1; i <= loopCount; i++) {
     WebUI.comment("Loop #${i} of ${loopCount}")

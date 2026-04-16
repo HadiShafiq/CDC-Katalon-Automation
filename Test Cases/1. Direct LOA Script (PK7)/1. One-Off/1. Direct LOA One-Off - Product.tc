@@ -357,7 +357,7 @@
       <name>ProductSpecification2</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>4b969582-87f6-443d-b404-fdbd915b3c36</id>
       <masked>false</masked>
