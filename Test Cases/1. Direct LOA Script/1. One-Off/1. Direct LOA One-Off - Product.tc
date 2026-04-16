@@ -156,6 +156,18 @@
       <value></value>
       <variableId>d4d60793-3a8b-4d3c-aeac-6bfadee0e232</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>4b969582-87f6-443d-b404-fdbd915b3c36</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d96f8d2c-d599-42f7-97c7-ed3dfa5591d8</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -330,5 +342,19 @@
       <id>d4d60793-3a8b-4d3c-aeac-6bfadee0e232</id>
       <masked>false</masked>
       <name>ProductSpecification2</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>4b969582-87f6-443d-b404-fdbd915b3c36</id>
+      <masked>false</masked>
+      <name>ZoneLocation</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>d96f8d2c-d599-42f7-97c7-ed3dfa5591d8</id>
+      <masked>false</masked>
+      <name>ZonalCoverage</name>
    </variable>
 </TestCaseEntity>
