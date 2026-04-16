@@ -533,7 +533,7 @@ println("Final Sales Tax / Service Tax (RM) = " + finalValue3)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Fullfilment Type'), FulfilmentType)
 WebUI.delay(1)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond'), PerformanceBond)
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond - Periodic Schedule Product_Services'), PerformanceBond)
 WebUI.delay(2)
 
 //Verification Radio Button
@@ -1033,6 +1033,72 @@ for (int i = 1; i <= loopCountService; i++) {
 }
 
 /* =========================
+ * Fulfilment Schedule
+ * ========================= */
+
+if (FulfilmentType == 2) {
+
+	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side menu Fullfilment Schedule'), 20)
+
+	TestObject btnAdd = findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Button Add Fullfilment Schedule'
+	)
+
+	// Add 2 rows
+	for (int i = 0; i < 2; i++) {
+		WebUI.waitForElementClickable(btnAdd, 20)
+		WebUI.click(btnAdd)
+		WebUI.delay(0.5)
+	}
+
+	// ===== Row 1 =====
+	t(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/No'
+	), FullfilmentNo, 20)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Month'
+	), StartMonth)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Year'
+	), StartYear)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End Month'
+	), EndMonth)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End year'
+	), EndYear)
+
+	// ===== Row 2 =====
+	t(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/No - 2'
+	), FullfilmentNo2, 20)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Month - 2'
+	), StartMonth2)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Year - 2'
+	), StartYear2)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End Month - 2'
+	), EndMonth2)
+
+	selectDropdownByIndex(findTestObject(
+		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End year - 2'
+	), EndYear2)
+
+	WebUI.comment("Fulfilment Schedule completed successfully")
+
+} else {
+	WebUI.comment("FulfilmentType is not 2, skipping Fulfilment Schedule")
+}
+/* =========================
  * SAVE / SUBMIT LOA
  * Purpose:
  * - navigate to payment deduction side menu
@@ -1091,7 +1157,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_One-Off_PK7_Product_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_PK7_ProductPlusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

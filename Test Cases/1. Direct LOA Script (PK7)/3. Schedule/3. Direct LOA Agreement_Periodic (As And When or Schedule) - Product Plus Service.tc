@@ -210,6 +210,66 @@
       <value></value>
       <variableId>5328164b-4bec-40c9-8152-fc5e30646869</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>8ced1964-9379-449e-9b71-b0b4f79665e1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>15d6e5ca-73c5-4f93-a3ae-f3ddbbd25c64</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>f1e68eac-4fe5-4053-ab92-702df6d0ab81</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>93a04a37-e9b3-4166-862c-3511cc93ae95</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d5e65717-4818-42ff-80aa-cb8864318e8b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>671bea52-c536-4cc4-8e4f-8b20b1c89b50</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c1f8bfc4-f87c-46ee-94af-c65978143b5d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>da145b61-044b-4255-bd1c-54b17d00d21e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>23a33eb1-bdc7-4ac7-bcac-dd67c30c50eb</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>aca844e9-8393-4e29-bace-f88055a083cb</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -295,7 +355,7 @@
       <name>LOAOfferedPrice</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>3</defaultValue>
       <description></description>
       <id>8230259f-0ea9-440b-81f6-060c6bce3992</id>
       <masked>false</masked>
@@ -447,5 +507,75 @@
       <id>5328164b-4bec-40c9-8152-fc5e30646869</id>
       <masked>false</masked>
       <name>ServiceSpecification2</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>8ced1964-9379-449e-9b71-b0b4f79665e1</id>
+      <masked>false</masked>
+      <name>StartMonth</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>15d6e5ca-73c5-4f93-a3ae-f3ddbbd25c64</id>
+      <masked>false</masked>
+      <name>StartYear</name>
+   </variable>
+   <variable>
+      <defaultValue>10</defaultValue>
+      <description></description>
+      <id>f1e68eac-4fe5-4053-ab92-702df6d0ab81</id>
+      <masked>false</masked>
+      <name>EndMonth</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>93a04a37-e9b3-4166-862c-3511cc93ae95</id>
+      <masked>false</masked>
+      <name>EndYear</name>
+   </variable>
+   <variable>
+      <defaultValue>'1'</defaultValue>
+      <description></description>
+      <id>d5e65717-4818-42ff-80aa-cb8864318e8b</id>
+      <masked>false</masked>
+      <name>FullfilmentNo</name>
+   </variable>
+   <variable>
+      <defaultValue>'2'</defaultValue>
+      <description></description>
+      <id>671bea52-c536-4cc4-8e4f-8b20b1c89b50</id>
+      <masked>false</masked>
+      <name>FullfilmentNo2</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>c1f8bfc4-f87c-46ee-94af-c65978143b5d</id>
+      <masked>false</masked>
+      <name>StartMonth2</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>da145b61-044b-4255-bd1c-54b17d00d21e</id>
+      <masked>false</masked>
+      <name>StartYear2</name>
+   </variable>
+   <variable>
+      <defaultValue>10</defaultValue>
+      <description></description>
+      <id>23a33eb1-bdc7-4ac7-bcac-dd67c30c50eb</id>
+      <masked>false</masked>
+      <name>EndMonth2</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>aca844e9-8393-4e29-bace-f88055a083cb</id>
+      <masked>false</masked>
+      <name>EndYear2</name>
    </variable>
 </TestCaseEntity>
