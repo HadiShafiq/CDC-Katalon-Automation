@@ -533,7 +533,7 @@ println("Final Sales Tax / Service Tax (RM) = " + finalValue3)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Fullfilment Type'), FulfilmentType)
 WebUI.delay(1)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond'), PerformanceBond)
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond - Periodic Schedule Product_Services'), PerformanceBond)
 WebUI.delay(2)
 
 //Verification Radio Button
@@ -605,6 +605,7 @@ WebUI.delay(1)
 // verify final value
 String finalDuration = WebUI.getAttribute(durationObj, 'value')
 println("Final Month Period / Duration = " + finalDuration)
+
 
 /* =========================
  * DATE PICKER
@@ -955,89 +956,78 @@ for (int i = 1; i <= loopCount; i++) {
 }
 
 /* =========================
- * ZONE ITEM - SERVICES (LOOPING)
- * Purpose:
- * - open services section
- * - loop add services details
+ * Fulfilment Schedule
  * ========================= */
-// Set number of loops (1-10)
-int loopCountService = 2  // Set how many times you want the loop to run (1-10)
 
-for (int i = 1; i <= loopCountService; i++) {
-	WebUI.comment("Loop #${i} of ${loopCountService}")
+if (FulfilmentType == 2) {
 
-		// Click Action Item for Service after the first loop starts
-		c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Click Action Item for Service'), 20)
-		waitBlockUI(20)
-		WebUI.delay(1)
+    c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side menu Fullfilment Schedule'), 20)
 
-	// Input Specification for Service 1 (Dynamic Text + Loop Index)
-	TestObject spec1Service = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input Specification 1 TextBox')
-	WebUI.waitForElementVisible(spec1Service, 20)
-	WebUI.waitForElementClickable(spec1Service, 20)
-	WebUI.click(spec1Service)                 // focus
-	WebUI.clearText(spec1Service)             // clear existing value
-	String serviceSpec1WithLoopIndex = ServiceSpecification1 + i  // Add loop index to Specification Text
-	WebUI.setText(spec1Service, serviceSpec1WithLoopIndex) // type new value
-	waitBlockUI(30)
-	WebUI.delay(1)
+    TestObject btnAdd = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Button Add Fullfilment Schedule'
+    )
 
-	// Input UOM for Service
-	TestObject uomService = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input UOM')
-	wVisible(uomService, 20)
-	WebUI.click(uomService)
-	t(uomService, ServiceUOM, 20)
-	WebUI.delay(2)
-	WebUI.sendKeys(uomService, Keys.chord(Keys.ENTER))
-	waitBlockUI(30)
-	WebUI.delay(1)
-	
-	// Input Service Freq. per OM
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Freq per UOM'), FreqperUOM, 20)
-	waitBlockUI(30)
-	WebUI.delay(1)
+    // Add 2 rows
+    for (int i = 0; i < 2; i++) {
+        WebUI.waitForElementClickable(btnAdd, 20)
+        WebUI.click(btnAdd)
+        WebUI.delay(0.5)
+    }
 
-	// Input Service Quantity
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Quantity'), ServiceQty, 20)
-	waitBlockUI(30)
-	WebUI.delay(1)
-	
-	// Input Service Unit Price(RM)
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Unit Price(RM)'), ServiceUnitPrice, 20)
-	waitBlockUI(30)
-	WebUI.delay(1)
+    // ===== Row 1 =====
+    t(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/No'
+    ), FullfilmentNo, 20)
 
-	/* =========================
-	 * ADDITIONAL SPECIFICATION
-	 * ========================= */
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Month'
+    ), StartMonth)
 
-	// Click Action Item for Specification (Service)
-	TestObject specBtn = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Action Item Click Specification')
-	WebUI.waitForElementVisible(specBtn, 20)
-	WebUI.waitForElementClickable(specBtn, 20)
-	WebUI.click(specBtn)
-	
-	TestObject clickSpec = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Add Product and Service Click Specification')
-	WebUI.waitForElementClickable(clickSpec, 20)
-	WebUI.click(clickSpec)
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Year'
+    ), StartYear)
 
-	waitBlockUI(20)
-	WebUI.delay(3)
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End Month'
+    ), EndMonth)
 
-	// Input Specification 2 TextBox for Service
-	TestObject spec2Service = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input Specification 2 TextBox')
-	String serviceSpec2WithLoopIndex = ServiceSpecification2 + i  // Add loop index to Specification Text
-	WebUI.setText(spec2Service, serviceSpec2WithLoopIndex) // type new value
-	waitBlockUI(30)
-	WebUI.delay(1)
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End year'
+    ), EndYear)
+
+    // ===== Row 2 =====
+    t(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/No - 2'
+    ), FullfilmentNo2, 20)
+
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Month - 2'
+    ), StartMonth2)
+
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/Start Year - 2'
+    ), StartYear2)
+
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End Month - 2'
+    ), EndMonth2)
+
+    selectDropdownByIndex(findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Fullfilment Schedule/End year - 2'
+    ), EndYear2)
+
+    WebUI.comment("Fulfilment Schedule completed successfully")
+
+} else {
+    WebUI.comment("FulfilmentType is not 2, skipping Fulfilment Schedule")
 }
-
 /* =========================
  * SAVE / SUBMIT LOA
  * Purpose:
  * - navigate to payment deduction side menu
  * - submit LOA application
  * ========================= */
+//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Payment Deduction'), 20)
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
 
@@ -1091,7 +1081,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_One-Off_PK7_Product_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_PK7_Product_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

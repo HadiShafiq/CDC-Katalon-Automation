@@ -534,7 +534,7 @@ selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA
 WebUI.delay(1)
 
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond'), PerformanceBond)
-WebUI.delay(5)
+WebUI.delay(2)
 
 //Verification Radio Button
 // value: 1 = Yes, 2 = No
@@ -1000,7 +1000,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_PK7_Service_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_One-Off_PK7_Service_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
