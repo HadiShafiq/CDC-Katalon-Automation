@@ -312,7 +312,7 @@
       <name>Agreement</name>
    </variable>
    <variable>
-      <defaultValue>'30'</defaultValue>
+      <defaultValue>'4'</defaultValue>
       <description></description>
       <id>9120230d-7797-4d45-bc4b-9bb5b3034cb4</id>
       <masked>false</masked>
