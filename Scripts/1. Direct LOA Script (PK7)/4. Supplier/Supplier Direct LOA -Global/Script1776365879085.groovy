@@ -1,0 +1,663 @@
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+
+import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.webui.common.WebUiCommonHelper
+import com.kms.katalon.core.webui.driver.DriverFactory
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
+import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
+import org.openqa.selenium.chrome.ChromeDriver
+import org.openqa.selenium.chrome.ChromeOptions
+
+import java.io.FileInputStream
+import java.io.FileOutputStream
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.text.SimpleDateFormat
+import java.util.Arrays
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook
+
+/* =========================
+ * HELPERS
+ * Purpose:
+ * - reusable utility for conversion, wait, click, text input, upload
+ * - keep script stable without changing main flow
+ * ========================= */
+
+// Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
+int toInt(def v, int defaultVal = 0) {
+	if (v == null) return defaultVal
+	return new BigDecimal(v.toString().trim()).intValue()
+}
+
+// PrimeFaces overlay wait
+def waitBlockUI(int timeout = 30) {
+	TestObject blockUI = new TestObject('blockUI')
+	blockUI.addProperty("xpath", ConditionType.EQUALS,
+		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+	)
+
+	if (WebUI.verifyElementPresent(blockUI, 1, FailureHandling.OPTIONAL)) {
+		WebUI.waitForElementNotVisible(blockUI, timeout, FailureHandling.OPTIONAL)
+	}
+}
+
+/* ---------- Lightweight wait wrappers ---------- */
+// wait until element visible
+def wVisible(TestObject obj, int timeout = 1) {
+	waitBlockUI(Math.min(timeout, 1))
+	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
+}
+
+// wait until element clickable
+def wClickable(TestObject obj, int timeout = 1) {
+	wVisible(obj, timeout)
+	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
+}
+
+// click with wait + tiny retry
+def c(TestObject obj, int timeout = 1) {
+	for (int i=0; i<2; i++) {
+		try {
+			wClickable(obj, timeout)
+			WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
+			WebUI.click(obj)
+			waitBlockUI(1)
+			return
+		} catch (Exception e) {
+			WebUI.delay(0.3)
+		}
+	}
+	// last try
+	wClickable(obj, timeout)
+	WebUI.click(obj)
+	waitBlockUI(1)
+}
+
+// double click with wait
+def dc(TestObject obj, int timeout = 1) {
+	try {
+		wClickable(obj, timeout)
+		WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
+		WebUI.doubleClick(obj, FailureHandling.OPTIONAL)
+		waitBlockUI(1)
+	} catch (Exception e) {
+		WebUI.doubleClick(obj, FailureHandling.OPTIONAL)
+		waitBlockUI(1)
+	}
+}
+
+// setText with wait
+def t(TestObject obj, def value, int timeout = 1) {
+	wVisible(obj, timeout)
+	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
+	WebUI.setText(obj, (value == null ? "" : value.toString()))
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+// upload with wait
+def up(TestObject obj, String filePath, int timeout = 1) {
+	wVisible(obj, timeout)
+	WebUI.uploadFile(obj, filePath)
+	waitBlockUI(1)
+}
+
+/* =========================
+ * PRIMEFACES DROPDOWN HELPERS
+ * Purpose:
+ * - open PrimeFaces dropdown
+ * - click option by index
+ * - support both PrimeFaces and real select
+ * ========================= */
+def openPFDropdown(TestObject triggerObj) {
+
+	TestObject panelOpen = new TestObject('pfPanelOpen')
+	panelOpen.addProperty("xpath", ConditionType.EQUALS,
+		"//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]"
+	)
+
+	c(triggerObj, 20)
+	WebUI.delay(0.3)
+
+	if (!WebUI.waitForElementVisible(panelOpen, 1, FailureHandling.OPTIONAL)) {
+		c(triggerObj, 20)
+		WebUI.delay(0.3)
+		WebUI.waitForElementVisible(panelOpen, 3, FailureHandling.OPTIONAL)
+	}
+}
+
+// click PrimeFaces option by index (0-based)
+def clickPFOptionByIndex(int index0) {
+	TestObject opt = new TestObject("pfOpt_" + index0)
+	opt.addProperty("xpath", ConditionType.EQUALS,
+		"(//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[contains(@class,'ui-selectonemenu-item')])[${index0 + 1}]"
+	)
+
+	c(opt, 20)
+	WebUI.delay(0.2)
+	waitBlockUI(20)
+}
+
+/**
+ * Universal dropdown select by index (SAFE)
+ */
+def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
+
+	int idx0 = toInt(indexFromData) // data already 0-based
+
+	for (int attempt = 0; attempt < 3; attempt++) {
+		try {
+			wVisible(dropdownObj, 20)
+			def el = WebUiCommonHelper.findWebElement(dropdownObj, 10)
+			String tag = el.getTagName()
+
+			if (tag != null && tag.equalsIgnoreCase("select")) {
+				WebUI.selectOptionByIndex(dropdownObj, idx0)
+				WebUI.delay(0.3)
+				waitBlockUI(20)
+			} else {
+				openPFDropdown(dropdownObj)
+				clickPFOptionByIndex(idx0)
+			}
+			return
+		} catch (org.openqa.selenium.StaleElementReferenceException e) {
+			WebUI.delay(0.5)
+		}
+	}
+
+	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
+}
+
+/* =========================
+ * BROWSER SETUP
+ * Purpose:
+ * - launch Chrome in clean guest/incognito mode
+ * - disable password manager prompts
+ * ========================= */
+
+String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+
+System.setProperty("webdriver.chrome.driver", chromeDriverPath)
+
+String userDataDir = Files.createTempDirectory("katalon-cft").toString()
+
+ChromeOptions options = new ChromeOptions()
+options.setBinary(chromeBinary)
+
+//Bypass security pop up for google chrome 
+options.setAcceptInsecureCerts(true)
+
+options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
+
+options.addArguments("--guest")
+//options.addArguments("--incognito")
+options.addArguments("--user-data-dir=" + userDataDir)
+options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
+options.addArguments("--disable-save-password-bubble")
+options.addArguments("--disable-notifications")
+options.addArguments("--no-first-run")
+options.addArguments("--no-default-browser-check")
+options.addArguments("--remote-allow-origins=*")
+
+Map<String, Object> prefs = new HashMap<>()
+prefs.put("credentials_enable_service", false)
+prefs.put("profile.password_manager_enabled", false)
+prefs.put("profile.default_content_setting_values.notifications", 2)
+options.setExperimentalOption("prefs", prefs)
+
+
+WebDriver driver = new ChromeDriver(options)
+DriverFactory.changeWebDriver(driver)
+
+/* =========================
+ * OPEN APPLICATION
+ * Purpose:
+ * - open NGeP SIT portal
+ * - maximize browser
+ * - wait initial page load
+ * ========================= */
+WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
+WebUI.maximizeWindow()
+waitBlockUI(20)
+
+/* =========================
+ * LANGUAGE
+ * Purpose:
+ * - switch system language to English
+ * ========================= */
+wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
+WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
+waitBlockUI(20)
+WebUI.delay(0.5)
+WebUI.delay(1)
+
+/* =========================
+ * LOGIN
+ * Purpose:
+ * - open login form
+ * - enter username and password
+ * - submit login
+ * ========================= */
+c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
+WebUI.delay(0.5)
+
+t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Username'), Username, 20)
+WebUI.delay(0.5)
+
+t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Password'), Password, 20)
+WebUI.delay(0.5)
+
+c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Submit Username and Password'), 20)
+waitBlockUI(30)
+WebUI.delay(0.5)
+
+
+/* =========================
+ * CHANGE LANGUAGE
+ * Purpose:
+ * - Change Language at Dashboard
+ * ========================= */
+WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
+
+
+/* =========================
+ * Tasklit
+ * Purpose:
+ * - Serach Application No
+ * ========================= */
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/span_My Task_ui-icon ui-icon-plusthick'))
+
+//Input Document Number
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
+    Document_Number)
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
+
+//Click TaskList Description
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+
+/* =========================
+ * General information
+ * ========================= */
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'))
+
+WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
+    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click LOA Signing Date By Supplier'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
+
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Supplier Signer Details Dropdown'), Supplier_Signer_Dropdown)
+
+//Supplier Witness Details
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Name'),
+    Witness_Name)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Identification No'),
+    Witness_IC)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Designation'),
+    Designation)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Address'),
+    Address)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Telephone No'),
+    Telephone_No)
+
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Fax No'),
+    Fax_no)
+
+/* =========================
+ * LOA and Attachment
+ * ========================= */
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Side Menu Supplier/Side Menu Supplier LOA Attachment'))
+waitBlockUI(30)
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
+
+WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran C - Surat Akuan Sumpah Syarikat'))
+WebUI.delay(1)
+
+WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
+WebUI.delay(1)
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran 7 - Surat Akuan Pembida Berjaya'))
+WebUI.delay(1)
+
+WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
+
+/* =========================
+ * Zone Item Product
+ * ========================= */
+// Open Zone Item menu
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'))
+
+// ===== SET HOW MANY LOOPS YOU WANT =====
+int loopCount = 2
+// Example:
+// int loopCount = ProductLoopCount.toString().trim().toInteger()
+
+// Base XPath for Assign button under Product header
+String productAssignXpath = "(//div[contains(@id,':spg_header')][.//span[normalize-space(.)='Product']]/following::button[contains(@id,':questionTbl:') and .//span[normalize-space(.)='Assign']])"
+
+// Count all Assign buttons under Product
+TestObject allProductAssignButtons = new TestObject("allProductAssignButtons")
+allProductAssignButtons.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    productAssignXpath
+)
+
+List<WebElement> productAssignList = WebUiCommonHelper.findWebElements(allProductAssignButtons, 20)
+int assignCount = productAssignList.size()
+
+WebUI.comment("Total Product Assign buttons found: " + assignCount)
+
+// Prevent loop from exceeding actual button count
+int totalLoop = Math.min(loopCount, assignCount)
+WebUI.comment("Total loop to execute: " + totalLoop)
+
+// Loop based on manual loop count
+for (int i = 1; i <= totalLoop; i++) {
+
+    WebUI.comment("Processing Assign button " + i + " of " + totalLoop)
+
+    // Rebuild dynamic Assign button each round
+    TestObject assignBtn = new TestObject("assignBtn_" + i)
+    assignBtn.addProperty(
+        "xpath",
+        ConditionType.EQUALS,
+        productAssignXpath + "[" + i + "]"
+    )
+
+    c(assignBtn)
+    WebUI.delay(1)
+
+    t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Input Item Code'),
+        P_Item_Code)
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Item Code'))
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Item Code'))
+
+    selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Type'),
+        DropdownType)
+
+    selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Measurement'),
+        Dropdown_Measurement)
+
+    selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown brand'),
+        Dropdown_brand)
+
+    selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Color'),
+        Dropdown_Color)
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Extension Attribute'))
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Radio Button Assign Code'))
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product 1'))
+
+    c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
+
+    WebUI.delay(1)
+}
+
+/* =========================
+ * Zone Item Service
+ * ========================= */
+// ===== SET HOW MANY LOOPS YOU WANT =====
+int loopCount = 2
+// Example:
+// int loopCount = ProductLoopCount.toString().trim().toInteger()
+
+// Base XPath for Assign button under Product header
+String serviceAssignXpath = "(//div[contains(@id,':spg_header')][.//span[normalize-space(.)='Service']]/following::button[contains(@id,':questionTbl:') and .//span[normalize-space(.)='Assign']])"
+
+// Count all Assign buttons under Product
+TestObject allServiceAssignButtons = new TestObject("allServiceAssignButtons")
+allServiceAssignButtons.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	serviceAssignXpath
+)
+
+List<WebElement> serviceAssignList = WebUiCommonHelper.findWebElements(allProductAssignButtons, 20)
+int assignCount = serviceAssignList.size()
+
+WebUI.comment("Total Service Assign buttons found: " + assignCount)
+
+// Prevent loop from exceeding actual button count
+int totalLoop = Math.min(loopCount, assignCount)
+WebUI.comment("Total loop to execute: " + totalLoop)
+
+// Loop based on manual loop count
+for (int i = 1; i <= totalLoop; i++) {
+
+	WebUI.comment("Processing Assign button " + i + " of " + totalLoop)
+
+	// Rebuild dynamic Assign button each round
+	TestObject assignBtn = new TestObject("assignBtn_" + i)
+	assignBtn.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		productAssignXpath + "[" + i + "]"
+	)
+
+	c(assignBtn)
+	WebUI.delay(1)
+
+	t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Input Item Code'),
+		P_Item_Code)
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Item Code'))
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Item Code'))
+
+	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Type'),
+		DropdownType)
+
+	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Measurement'),
+		Dropdown_Measurement)
+
+	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown brand'),
+		Dropdown_brand)
+
+	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Color'),
+		Dropdown_Color)
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Extension Attribute'))
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Radio Button Assign Code'))
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product 1'))
+
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
+
+	WebUI.delay(1)
+}
+/* =========================
+ * Accept and Reject Button
+ * ========================= */
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Accept Button Supplier'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Confirmation Yes'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
+
+//c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Reject Button Supplier'))
+
+/* =========================
+ * SUCCESS MESSAGE
+ * Purpose:
+ * - wait for loader disappear
+ * - capture success message
+ * - extract dynamic LOA number
+ * ========================= */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+
+TestObject msgObj = new TestObject('msg_LOA_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Letter of Acceptance (LOA)') and contains(.,'is acknowledged')]"
+)
+
+WebUI.waitForElementVisible(msgObj, 30)
+
+String msg = ""
+for (int i = 0; i < 15; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("LA")) break
+	WebUI.delay(1)
+}
+
+msg = (msg == null) ? "" : msg.trim()
+WebUI.comment("Message: " + msg)
+
+def matcher = (msg =~ /(LA\d+)/)
+String loaNo = matcher.find() ? matcher.group(1) : ""
+
+if (loaNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ LOA number not found. Message was: " + msg
+}
+WebUI.comment("✅ Captured LOA No: " + loaNo)
+
+/* =========================
+ * EXCEL APPEND
+ * Purpose:
+ * - append LOA number and message into same Excel file
+ * ========================= */
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_Product_AP_201_2026.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
+
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("LOA No")
+	header.createCell(2).setCellValue("Message")
+}
+
+if (fis != null) fis.close()
+
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
+
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(loaNo)
+row.createCell(2).setCellValue(msg)
+
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
+
+WebUI.comment("✅ Appended to Excel: " + filePath)
+
+/* =========================
+ * SIGN OUT
+ * Purpose:
+ * - logout from system
+ * - close browser
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
