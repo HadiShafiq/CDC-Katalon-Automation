@@ -46,12 +46,6 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>b37db2da-ae77-446d-8d65-ecac3d2a018d</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>b4bf2c20-e8ef-4446-911b-e8ab20ed4fed</variableId>
    </variableLinks>
    <variableLinks>
@@ -64,13 +58,13 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>59f4bb7a-de3b-46b7-b53d-08760ebfd350</variableId>
+      <variableId>bafaae15-7ba2-4f73-9fbd-522756815f94</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>bafaae15-7ba2-4f73-9fbd-522756815f94</variableId>
+      <variableId>59f4bb7a-de3b-46b7-b53d-08760ebfd350</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -130,13 +124,13 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>a115c297-5d98-4e05-b0d7-bcd33b486578</variableId>
+      <variableId>6ba7bd4d-1cd2-438b-840a-3d046cfa7fd7</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>6ba7bd4d-1cd2-438b-840a-3d046cfa7fd7</variableId>
+      <variableId>a115c297-5d98-4e05-b0d7-bcd33b486578</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -178,13 +172,13 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>33eefbdd-ef98-43f5-8192-03b1087d4398</variableId>
+      <variableId>89849c64-e808-4325-94fd-8055236dbb2d</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>89849c64-e808-4325-94fd-8055236dbb2d</variableId>
+      <variableId>33eefbdd-ef98-43f5-8192-03b1087d4398</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -306,21 +300,14 @@
       <name>ProcurementMethod</name>
    </variable>
    <variable>
-      <defaultValue>7</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>860d8384-6609-4589-8adf-90c329808ffe</id>
       <masked>false</masked>
       <name>QuotationTenderType</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
-      <description></description>
-      <id>b37db2da-ae77-446d-8d65-ecac3d2a018d</id>
-      <masked>false</masked>
-      <name>Reason</name>
-   </variable>
-   <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>10</defaultValue>
       <description></description>
       <id>b4bf2c20-e8ef-4446-911b-e8ab20ed4fed</id>
       <masked>false</masked>
@@ -334,13 +321,6 @@
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test00000000011'</defaultValue>
-      <description></description>
-      <id>59f4bb7a-de3b-46b7-b53d-08760ebfd350</id>
-      <masked>false</masked>
-      <name>FileReference1</name>
-   </variable>
-   <variable>
       <defaultValue>'CDC'</defaultValue>
       <description></description>
       <id>bafaae15-7ba2-4f73-9fbd-522756815f94</id>
@@ -348,14 +328,21 @@
       <name>FileReference2</name>
    </variable>
    <variable>
-      <defaultValue>'3,000,000'</defaultValue>
+      <defaultValue>'Test00000000011'</defaultValue>
+      <description></description>
+      <id>59f4bb7a-de3b-46b7-b53d-08760ebfd350</id>
+      <masked>false</masked>
+      <name>FileReference1</name>
+   </variable>
+   <variable>
+      <defaultValue>'154,000'</defaultValue>
       <description></description>
       <id>ccdccf80-1fd8-451d-b701-89dc966a11a0</id>
       <masked>false</masked>
       <name>LOAOfferedPrice</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>e6cf8ad4-7877-498e-87e5-3894dab4b3d8</id>
       <masked>false</masked>
@@ -397,7 +384,7 @@
       <name>Agreement</name>
    </variable>
    <variable>
-      <defaultValue>'30'</defaultValue>
+      <defaultValue>'36'</defaultValue>
       <description></description>
       <id>1a9584ac-b4c9-4cbd-8df2-5547fba908b4</id>
       <masked>false</masked>
@@ -411,18 +398,18 @@
       <name>LOASigner</name>
    </variable>
    <variable>
+      <defaultValue>'J40'</defaultValue>
+      <description></description>
+      <id>6ba7bd4d-1cd2-438b-840a-3d046cfa7fd7</id>
+      <masked>false</masked>
+      <name>ProductUOM</name>
+   </variable>
+   <variable>
       <defaultValue>'Product'</defaultValue>
       <description></description>
       <id>a115c297-5d98-4e05-b0d7-bcd33b486578</id>
       <masked>false</masked>
       <name>ProductSpecification1</name>
-   </variable>
-   <variable>
-      <defaultValue>'BOX'</defaultValue>
-      <description></description>
-      <id>6ba7bd4d-1cd2-438b-840a-3d046cfa7fd7</id>
-      <masked>false</masked>
-      <name>ProductUOM</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
@@ -432,14 +419,14 @@
       <name>PriceType</name>
    </variable>
    <variable>
-      <defaultValue>'10'</defaultValue>
+      <defaultValue>'50'</defaultValue>
       <description></description>
       <id>1cecb270-6183-4a90-8668-94d2b0383309</id>
       <masked>false</masked>
       <name>ProductQuaty</name>
    </variable>
    <variable>
-      <defaultValue>'30000'</defaultValue>
+      <defaultValue>'1000'</defaultValue>
       <description></description>
       <id>29c9cd95-c1e2-44bf-b3f9-d7a89a542c82</id>
       <masked>false</masked>
@@ -467,6 +454,13 @@
       <name>ZonalCoverage</name>
    </variable>
    <variable>
+      <defaultValue>'Unit'</defaultValue>
+      <description></description>
+      <id>89849c64-e808-4325-94fd-8055236dbb2d</id>
+      <masked>false</masked>
+      <name>ServiceUOM</name>
+   </variable>
+   <variable>
       <defaultValue>'Service'</defaultValue>
       <description></description>
       <id>33eefbdd-ef98-43f5-8192-03b1087d4398</id>
@@ -474,28 +468,21 @@
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
-      <defaultValue>'Box'</defaultValue>
-      <description></description>
-      <id>89849c64-e808-4325-94fd-8055236dbb2d</id>
-      <masked>false</masked>
-      <name>ServiceUOM</name>
-   </variable>
-   <variable>
-      <defaultValue>'10'</defaultValue>
+      <defaultValue>'50'</defaultValue>
       <description></description>
       <id>fe4fe08c-149a-44f4-adf4-7ae130d10200</id>
       <masked>false</masked>
       <name>ServiceQty</name>
    </variable>
    <variable>
-      <defaultValue>'30000'</defaultValue>
+      <defaultValue>'1.50'</defaultValue>
       <description></description>
       <id>12b77ca6-280d-45c7-99fc-6873bdeab215</id>
       <masked>false</masked>
       <name>ServiceUnitPrice</name>
    </variable>
    <variable>
-      <defaultValue>'1'</defaultValue>
+      <defaultValue>'10'</defaultValue>
       <description></description>
       <id>7b99f288-9997-4a11-a28b-1a85307087cb</id>
       <masked>false</masked>

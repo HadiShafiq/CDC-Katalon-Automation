@@ -111,7 +111,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001379'</defaultValue>
+      <defaultValue>'LA260000000001541'</defaultValue>
       <description></description>
       <id>7f2d7af1-45f2-480e-b3ef-347eaad5b990</id>
       <masked>false</masked>
@@ -167,7 +167,7 @@
       <name>Fax_no</name>
    </variable>
    <variable>
-      <defaultValue>'43211503'</defaultValue>
+      <defaultValue>'11141604'</defaultValue>
       <description></description>
       <id>4cfd7a31-b16a-46c5-bbfd-f1e3109b5bd3</id>
       <masked>false</masked>

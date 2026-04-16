@@ -123,7 +123,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001381'</defaultValue>
+      <defaultValue>'LA260000000001541'</defaultValue>
       <description></description>
       <id>535ebaa6-1f6d-4c31-b165-ee9cc8ee5f73</id>
       <masked>false</masked>
@@ -214,14 +214,14 @@
       <name>Dropdown_Color</name>
    </variable>
    <variable>
-      <defaultValue>'81112204'</defaultValue>
+      <defaultValue>'72121004'</defaultValue>
       <description></description>
       <id>79024148-638c-4375-bbdf-8136d0cbfb99</id>
       <masked>false</masked>
       <name>S_Item_Code</name>
    </variable>
    <variable>
-      <defaultValue>'Software'</defaultValue>
+      <defaultValue>'Kertas'</defaultValue>
       <description></description>
       <id>5437cce8-f8a4-439e-acae-978df186026e</id>
       <masked>false</masked>
