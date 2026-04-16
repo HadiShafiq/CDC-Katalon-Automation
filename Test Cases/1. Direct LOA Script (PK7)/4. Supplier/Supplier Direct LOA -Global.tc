@@ -96,6 +96,12 @@
       <value></value>
       <variableId>a80d2239-1787-4746-a47d-e3b417dd9320</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>6c90e9f5-901b-43d5-851c-9beb25bd6c16</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'bumiwarisanmaju'</defaultValue>
       <description></description>
@@ -200,5 +206,12 @@
       <id>a80d2239-1787-4746-a47d-e3b417dd9320</id>
       <masked>false</masked>
       <name>Dropdown_Color</name>
+   </variable>
+   <variable>
+      <defaultValue>'72121004'</defaultValue>
+      <description></description>
+      <id>6c90e9f5-901b-43d5-851c-9beb25bd6c16</id>
+      <masked>false</masked>
+      <name>S_Item_Code</name>
    </variable>
 </TestCaseEntity>
