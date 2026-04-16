@@ -46,12 +46,6 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>f62d4e90-56e6-4293-b54d-a331e0451678</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>7f83eafb-da55-48d3-bded-dd450c7b4951</variableId>
    </variableLinks>
    <variableLinks>
@@ -270,21 +264,14 @@
       <name>ProcurementMethod</name>
    </variable>
    <variable>
-      <defaultValue>7</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>556dac3c-8d8f-4fee-b6d1-186366cb29fd</id>
       <masked>false</masked>
       <name>QuotationTenderType</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
-      <description></description>
-      <id>f62d4e90-56e6-4293-b54d-a331e0451678</id>
-      <masked>false</masked>
-      <name>Reason</name>
-   </variable>
-   <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>10</defaultValue>
       <description></description>
       <id>7f83eafb-da55-48d3-bded-dd450c7b4951</id>
       <masked>false</masked>
@@ -319,7 +306,7 @@
       <name>LOAOfferedPrice</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
+      <defaultValue>3</defaultValue>
       <description></description>
       <id>c512aa09-d1b9-410a-8aa4-c9a32154a926</id>
       <masked>false</masked>

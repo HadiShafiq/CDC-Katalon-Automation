@@ -383,9 +383,6 @@ WebUI.delay(0.5)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Quotation_Tender Type'), QuotationTenderType)
 waitBlockUI(20)
 WebUI.delay(0.5)
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Reason PK 7'), Reason)
-waitBlockUI(20)
-WebUI.delay(0.5)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Procurement Category'), ProcurementCategory)
 waitBlockUI(20)
 WebUI.delay(0.5)
@@ -533,9 +530,6 @@ println("Final Sales Tax / Service Tax (RM) = " + finalValue3)
 selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Fullfilment Type'), FulfilmentType)
 WebUI.delay(1)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond - Periodic Schedule Product_Services'), PerformanceBond)
-WebUI.delay(2)
-
 //Verification Radio Button
 // value: 1 = Yes, 2 = No
 def clickRequiredOnlineVerification(def value) {
@@ -623,59 +617,58 @@ waitBlockUI(20)
  * - choose agreement value from dropdown
  * - if No selected, handle confirmation popup
  * ========================= */
-import java.util.Arrays
+def clickAgreementRadio(int option) {
+	String xpath
 
-def clickAgreementReq(def value) {
-
-	WebUI.comment("DEBUG Agreement raw value = [" + value + "]")
-	WebUI.comment("DEBUG Agreement class = " + (value == null ? "null" : value.getClass().getName()))
-
-	if (value == null || value.toString().trim() == "") {
-		assert false : "❌ Agreement value is empty"
+	switch(option) {
+		case 1:
+			// Yes
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:agreementReq']/tbody/tr/td[1]//div[contains(@class,'ui-radiobutton-box') or contains(@class,'ui-radiobutton')]"
+			break
+		case 2:
+			// No
+			xpath = "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:agreementReq']/tbody/tr/td[3]//div[contains(@class,'ui-radiobutton-box') or contains(@class,'ui-radiobutton')]"
+			break
+		default:
+			throw new Exception("Invalid Agreement option. Use 1 for Yes or 2 for No.")
 	}
 
-	String rawValue = value.toString().trim()
-	int intValue = rawValue.toInteger()
+	TestObject obj = new TestObject("agreementRadio")
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-	WebUI.comment("DEBUG Agreement intValue = " + intValue)
+	WebUI.waitForElementPresent(obj, 20)
+	WebUI.waitForElementVisible(obj, 20)
+	WebUI.scrollToElement(obj, 20)
+	WebUI.click(obj)
 
-	TestObject dd = new TestObject("agreementReq_dropdown")
-	dd.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:agreementReqPk7Per']/div[3]/span"
-	)
-
-	WebUI.waitForElementClickable(dd, 20)
-	WebUI.click(dd)
-
-	String optXpath = (intValue == 1)
-		? "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:agreementReqPk7Per_panel']//li[2]"
-		: "//*[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:agreementReqPk7Per_panel']//li[3]"
-
-	TestObject opt = new TestObject("agreementReq_option")
-	opt.addProperty("xpath", ConditionType.EQUALS, optXpath)
-
-	WebUI.waitForElementClickable(opt, 20)
-	WebUI.click(opt)
-
-	if (intValue == 2) {
-		WebUI.comment("DEBUG value = 2, clicking popup Yes")
-
-		TestObject popYes = new TestObject('popYes')
-		popYes.addProperty("xpath", ConditionType.EQUALS,
-			"//button[contains(@onclick,'qtChangeAgreementReqDlg.hide') and contains(@onclick,'agreementReqPG') and .//span[normalize-space()='Yes']]"
-		)
-
-		WebUI.waitForElementPresent(popYes, 20)
-		WebUI.waitForElementVisible(popYes, 20)
-		WebUI.scrollToElement(popYes, 2)
-
-		def el = WebUI.findWebElement(popYes, 20)
-		WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(el))
-	}
+	waitBlockUI(20)
 }
 
-clickAgreementReq(Agreement)
+clickAgreementRadio(Agreement)
 
+int Agreement = (Agreement)
+
+
+if (Agreement == 2) {
+	TestObject uploadBtn = new TestObject("uploadApprovalLetterBtn")
+	uploadBtn.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//button[contains(@onclick,'uploadApprovalLetterDlg.show()')]"
+	)
+
+	WebUI.waitForElementClickable(uploadBtn, 20)
+	WebUI.click(uploadBtn)
+	waitBlockUI(20)
+	
+	up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
+		'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf',3)
+	
+	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Quotation and Tender Type - Open/Upload Approval Letter of Pegawai Pengawal'), 20)
+	waitBlockUI(30)
+} else {
+	WebUI.comment("Agreement = No, skip upload button.")
+}
 /* =========================
  * CATEGORY CODE
  * Purpose:
@@ -1066,7 +1059,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_PK7_Service_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_Open_Service_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
