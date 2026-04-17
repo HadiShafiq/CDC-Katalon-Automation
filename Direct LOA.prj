@@ -11,7 +11,11 @@
    <modifiedEdition>ENTERPRISE</modifiedEdition>
    <modifiedVersion>11.0.1</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+<<<<<<< HEAD
    <projectFileLocation>C:\Users\hadishafiq\Direct LOA\Direct LOA.prj</projectFileLocation>
+=======
+   <projectFileLocation>C:\Users\nurul.atikah\git\CDC-Katalon-Automation\Direct LOA.prj</projectFileLocation>
+>>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>
