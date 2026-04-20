@@ -648,7 +648,7 @@ def clickAgreementRadio(int option) {
 	waitBlockUI(20)
 }
 
-clickAgreementRadio(Agreement)
+clickAgreementRadio(Integer.parseInt(Agreement))
 
 int Agreement = (Agreement)
 
@@ -666,7 +666,7 @@ if (Agreement == 2) {
 	waitBlockUI(20)
 	
 	up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-		'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf',3)
+		'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
 	
 	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Quotation and Tender Type - Open/Upload Approval Letter of Pegawai Pengawal'), 20)
 	waitBlockUI(30)
@@ -743,7 +743,7 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * ========================= */
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf',3)
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)

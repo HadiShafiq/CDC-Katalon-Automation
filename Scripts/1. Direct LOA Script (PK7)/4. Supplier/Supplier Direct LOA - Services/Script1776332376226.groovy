@@ -230,8 +230,12 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
  * - disable password manager prompts
  * ========================= */
 
-String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+/* PATH HADI
+ String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+ String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" */
+ 
+ String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
+ String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
@@ -340,7 +344,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'))
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
-    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -379,7 +383,7 @@ waitBlockUI(30)
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -387,7 +391,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and At
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 WebUI.delay(1)
@@ -396,7 +400,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and At
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -504,7 +508,9 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_Service_AP_201_2026.xlsx"
+/*PATH HADI 
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_Service_AP_201_2026.xlsx"*/
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Application_NO\\Direct_LOA_Supplier_Service_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

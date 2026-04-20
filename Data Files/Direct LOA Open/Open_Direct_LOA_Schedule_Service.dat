@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>Open_Direct_LOA_Schedule_Service</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>2400e08c-08dc-42f3-91d6-a176105a3de1</dataFileGUID>
+   <dataSourceUrl>C:\Users\nurul.atikah\Documents\CDC - Work\Automation\Test Data\Direct LOA (OPEN)\3. Schedule\LOA_Variables_Open_Service_AP_201_Schedule.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>Sheet1</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>
