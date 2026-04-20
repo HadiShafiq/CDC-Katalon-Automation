@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DataFileEntity>
+   <description></description>
+   <name>1. Non-Zonal-Schedule-Product-PK7</name>
+   <tag></tag>
+   <connectionProperties/>
+   <containsHeaders>true</containsHeaders>
+   <csvSeperator></csvSeperator>
+   <dataFileGUID>f42519fe-ca28-49ea-a3f3-ca172fef53cd</dataFileGUID>
+   <dataSourceUrl>C:\Users\hadishafiq\Desktop\Data Prep Excel AP 201\Direct LOA (PK7)\3. Schedule\LOA_Variables_PK7_Product_AP_201.xlsx</dataSourceUrl>
+   <driver>ExcelFile</driver>
+   <isInternalPath>false</isInternalPath>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
+   <sheetName>Variables</sheetName>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+</DataFileEntity>
