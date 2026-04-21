@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//textarea[@id='_Catalogue_WAR_NGePportlet_:form:justificationRmk']</value>
+         <value>//*[@id=&quot;_Catalogue_WAR_NGePportlet_:form:justificationRmkRPT&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -22,7 +22,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>textarea</value>
-      <webElementGuid>3f374937-b701-4a50-a2a9-4c8f7ece1a59</webElementGuid>
+      <webElementGuid>10824e7e-949d-41d2-b7bd-7bf48474a00b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -30,7 +30,7 @@
       <name>id</name>
       <type>Main</type>
       <value>_Catalogue_WAR_NGePportlet_:form:justificationRmk</value>
-      <webElementGuid>d6ae3a41-4959-4da8-942b-456cbec3c6e9</webElementGuid>
+      <webElementGuid>42236527-6b5e-4e2e-b784-37369cdf0ada</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -38,7 +38,7 @@
       <name>name</name>
       <type>Main</type>
       <value>_Catalogue_WAR_NGePportlet_:form:justificationRmk</value>
-      <webElementGuid>7d78aaed-5f52-45cc-93b1-a9f39a1e52b8</webElementGuid>
+      <webElementGuid>6206638c-72e6-40d8-a303-445b0e6d2cfe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -46,7 +46,7 @@
       <name>cols</name>
       <type>Main</type>
       <value>58</value>
-      <webElementGuid>437039c1-5a12-4d83-8a8b-5df25b31c0d8</webElementGuid>
+      <webElementGuid>5fbe11d5-d612-4462-9fda-aac33be29620</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -54,7 +54,7 @@
       <name>rows</name>
       <type>Main</type>
       <value>3</value>
-      <webElementGuid>9f020d6f-25f0-41c1-967f-abc14a9cd8a9</webElementGuid>
+      <webElementGuid>0ced6991-e43e-4a2a-97e5-862e8d208264</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -62,7 +62,7 @@
       <name>onkeydown</name>
       <type>Main</type>
       <value>limitTextArea(this,100);</value>
-      <webElementGuid>b69b56e3-862d-43dc-a4bc-83e8ee038fba</webElementGuid>
+      <webElementGuid>933a650d-647b-4d4f-b8bf-7bda9639dbad</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -70,7 +70,7 @@
       <name>onkeyup</name>
       <type>Main</type>
       <value>limitTextArea(this,100);</value>
-      <webElementGuid>7f2aed41-2bb0-4e60-badc-8256bbc6b576</webElementGuid>
+      <webElementGuid>3db1f72e-50eb-4ef8-9bd7-b22538673e9c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -78,7 +78,7 @@
       <name>onmouseout</name>
       <type>Main</type>
       <value>limitTextArea(this,100);</value>
-      <webElementGuid>dfc29506-4a8a-4b17-9be5-b87c18d7d09c</webElementGuid>
+      <webElementGuid>a59fbd4b-5a34-4e7c-a463-65d2ac77539b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -86,7 +86,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all ui-inputtextarea-resizable ui-state-hover ui-state-focus focus</value>
-      <webElementGuid>787326ec-6b77-4f1d-8cab-ed96912ac5d4</webElementGuid>
+      <webElementGuid>19f1eb9e-fdb6-4e5d-9ff1-6065cbd5e4b1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -94,7 +94,7 @@
       <name>role</name>
       <type>Main</type>
       <value>textbox</value>
-      <webElementGuid>4ba6bb9f-a188-4fa5-abfe-05d1985640c1</webElementGuid>
+      <webElementGuid>688de8a7-f10b-489d-a32f-0d0f8e5d5007</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -102,7 +102,7 @@
       <name>aria-disabled</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>55986981-df3c-44a0-8b7b-e092075d4434</webElementGuid>
+      <webElementGuid>e9e13eae-6edc-464e-be59-d60133d1c4c8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -110,7 +110,7 @@
       <name>aria-readonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>136abd11-a8bf-4c6c-9b14-6071d04f3421</webElementGuid>
+      <webElementGuid>7e1dc1ba-ff77-4a0d-94df-1e893e8fe648</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -118,7 +118,7 @@
       <name>aria-multiline</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>a17ef67a-90f9-4bc4-bb45-d02e3a2eeaf4</webElementGuid>
+      <webElementGuid>40cd5c51-fbef-42ef-92a2-bee887688e94</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -126,7 +126,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:justificationRmk&quot;)</value>
-      <webElementGuid>35130248-e664-4b2a-9559-c361db0454ac</webElementGuid>
+      <webElementGuid>a50961b3-abb3-4ab1-bb40-9f561a1d522d</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -134,7 +134,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//textarea[@id='_Catalogue_WAR_NGePportlet_:form:justificationRmk']</value>
-      <webElementGuid>41c01498-095a-4d4e-82f3-22a68789e1d2</webElementGuid>
+      <webElementGuid>a96fabb2-931c-41e9-b641-a14098ee173d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -142,7 +142,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//span[@id='_Catalogue_WAR_NGePportlet_:form:justId']/table/tbody/tr[2]/td[2]/textarea</value>
-      <webElementGuid>2d357da8-15b1-497d-b243-b3af412c1d86</webElementGuid>
+      <webElementGuid>0c0749c2-87bd-41aa-afa6-bdf26a271b9b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -150,7 +150,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//td[2]/textarea</value>
-      <webElementGuid>eccf5757-0b75-424e-a590-d8259472ca61</webElementGuid>
+      <webElementGuid>2e1af0c5-7124-4c8a-9a62-719e5574239d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -158,6 +158,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//textarea[@id = '_Catalogue_WAR_NGePportlet_:form:justificationRmk' and @name = '_Catalogue_WAR_NGePportlet_:form:justificationRmk']</value>
-      <webElementGuid>5319594d-3a47-4769-8135-94e4e6d0828c</webElementGuid>
+      <webElementGuid>b8ff2e82-ea31-423f-b29f-f429d44fa464</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
