@@ -299,7 +299,7 @@
       <name>DurationMonth</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
+      <defaultValue>4</defaultValue>
       <description></description>
       <id>74c6b2fb-234c-4c26-9128-9d717922523d</id>
       <masked>false</masked>
