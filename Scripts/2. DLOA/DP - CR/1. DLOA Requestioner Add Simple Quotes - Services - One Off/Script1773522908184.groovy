@@ -23,20 +23,38 @@ import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
-/* =========================
- * HELPERS
+/* =========================================================
+ * HELPER SECTION
  * Purpose:
- * - reusable utility for conversion, wait, click, text input, upload
- * - keep script stable without changing main flow
- * ========================= */
+ * - common reusable functions
+ * - grouped by type for easier maintenance
+ * - logic unchanged, only rearranged and commented
+ * ========================================================= */
 
-// Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
+
+/* =========================================================
+ * 1) BASIC DATA / CONVERSION HELPER
+ * ========================================================= */
+
+/**
+ * Convert Excel / CSV value to int safely.
+ * Example supported values:
+ * "0", 0, 0.0, "1.0"
+ */
 int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
 
-// PrimeFaces overlay wait
+
+/* =========================================================
+ * 2) PAGE / OVERLAY WAIT HELPER
+ * ========================================================= */
+
+/**
+ * Wait until PrimeFaces / block UI overlay disappears.
+ * Use this after click, dropdown selection, save, popup action, etc.
+ */
 def waitBlockUI(int timeout = 30) {
 	TestObject blockUI = new TestObject('blockUI')
 	blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -48,20 +66,34 @@ def waitBlockUI(int timeout = 30) {
 	}
 }
 
-/* ---------- Lightweight wait wrappers ---------- */
-// wait until element visible
+
+/* =========================================================
+ * 3) LIGHTWEIGHT ELEMENT WAIT / ACTION HELPERS
+ * ========================================================= */
+
+/**
+ * Wait until element is visible.
+ */
 def wVisible(TestObject obj, int timeout = 1) {
 	waitBlockUI(Math.min(timeout, 1))
 	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// wait until element clickable
+/**
+ * Wait until element is clickable.
+ * This first ensures element is visible.
+ */
 def wClickable(TestObject obj, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// click with wait + tiny retry
+/**
+ * Click element with:
+ * - wait
+ * - scroll
+ * - small retry if first click fails
+ */
 def c(TestObject obj, int timeout = 1) {
 	for (int i=0; i<2; i++) {
 		try {
@@ -80,7 +112,9 @@ def c(TestObject obj, int timeout = 1) {
 	waitBlockUI(1)
 }
 
-// double click with wait
+/**
+ * Double click element with wait.
+ */
 def dc(TestObject obj, int timeout = 1) {
 	try {
 		wClickable(obj, timeout)
@@ -93,77 +127,35 @@ def dc(TestObject obj, int timeout = 1) {
 	}
 }
 
-// setText with wait
+/**
+ * Set text with wait.
+ * Best for normal text field.
+ * For sensitive formatted field, use JS/manual typing separately.
+ */
 def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-def setZoneQtyByRow = { int rowIndex, String qtyValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
-
-	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
-	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(qtyObj, 20)
-	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(qtyEl, qtyValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-
-def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
-
-	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
-	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(priceObj, 20)
-	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(priceEl, unitPriceValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-// upload with wait
+/**
+ * Upload file with wait.
+ */
 def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.uploadFile(obj, filePath)
 	waitBlockUI(1)
 }
 
-/* =========================
- * PRIMEFACES DROPDOWN HELPERS
- * Purpose:
- * - open PrimeFaces dropdown
- * - click option by index
- * - support both PrimeFaces and real select
- * ========================= */
+
+/* =========================================================
+ * 4) PRIMEFACES DROPDOWN HELPERS
+ * ========================================================= */
+
+/**
+ * Open PrimeFaces dropdown panel.
+ * Used for dropdown that is not a real <select>.
+ */
 def openPFDropdown(TestObject triggerObj) {
 
 	TestObject panelOpen = new TestObject('pfPanelOpen')
@@ -181,7 +173,12 @@ def openPFDropdown(TestObject triggerObj) {
 	}
 }
 
-// click PrimeFaces option by index (0-based)
+/**
+ * Click PrimeFaces dropdown option by 0-based index.
+ * Example:
+ * 0 = first option
+ * 1 = second option
+ */
 def clickPFOptionByIndex(int index0) {
 	TestObject opt = new TestObject("pfOpt_" + index0)
 	opt.addProperty("xpath", ConditionType.EQUALS,
@@ -194,7 +191,10 @@ def clickPFOptionByIndex(int index0) {
 }
 
 /**
- * Universal dropdown select by index (SAFE)
+ * Universal dropdown select by index.
+ * Supports:
+ * - real <select>
+ * - PrimeFaces custom dropdown
  */
 def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 
@@ -224,12 +224,76 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 }
 
 
-/* =========================
- * BROWSER SETUP
- * Purpose:
- * - Radio Button for Procurement Type Category
- * ========================= */
+/* =========================================================
+ * 5) TABLE / POPUP INPUT HELPERS
+ * ========================================================= */
 
+/**
+ * Set zone quantity by popup row index.
+ * Used for popup table:
+ * specZoneQtyTbl:{rowIndex}:zoneQty
+ */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/**
+ * Set unit price / rate by popup row index.
+ * Used for popup table:
+ * specAnswerTbl:{rowIndex}:ratePerUomAns
+ */
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+
+/* =========================================================
+ * 6) SPECIAL RADIO / OPTION HELPER
+ * ========================================================= */
+
+/**
+ * Click procurement type radio button by business option number.
+ * Mapping:
+ * 1 = first radio
+ * 2 = second radio
+ * etc.
+ */
 def clickProcurementType(int option) {
 	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
 
@@ -247,19 +311,85 @@ def clickProcurementType(int option) {
 	waitBlockUI(20)
 }
 
-/* =========================
- * BROWSER SETUP
- * Purpose:
- * - launch Chrome in clean guest/incognito mode
- * - disable password manager prompts
- * ========================= */
 
-/* PATH HADI
+/* =========================================================
+ * 7) CALENDAR PICKER DATE
+ * ========================================================= */
+
+def pickDate(String yyyyMmDd) {
+
+	// Ensure datepicker is visible
+	TestObject dp = new TestObject('dp')
+	dp.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']")
+	WebUI.waitForElementVisible(dp, 20)
+
+	def parts = yyyyMmDd.split('-')
+	int targetYear  = parts[0] as int
+	int targetMonth = parts[1] as int   // 1..12
+	String targetDay = String.valueOf(parts[2] as int) // "01" -> "1"
+
+	// English month names used by jQuery UI datepicker
+	Map<String, Integer> monthMap = [
+		"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,
+		"July":7,"August":8,"September":9,"October":10,"November":11,"December":12
+	]
+
+	TestObject monthObj = new TestObject('dpMonth')
+	monthObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-month']")
+
+	TestObject yearObj = new TestObject('dpYear')
+	yearObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-year']")
+
+	TestObject nextBtn = new TestObject('dpNext')
+	nextBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]")
+
+	TestObject prevBtn = new TestObject('dpPrev')
+	prevBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]")
+
+	// Navigate month/year until correct (safety max 48 clicks)
+	int guard = 0
+	while (guard < 48) {
+		String curMonthName = WebUI.getText(monthObj).trim()
+		int curMonth = monthMap.get(curMonthName)
+		int curYear = WebUI.getText(yearObj).trim() as int
+
+		if (curYear == targetYear && curMonth == targetMonth) break
+
+		if (curYear < targetYear || (curYear == targetYear && curMonth < targetMonth)) {
+			WebUI.click(nextBtn)
+		} else {
+			WebUI.click(prevBtn)
+		}
+		WebUI.delay(1) // must be number, not string
+		guard++
+	}
+
+	// Click the day (avoid other-month/disabled cells)
+	String dayXpath =
+		"//*[@id='ui-datepicker-div']//td[" +
+		"not(contains(@class,'ui-datepicker-other-month')) and " +
+		"not(contains(@class,'ui-state-disabled'))" +
+		"]//a[normalize-space(.)='${targetDay}']"
+
+	TestObject dayObj = new TestObject("day_" + targetDay)
+	dayObj.addProperty("xpath", ConditionType.EQUALS, dayXpath)
+
+	WebUI.waitForElementClickable(dayObj, 20)
+	WebUI.click(dayObj)
+}
+
+/* =========================================================
+ * 8) BROWSER SETUP
+ * ========================================================= */
+
+/* PATH HADI */
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" */
-/* PATH Atikah*/
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+
+/* PATH ATIKAH
 String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+*/
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
@@ -268,13 +398,15 @@ String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 ChromeOptions options = new ChromeOptions()
 options.setBinary(chromeBinary)
 
-//Bypass security pop up for google chrome 
+// Bypass browser security popup
 options.setAcceptInsecureCerts(true)
 
+// Disable HTTPS-first strict behavior
 options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
 
+// Browser profile options
 options.addArguments("--guest")
-//options.addArguments("--incognito")
+// options.addArguments("--incognito")
 options.addArguments("--user-data-dir=" + userDataDir)
 options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
 options.addArguments("--disable-save-password-bubble")
@@ -283,13 +415,14 @@ options.addArguments("--no-first-run")
 options.addArguments("--no-default-browser-check")
 options.addArguments("--remote-allow-origins=*")
 
+// Browser preferences
 Map<String, Object> prefs = new HashMap<>()
 prefs.put("credentials_enable_service", false)
 prefs.put("profile.password_manager_enabled", false)
 prefs.put("profile.default_content_setting_values.notifications", 2)
 options.setExperimentalOption("prefs", prefs)
 
-
+// Launch browser
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
 
