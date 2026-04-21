@@ -679,6 +679,17 @@ for (int i = 1; i <= loopCount; i++) {
     WebUI.delay(1)
 }
 
+// Click Side Menu Criteria and Supplier Item
+if (RBProcurementType == 2) {
+
+    WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Side Menu Criteria and Supplier List'))
+
+    waitBlockUI(30)
+    WebUI.delay(1)
+}
+
+
+
 /* =========================
  * Save LOA (unchanged)
  * ========================= */
