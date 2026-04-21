@@ -52,37 +52,7 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>42855883-5584-4445-a508-636efaaaa4c9</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>05f38b37-0a2e-4bda-ae48-d37439a04e32</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>26f2445f-e388-4086-9a87-ccf281bbaf02</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>18ae5ff8-2e81-40a7-8b07-7f18f6d2cef2</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>d2bd475a-d3f0-48bd-9fb1-f1b912d0a949</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>575a6b9b-8a2d-4410-8b22-48177798c6c8</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -194,46 +164,11 @@
       <name>Justification</name>
    </variable>
    <variable>
-      <defaultValue>'Item'</defaultValue>
-      <description></description>
-      <id>42855883-5584-4445-a508-636efaaaa4c9</id>
-      <masked>false</masked>
-      <name>ProductSpecification1</name>
-   </variable>
-   <variable>
-      <defaultValue>'PCS'</defaultValue>
-      <description></description>
-      <id>05f38b37-0a2e-4bda-ae48-d37439a04e32</id>
-      <masked>false</masked>
-      <name>ProductUOM</name>
-   </variable>
-   <variable>
-      <defaultValue>1</defaultValue>
-      <description></description>
-      <id>26f2445f-e388-4086-9a87-ccf281bbaf02</id>
-      <masked>false</masked>
-      <name>PriceType</name>
-   </variable>
-   <variable>
-      <defaultValue>'10'</defaultValue>
-      <description></description>
-      <id>18ae5ff8-2e81-40a7-8b07-7f18f6d2cef2</id>
-      <masked>false</masked>
-      <name>ProductQuaty</name>
-   </variable>
-   <variable>
       <defaultValue>'30'</defaultValue>
       <description></description>
       <id>d2bd475a-d3f0-48bd-9fb1-f1b912d0a949</id>
       <masked>false</masked>
       <name>DeliveryPeriod</name>
-   </variable>
-   <variable>
-      <defaultValue>'SPEC PROD'</defaultValue>
-      <description></description>
-      <id>575a6b9b-8a2d-4410-8b22-48177798c6c8</id>
-      <masked>false</masked>
-      <name>ProductSpecification2</name>
    </variable>
    <variable>
       <defaultValue>'SVS'</defaultValue>
@@ -299,7 +234,7 @@
       <name>DurationMonth</name>
    </variable>
    <variable>
-      <defaultValue>4</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>74c6b2fb-234c-4c26-9128-9d717922523d</id>
       <masked>false</masked>
