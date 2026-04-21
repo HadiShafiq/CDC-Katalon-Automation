@@ -410,7 +410,7 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 		}
 
 
-//selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
 
 //WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Procurement Type Radio Button'))
 
