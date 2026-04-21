@@ -223,6 +223,30 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
+
+/* =========================
+ * BROWSER SETUP
+ * Purpose:
+ * - Radio Button for Procurement Type Category
+ * ========================= */
+
+def clickProcurementType(int option) {
+	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
+
+	TestObject obj = new TestObject("procurementType_" + option)
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(obj, 20)
+	WebUI.waitForElementClickable(obj, 20)
+
+	WebUI.executeJavaScript(
+		"arguments[0].click();",
+		Arrays.asList(WebUiCommonHelper.findWebElement(obj, 20))
+	)
+
+	waitBlockUI(20)
+}
+
 /* =========================
  * BROWSER SETUP
  * Purpose:
@@ -386,9 +410,13 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 		}
 
 
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
+//selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
 
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Procurement Type Radio Button'))
+//WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Procurement Type Radio Button'))
+
+//Procurement Type Category
+
+clickProcurementType(ProcurementType)
 
 selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Reason'), ReasonPK7)
 
@@ -399,7 +427,7 @@ WebUI.setText(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. G
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-03-16")   // <-- put your date here
+pickDate("2026-04-21")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
