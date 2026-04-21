@@ -1,95 +1,33 @@
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 
-import com.kms.katalon.core.testobject.TestObject
-import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.model.FailureHandling
+import com.kms.katalon.core.testobject.ConditionType
+import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
-import org.openqa.selenium.Keys
 import org.openqa.selenium.JavascriptExecutor
+import org.openqa.selenium.Keys
 import org.openqa.selenium.WebDriver
+import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 
+import java.io.FileInputStream
+import java.io.FileOutputStream
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
+import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import java.io.FileInputStream
-import java.io.FileOutputStream
-
-import com.kms.katalon.core.testobject.ConditionType
 
 /* =========================
- * Calendar Picker Date
- * ========================= */
-
-def pickDate(String yyyyMmDd) {
-
-    // Ensure datepicker is visible
-    TestObject dp = new TestObject('dp')
-    dp.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']")
-    WebUI.waitForElementVisible(dp, 20)
-
-    def parts = yyyyMmDd.split('-')
-    int targetYear  = parts[0] as int
-    int targetMonth = parts[1] as int   // 1..12
-    String targetDay = String.valueOf(parts[2] as int) // "01" -> "1"
-
-    // English month names used by jQuery UI datepicker
-    Map<String, Integer> monthMap = [
-        "January":1,"February":2,"March":3,"April":4,"May":5,"June":6,
-        "July":7,"August":8,"September":9,"October":10,"November":11,"December":12
-    ]
-
-    TestObject monthObj = new TestObject('dpMonth')
-    monthObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-month']")
-
-    TestObject yearObj = new TestObject('dpYear')
-    yearObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-year']")
-
-    TestObject nextBtn = new TestObject('dpNext')
-    nextBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]")
-
-    TestObject prevBtn = new TestObject('dpPrev')
-    prevBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]")
-
-    // Navigate month/year until correct (safety max 48 clicks)
-    int guard = 0
-    while (guard < 48) {
-        String curMonthName = WebUI.getText(monthObj).trim()
-        int curMonth = monthMap.get(curMonthName)
-        int curYear = WebUI.getText(yearObj).trim() as int
-
-        if (curYear == targetYear && curMonth == targetMonth) break
-
-        if (curYear < targetYear || (curYear == targetYear && curMonth < targetMonth)) {
-            WebUI.click(nextBtn)
-        } else {
-            WebUI.click(prevBtn)
-        }
-        WebUI.delay(1) // must be number, not string
-        guard++
-    }
-
-    // Click the day (avoid other-month/disabled cells)
-    String dayXpath =
-        "//*[@id='ui-datepicker-div']//td[" +
-        "not(contains(@class,'ui-datepicker-other-month')) and " +
-        "not(contains(@class,'ui-state-disabled'))" +
-        "]//a[normalize-space(.)='${targetDay}']"
-
-    TestObject dayObj = new TestObject("day_" + targetDay)
-    dayObj.addProperty("xpath", ConditionType.EQUALS, dayXpath)
-
-    WebUI.waitForElementClickable(dayObj, 20)
-    WebUI.click(dayObj)
-}
-/* =========================
- * Helpers (KEEP YOUR LOGIC, ONLY ADD WAITS)
+ * HELPERS
+ * Purpose:
+ * - reusable utility for conversion, wait, click, text input, upload
+ * - keep script stable without changing main flow
  * ========================= */
 
 // Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
@@ -98,7 +36,7 @@ int toInt(def v, int defaultVal = 0) {
 	return new BigDecimal(v.toString().trim()).intValue()
 }
 
-// PrimeFaces overlay wait (your original)
+// PrimeFaces overlay wait
 def waitBlockUI(int timeout = 30) {
 	TestObject blockUI = new TestObject('blockUI')
 	blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -110,18 +48,21 @@ def waitBlockUI(int timeout = 30) {
 	}
 }
 
-/* ---------- NEW: Lightweight wait wrappers (non-invasive) ---------- */
+/* ---------- Lightweight wait wrappers ---------- */
+// wait until element visible
 def wVisible(TestObject obj, int timeout = 1) {
 	waitBlockUI(Math.min(timeout, 1))
 	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
+// wait until element clickable
 def wClickable(TestObject obj, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-def c(TestObject obj, int timeout = 1) { // click with wait + tiny retry
+// click with wait + tiny retry
+def c(TestObject obj, int timeout = 1) {
 	for (int i=0; i<2; i++) {
 		try {
 			wClickable(obj, timeout)
@@ -133,39 +74,95 @@ def c(TestObject obj, int timeout = 1) { // click with wait + tiny retry
 			WebUI.delay(0.3)
 		}
 	}
-	// last try (keep WebUI.click)
+	// last try
 	wClickable(obj, timeout)
 	WebUI.click(obj)
 	waitBlockUI(1)
 }
 
-def dc(TestObject obj, int timeout = 1) { // double click with wait
+// double click with wait
+def dc(TestObject obj, int timeout = 1) {
 	try {
 		wClickable(obj, timeout)
 		WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 		WebUI.doubleClick(obj, FailureHandling.OPTIONAL)
 		waitBlockUI(1)
 	} catch (Exception e) {
-		// keep optional behavior
 		WebUI.doubleClick(obj, FailureHandling.OPTIONAL)
 		waitBlockUI(1)
 	}
 }
 
-def t(TestObject obj, def value, int timeout = 1) { // setText with wait
+// setText with wait
+def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
-def up(TestObject obj, String filePath, int timeout = 1) { // upload with wait
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/* =========================
+ * HELPERS for zone quantity
+ * ========================= */
+
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+// upload with wait
+def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.uploadFile(obj, filePath)
 	waitBlockUI(1)
 }
 
 /* =========================
- * open PrimeFaces dropdown (your original + add waits)
+ * PRIMEFACES DROPDOWN HELPERS
+ * Purpose:
+ * - open PrimeFaces dropdown
+ * - click option by index
+ * - support both PrimeFaces and real select
  * ========================= */
 def openPFDropdown(TestObject triggerObj) {
 
@@ -174,7 +171,6 @@ def openPFDropdown(TestObject triggerObj) {
 		"//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]"
 	)
 
-	// was: WebUI.click(triggerObj)
 	c(triggerObj, 20)
 	WebUI.delay(0.3)
 
@@ -185,25 +181,24 @@ def openPFDropdown(TestObject triggerObj) {
 	}
 }
 
-// click PrimeFaces option by index (0-based) (your original + use click wrapper)
+// click PrimeFaces option by index (0-based)
 def clickPFOptionByIndex(int index0) {
 	TestObject opt = new TestObject("pfOpt_" + index0)
 	opt.addProperty("xpath", ConditionType.EQUALS,
 		"(//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[contains(@class,'ui-selectonemenu-item')])[${index0 + 1}]"
 	)
 
-	// was: waitForElementClickable + click
 	c(opt, 20)
 	WebUI.delay(0.2)
 	waitBlockUI(20)
 }
 
 /**
- * Universal dropdown select by index (SAFE): (your original)
+ * Universal dropdown select by index (SAFE)
  */
 def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 
-	int idx0 = toInt(indexFromData) // NO -1 because data already 0-based
+	int idx0 = toInt(indexFromData) // data already 0-based
 
 	for (int attempt = 0; attempt < 3; attempt++) {
 		try {
@@ -221,7 +216,7 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 			}
 			return
 		} catch (org.openqa.selenium.StaleElementReferenceException e) {
-			WebUI.delay(0.5) // PrimeFaces re-render
+			WebUI.delay(0.5)
 		}
 	}
 
@@ -229,73 +224,167 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 }
 
 /* =========================
- * Browser Setup (Guest + Clean) (UNCHANGED)
+ * BROWSER SETUP
+ * Purpose:
+ * - launch Chrome in clean guest/incognito mode
+ * - disable password manager prompts
  * ========================= */
-String userDataDir = Files.createTempDirectory('katalon-clean').toString()
+
+/* PATH HADI*/
+String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" 
+/* PATH Atikah
+String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+*/
+System.setProperty("webdriver.chrome.driver", chromeDriverPath)
+
+String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 
 ChromeOptions options = new ChromeOptions()
-options.addArguments('--guest')
-options.addArguments('--incognito')
-options.addArguments('--user-data-dir=' + userDataDir)
-options.addArguments('--disable-features=PasswordLeakDetection,PasswordManagerOnboarding')
-options.addArguments('--disable-save-password-bubble')
-options.addArguments('--no-first-run')
-options.addArguments('--no-default-browser-check')
-options.setExperimentalOption('prefs', [
-	('credentials_enable_service') : false,
-	('profile.password_manager_enabled') : false,
-	('profile.default_content_setting_values.notifications') : 2
-])
+options.setBinary(chromeBinary)
+
+//Bypass security pop up for google chrome 
+options.setAcceptInsecureCerts(true)
+
+options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
+
+options.addArguments("--guest")
+//options.addArguments("--incognito")
+options.addArguments("--user-data-dir=" + userDataDir)
+options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
+options.addArguments("--disable-save-password-bubble")
+options.addArguments("--disable-notifications")
+options.addArguments("--no-first-run")
+options.addArguments("--no-default-browser-check")
+options.addArguments("--remote-allow-origins=*")
+
+Map<String, Object> prefs = new HashMap<>()
+prefs.put("credentials_enable_service", false)
+prefs.put("profile.password_manager_enabled", false)
+prefs.put("profile.default_content_setting_values.notifications", 2)
+options.setExperimentalOption("prefs", prefs)
+
 
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
 
 /* =========================
- * Test Flow (SAME FLOW, ONLY WRAP ACTIONS)
+ * OPEN APPLICATION
+ * Purpose:
+ * - open NGeP SIT portal
+ * - maximize browser
+ * - wait initial page load
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
 waitBlockUI(20)
 
-// Language
+/* =========================
+ * LANGUAGE
+ * Purpose:
+ * - switch system language to English
+ * ========================= */
 wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 waitBlockUI(20)
-// WebUI.delay(1)  // keep if you want; but overlay wait is usually enough
+WebUI.delay(0.5)
 WebUI.delay(1)
 
-// Login
+/* =========================
+ * LOGIN
+ * Purpose:
+ * - open login form
+ * - enter username and password
+ * - submit login
+ * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
+WebUI.delay(0.5)
+
 t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Username'), Username, 20)
+WebUI.delay(0.5)
+
 t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Password'), Password, 20)
+WebUI.delay(0.5)
+
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Submit Username and Password'), 20)
 waitBlockUI(30)
+WebUI.delay(0.5)
+
+/* =========================
+ * LANGUAGE
+ * Purpose:
+ * -Change language inside dashboard
+ * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
 /* =========================
  * DLOA - Requestioner
  * ========================= */
 
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Catalogue Search'))
-
-WebUI.setText(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Item Keyword'),
-	Keyword)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Supplier Name'),
-	SupplierName)
-
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Button Search Supplier'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Action - Simple Quote'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Add to Simple Quote'))
+		// Open Catalogue Search
+		c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Catalogue Search'), 20)
+		waitBlockUI(30)
+		WebUI.delay(1)
+		
+		// Input Item Keyword
+		TestObject itemKeyword = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Item Keyword')
+		wVisible(itemKeyword, 20)
+		WebUI.click(itemKeyword)
+		WebUI.clearText(itemKeyword)
+		WebUI.setText(itemKeyword, Keyword)
+		WebUI.delay(0.5)
+		
+		// Input Supplier Name
+		TestObject supplierName = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Supplier Name')
+		wVisible(supplierName, 20)
+		WebUI.click(supplierName)
+		WebUI.clearText(supplierName)
+		WebUI.setText(supplierName, SupplierName)
+		WebUI.delay(0.5)
+		
+		// Click Search
+		c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Button Search Supplier'), 20)
+		waitBlockUI(30)
+		WebUI.delay(1)
+		
+		// Click Action dropdown
+		c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Action - Simple Quote'), 20)
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+		
+		// Click Add to Simple Quote
+		c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Add to Simple Quote'), 20)
+		waitBlockUI(30)
+		WebUI.delay(1)
 
 /* =========================
  * DLOA - General Information
  * ========================= */
 
-WebUI.setText(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Title'),
-	DLAOTitle)
+		TestObject title = findTestObject(
+		    'Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Title'
+		)
+		
+		String titleInput = DLAOTitle.toString().trim()
+		
+		WebUI.waitForElementVisible(title, 20)
+		WebUI.waitForElementClickable(title, 20)
+		WebUI.click(title)
+		WebUI.delay(0.5)
+		
+		// clear like user
+		WebUI.sendKeys(title, Keys.chord(Keys.CONTROL, 'a'))
+		WebUI.delay(0.2)
+		WebUI.sendKeys(title, Keys.chord(Keys.BACK_SPACE))
+		WebUI.delay(0.3)
+		
+		// type slowly
+		for (char ch : titleInput.toCharArray()) {
+		    WebUI.sendKeys(title, ch.toString())
+		    WebUI.delay(0.1)
+		}
+
 
 selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
 
