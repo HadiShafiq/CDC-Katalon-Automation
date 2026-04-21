@@ -254,13 +254,13 @@ def clickProcurementType(int option) {
  * - disable password manager prompts
  * ========================= */
 
-/* PATH HADI*/
+/* PATH HADI
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" 
-/* PATH Atikah
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" */
+/* PATH Atikah*/
 String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
 String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
-*/
+
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
 String userDataDir = Files.createTempDirectory("katalon-cft").toString()
@@ -410,13 +410,13 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 		}
 
 
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), Procurementtype)
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), ProcurementtypeCategory)
 
 //WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Procurement Type Radio Button'))
 
 //Procurement Type Category
 
-clickProcurementType(ProcurementType)
+clickProcurementType(RBProcurementType)
 
 selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Reason'), ReasonPK7)
 

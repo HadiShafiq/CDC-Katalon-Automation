@@ -7,7 +7,9 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:procTypeCategory']/div[3]/span</value>
+         <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:procTypeCategory']/div[3]/span&#xd;
+&#xd;
+</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -23,7 +25,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>696e4ea2-079c-43ed-bd94-5da0ec66f043</webElementGuid>
+      <webElementGuid>79cf5f48-8280-40a2-bc89-6e6212c8ea61</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +33,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-icon ui-icon-triangle-1-s</value>
-      <webElementGuid>dca30e91-933e-43a1-b4c5-e2f836760580</webElementGuid>
+      <webElementGuid>aa534c17-bee7-4cc5-94e3-1f5ff86be745</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,7 +41,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:procTypeCategory&quot;)/div[@class=&quot;ui-selectonemenu-trigger ui-state-default ui-corner-right ui-state-hover&quot;]/span[@class=&quot;ui-icon ui-icon-triangle-1-s&quot;]</value>
-      <webElementGuid>3b5013c7-f1a5-4f23-ac9d-a81e20d65fed</webElementGuid>
+      <webElementGuid>f533947b-c192-45a4-ac48-e22fb00a100a</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -47,7 +49,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:procTypeCategory']/div[3]/span</value>
-      <webElementGuid>f1de167b-ea38-4057-acbc-76a805b20895</webElementGuid>
+      <webElementGuid>4154e2cf-abf4-4bb4-8e21-52b42135f9f1</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -55,6 +57,6 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//td/div/div[3]/span</value>
-      <webElementGuid>07149bfb-cb2f-457b-b0d3-f9f140d2f62e</webElementGuid>
+      <webElementGuid>995475e1-4118-495d-af9c-68272c53625e</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
