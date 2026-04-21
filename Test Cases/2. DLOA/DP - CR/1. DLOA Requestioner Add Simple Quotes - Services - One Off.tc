@@ -171,7 +171,7 @@
       <description></description>
       <id>8f2469d5-6f40-4e71-be8a-035911e8634f</id>
       <masked>false</masked>
-      <name>Procurementtype</name>
+      <name>ProcurementType</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
