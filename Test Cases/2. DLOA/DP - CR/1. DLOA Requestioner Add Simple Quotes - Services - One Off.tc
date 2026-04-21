@@ -138,6 +138,12 @@
       <value></value>
       <variableId>668435fe-184f-4571-8d4f-217e5477bac2</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>74c6b2fb-234c-4c26-9128-9d717922523d</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -171,7 +177,7 @@
       <description></description>
       <id>8f2469d5-6f40-4e71-be8a-035911e8634f</id>
       <masked>false</masked>
-      <name>ProcurementType</name>
+      <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
@@ -291,5 +297,12 @@
       <id>668435fe-184f-4571-8d4f-217e5477bac2</id>
       <masked>false</masked>
       <name>DurationMonth</name>
+   </variable>
+   <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>74c6b2fb-234c-4c26-9128-9d717922523d</id>
+      <masked>false</masked>
+      <name>RBProcurementType</name>
    </variable>
 </TestCaseEntity>
