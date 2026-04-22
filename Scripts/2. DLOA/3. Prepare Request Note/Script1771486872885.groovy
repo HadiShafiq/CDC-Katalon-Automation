@@ -557,58 +557,77 @@ for (int i = 0; i < loopCount; i++) {
 	WebUI.delay(1)
 
 	// =========================
-	// Click Search button
-	// =========================
-	
-	TestObject searchBtn = new TestObject("searchBtn_${i}")
-	searchBtn.addProperty(
+// Click Search button
+// =========================
+TestObject searchBtn = new TestObject("searchBtn_${i}")
+searchBtn.addProperty(
 	"xpath",
 	ConditionType.EQUALS,
 	"//*[@id='_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:${i}:beforeSaveLov:searcbBtnId']"
-	)
-	c(searchBtn, 20)
-	waitBlockUI(20)
-	WebUI.delay(4)
-	
-	// =========================
-	// Wait first row result
-	// =========================
-	TestObject firstRow = new TestObject("firstRow_${i}")
-	firstRow.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		"//*[@id='_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:${i}:beforeSaveLov:dtUserOrg_data']/tr[1]"
-	)
-	
-	wVisible(firstRow, 20)
-	WebUI.scrollToElement(firstRow, 2)
-	
-	try {
-		WebUI.click(firstRow)
-	} catch (Exception e) {
-		WebUI.enhancedClick(firstRow, FailureHandling.OPTIONAL)
-	}
-	WebUI.delay(3)
-	WebUI.doubleClick(firstRow, FailureHandling.OPTIONAL)
-	waitBlockUI(20)
+)
 
-	// =========================
-	// Click Select button
-	// =========================
-	// Click select
-	int rowIndex = i  // or 0 if UI reset
-	
-	TestObject selectBtn = new TestObject("selectBtn_${i}")
-	selectBtn.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		"//*[@id='_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:${rowIndex}:beforeSaveLov:slbtn']"
-		)
-		c(selectBtn, 20)
-		waitBlockUI(20)
-		WebUI.delay(4)
-		}
+c(searchBtn, 20)
+waitBlockUI(20)
+WebUI.delay(1)
 
+// =========================
+// Wait first row result
+// =========================
+TestObject firstRow = new TestObject("firstRow_${i}")
+firstRow.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//*[@id='_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:${i}:beforeSaveLov:dtUserOrg_data']/tr[1]"
+)
+
+// wait + fallback delay if slow
+if (!WebUI.waitForElementVisible(firstRow, 10, FailureHandling.OPTIONAL)) {
+	WebUI.delay(2)
+}
+WebUI.waitForElementClickable(firstRow, 20)
+WebUI.scrollToElement(firstRow, 2)
+
+try {
+	WebUI.click(firstRow)
+} catch (Exception e) {
+	WebUI.enhancedClick(firstRow, FailureHandling.OPTIONAL)
+}
+
+WebUI.delay(1)
+WebUI.doubleClick(firstRow, FailureHandling.OPTIONAL)
+waitBlockUI(20)
+WebUI.delay(1)
+
+// =========================
+// Click Select button
+// =========================
+int rowIndex = i
+
+TestObject selectBtn = new TestObject("selectBtn_${i}")
+selectBtn.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//*[@id='_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:${rowIndex}:beforeSaveLov:slbtn']"
+)
+
+// wait + fallback delay if slow
+if (!WebUI.waitForElementVisible(selectBtn, 10, FailureHandling.OPTIONAL)) {
+	WebUI.delay(2)
+}
+WebUI.waitForElementClickable(selectBtn, 20)
+WebUI.scrollToElement(selectBtn, 2)
+
+try {
+	WebUI.click(selectBtn)
+} catch (Exception e) {
+	WebUI.enhancedClick(selectBtn, FailureHandling.OPTIONAL)
+}
+
+
+}
+
+waitBlockUI(20)
+WebUI.delay(2)
 		// =========================
 		// Choose Approver
 		// =========================
