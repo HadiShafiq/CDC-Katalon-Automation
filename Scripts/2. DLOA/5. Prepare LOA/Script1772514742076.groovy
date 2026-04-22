@@ -321,7 +321,7 @@ t(findTestObject('Object Repository/DLOA/8. Prepare LOA/File Reference No_2'), F
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/Date Picker COntract Details icon'), 20)
 
-pickDate("2026-03-10")   // <-- put your date here
+pickDate("2026-04-23")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -369,7 +369,7 @@ WebUI.delay(1)
 
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Date Picker LOA and Attachment'), 20)
-pickDate("2026-03-10")   // <-- put your date here
+pickDate("2026-04-23")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -401,7 +401,7 @@ try {
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Click upload Icon'), 3)
 up(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Choose File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf',3)
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
@@ -458,7 +458,7 @@ assert false : "❌ LOA number not found. Message was: " + msg
 WebUI.comment("✅ Captured LOA No: " + loaNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\LOA_DP_CR_RN_LOA_IZZAh_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Direct Purchased\\No SQ\\LOA_DP_CR_RN_LOA_PREPARE_LOA.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

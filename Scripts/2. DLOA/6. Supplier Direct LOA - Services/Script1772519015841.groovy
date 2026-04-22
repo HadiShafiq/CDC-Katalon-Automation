@@ -293,7 +293,7 @@ WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Branch Information'))
 
 WebUI.uploadFile(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Choose File Branch Information'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
 
@@ -302,7 +302,7 @@ WebUI.delay(1)
 
 //WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
 
-pickDate("2026-03-10")   // <-- put your date here
+pickDate("2026-04-23")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -337,7 +337,7 @@ waitBlockUI(30)
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
 
 WebUI.uploadFile(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 	
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
 
@@ -345,7 +345,7 @@ WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Atta
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
 
@@ -353,7 +353,7 @@ WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Atta
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf')
+	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
 
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
 
@@ -376,18 +376,19 @@ WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zo
 
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
 
+//click simbol YES at popup 
+WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Yes Popup'))
+
 /* =========================
  * Accept and Reject Button
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
+//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
 
+WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Accept Button Supplier'))
 
+WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Confirmation Yes'))
 
-//WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Accept Button Supplier'))
-
-//WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Confirmation Yes'))
-
-//WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
+WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
 
 //WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Reject Button Supplier'))
 

@@ -593,12 +593,12 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-04-22")   // <-- put your date here
+pickDate("2026-04-23")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Hour'),
-	'23', true) // TIME (Hour)
+	'20', true) // TIME (Hour)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Minute'),
@@ -613,7 +613,7 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/End Date Hour'),
-	'23', true) // TIME (Hour)
+	'20', true) // TIME (Hour)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/End Date Minutes'),

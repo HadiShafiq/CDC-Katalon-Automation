@@ -163,7 +163,7 @@
       <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>78da6b77-45d9-47f2-b30a-96a9065e66c2</id>
       <masked>false</masked>
@@ -191,7 +191,7 @@
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
+      <defaultValue>3</defaultValue>
       <description></description>
       <id>e745b798-024a-4e37-92f1-0aa9bbd747d3</id>
       <masked>false</masked>

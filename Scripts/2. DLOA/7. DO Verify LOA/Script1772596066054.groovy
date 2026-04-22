@@ -363,7 +363,7 @@ if (loaNo == "") {
 WebUI.comment("✅ Captured LOA No: " + loaNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\LOA_DO_Verify_Feb_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Direct Purchased\\No SQ\\LOA_DO_Verify_April_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

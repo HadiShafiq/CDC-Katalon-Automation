@@ -6,12 +6,12 @@
    <elementGuidId>a4b9f09e-5f89-4d60-b8c2-2bd48b9f228f</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//button[.//span[normalize-space()='Save']]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>span.ui-button-text.ui-c</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[.//span[normalize-space()='Accept']]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>d9be5e95-2764-4c7a-a15f-11188f80000e</webElementGuid>
+      <webElementGuid>9d3a3fd9-e31a-4614-acbe-346f44b8a6e5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +31,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-button-text ui-c</value>
-      <webElementGuid>0c7c4fe0-f458-4c13-84f3-7101a8053dcc</webElementGuid>
+      <webElementGuid>2ca638bd-5349-48be-a58b-026e35d07604</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,7 +39,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Save</value>
-      <webElementGuid>b92ef3f8-8630-4bf7-addd-2d305dfc8b4e</webElementGuid>
+      <webElementGuid>ce9b0903-aad6-4461-b5ed-8ee9e726a3c8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +47,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt12&quot;)/span[@class=&quot;ui-button-text ui-c&quot;]</value>
-      <webElementGuid>be6a1ff7-09f1-4289-88dc-511e68c9d076</webElementGuid>
+      <webElementGuid>237c8045-f31b-4f60-a023-a7925a135229</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -55,7 +55,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//button[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt12']/span</value>
-      <webElementGuid>c243a79e-9c6c-4ddc-adc6-a4799a91ee27</webElementGuid>
+      <webElementGuid>2756c495-21dd-4439-8768-61442dc98d7b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Minimize'])[1]/following::span[2]</value>
-      <webElementGuid>d94d79cf-f347-43a6-9fe4-49bea2aabd2a</webElementGuid>
+      <webElementGuid>ff1f225b-cc01-4e59-a2da-aed13737f74f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Maximize'])[1]/following::span[4]</value>
-      <webElementGuid>b780c1f5-2831-45a6-8979-b37f854bd852</webElementGuid>
+      <webElementGuid>bfa373bf-327b-4df3-aae8-1f52fade7635</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Submit'])[1]/preceding::span[1]</value>
-      <webElementGuid>f2a9d956-43c7-4205-b959-ea521bd87e66</webElementGuid>
+      <webElementGuid>13c5fa6e-53af-4d29-9b09-d25bdfdd868c</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,7 +87,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Cancel'])[1]/preceding::span[2]</value>
-      <webElementGuid>8389a1f5-184e-4067-949a-e0bf85129f31</webElementGuid>
+      <webElementGuid>02996956-efbf-4f01-a6dd-43cfd0cb8654</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -95,7 +95,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Save']/parent::*</value>
-      <webElementGuid>c4fc2e15-639b-48d7-aa6d-0625a4b26b47</webElementGuid>
+      <webElementGuid>98d66764-0e51-46b9-9961-47691717d6da</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -103,7 +103,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//button/span</value>
-      <webElementGuid>018a4840-cc18-492f-987b-b790daa6166a</webElementGuid>
+      <webElementGuid>9427f7fd-3821-4c91-a9d0-1db2875ee5d5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -111,6 +111,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//span[(text() = 'Save' or . = 'Save')]</value>
-      <webElementGuid>27da08a4-41b8-4847-9daa-ae74934e0b2d</webElementGuid>
+      <webElementGuid>eb410420-e89e-418a-b46f-f1f2b8598928</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

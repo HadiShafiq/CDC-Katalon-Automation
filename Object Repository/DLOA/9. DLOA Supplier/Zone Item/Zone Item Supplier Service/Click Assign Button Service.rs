@@ -6,11 +6,11 @@
    <elementGuidId>e45ac55d-bee1-4206-9732-26c2af72585d</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//button[starts-with(@id,'_scLoaSupplierResponse_WAR_NGePportlet_:form:itemtbl:') and .//span[normalize-space(.)='Assign']]</value>
+         <key>CSS</key>
       </entry>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//button[contains(@id, 'itemtbl') and not(contains(@class, 'ui-state-disabled')) and .//span[text()='Assign']]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -22,7 +22,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>dd32f142-049f-4cb2-8424-615c8c966479</webElementGuid>
+      <webElementGuid>f533f615-22a7-4a0c-9cb6-5527493f03c4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -30,7 +30,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-button-text ui-c</value>
-      <webElementGuid>459300d0-a132-429b-9724-1e6ce5cfbf73</webElementGuid>
+      <webElementGuid>d636a330-5747-49bf-acd6-7b29b1fde897</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -38,7 +38,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Assign</value>
-      <webElementGuid>9a7766ed-2b82-4acb-b69d-b40c2bfdd3c5</webElementGuid>
+      <webElementGuid>bf2594aa-e0b6-4577-8d76-5ffcfb9d13e0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -46,7 +46,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt775:questionTbl:0:j_idt872&quot;)/span[@class=&quot;ui-button-text ui-c&quot;]</value>
-      <webElementGuid>a988139b-37e3-4f42-a3ea-2b5195816d5d</webElementGuid>
+      <webElementGuid>7e3f38d9-e9cd-454b-85b2-1cd8f1786924</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -54,7 +54,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//button[@id='_scManualSourcingSupplierResponse_WAR_NGePportlet_:form:j_idt775:questionTbl:0:j_idt872']/span</value>
-      <webElementGuid>24d9c951-687f-442f-8cfc-bc50c0e64491</webElementGuid>
+      <webElementGuid>fcc77fc5-1408-4f9c-8df2-8756ad6dcfb8</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -62,7 +62,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='N/A'])[1]/following::span[3]</value>
-      <webElementGuid>f2fa0d0b-2613-4d59-90f0-7141abb0debc</webElementGuid>
+      <webElementGuid>974eac90-aeb3-4554-afc2-82e04c7c0e23</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -70,7 +70,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Service 1'])[1]/following::span[9]</value>
-      <webElementGuid>86f5191e-ccb9-4847-b0c6-97f6e2305671</webElementGuid>
+      <webElementGuid>7e8d895a-9dcf-4ca8-a3eb-786c9a953270</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -78,7 +78,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='ui-button'])[9]/preceding::span[2]</value>
-      <webElementGuid>7a2b84ee-0581-4bbe-93f4-ef1382124627</webElementGuid>
+      <webElementGuid>a3e4fe28-1ee1-4f9f-9786-579609b3c7a9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -86,7 +86,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='ui-button'])[10]/preceding::span[4]</value>
-      <webElementGuid>2d4e0363-fa8c-4df6-ac87-98588fda9a9c</webElementGuid>
+      <webElementGuid>c0f235cb-4894-4867-ad1d-52c0d9f5cc86</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -94,7 +94,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//td[10]/button/span</value>
-      <webElementGuid>31c3c9e2-2387-49d4-b51c-78aef471009f</webElementGuid>
+      <webElementGuid>f246df60-a5fc-424b-9936-51cb27833f49</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -102,6 +102,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//span[(text() = 'Assign' or . = 'Assign')]</value>
-      <webElementGuid>b00e9402-83ac-4a15-bfd9-64704786a063</webElementGuid>
+      <webElementGuid>ae3685e2-37c2-4b18-966a-9fea9f5c223a</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
