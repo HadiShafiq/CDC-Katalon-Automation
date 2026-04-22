@@ -34,13 +34,13 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>0445fef7-8acd-4323-9c1c-3a17170cbfbc</variableId>
+      <variableId>66696209-a499-49d7-86f7-e72b996e1ed8</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>f53c1e4d-73b0-4168-9a8a-8e7fe709fb01</variableId>
+      <variableId>ea4cad2d-0c94-41e3-a440-916f899ae326</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
@@ -57,7 +57,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'SQ260000000000777'</defaultValue>
+      <defaultValue>'SQ260000000001142'</defaultValue>
       <description></description>
       <id>f8ee4008-76b1-4e8f-910f-d2118b04c27b</id>
       <masked>false</masked>
@@ -68,20 +68,20 @@
       <description></description>
       <id>9aba768d-9643-4721-93b4-e1d90936708b</id>
       <masked>false</masked>
-      <name>PreparedBy</name>
+      <name>preparedBy</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
-      <id>0445fef7-8acd-4323-9c1c-3a17170cbfbc</id>
+      <id>66696209-a499-49d7-86f7-e72b996e1ed8</id>
       <masked>false</masked>
-      <name>variable_3</name>
+      <name>KumpulanPTJ</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
-      <id>f53c1e4d-73b0-4168-9a8a-8e7fe709fb01</id>
+      <id>ea4cad2d-0c94-41e3-a440-916f899ae326</id>
       <masked>false</masked>
-      <name>variable_4</name>
+      <name>PTJ</name>
    </variable>
 </TestCaseEntity>

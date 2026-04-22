@@ -136,7 +136,7 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated'</defaultValue>
+      <defaultValue>'Dry Run For AP 201'</defaultValue>
       <description></description>
       <id>1b76d78b-7c8e-4b00-8514-b9e58b272087</id>
       <masked>false</masked>
@@ -157,14 +157,14 @@
       <name>ReasonPK7</name>
    </variable>
    <variable>
-      <defaultValue>'Testing Auto'</defaultValue>
+      <defaultValue>'Katalon Dry Run'</defaultValue>
       <description></description>
       <id>aeebfeee-121f-4495-8253-c317d40aa118</id>
       <masked>false</masked>
       <name>Justification</name>
    </variable>
    <variable>
-      <defaultValue>'30'</defaultValue>
+      <defaultValue>'10'</defaultValue>
       <description></description>
       <id>d2bd475a-d3f0-48bd-9fb1-f1b912d0a949</id>
       <masked>false</masked>
@@ -192,7 +192,7 @@
       <name>ServiceQty</name>
    </variable>
    <variable>
-      <defaultValue>'30'</defaultValue>
+      <defaultValue>'10'</defaultValue>
       <description></description>
       <id>484fb7b9-dcfb-45a9-bdfa-85628a428e53</id>
       <masked>false</masked>
@@ -206,7 +206,7 @@
       <name>ServiceSpecification2</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>987a7f3f-3148-4d43-a28b-cf5c87a81d0e</id>
       <masked>false</masked>
@@ -220,21 +220,21 @@
       <name>Keyword</name>
    </variable>
    <variable>
-      <defaultValue>'1'</defaultValue>
+      <defaultValue>'10'</defaultValue>
       <description></description>
       <id>0f6b3779-db13-4f64-bd18-2faf211b9adb</id>
       <masked>false</masked>
       <name>Freq</name>
    </variable>
    <variable>
-      <defaultValue>'60'</defaultValue>
+      <defaultValue>'10'</defaultValue>
       <description></description>
       <id>668435fe-184f-4571-8d4f-217e5477bac2</id>
       <masked>false</masked>
       <name>DurationMonth</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
+      <defaultValue>4</defaultValue>
       <description></description>
       <id>74c6b2fb-234c-4c26-9128-9d717922523d</id>
       <masked>false</masked>

@@ -7,8 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[starts-with(@id,'_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:') &#xd;
-  and contains(@id,':beforeSaveLov:beforeSaveLovlovLink')]</value>
+         <value>//*[@id=&quot;_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:0:beforeSaveLov:searchName&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>

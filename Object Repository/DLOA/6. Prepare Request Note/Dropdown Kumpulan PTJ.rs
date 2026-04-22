@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Search button</name>
+   <name>Dropdown Kumpulan PTJ</name>
    <tag></tag>
-   <elementGuidId>daa452d7-6611-48fa-8210-5695d0814ee9</elementGuidId>
+   <elementGuidId>0c55e799-6942-4596-ba00-0e06e0f9902a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id=&quot;_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:0:beforeSaveLov:searcbBtnId&quot;]/span</value>
+         <value>//*[@id=&quot;_scDirectPurchaseTask_WAR_NGePportlet_:form:requestListDataTable:0:beforeSaveLov:somJabatan&quot;]/div[3]</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

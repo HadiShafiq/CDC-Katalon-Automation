@@ -30,14 +30,8 @@
       <value></value>
       <variableId>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</variableId>
    </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>e4dd633c-a0e9-4175-851c-9cebc7d629ec</variableId>
-   </variableLinks>
    <variable>
-      <defaultValue>'khairul707'</defaultValue>
+      <defaultValue>'900801087664'</defaultValue>
       <description></description>
       <id>d8891639-3875-4c40-9a70-58f46002b578</id>
       <masked>false</masked>
@@ -51,24 +45,17 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'10000'</defaultValue>
+      <defaultValue>'0.90'</defaultValue>
       <description></description>
       <id>ba37e92b-1403-4ddb-8c10-226495b82500</id>
       <masked>false</masked>
       <name>UnitPrice</name>
    </variable>
    <variable>
-      <defaultValue>'SQ260000000000759'</defaultValue>
+      <defaultValue>'SQ260000000001142'</defaultValue>
       <description></description>
       <id>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</id>
       <masked>false</masked>
       <name>sqNo</name>
-   </variable>
-   <variable>
-      <defaultValue>'10000'</defaultValue>
-      <description></description>
-      <id>e4dd633c-a0e9-4175-851c-9cebc7d629ec</id>
-      <masked>false</masked>
-      <name>UnitPrice2</name>
    </variable>
 </TestCaseEntity>
