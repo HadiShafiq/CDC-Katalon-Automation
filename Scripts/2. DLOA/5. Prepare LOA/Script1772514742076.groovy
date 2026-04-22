@@ -24,7 +24,7 @@ import java.io.FileOutputStream
 import com.kms.katalon.core.testobject.ConditionType
 
 /* =========================
- * Calendar Picker Date - tikah 123 
+ * Calendar Picker Date - tikah 1234
  * ========================= */
 
 def pickDate(String yyyyMmDd) {
