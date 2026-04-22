@@ -382,13 +382,13 @@ def pickDate(String yyyyMmDd) {
  * 8) BROWSER SETUP
  * ========================================================= */
 
-/* PATH HADI 
+/* PATH HADI */
 String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"*/
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
 
-/* PATH ATIKAH*/
+/* PATH ATIKAH
 String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"*/
 
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
@@ -548,7 +548,6 @@ selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestio
 //WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Procurement Type Radio Button'))
 
 //Procurement Type Category
-
 clickProcurementType(RBProcurementType)
 
 selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Reason'), ReasonPK7)
@@ -560,7 +559,7 @@ WebUI.setText(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. G
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-04-21")   // <-- put your date here
+pickDate("2026-04-23")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -638,7 +637,7 @@ for (int i = 1; i <= loopCount; i++) {
 		WebUI.delay(1)
 	}
 
-    // Input UOM for Service
+   // Input UOM for Service
     TestObject uomService = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Input UOM')
     wVisible(uomService, 20)
     WebUI.click(uomService)
@@ -647,7 +646,25 @@ for (int i = 1; i <= loopCount; i++) {
     WebUI.sendKeys(uomService, Keys.chord(Keys.ENTER))
     waitBlockUI(30)
     WebUI.delay(1)
-
+	
+	t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Freq. per UOM'),Freq, 20)
+	waitBlockUI(30)
+	WebUI.delay(1)
+	
+	TestObject durationObj = findTestObject(
+	  'Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Duration (Month)'
+	)
+	waitBlockUI(20)
+	WebUI.waitForElementClickable(durationObj, 20)
+	WebUI.click(durationObj)
+	
+	// clear then input
+	WebUI.sendKeys(durationObj, Keys.chord(Keys.CONTROL, 'a'))
+	WebUI.sendKeys(durationObj, Keys.chord(Keys.BACK_SPACE))
+	
+	WebUI.sendKeys(durationObj, DurationMonth)   // e.g. "60"
+	waitBlockUI(30)
+	WebUI.delay(1)
     // Input Service Quantity
     t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Quantity'), ServiceQty, 20)
     waitBlockUI(30)
