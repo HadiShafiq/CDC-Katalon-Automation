@@ -22,6 +22,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>47012d89-3142-48a9-bf64-5d345ceb0283</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>4a4e849d-c8e8-4df2-ba6b-436a9b03be6c</variableId>
    </variableLinks>
    <variableLinks>
@@ -40,6 +46,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>78da6b77-45d9-47f2-b30a-96a9065e66c2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>0595bd3d-9d45-480f-83cf-56e7b1ba4ca4</variableId>
    </variableLinks>
    <variableLinks>
@@ -52,37 +64,7 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>eb6e4257-1628-4e84-a638-566a165180c1</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>93d4978f-3d7c-4ee5-840d-76577cc6d00c</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>0d684586-ed17-47af-bc31-22d500aab4fa</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>eba27a2c-61e6-45fc-a786-d9fe60330df2</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>3b1242f9-7a57-4a33-914d-a9349bfe26ae</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -94,7 +76,7 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>47012d89-3142-48a9-bf64-5d345ceb0283</variableId>
+      <variableId>0d684586-ed17-47af-bc31-22d500aab4fa</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -112,7 +94,31 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>78da6b77-45d9-47f2-b30a-96a9065e66c2</variableId>
+      <variableId>eba27a2c-61e6-45fc-a786-d9fe60330df2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>eb6e4257-1628-4e84-a638-566a165180c1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>3b1242f9-7a57-4a33-914d-a9349bfe26ae</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>220281bd-6a32-4799-8339-733eb8a94183</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
@@ -127,6 +133,13 @@
       <id>fe1756a5-2721-4bb1-9f22-713bb2daf6ec</id>
       <masked>false</masked>
       <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'PEMBANGUNAN SISTEM KARTOGRAFI'</defaultValue>
+      <description></description>
+      <id>47012d89-3142-48a9-bf64-5d345ceb0283</id>
+      <masked>false</masked>
+      <name>Keyword</name>
    </variable>
    <variable>
       <defaultValue>'Ace'</defaultValue>
@@ -152,6 +165,13 @@
    <variable>
       <defaultValue>1</defaultValue>
       <description></description>
+      <id>78da6b77-45d9-47f2-b30a-96a9065e66c2</id>
+      <masked>false</masked>
+      <name>RBProcurementType</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
       <id>0595bd3d-9d45-480f-83cf-56e7b1ba4ca4</id>
       <masked>false</masked>
       <name>ReasonPK7</name>
@@ -164,13 +184,6 @@
       <name>Justification</name>
    </variable>
    <variable>
-      <defaultValue>'30'</defaultValue>
-      <description></description>
-      <id>eb6e4257-1628-4e84-a638-566a165180c1</id>
-      <masked>false</masked>
-      <name>DeliveryPeriod</name>
-   </variable>
-   <variable>
       <defaultValue>'SVS'</defaultValue>
       <description></description>
       <id>93d4978f-3d7c-4ee5-840d-76577cc6d00c</id>
@@ -178,11 +191,32 @@
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>e745b798-024a-4e37-92f1-0aa9bbd747d3</id>
+      <masked>false</masked>
+      <name>Fulfilmenttype</name>
+   </variable>
+   <variable>
       <defaultValue>'ACT'</defaultValue>
       <description></description>
       <id>0d684586-ed17-47af-bc31-22d500aab4fa</id>
       <masked>false</masked>
       <name>ServiceUOM</name>
+   </variable>
+   <variable>
+      <defaultValue>'1'</defaultValue>
+      <description></description>
+      <id>1934ee4d-b985-4df0-8888-9197988c4c5c</id>
+      <masked>false</masked>
+      <name>Freq</name>
+   </variable>
+   <variable>
+      <defaultValue>'1'</defaultValue>
+      <description></description>
+      <id>6d1ea86e-c1bb-4d0b-af49-d82cb618edbf</id>
+      <masked>false</masked>
+      <name>DurationMonth</name>
    </variable>
    <variable>
       <defaultValue>'10'</defaultValue>
@@ -194,9 +228,9 @@
    <variable>
       <defaultValue>'30'</defaultValue>
       <description></description>
-      <id>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</id>
+      <id>eb6e4257-1628-4e84-a638-566a165180c1</id>
       <masked>false</masked>
-      <name>ServicePeriod</name>
+      <name>DeliveryPeriod</name>
    </variable>
    <variable>
       <defaultValue>'SPEC SVS'</defaultValue>
@@ -206,38 +240,17 @@
       <name>ServiceSpecification2</name>
    </variable>
    <variable>
+      <defaultValue>'30'</defaultValue>
+      <description></description>
+      <id>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</id>
+      <masked>false</masked>
+      <name>ServicePeriod</name>
+   </variable>
+   <variable>
       <defaultValue>1</defaultValue>
       <description></description>
-      <id>e745b798-024a-4e37-92f1-0aa9bbd747d3</id>
+      <id>220281bd-6a32-4799-8339-733eb8a94183</id>
       <masked>false</masked>
-      <name>Fulfilmenttype</name>
-   </variable>
-   <variable>
-      <defaultValue>'PEMBANGUNAN SISTEM KARTOGRAFI'</defaultValue>
-      <description></description>
-      <id>47012d89-3142-48a9-bf64-5d345ceb0283</id>
-      <masked>false</masked>
-      <name>Keyword</name>
-   </variable>
-   <variable>
-      <defaultValue>'1'</defaultValue>
-      <description></description>
-      <id>1934ee4d-b985-4df0-8888-9197988c4c5c</id>
-      <masked>false</masked>
-      <name>Freq</name>
-   </variable>
-   <variable>
-      <defaultValue>'60'</defaultValue>
-      <description></description>
-      <id>6d1ea86e-c1bb-4d0b-af49-d82cb618edbf</id>
-      <masked>false</masked>
-      <name>DurationMonth</name>
-   </variable>
-   <variable>
-      <defaultValue>2</defaultValue>
-      <description></description>
-      <id>78da6b77-45d9-47f2-b30a-96a9065e66c2</id>
-      <masked>false</masked>
-      <name>RBProcurementType</name>
+      <name>LocalityCoverage</name>
    </variable>
 </TestCaseEntity>
