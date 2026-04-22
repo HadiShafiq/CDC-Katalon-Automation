@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>DP - Supplier Dropdown</name>
+   <tag></tag>
+   <elementGuidId>f84e17b0-44f9-49a2-af58-f367b10cedcb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[normalize-space()='Search']/ancestor::div[contains(@class,'ui-panel')]//div[contains(@class,'ui-selectonemenu-trigger')]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:j_idt83&quot;)/div[@class=&quot;ui-selectonemenu-trigger ui-state-default ui-corner-right ui-state-hover&quot;]/span[@class=&quot;ui-icon ui-icon-triangle-1-s&quot;][count(. | //span[@class = 'ui-icon ui-icon-triangle-1-s']) = count(//span[@class = 'ui-icon ui-icon-triangle-1-s'])]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-icon.ui-icon-triangle-1-s</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>3fcafa59-8a7e-461f-8ed1-39101461cbc3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-icon ui-icon-triangle-1-s</value>
+      <webElementGuid>7fc36865-f08f-4ab8-8c36-96be03e0315a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:j_idt83&quot;)/div[@class=&quot;ui-selectonemenu-trigger ui-state-default ui-corner-right ui-state-hover&quot;]/span[@class=&quot;ui-icon ui-icon-triangle-1-s&quot;]</value>
+      <webElementGuid>2d9dd56d-498d-4522-8c64-878b09b10b29</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value></value>
+      <webElementGuid>d2377f3f-3dbd-4550-8890-a968bba097b1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value></value>
+      <webElementGuid>f1339fc7-b5d2-499b-887b-1412bf081467</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

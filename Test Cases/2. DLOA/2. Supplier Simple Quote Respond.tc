@@ -52,7 +52,11 @@
       <name>UnitPrice</name>
    </variable>
    <variable>
+<<<<<<< HEAD
       <defaultValue>'SQ260000000001142'</defaultValue>
+=======
+      <defaultValue>'SQ260000000001165'</defaultValue>
+>>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
       <description></description>
       <id>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</id>
       <masked>false</masked>

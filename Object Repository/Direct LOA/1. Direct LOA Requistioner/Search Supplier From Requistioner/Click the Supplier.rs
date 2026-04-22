@@ -6,12 +6,12 @@
    <elementGuidId>c951a0f5-2f26-4539-92c4-6d64c2a6be05</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//tbody[contains(@id,'lovTb_data')]/tr[1]/td[2]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>tr.ui-widget-content.ui-datatable-even.ui-state-hover > td:nth-of-type(2)</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//tbody[contains(@id,'lovTb_data')]/tr[1]/td[2]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>td</value>
-      <webElementGuid>507bff6d-1027-4ccf-b0e1-9506259a231f</webElementGuid>
+      <webElementGuid>33de2f34-d97c-4f11-9679-d007b35d099c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +31,7 @@
       <name>role</name>
       <type>Main</type>
       <value>gridcell</value>
-      <webElementGuid>ee1ab833-6ee1-4b6a-b1b5-c1d64224bf25</webElementGuid>
+      <webElementGuid>ee6c7918-c163-4eb2-a00d-e81eae1a4bd3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -41,7 +41,7 @@
       <value>
 						eP-1008I048X
 				</value>
-      <webElementGuid>0f096503-c4c2-4b24-a4e8-ad49674d7165</webElementGuid>
+      <webElementGuid>1f535a6c-99fe-4635-b2d5-5c6824e8fce5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:lovTb_data&quot;)/tr[@class=&quot;ui-widget-content ui-datatable-even ui-state-hover&quot;]/td[2]</value>
-      <webElementGuid>02e2fe43-afea-46f9-a6d7-5f4f2f70b4cf</webElementGuid>
+      <webElementGuid>19535b89-8160-4ca5-8f73-f328e6b58e56</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//tbody[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt77:lovTb_data']/tr/td[2]</value>
-      <webElementGuid>aa4771b3-fc59-490e-b114-153afb486f21</webElementGuid>
+      <webElementGuid>c2cb5714-dcf1-42db-9475-e3f8f2cabb35</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='BUMI WARISAN MAJU SDN BHD'])[1]/following::td[1]</value>
-      <webElementGuid>cfccf320-0a1d-4c7c-bcbd-a79bdcc29042</webElementGuid>
+      <webElementGuid>798e2379-b4c2-4d32-9143-11bcfe25761e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='MOF No.'])[2]/following::td[2]</value>
-      <webElementGuid>f02a74a7-0b1a-4222-8380-5a90cbd82766</webElementGuid>
+      <webElementGuid>49d18f95-0df7-4a18-ba95-9cae3f204c45</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -81,7 +81,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='NSA BUMIPUTRA SDN BHD'])[1]/preceding::td[3]</value>
-      <webElementGuid>5ff1f59a-2bee-494b-af0f-fe2608cc1d59</webElementGuid>
+      <webElementGuid>5fe53369-ccfa-497c-82d5-f69d789f700a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -89,7 +89,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='eP-1601I004V'])[1]/preceding::td[4]</value>
-      <webElementGuid>d919187a-bc35-478d-b245-a0446147f629</webElementGuid>
+      <webElementGuid>89eadc88-e445-4ced-988d-7e77e9c60b61</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -97,7 +97,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='eP-1008I048X']/parent::*</value>
-      <webElementGuid>123dbce7-1936-4450-bfce-af6a0df39332</webElementGuid>
+      <webElementGuid>bdcb59ef-9054-42e3-b155-53bf27a8434f</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -105,7 +105,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/span/div/div/table/tbody/tr/td[2]</value>
-      <webElementGuid>fa84703d-fd74-4ef9-a3fc-8b82d79376dd</webElementGuid>
+      <webElementGuid>025dc555-76bb-445c-8b46-92d5b3f9da6b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,6 +117,6 @@
 				' or . = '
 						eP-1008I048X
 				')]</value>
-      <webElementGuid>455d2d4e-72b6-484a-bfb9-8fbd78171491</webElementGuid>
+      <webElementGuid>34713833-bd9b-454e-bab1-4a654f4acb08</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
