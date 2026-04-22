@@ -598,7 +598,7 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Hour'),
-	'22', true) // TIME (Hour)
+	'23', true) // TIME (Hour)
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Minute'),
@@ -617,7 +617,7 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Reque
 WebUI.delay(1)
 
 WebUI.selectOptionByValue(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/End Date Minutes'),
-	'30', true)
+	'15', true)
 WebUI.delay(1) //TIME (Minutes)
 /* =========================
  * Zone Item - Service
@@ -626,10 +626,6 @@ WebUI.delay(1) //TIME (Minutes)
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Side Menu item List'), 20)
 waitBlockUI(30)
 WebUI.delay(1)
-
-/*=============================
- Exclude Input Specification
-===============================*/
 
 
 /*=============================
@@ -738,103 +734,88 @@ for (int i = 1; i <= loopCount; i++) {
 if (RBProcurementType == 1) {
 
     WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Side Menu Criteria and Supplier List'))
-	
-	    waitBlockUI(30)
-	    WebUI.delay(1)
-	
-	/* ==================================================
-	 * Criteria and Supplier List = Supplier Location
-	 * ================================================== */
-	
-	int Location = Integer.parseInt(LocalityCoverage.toString())
-	if (Location == 1) {
+    
+    waitBlockUI(30)
+    WebUI.delay(1)
 
-    TestObject locality = findTestObject(
-        'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Locality Coverage'
-    )
+    /* ==================================================
+     * Criteria and Supplier List = Supplier Location
+     * ================================================== */
+    
+    int Location = Integer.parseInt(LocalityCoverage.toString())
+    if (Location == 1) {
 
-    WebUI.waitForElementVisible(locality, 20)
-    WebUI.waitForElementClickable(locality, 20)
-    selectDropdownByIndex(locality, Location)
+        TestObject locality = findTestObject(
+            'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Locality Coverage'
+        )
 
-    // Click Add
-    WebUI.click(findTestObject(
-        'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Location'
-    ))
+        WebUI.waitForElementVisible(locality, 20)
+        WebUI.waitForElementClickable(locality, 20)
+        selectDropdownByIndex(locality, Location)
 
-    waitBlockUI(10)
+        WebUI.click(findTestObject(
+            'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Location'
+        ))
 
-    // Tick All State
-    def zoneGroups = [
-        "Zone A": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
-    ]
-	
-    zoneGroups["Zone A"].each { idx ->
-        tickZoneTreeByIndex(idx)
+        waitBlockUI(10)
+
+        def zoneGroups = [
+            "Zone A": [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+        ]
+
+        zoneGroups["Zone A"].each { idx ->
+            tickZoneTreeByIndex(idx)
+        }
+
+        WebUI.click(findTestObject(
+            'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button OK'
+        ))
     }
 
-    // Click OK
-    WebUI.click(findTestObject(
-        'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button OK'
-    ))
-	}
-	
-	/* ==================================================
-	 * Criteria and Supplier List = Supplier List
-	 * ================================================== */
-	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Supplier List'))
-	
-	//Click Add
-	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Supplier'))
-	waitBlockUI(30)
+    /* ==================================================
+     * Criteria and Supplier List = Supplier List
+     * ================================================== */
+    
+    c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Supplier List'))
+    
+    // 🔥 LOOP ADD SUPPLIER 2 KALI
+    for (int i = 1; i <= 2; i++) {
 
-	/* =========================
-	 * SUPPLIER SEARCH
-	 * Purpose:
-	 * - select supplier dropdown filter
-	 * - input supplier name
-	 * - search supplier
-	 * ========================= */
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Supplier Dropdown'), 1)
-	
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'), SupplierName, 20)
-	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'), 20)
-	waitBlockUI(30)
-	
-	/* =========================
-	 * SUPPLIER SELECTION
-	 * Purpose:
-	 * - choose supplier row from result
-	 * - confirm selection
-	 * ========================= */
-	TestObject supplierRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Click the Supplier')
-	wVisible(supplierRow, 20)
-	WebUI.scrollToElement(supplierRow, 2)
-	
-	try {
-		WebUI.click(supplierRow)
-	} catch (Exception e) {
-		WebUI.enhancedClick(supplierRow, FailureHandling.OPTIONAL)
-	}
-	WebUI.delay(0.5)
-	WebUI.doubleClick(supplierRow, FailureHandling.OPTIONAL)
-	
-	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Select Supplier'), 20)
-	waitBlockUI(1)
-   WebUI.delay(2)
-}  else {
-	TestObject submitBtn = findTestObject(
-		'Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'
-	)
-	WebUI.waitForElementClickable(submitBtn, 20)
-	WebUI.click(submitBtn)
+        c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Supplier'))
+        waitBlockUI(30)
+
+        selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Supplier Dropdown'), 1)
+        
+        t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'), SupplierName, 20)
+        c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'), 20)
+        waitBlockUI(30)
+
+        TestObject supplierRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Click the Supplier')
+        wVisible(supplierRow, 20)
+        WebUI.scrollToElement(supplierRow, 2)
+
+        try {
+            WebUI.click(supplierRow)
+        } catch (Exception e) {
+            WebUI.enhancedClick(supplierRow, FailureHandling.OPTIONAL)
+        }
+
+        WebUI.doubleClick(supplierRow, FailureHandling.OPTIONAL)
+
+        c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Select Supplier'), 20)
+        waitBlockUI(1)
+        WebUI.delay(2)
+    }
+
+} else {
+    // kalau ada logic lain, letak sini
 }
 
 /* =========================
  * Save LOA (unchanged)
  * ========================= */
 //WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
 WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
 
 waitBlockUI(30)
@@ -884,7 +865,7 @@ if (sqNo == "") {
 WebUI.comment("✅ Captured SQ No: " + sqNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\FL_DP_CR_DLOA_Requestioner_Service_Izzah_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Direct Purchased\\No SQ\\FL_DP_CR_DLOA_Requestioner_Service_NEW.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
