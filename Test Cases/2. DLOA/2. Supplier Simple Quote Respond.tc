@@ -5,61 +5,57 @@
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>6b13889f-077b-4641-b59f-e02ee664ce56</testCaseGuid>
+   <testCaseGuid>2be1ed24-5092-4733-8cde-5844366e1960</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>d8891639-3875-4c40-9a70-58f46002b578</variableId>
+      <variableId>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>15ab54fe-6bcf-4fc2-932b-027712a787ed</variableId>
+      <variableId>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>ba37e92b-1403-4ddb-8c10-226495b82500</variableId>
+      <variableId>3672ac2c-0d96-4af8-8043-b8af989b452a</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</variableId>
+      <variableId>e25605f2-fa4a-454f-88b9-3f374de56b0d</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'900801087664'</defaultValue>
+      <defaultValue>'100'</defaultValue>
       <description></description>
-      <id>d8891639-3875-4c40-9a70-58f46002b578</id>
+      <id>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</id>
+      <masked>false</masked>
+      <name>UnitPrice</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</id>
+      <masked>false</masked>
+      <name>sqNo</name>
+   </variable>
+   <variable>
+      <defaultValue>'710527085562'</defaultValue>
+      <description></description>
+      <id>3672ac2c-0d96-4af8-8043-b8af989b452a</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>15ab54fe-6bcf-4fc2-932b-027712a787ed</id>
+      <id>e25605f2-fa4a-454f-88b9-3f374de56b0d</id>
       <masked>false</masked>
       <name>Password</name>
-   </variable>
-   <variable>
-      <defaultValue>'0.90'</defaultValue>
-      <description></description>
-      <id>ba37e92b-1403-4ddb-8c10-226495b82500</id>
-      <masked>false</masked>
-      <name>UnitPrice</name>
-   </variable>
-   <variable>
-<<<<<<< HEAD
-      <defaultValue>'SQ260000000001142'</defaultValue>
-=======
-      <defaultValue>'SQ260000000001165'</defaultValue>
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
-      <description></description>
-      <id>803d0606-d7dd-47e1-b5f0-c9f0e273f15c</id>
-      <masked>false</masked>
-      <name>sqNo</name>
    </variable>
 </TestCaseEntity>
