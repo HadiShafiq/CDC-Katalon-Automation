@@ -524,6 +524,14 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	WebUI.clearText(supplierName)
 	WebUI.setText(supplierName, SupplierName)
 	WebUI.delay(0.5)
+	
+	// Input Item Code
+	TestObject itemCode = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Item Code')
+	wVisible(itemCode, 20)
+	WebUI.click(itemCode)
+	WebUI.clearText(itemCode)
+	WebUI.setText(itemCode, ItemCode)
+	WebUI.delay(0.5)
 		
 	// Click Search
 	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Button Search Supplier'), 20)
@@ -570,10 +578,10 @@ TestObject title = findTestObject(
 
 selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Procurement Type Category'), ProcurementtypeCategory)
 
-//Procurement Type Category
-clickProcurementType(RBProcurementType)
-
 int rbType = Integer.parseInt(RBProcurementType.toString())
+
+//Procurement Type Category
+clickProcurementType(rbType)
 
 // IF NOT 1 OR 3 → isi Reason + Justification
 if (!(rbType == 1 || rbType == 3)) {
@@ -730,20 +738,24 @@ for (int i = 1; i <= loopCount; i++) {
     WebUI.delay(1)
 }
 
-// Click Side Menu Criteria and Supplier Item
-if (RBProcurementType == 1) {
+// Convert dulu (PENTING untuk Test Suite)
+int locationVal = Integer.parseInt(LocalityCoverage.toString())
 
-    WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Side Menu Criteria and Supplier List'))
-    
+// Click Side Menu
+if (rbType == 1) {
+
+    TestObject sideMenu = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Side Menu Criteria and Supplier List')
+    WebUI.waitForElementClickable(sideMenu, 30)
+    WebUI.click(sideMenu)
+
     waitBlockUI(30)
+    WebUI.waitForPageLoad(30)
     WebUI.delay(1)
 
     /* ==================================================
-     * Criteria and Supplier List = Supplier Location
+     * Supplier Location
      * ================================================== */
-    
-    int Location = Integer.parseInt(LocalityCoverage.toString())
-    if (Location == 1) {
+    if (locationVal == 1) {
 
         TestObject locality = findTestObject(
             'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Locality Coverage'
@@ -751,12 +763,13 @@ if (RBProcurementType == 1) {
 
         WebUI.waitForElementVisible(locality, 20)
         WebUI.waitForElementClickable(locality, 20)
-        selectDropdownByIndex(locality, Location)
+        selectDropdownByIndex(locality, locationVal)
 
-        WebUI.click(findTestObject(
+        TestObject addLocationBtn = findTestObject(
             'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Location'
-        ))
+        )
 
+        WebUI.click(addLocationBtn)
         waitBlockUI(10)
 
         def zoneGroups = [
@@ -767,31 +780,63 @@ if (RBProcurementType == 1) {
             tickZoneTreeByIndex(idx)
         }
 
-        WebUI.click(findTestObject(
+        TestObject okBtn = findTestObject(
             'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button OK'
-        ))
+        )
+
+        WebUI.click(okBtn)
+        waitBlockUI(10)
     }
 
     /* ==================================================
-     * Criteria and Supplier List = Supplier List
+     * Supplier List
      * ================================================== */
-    
-    c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Supplier List'))
-    
+    TestObject supplierListTab = findTestObject(
+        'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Supplier List'
+    )
+    WebUI.click(supplierListTab)
+
+    TestObject addSupplierBtn = findTestObject(
+        'Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Supplier'
+    )
+
+    TestObject supplierDropdown = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Supplier Dropdown'
+    )
+
+    TestObject supplierNameField = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'
+    )
+
+    TestObject searchBtn = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'
+    )
+
+    TestObject supplierRow = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Click the Supplier'
+    )
+
+    TestObject selectSupplierBtn = findTestObject(
+        'Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Select Supplier'
+    )
+
     // 🔥 LOOP ADD SUPPLIER 2 KALI
     for (int i = 1; i <= 2; i++) {
 
-        c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/3. Criteria and Supplier List/Click Button Add Supplier'))
+        WebUI.waitForElementClickable(addSupplierBtn, 30)
+        WebUI.click(addSupplierBtn)
+
+        waitBlockUI(30)
+        WebUI.waitForPageLoad(30)
+
+        selectDropdownByIndex(supplierDropdown, 1)
+
+        WebUI.setText(supplierNameField, SupplierName)
+        WebUI.click(searchBtn)
+
         waitBlockUI(30)
 
-        selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Supplier Dropdown'), 1)
-        
-        t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'), SupplierName, 20)
-        c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'), 20)
-        waitBlockUI(30)
-
-        TestObject supplierRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/DP - Click the Supplier')
-        wVisible(supplierRow, 20)
+        WebUI.waitForElementVisible(supplierRow, 20)
         WebUI.scrollToElement(supplierRow, 2)
 
         try {
@@ -802,13 +847,14 @@ if (RBProcurementType == 1) {
 
         WebUI.doubleClick(supplierRow, FailureHandling.OPTIONAL)
 
-        c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Select Supplier'), 20)
-        waitBlockUI(1)
+        WebUI.click(selectSupplierBtn)
+
+        waitBlockUI(10)
         WebUI.delay(2)
     }
 
 } else {
-    // kalau ada logic lain, letak sini
+    // optional logic kalau bukan type 1
 }
 
 /* =========================

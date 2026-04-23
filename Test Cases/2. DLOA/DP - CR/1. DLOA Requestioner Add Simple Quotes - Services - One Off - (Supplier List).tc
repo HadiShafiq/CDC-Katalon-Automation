@@ -28,6 +28,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>a19f00d7-3876-4c9d-9bf5-b66b8b365bf2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>4a4e849d-c8e8-4df2-ba6b-436a9b03be6c</variableId>
    </variableLinks>
    <variableLinks>
@@ -100,19 +106,13 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>eb6e4257-1628-4e84-a638-566a165180c1</variableId>
+      <variableId>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
       <variableId>3b1242f9-7a57-4a33-914d-a9349bfe26ae</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
@@ -135,14 +135,21 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PEMBANGUNAN SISTEM KARTOGRAFI'</defaultValue>
+      <defaultValue>''</defaultValue>
       <description></description>
       <id>47012d89-3142-48a9-bf64-5d345ceb0283</id>
       <masked>false</masked>
       <name>Keyword</name>
    </variable>
    <variable>
-      <defaultValue>'Ace'</defaultValue>
+      <defaultValue>'761223090000000000'</defaultValue>
+      <description></description>
+      <id>a19f00d7-3876-4c9d-9bf5-b66b8b365bf2</id>
+      <masked>false</masked>
+      <name>ItemCode</name>
+   </variable>
+   <variable>
+      <defaultValue>'AINHALIM ENTERPRISE'</defaultValue>
       <description></description>
       <id>4a4e849d-c8e8-4df2-ba6b-436a9b03be6c</id>
       <masked>false</masked>
@@ -156,21 +163,21 @@
       <name>DLAOTitle</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>896c555d-ffaf-4520-ab9a-f9f07346dc23</id>
       <masked>false</masked>
       <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>78da6b77-45d9-47f2-b30a-96a9065e66c2</id>
       <masked>false</masked>
       <name>RBProcurementType</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>0</defaultValue>
       <description></description>
       <id>0595bd3d-9d45-480f-83cf-56e7b1ba4ca4</id>
       <masked>false</masked>
@@ -228,9 +235,9 @@
    <variable>
       <defaultValue>'30'</defaultValue>
       <description></description>
-      <id>eb6e4257-1628-4e84-a638-566a165180c1</id>
+      <id>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</id>
       <masked>false</masked>
-      <name>DeliveryPeriod</name>
+      <name>ServicePeriod</name>
    </variable>
    <variable>
       <defaultValue>'SPEC SVS'</defaultValue>
@@ -238,13 +245,6 @@
       <id>3b1242f9-7a57-4a33-914d-a9349bfe26ae</id>
       <masked>false</masked>
       <name>ServiceSpecification2</name>
-   </variable>
-   <variable>
-      <defaultValue>'30'</defaultValue>
-      <description></description>
-      <id>cbe8908b-ba84-4f05-a9a4-541d56ffefb4</id>
-      <masked>false</masked>
-      <name>ServicePeriod</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
