@@ -148,4 +148,53 @@
          <variableId>220281bd-6a32-4799-8339-733eb8a94183</variableId>
       </variableLink>
    </testCaseLink>
+   <testCaseLink>
+      <guid>3194c36b-b19a-4062-b89a-1d50b3802604</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA/5. Prepare LOA</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a2006292-188a-46a1-af1b-8f6ab7efabef</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>906a869d-6446-45ab-9248-64eb5191d341</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>b9cac366-99f1-479e-bec4-ee07ff043065</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f8fdb46e-da1f-49b1-a3a6-e88df41c81a9</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>9823215e-b500-4028-ac87-ea1674c553cd</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c526d4e1-396e-4024-960c-4dd9a857a7ce</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>83ad7b03-0205-4426-8499-1d788df0d18a</variableId>
+      </variableLink>
+   </testCaseLink>
 </TestSuiteEntity>
