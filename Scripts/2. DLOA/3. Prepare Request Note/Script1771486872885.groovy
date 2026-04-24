@@ -627,7 +627,7 @@ try {
 }
 
 waitBlockUI(20)
-WebUI.delay(2)
+WebUI.delay(4)
 		// =========================
 		// Choose Approver
 		// =========================
@@ -646,11 +646,11 @@ WebUI.delay(2)
 			WebUI.delay(1)
 			
 			// Select Approver Name
-			selectDropdownByIndex(approverName, 5)
+			selectDropdownByIndex(approverName, 6)
 			waitBlockUI(20)
 			WebUI.delay(1)
 
-//WebUI.click(findTestObject('Object Repository/DLOA/6. Prepare Request Note/Submit Simple Quote'))
+WebUI.click(findTestObject('Object Repository/DLOA/6. Prepare Request Note/Submit Simple Quote'))
 
 /* =========================
  * WAIT LOADER + CAPTURE RN MESSAGE (DYNAMIC RNxxxx) + APPEND TO EXCEL (SAME FILE)

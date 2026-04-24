@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>Prepare Request note</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>d61649fa-cdc7-4ed9-a940-4fdff0673878</testSuiteGuid>
+   <testCaseLink>
+      <guid>dec28e3b-5373-48ff-a2c6-264d27506442</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <iterationNameVariable>
+         <defaultValue>'P@ssw0rd1234'</defaultValue>
+         <description></description>
+         <id>652b0dba-a196-438f-b3f1-66a74f79d505</id>
+         <masked>false</masked>
+         <name>Password</name>
+      </iterationNameVariable>
+      <testCaseId>Test Cases/2. DLOA/3. Prepare Request Note</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>0d15d189-56b3-4941-8d2b-a69e828ffbda</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/DP - Prepare Request Note/DP - Prepare Request Note</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>5b5ce961-c88f-4c8c-bbf2-3cca246803fb</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>652b0dba-a196-438f-b3f1-66a74f79d505</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
+         <variableId>f8ee4008-76b1-4e8f-910f-d2118b04c27b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>9aba768d-9643-4721-93b4-e1d90936708b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>66696209-a499-49d7-86f7-e72b996e1ed8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>ea4cad2d-0c94-41e3-a440-916f899ae326</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

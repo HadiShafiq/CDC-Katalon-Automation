@@ -71,14 +71,14 @@
       <name>preparedBy</name>
    </variable>
    <variable>
-      <defaultValue>20</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>66696209-a499-49d7-86f7-e72b996e1ed8</id>
       <masked>false</masked>
       <name>KumpulanPTJ</name>
    </variable>
    <variable>
-      <defaultValue>6</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>ea4cad2d-0c94-41e3-a440-916f899ae326</id>
       <masked>false</masked>

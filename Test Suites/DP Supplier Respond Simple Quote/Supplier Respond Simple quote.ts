@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>Supplier Respond Simple quote</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>78d5a21c-d16e-4d91-89f2-44d2b6849d51</testSuiteGuid>
+   <testCaseLink>
+      <guid>555692a3-108a-4711-a677-2ee563ce0414</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA/2. Supplier Simple Quote Respond</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>9527717b-bd44-48b8-93da-7d181186a6c2</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/DP - Supplier Respons Simple Quote/Supplier Respond Simple Quotes</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>9527717b-bd44-48b8-93da-7d181186a6c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UnitPrice</value>
+         <variableId>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>9527717b-bd44-48b8-93da-7d181186a6c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>sqNo</value>
+         <variableId>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>9527717b-bd44-48b8-93da-7d181186a6c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>3672ac2c-0d96-4af8-8043-b8af989b452a</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>9527717b-bd44-48b8-93da-7d181186a6c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>e25605f2-fa4a-454f-88b9-3f374de56b0d</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>
