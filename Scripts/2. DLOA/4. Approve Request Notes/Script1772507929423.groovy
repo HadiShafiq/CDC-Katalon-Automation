@@ -492,7 +492,99 @@ WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/
 /* =========================
  * Approve
  * ========================= */
-WebUI.click(findTestObject('Object Repository/DLOA/7. Approve RN/Click Button Approve'))
+c(findTestObject('Object Repository/DLOA/7. Approve RN/Click Button Approve'))
+waitBlockUI(30)
+WebUI.delay(1)
+
+/* =========================
+ * WAIT LOADER + CAPTURE RN MESSAGE (DYNAMIC RNxxxx) + APPEND TO EXCEL (SAME FILE)
+ * Example message:
+ *   "Request Note RN260000000001152 is successfully approve."
+ * ========================= */
+
+
+// ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+
+// ===== 2) Wait success message (global text; RN number changes) =====
+TestObject msgObj = new TestObject('msg_RN_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Request Note') and contains(.,'is approved.')]"
+)
+
+WebUI.waitForElementVisible(msgObj, 30)
+
+// Wait until message text contains "RN"
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("RN")) break
+	WebUI.delay(1)
+}
+
+msg = (msg == null) ? "" : msg.trim()
+WebUI.comment("Message: " + msg)
+
+// ===== 3) Extract RN number dynamically =====
+def matcher = (msg =~ /(RN\d+)/)   // e.g. RN260000000001152
+String rnNo = matcher.find() ? matcher.group(1) : ""
+
+if (rnNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ RN number not found. Message was: " + msg
+}
+WebUI.comment("✅ Captured RN No: " + rnNo)
+
+// ===== 4) Append to SAME Excel file (no timestamp file) =====
+String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\DLOA_RN_NO_Approve_2026.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
+
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("RN No")
+	header.createCell(2).setCellValue("Message")
+}
+
+// Close input stream to avoid Excel file lock
+if (fis != null) fis.close()
+
+// Next empty row
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
+
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(rnNo)
+row.createCell(2).setCellValue(msg)
+
+// Save back to SAME file
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
+
+WebUI.comment("✅ Appended to Excel: " + filePath)
 
 /* =========================
  * Sign Out
