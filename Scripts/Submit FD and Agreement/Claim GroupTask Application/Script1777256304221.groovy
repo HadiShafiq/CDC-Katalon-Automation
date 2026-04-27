@@ -224,18 +224,68 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 }
 
 /* =========================
+ * Function: Claim document by Document No
+ * ========================= */
+def claimDocument(String targetDocNo) {
+
+	boolean found = false
+
+	for (int pageIndex = 1; pageIndex <= 10; pageIndex++) {
+
+		WebUI.comment("Checking page " + pageIndex + " for Document No: " + targetDocNo)
+
+		TestObject targetRow = new TestObject("targetRow_" + targetDocNo)
+		targetRow.addProperty("xpath", ConditionType.EQUALS,
+			"//tbody[contains(@id,'taskListGroupId_data')]//tr[td[normalize-space()='" + targetDocNo + "']]"
+		)
+
+		if (WebUI.verifyElementPresent(targetRow, 3, FailureHandling.OPTIONAL)) {
+
+			TestObject claimBtn = new TestObject("claimBtn_" + targetDocNo)
+			claimBtn.addProperty("xpath", ConditionType.EQUALS,
+				"//tbody[contains(@id,'taskListGroupId_data')]//tr[td[normalize-space()='" + targetDocNo + "']]//span[normalize-space()='Claim']/ancestor::button"
+			)
+
+			WebUI.waitForElementClickable(claimBtn, 20)
+			c(claimBtn, 20)
+			waitBlockUI(30)
+			WebUI.delay(1)
+
+			found = true
+			break
+		}
+
+		if (pageIndex < 10) {
+			int nextIndex = pageIndex + 1
+
+			TestObject nextPage = new TestObject("page_" + nextIndex)
+			nextPage.addProperty("xpath", ConditionType.EQUALS,
+				"(//span[contains(@class,'ui-paginator-pages')]/span[normalize-space()='" + nextIndex + "'])[1]"
+			)
+
+			if (WebUI.verifyElementPresent(nextPage, 5, FailureHandling.OPTIONAL)) {
+				WebUI.scrollToElement(nextPage, 3)
+				WebUI.click(nextPage)
+				waitBlockUI(30)
+				WebUI.delay(1)
+			} else {
+				break
+			}
+		}
+	}
+
+	return found
+}
+
+/* =========================
  * BROWSER SETUP
  * Purpose:
  * - launch Chrome in clean guest/incognito mode
  * - disable password manager prompts
  * ========================= */
 
-/* PATH HADI
- String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
- String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" */
- 
- String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
- String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
+String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
+String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
@@ -318,245 +368,99 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-
 /* =========================
- * Tasklit
+ * Tasklist MyGroup
+ * Purpose:
+ * - Claim Application by Document Number
+ * ========================= */
+
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+waitBlockUI(20)
+
+c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask TaskList Dropdown'))
+waitBlockUI(20)
+
+selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement/Document Type TaskList'), DocumentType)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Serach Button'))
+waitBlockUI(30)
+WebUI.delay(1)
+
+
+// =========================
+// Convert Katalon variable to list
+// Example variable:
+// Document_Numbers = LA260000000001729,LA260000000001730,LA260000000001731
+// =========================
+
+String docNumbersRaw = Document_Number
+
+List<String> docList = docNumbersRaw
+	.replace('\n', ',')
+	.replace('\r', ',')
+	.split(',')
+	.collect { it.trim() }
+	.findAll { it }
+
+List<String> failedList = []
+
+for (String docNo : docList) {
+
+	WebUI.comment("START CLAIM DOCUMENT: " + docNo)
+
+	boolean result = claimDocument(docNo)
+
+	if (result) {
+		WebUI.comment("✅ SUCCESS CLAIM: " + docNo)
+	} else {
+		WebUI.comment("❌ FAILED CLAIM: " + docNo)
+		failedList.add(docNo)
+	}
+}
+
+
+// =========================
+// Final validation
+// =========================
+
+assert failedList.size() == 0 : "❌ These Document No failed to claim: " + failedList
+/* =========================
+ * Tasklist MyGroup
  * Purpose:
  * - Serach Application No
- * ========================= */
+ * ========================= 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
+c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask TaskList Dropdown'))
+
+//Input Document Number
+t(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Document No'),
+	Document_Number)
+
+selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement/Document Type TaskList'), 1)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Serach Button'))
+
+
+/* =========================
+ * Tasklist MyTask
+ * Purpose:
+ * - Serach Application No
+ * ========================= 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 //Input Document Number
 t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
-    Document_Number)
+	Document_Number)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-/* =========================
- * General information
- * ========================= */
+c(findTestObject('Object Repository/FD and Agreement/Agreement/Claim Button'))*/
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'))
-
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click LOA Signing Date By Supplier'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
-
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Supplier Signer Details Dropdown'), Supplier_Signer_Dropdown)
-
-//Supplier Witness Details
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Name'),
-    Witness_Name)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Identification No'),
-    Witness_IC)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Designation'),
-    Designation)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Address'),
-    Address)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Telephone No'),
-    Telephone_No)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Fax No'),
-    Fax_no)
-
-/* =========================
- * LOA and Attachment
- * ========================= */
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Side Menu Supplier/Side Menu Supplier LOA Attachment'))
-waitBlockUI(30)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
-
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran C - Surat Akuan Sumpah Syarikat'))
-WebUI.delay(1)
-
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-WebUI.delay(1)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran 7 - Surat Akuan Pembida Berjaya'))
-WebUI.delay(1)
-
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-/* =========================
- * Zone Item Service
- * ========================= */
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'))
-
-// Count all visible Assign buttons
-TestObject allAssignButtons = new TestObject("allAssignButtons")
-allAssignButtons.addProperty(
-	"xpath",
-	ConditionType.EQUALS,
-	"//button[.//span[normalize-space(.)='Assign']]"
-)
-
-int assignCount = WebUI.findWebElements(allAssignButtons, 20).size()
-
-WebUI.comment("Total Assign buttons found: " + assignCount)
-
-// Loop through even row indexes: 0,2,4,6...
-for (int i = 0; i < assignCount; i++) {
-	int rowIndex = i * 2
-
-	WebUI.comment("Click Assign button at row index: " + rowIndex)
-
-	c(findTestObject(
-        'Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product',
-		['index': rowIndex]
-	))
-	WebUI.delay(1)
-	
-	WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Input Item Code for Services'),
-		S_Item_Code)
-	
-	WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Input Item Name for Services'),
-		S_Item_Name)
-	
-	WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Search Item Code'))
-	
-	WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
-	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
-	
-}
-
-/* =========================
- * Accept and Reject Button
- * ========================= */
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Accept Button Supplier'))
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Confirmation Yes'))
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
-
-//WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Reject Button Supplier'))
-
-/* =========================
- * SUCCESS MESSAGE
- * Purpose:
- * - wait for loader disappear
- * - capture success message
- * - extract dynamic LOA number
- * ========================= */
-TestObject blockUI = new TestObject('blockUI')
-blockUI.addProperty("xpath", ConditionType.EQUALS,
-	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
-)
-
-if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
-	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
-}
-
-TestObject msgObj = new TestObject('msg_LOA_saved')
-msgObj.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Letter of Acceptance (LOA)') and contains(.,'is acknowledged')]"
-)
-
-WebUI.waitForElementVisible(msgObj, 30)
-
-String msg = ""
-for (int i = 0; i < 15; i++) {
-	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("LA")) break
-	WebUI.delay(1)
-}
-
-msg = (msg == null) ? "" : msg.trim()
-WebUI.comment("Message: " + msg)
-
-def matcher = (msg =~ /(LA\d+)/)
-String loaNo = matcher.find() ? matcher.group(1) : ""
-
-if (loaNo == "") {
-	WebUI.takeScreenshot()
-	assert false : "❌ LOA number not found. Message was: " + msg
-}
-WebUI.comment("✅ Captured LOA No: " + loaNo)
-
-/* =========================
- * EXCEL APPEND
- * Purpose:
- * - append LOA number and message into same Excel file
- * ========================= */
-/*PATH HADI 
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Supplier_Service_AP_201_2026.xlsx"*/
-String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Application_NO\\Direct_LOA_Supplier_Service_AP_201_2026.xlsx"
-String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
-
-def path = Paths.get(filePath)
-XSSFWorkbook wb
-def sheet
-FileInputStream fis = null
-
-if (Files.exists(path)) {
-	fis = new FileInputStream(filePath)
-	wb = new XSSFWorkbook(fis)
-	sheet = wb.getSheet("Result")
-	if (sheet == null) sheet = wb.createSheet("Result")
-} else {
-	wb = new XSSFWorkbook()
-	sheet = wb.createSheet("Result")
-
-	def header = sheet.createRow(0)
-	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("LOA No")
-	header.createCell(2).setCellValue("Message")
-}
-
-if (fis != null) fis.close()
-
-int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-def row = sheet.createRow(nextRow)
-
-row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(loaNo)
-row.createCell(2).setCellValue(msg)
-
-FileOutputStream fos = new FileOutputStream(filePath)
-wb.write(fos)
-fos.close()
-wb.close()
-
-WebUI.comment("✅ Appended to Excel: " + filePath)
-
-/* =========================
- * SIGN OUT
- * Purpose:
- * - logout from system
- * - close browser
- * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-
-WebUI.waitForPageLoad(20)
-WebUI.closeBrowser()

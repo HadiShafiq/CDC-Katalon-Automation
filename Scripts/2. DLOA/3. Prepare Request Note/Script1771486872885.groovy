@@ -484,7 +484,7 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 //TaskList
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/span_My Task_ui-icon ui-icon-plusthick'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 WebUI.delay(1)
 
 //Input Document Number

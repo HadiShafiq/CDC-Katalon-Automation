@@ -481,7 +481,7 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 // Expand My Task
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/span_My Task_ui-icon ui-icon-plusthick'), 20)
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'), 20)
 waitBlockUI(20)
 WebUI.delay(1)
 
