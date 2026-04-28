@@ -644,12 +644,12 @@ def clickAgreementRadio(int option) {
 	waitBlockUI(20)
 }
 
-clickAgreementRadio(Integer.parseInt(Agreement))
+clickAgreementRadio(toInt(Agreement))
 
-int Agreement = (Agreement)
+int agreementValue = toInt(Agreement)
 
 
-if (Agreement == 2) {
+if (agreementValue == 2) {
 	TestObject uploadBtn = new TestObject("uploadApprovalLetterBtn")
 	uploadBtn.addProperty(
 		"xpath",

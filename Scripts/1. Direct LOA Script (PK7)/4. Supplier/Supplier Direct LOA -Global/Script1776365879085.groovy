@@ -338,7 +338,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'))
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+   'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -377,7 +377,7 @@ waitBlockUI(30)
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+    'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -385,7 +385,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and At
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+    'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 WebUI.delay(1)
@@ -394,7 +394,7 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and At
 WebUI.delay(1)
 
 WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-   'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+   'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf')
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 

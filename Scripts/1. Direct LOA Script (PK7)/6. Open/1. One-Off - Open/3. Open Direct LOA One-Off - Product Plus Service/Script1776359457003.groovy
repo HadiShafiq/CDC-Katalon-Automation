@@ -658,7 +658,7 @@ if (agreementValue == 2) {
 	waitBlockUI(20)
 	
 	up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf', 3)
 	
 	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Quotation and Tender Type - Open/Upload Approval Letter of Pegawai Pengawal'), 20)
 	waitBlockUI(30)

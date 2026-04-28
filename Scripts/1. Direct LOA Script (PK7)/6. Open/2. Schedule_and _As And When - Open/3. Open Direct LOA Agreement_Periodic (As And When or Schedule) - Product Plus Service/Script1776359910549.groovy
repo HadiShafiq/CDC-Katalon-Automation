@@ -640,12 +640,12 @@ def clickAgreementRadio(int option) {
 	waitBlockUI(20)
 }
 
-clickAgreementRadio(Integer.parseInt(Agreement))
+clickAgreementRadio(toInt(Agreement))
 
-int Agreement = (Agreement)
+int agreementValue = toInt(Agreement)
 
 
-if (Agreement == 2) {
+if (agreementValue == 2) {
 	TestObject uploadBtn = new TestObject("uploadApprovalLetterBtn")
 	uploadBtn.addProperty(
 		"xpath",
@@ -658,7 +658,7 @@ if (Agreement == 2) {
 	waitBlockUI(20)
 	
 	up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-		'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf', 3)
 	
 	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Quotation and Tender Type - Open/Upload Approval Letter of Pegawai Pengawal'), 20)
 	waitBlockUI(30)
@@ -735,7 +735,7 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * ========================= */
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf',3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
@@ -1149,7 +1149,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * ========================= */
 /*PATH HADI 
 String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_Open_ProductPlusService_AP_201_2026.xlsx"*/
-String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Application_NO\\Direct_LOA_Non-Zonal_Periodic_Open_ProductPlusService_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Dry Run\\Direct_LOA_Non-Zonal_Periodic_Open_ProductPlusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
