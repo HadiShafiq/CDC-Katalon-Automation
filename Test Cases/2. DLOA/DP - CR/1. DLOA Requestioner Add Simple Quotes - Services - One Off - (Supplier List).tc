@@ -120,6 +120,12 @@
       <value></value>
       <variableId>220281bd-6a32-4799-8339-733eb8a94183</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>95460138-6757-414c-aba1-a0f2dbc45e2b</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -156,7 +162,7 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated'</defaultValue>
+      <defaultValue>'Automated - Dry Run'</defaultValue>
       <description></description>
       <id>5de3bfda-f252-4a85-b16a-11ced57c1c64</id>
       <masked>false</masked>
@@ -252,5 +258,12 @@
       <id>220281bd-6a32-4799-8339-733eb8a94183</id>
       <masked>false</masked>
       <name>LocalityCoverage</name>
+   </variable>
+   <variable>
+      <defaultValue>'Ane'</defaultValue>
+      <description></description>
+      <id>95460138-6757-414c-aba1-a0f2dbc45e2b</id>
+      <masked>false</masked>
+      <name>AddSupplierNameNormal</name>
    </variable>
 </TestCaseEntity>

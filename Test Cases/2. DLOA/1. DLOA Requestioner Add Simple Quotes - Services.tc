@@ -5,291 +5,265 @@
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>a88654fd-13bb-4983-afcc-d3dd3fdb58c1</testCaseGuid>
+   <testCaseGuid>f6550e12-374a-42ed-90ab-c71eea76b077</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>17916fa6-218c-4795-b731-0978f70e7ff9</variableId>
+      <variableId>62b8b0e5-8262-45d1-8b0a-9d6ae2c43005</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>c2f28eff-ea07-4d71-bb7a-eb8634f50b64</variableId>
+      <variableId>d6a8cecd-e84c-471d-a8bc-b2ea2f21974a</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>6fa5d95f-c2a7-428a-bbca-25fe10d38d6e</variableId>
+      <variableId>5867b0e1-b4a9-4f55-a9c2-d2b56027bdcc</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>05cd0adf-f365-4a31-842e-93e6a3745dea</variableId>
+      <variableId>9fed7203-4d71-4c76-b06e-c26397419066</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>0139ee0c-44a6-48d3-aed1-df2495d68115</variableId>
+      <variableId>a7278ddb-b7c8-4500-8e71-f46d611f3932</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>661a73fc-0305-44b3-8c96-d5fb250189a2</variableId>
+      <variableId>83875ca3-169d-407f-b3c6-cbe4f1a987a5</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>0c70d9d3-e6d6-4619-9c63-20c42b1b30c9</variableId>
+      <variableId>c4ec2239-59b8-482f-9b2c-991a8df20b02</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>95fd1170-be34-4180-94d3-597fde056a3f</variableId>
+      <variableId>4533820c-0316-4654-8d7f-2ab485bd94bd</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>e69a7e61-ec3f-4c6f-a419-535999ed7ddb</variableId>
+      <variableId>a4e6f8ad-396b-4237-a3c6-0d51a5cf7644</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>0ad560f4-1237-4f24-b62f-c26ca99f6860</variableId>
+      <variableId>869709ba-9485-4f5b-96d3-0cb5aaa809b0</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>7170511b-f9fb-4757-b128-81f2b1970c0e</variableId>
+      <variableId>37bd8ba4-51fe-464c-9b13-1796849d9fc7</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>14b27b76-d783-44c4-bf33-e8eb3359a4ac</variableId>
+      <variableId>84c00480-18ed-4c9e-9af0-6f0349ed9bea</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>cdea8cf2-814a-4968-a387-f7eec58d79e8</variableId>
+      <variableId>a3fe7d98-7fe9-4f79-a4e0-732589a493ff</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>1e39ceb5-316f-4a7b-b140-7610bc014f03</variableId>
+      <variableId>d72f6d81-061d-436b-b105-3c9cf38f9d05</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>a92a0493-4ca7-4db2-8ae5-1a5d6169a8d9</variableId>
+      <variableId>244396f3-9ff0-4f67-a6b2-1f320b3139a6</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>1800ce41-6eff-42d8-a609-848eff140bba</variableId>
+      <variableId>872ed861-9ad4-4816-95d5-dd62fa8773d8</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>54e2fd99-9793-440f-8981-1aa5b1e1e36a</variableId>
+      <variableId>dc9c9a8d-ae49-42bc-91f3-13ef94078e39</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>c1aefdae-099d-47f4-8abc-4a7c2eed6f0c</variableId>
+      <variableId>7120d378-a62b-4c58-9f7b-ae4e189010f6</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>89a57e62-c987-4d29-8bd8-a82957761d9f</variableId>
+      <variableId>4483128d-9361-49fe-969e-7fc84deeb0ca</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>1c35a641-256b-451a-8a1a-9ac4ddbd2d8b</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>94a280ad-ccab-4465-a0f2-40e34ccb3228</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>cc45d007-77f6-44b5-99e4-c64c34c3a093</variableId>
+      <variableId>716c13ea-c59e-4667-a7e3-89159e98c328</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
-      <id>17916fa6-218c-4795-b731-0978f70e7ff9</id>
+      <id>62b8b0e5-8262-45d1-8b0a-9d6ae2c43005</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>c2f28eff-ea07-4d71-bb7a-eb8634f50b64</id>
+      <id>d6a8cecd-e84c-471d-a8bc-b2ea2f21974a</id>
       <masked>false</masked>
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'Pihak Berkuasa Pelaksanaan Koridor Utara'</defaultValue>
+      <defaultValue>''</defaultValue>
       <description></description>
-      <id>6fa5d95f-c2a7-428a-bbca-25fe10d38d6e</id>
+      <id>5867b0e1-b4a9-4f55-a9c2-d2b56027bdcc</id>
+      <masked>false</masked>
+      <name>Keyword</name>
+   </variable>
+   <variable>
+      <defaultValue>'761223090000000000'</defaultValue>
+      <description></description>
+      <id>9fed7203-4d71-4c76-b06e-c26397419066</id>
+      <masked>false</masked>
+      <name>ItemCode</name>
+   </variable>
+   <variable>
+      <defaultValue>'AINHALIM ENTERPRISE'</defaultValue>
+      <description></description>
+      <id>a7278ddb-b7c8-4500-8e71-f46d611f3932</id>
       <masked>false</masked>
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated'</defaultValue>
+      <defaultValue>'Automated - Dry Run'</defaultValue>
       <description></description>
-      <id>05cd0adf-f365-4a31-842e-93e6a3745dea</id>
+      <id>83875ca3-169d-407f-b3c6-cbe4f1a987a5</id>
       <masked>false</masked>
       <name>DLAOTitle</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
-      <id>0139ee0c-44a6-48d3-aed1-df2495d68115</id>
+      <id>c4ec2239-59b8-482f-9b2c-991a8df20b02</id>
       <masked>false</masked>
-      <name>Procurementtype</name>
+      <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
       <description></description>
-      <id>661a73fc-0305-44b3-8c96-d5fb250189a2</id>
+      <id>4533820c-0316-4654-8d7f-2ab485bd94bd</id>
+      <masked>false</masked>
+      <name>RBProcurementType</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>a4e6f8ad-396b-4237-a3c6-0d51a5cf7644</id>
       <masked>false</masked>
       <name>ReasonPK7</name>
    </variable>
    <variable>
       <defaultValue>'Testing Auto'</defaultValue>
       <description></description>
-      <id>0c70d9d3-e6d6-4619-9c63-20c42b1b30c9</id>
+      <id>869709ba-9485-4f5b-96d3-0cb5aaa809b0</id>
       <masked>false</masked>
       <name>Justification</name>
    </variable>
    <variable>
-      <defaultValue>'Item'</defaultValue>
-      <description></description>
-      <id>95fd1170-be34-4180-94d3-597fde056a3f</id>
-      <masked>false</masked>
-      <name>ProductSpecification1</name>
-   </variable>
-   <variable>
-      <defaultValue>'PCS'</defaultValue>
-      <description></description>
-      <id>e69a7e61-ec3f-4c6f-a419-535999ed7ddb</id>
-      <masked>false</masked>
-      <name>ProductUOM</name>
-   </variable>
-   <variable>
-      <defaultValue>1</defaultValue>
-      <description></description>
-      <id>0ad560f4-1237-4f24-b62f-c26ca99f6860</id>
-      <masked>false</masked>
-      <name>PriceType</name>
-   </variable>
-   <variable>
-      <defaultValue>'10'</defaultValue>
-      <description></description>
-      <id>7170511b-f9fb-4757-b128-81f2b1970c0e</id>
-      <masked>false</masked>
-      <name>ProductQuaty</name>
-   </variable>
-   <variable>
-      <defaultValue>'30'</defaultValue>
-      <description></description>
-      <id>14b27b76-d783-44c4-bf33-e8eb3359a4ac</id>
-      <masked>false</masked>
-      <name>DeliveryPeriod</name>
-   </variable>
-   <variable>
-      <defaultValue>'SPEC PROD'</defaultValue>
-      <description></description>
-      <id>cdea8cf2-814a-4968-a387-f7eec58d79e8</id>
-      <masked>false</masked>
-      <name>ProductSpecification2</name>
-   </variable>
-   <variable>
       <defaultValue>'SVS'</defaultValue>
       <description></description>
-      <id>1e39ceb5-316f-4a7b-b140-7610bc014f03</id>
+      <id>37bd8ba4-51fe-464c-9b13-1796849d9fc7</id>
       <masked>false</masked>
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>84c00480-18ed-4c9e-9af0-6f0349ed9bea</id>
+      <masked>false</masked>
+      <name>Fulfilmenttype</name>
+   </variable>
+   <variable>
       <defaultValue>'ACT'</defaultValue>
       <description></description>
-      <id>a92a0493-4ca7-4db2-8ae5-1a5d6169a8d9</id>
+      <id>a3fe7d98-7fe9-4f79-a4e0-732589a493ff</id>
       <masked>false</masked>
       <name>ServiceUOM</name>
    </variable>
    <variable>
+      <defaultValue>'1'</defaultValue>
+      <description></description>
+      <id>d72f6d81-061d-436b-b105-3c9cf38f9d05</id>
+      <masked>false</masked>
+      <name>Freq</name>
+   </variable>
+   <variable>
+      <defaultValue>'1'</defaultValue>
+      <description></description>
+      <id>244396f3-9ff0-4f67-a6b2-1f320b3139a6</id>
+      <masked>false</masked>
+      <name>DurationMonth</name>
+   </variable>
+   <variable>
       <defaultValue>'10'</defaultValue>
       <description></description>
-      <id>1800ce41-6eff-42d8-a609-848eff140bba</id>
+      <id>872ed861-9ad4-4816-95d5-dd62fa8773d8</id>
       <masked>false</masked>
       <name>ServiceQty</name>
    </variable>
    <variable>
       <defaultValue>'30'</defaultValue>
       <description></description>
-      <id>54e2fd99-9793-440f-8981-1aa5b1e1e36a</id>
+      <id>dc9c9a8d-ae49-42bc-91f3-13ef94078e39</id>
       <masked>false</masked>
       <name>ServicePeriod</name>
    </variable>
    <variable>
       <defaultValue>'SPEC SVS'</defaultValue>
       <description></description>
-      <id>c1aefdae-099d-47f4-8abc-4a7c2eed6f0c</id>
+      <id>7120d378-a62b-4c58-9f7b-ae4e189010f6</id>
       <masked>false</masked>
       <name>ServiceSpecification2</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
-      <id>89a57e62-c987-4d29-8bd8-a82957761d9f</id>
+      <id>4483128d-9361-49fe-969e-7fc84deeb0ca</id>
       <masked>false</masked>
-      <name>Fulfilmenttype</name>
+      <name>LocalityCoverage</name>
    </variable>
    <variable>
-      <defaultValue>'PEMBANGUNAN SISTEM KARTOGRAFI'</defaultValue>
+      <defaultValue>'ANE'</defaultValue>
       <description></description>
-      <id>1c35a641-256b-451a-8a1a-9ac4ddbd2d8b</id>
+      <id>716c13ea-c59e-4667-a7e3-89159e98c328</id>
       <masked>false</masked>
-      <name>Keyword</name>
-   </variable>
-   <variable>
-      <defaultValue>'1'</defaultValue>
-      <description></description>
-      <id>94a280ad-ccab-4465-a0f2-40e34ccb3228</id>
-      <masked>false</masked>
-      <name>Freq</name>
-   </variable>
-   <variable>
-      <defaultValue>'60'</defaultValue>
-      <description></description>
-      <id>cc45d007-77f6-44b5-99e4-c64c34c3a093</id>
-      <masked>false</masked>
-      <name>DurationMonth</name>
+      <name>AddSupplierNameNormal</name>
    </variable>
 </TestCaseEntity>
