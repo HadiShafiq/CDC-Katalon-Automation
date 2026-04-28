@@ -280,9 +280,10 @@ def claimDocument(String targetDocNo) {
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
-// USE ENVIRONMENT VARIABLE
+// USE ENVIRONMENT VARIABLE 	
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")
 String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
+
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
 String userDataDir = Files.createTempDirectory("katalon-cft").toString()
@@ -365,98 +366,57 @@ WebUI.delay(0.5)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
 /* =========================
- * Tasklist MyGroup
- * Purpose:
- * - Claim Application by Document Number
- * ========================= */
-
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
-waitBlockUI(20)
-
-c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask TaskList Dropdown'))
-waitBlockUI(20)
-
-selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement/Document Type TaskList'), DocumentType)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Serach Button'))
-waitBlockUI(30)
-WebUI.delay(1)
-
-
-// =========================
-// Convert Katalon variable to list
-// Example variable:
-// Document_Numbers = LA260000000001729,LA260000000001730,LA260000000001731
-// =========================
-
-String docNumbersRaw = Document_Number
-
-List<String> docList = docNumbersRaw
-	.replace('\n', ',')
-	.replace('\r', ',')
-	.split(',')
-	.collect { it.trim() }
-	.findAll { it }
-
-List<String> failedList = []
-
-for (String docNo : docList) {
-
-	WebUI.comment("START CLAIM DOCUMENT: " + docNo)
-
-	boolean result = claimDocument(docNo)
-
-	if (result) {
-		WebUI.comment("✅ SUCCESS CLAIM: " + docNo)
-	} else {
-		WebUI.comment("❌ FAILED CLAIM: " + docNo)
-		failedList.add(docNo)
-	}
-}
-
-
-// =========================
-// Final validation
-// =========================
-
-assert failedList.size() == 0 : "❌ These Document No failed to claim: " + failedList
-/* =========================
- * Tasklist MyGroup
- * Purpose:
- * - Serach Application No
- * ========================= 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
-
-c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask TaskList Dropdown'))
-
-//Input Document Number
-t(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Document No'),
-	Document_Number)
-
-selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement/Document Type TaskList'), 1)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-c(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/GroupTask Serach Button'))
-
-
-/* =========================
  * Tasklist MyTask
  * Purpose:
  * - Serach Application No
- * ========================= 
+ * =========================*/ 
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
+selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement Application/Common TaskList Funtion/MyTask DocumentType Dropdown'), DocumentType)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
 //Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
-	Document_Number)
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
+// wait loader gone
+waitBlockUI(30)
+
+// wait table/data loaded (VERY IMPORTANT)
+TestObject table = new TestObject('taskTable')
+table.addProperty("xpath", ConditionType.EQUALS,
+	"//tbody[contains(@id,'taskListGroupId_data')]"
+)
+
+WebUI.waitForElementVisible(table, 20)
+
+// small buffer
+WebUI.delay(1)
+
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/FD and Agreement/Agreement/Claim Button'))*/
+t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Phsicalcontract)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Signer Information'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Signer Information/Witness Add Button'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 

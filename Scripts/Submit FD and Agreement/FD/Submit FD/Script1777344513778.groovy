@@ -377,7 +377,7 @@ WebUI.delay(0.5)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
-selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Common TaskList Funtion/MyTask DocumentType Dropdown'), DocumentType)
+selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement Application/Common TaskList Funtion/MyTask DocumentType Dropdown'), DocumentType)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
@@ -408,15 +408,137 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-t(findTestObject('Object Repository/FD and Agreement/Create Agreement/Physical Contract No'),Phsicalcontract)
+t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Physical Contract No'),PhysicalContractNo)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Signer Information'))
+t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Service Period'),ServicePeriod)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/FD and Agreement/Agreement Signer Information/Witness Add Button'))
+c(findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Agency Side Menu'))
 waitBlockUI(20)
 WebUI.delay(0.5)
+
+
+int agencyLoopCount = 3
+
+for (int i = 1; i <= agencyLoopCount; i++) {
+
+	// =========================
+	// Get data by loop
+	// =========================
+	def ministryValue = binding.getVariable("Ministry${i}")
+	def jabatanValue  = binding.getVariable("Jabatan${i}")
+	def ptjCodeValue  = binding.getVariable("PTJCode${i}")
+
+	// =========================
+	// Add Agency
+	// =========================
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Add Button Agency'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	// =========================
+	// Select Ministry
+	// =========================
+	selectDropdownByIndex(
+		findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Ministry Dropdown'),
+		ministryValue
+	)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	// =========================
+	// Select Jabatan
+	// =========================
+	selectDropdownByIndex(
+		findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Jabatan Dropdown'),
+		jabatanValue
+	)
+	waitBlockUI(20)
+	WebUI.delay(2)
+
+	// =========================
+	// Input PTJ Code
+	// =========================
+	TestObject safeArea = new TestObject("safeArea_Header_${i}")
+	safeArea.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:agencyPopUpId_header']/span"
+	)
+
+	TestObject ptjCode = findTestObject(
+		'Object Repository/FD and Agreement/FD Application/Agency/PTJ Code'
+	)
+
+	String ptjCodeInput = ptjCodeValue.toString().trim()
+
+	WebUI.waitForElementVisible(ptjCode, 20)
+	WebUI.waitForElementClickable(ptjCode, 20)
+	WebUI.click(ptjCode)
+	WebUI.delay(0.5)
+
+	WebUI.sendKeys(ptjCode, Keys.chord(Keys.CONTROL, 'a'))
+	WebUI.delay(0.3)
+	WebUI.sendKeys(ptjCode, Keys.chord(Keys.BACK_SPACE))
+	WebUI.delay(0.5)
+
+	for (char ch : ptjCodeInput.toCharArray()) {
+		WebUI.sendKeys(ptjCode, ch.toString())
+		WebUI.delay(0.15)
+	}
+
+	WebUI.click(safeArea, FailureHandling.OPTIONAL)
+
+	waitBlockUI(10)
+	WebUI.delay(1)
+
+	String finalPTJCode = WebUI.getAttribute(ptjCode, 'value')
+	println("Loop ${i} Final PTJ Code = " + finalPTJCode)
+
+	// =========================
+	// Search Agency
+	// =========================
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Search Agency'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	// =========================
+	// Select First Agency Row
+	// =========================
+	TestObject firstAgencyRow = new TestObject("firstAgencyRow_${i}")
+	firstAgencyRow.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:tableAgency_data']/tr[1]"
+	)
+
+	if (!WebUI.waitForElementVisible(firstAgencyRow, 10, FailureHandling.OPTIONAL)) {
+		WebUI.delay(2)
+	}
+
+	WebUI.waitForElementClickable(firstAgencyRow, 20)
+	WebUI.scrollToElement(firstAgencyRow, 2)
+
+	try {
+		WebUI.click(firstAgencyRow)
+	} catch (Exception e) {
+		WebUI.enhancedClick(firstAgencyRow, FailureHandling.OPTIONAL)
+	}
+
+	WebUI.delay(1)
+	waitBlockUI(20)
+	WebUI.delay(1)
+
+	// =========================
+	// Click Select Button
+	// =========================
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Select Button'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+}
+	
+
 
