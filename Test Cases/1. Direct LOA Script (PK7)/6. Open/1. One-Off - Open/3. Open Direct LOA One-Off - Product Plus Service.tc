@@ -248,14 +248,14 @@
       <name>ProcurementCategory</name>
    </variable>
    <variable>
-      <defaultValue>'New Script Test'</defaultValue>
+      <defaultValue>'New Script Test - end to end '</defaultValue>
       <description></description>
       <id>82f4fffe-2913-41e7-94c7-8f72c9570951</id>
       <masked>false</masked>
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test00000000011'</defaultValue>
+      <defaultValue>'Test00000002222\r\n'</defaultValue>
       <description></description>
       <id>54bc9bd0-d418-4770-9ec1-37d42d52096c</id>
       <masked>false</masked>

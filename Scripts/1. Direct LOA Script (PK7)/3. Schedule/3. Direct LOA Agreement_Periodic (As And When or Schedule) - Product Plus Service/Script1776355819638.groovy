@@ -740,9 +740,10 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * Purpose:
  * - upload LOA signer document
  * ========================= */
+
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\hadishafiq\\Desktop\\File\\File.pdf',3)
+	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf', 3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
@@ -1154,7 +1155,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_Periodic_(Schedule)_PK7_ProductPlusService_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Dry Run\\Direct_LOA_Non-Zonal_Periodic_(Schedule)_PK7_ProductPlusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

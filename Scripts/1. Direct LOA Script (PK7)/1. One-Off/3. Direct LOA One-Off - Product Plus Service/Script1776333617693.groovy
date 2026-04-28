@@ -740,10 +740,11 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * Purpose:
  * - upload LOA signer document
  * ========================= */
-String uploadFilePath  = projectDir + "\\TestData\\UploadFiles\\File pdf_for testing.pdf"
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
+
+//String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File pdf_for testing.pdf"
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	uploadFilePath, 3)
+	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf', 3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
@@ -1089,7 +1090,7 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_One-Off_PK7_ProductplusService_AP_201_2026.xlsx"
+String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Dry Run\\Direct_LOA_Non-Zonal_One-Off_PK7_ProductplusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

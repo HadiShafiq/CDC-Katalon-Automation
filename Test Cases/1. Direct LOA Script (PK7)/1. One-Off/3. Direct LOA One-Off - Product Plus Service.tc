@@ -267,7 +267,7 @@
       <name>ProcurementCategory</name>
    </variable>
    <variable>
-      <defaultValue>'New Script Test'</defaultValue>
+      <defaultValue>'New Script Test - End to End'</defaultValue>
       <description></description>
       <id>dea45c22-a5c7-4536-976e-f4763c24dc0e</id>
       <masked>false</masked>
