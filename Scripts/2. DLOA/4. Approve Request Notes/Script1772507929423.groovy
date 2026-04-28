@@ -381,15 +381,9 @@ def pickDate(String yyyyMmDd) {
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
-
-/* PATH HADI */
-String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
-
-/* PATH ATIKAH
-String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"*/
-
+// USE ENVIRONMENT VARIABLE
+String chromeBinary = System.getenv("CHROME_BINARY_PATH")
+String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 

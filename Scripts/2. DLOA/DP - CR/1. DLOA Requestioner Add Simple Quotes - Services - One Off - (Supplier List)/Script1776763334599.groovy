@@ -407,7 +407,7 @@ def pickDate(String yyyyMmDd) {
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
-	
+// USE ENVIRONMENT VARIABLE 	
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")
 String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
 

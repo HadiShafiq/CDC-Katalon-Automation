@@ -223,20 +223,13 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
-/* =========================
- * BROWSER SETUP
- * Purpose:
- * - launch Chrome in clean guest/incognito mode
- * - disable password manager prompts
- * ========================= */
+/* =========================================================
+ * 8) BROWSER SETUP
+ * ========================================================= */
+// USE ENVIRONMENT VARIABLE 	
+String chromeBinary = System.getenv("CHROME_BINARY_PATH")
+String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
 
-/* PATH HADI*/
-String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe" 
-/* PATH Atikah
-String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
-*/
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
 String userDataDir = Files.createTempDirectory("katalon-cft").toString()

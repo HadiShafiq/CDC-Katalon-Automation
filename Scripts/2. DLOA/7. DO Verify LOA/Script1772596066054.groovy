@@ -381,15 +381,9 @@ def pickDate(String yyyyMmDd) {
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
-
-/* PATH HADI */
-String chromeBinary = "C:\\Users\\hadishafiq\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\hadishafiq\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"
-
-/* PATH ATIKAH
-String chromeBinary = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chrome-win64\\chrome-win64\\chrome.exe"
-String chromeDriverPath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Automation Testing Browser FIles\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe"*/
-
+// USE ENVIRONMENT VARIABLE 	
+String chromeBinary = System.getenv("CHROME_BINARY_PATH")
+String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
 
 System.setProperty("webdriver.chrome.driver", chromeDriverPath)
 
@@ -475,37 +469,11 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-// Login
-c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
-waitBlockUI(20)
-// WebUI.delay(1)  // keep if you want; but overlay wait is usually enough
-WebUI.delay(3)
 
-t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Username'), Username, 20)
-waitBlockUI(20)
-// WebUI.delay(1)  // keep if you want; but overlay wait is usually enough
-WebUI.delay(0.5)
+//TaskList
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
-t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Password'), Password, 20)
-waitBlockUI(20)
-// WebUI.delay(1)  // keep if you want; but overlay wait is usually enough
-WebUI.delay(0.5)
-
-c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Submit Username and Password'), 20)
-waitBlockUI(30)
-WebUI.delay(2)
-
-WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
-
-// TaskList
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'), 20)
-waitBlockUI(20)
-WebUI.delay(1)
-
-// Expand My Task
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'), 20)
-waitBlockUI(20)
-WebUI.delay(1)
+WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 // Input Document Number
 t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
