@@ -214,14 +214,14 @@
       <name>Dropdown_Color</name>
    </variable>
    <variable>
-      <defaultValue>'81112204'</defaultValue>
+      <defaultValue>'76122309'</defaultValue>
       <description></description>
       <id>7ae704cf-5272-4f21-a59b-217d5a1835fa</id>
       <masked>false</masked>
       <name>S_Item_Code</name>
    </variable>
    <variable>
-      <defaultValue>'Software'</defaultValue>
+      <defaultValue>'Kitar Semula'</defaultValue>
       <description></description>
       <id>5d22fe5c-f8ad-479a-b668-dcc4a4cb4bae</id>
       <masked>false</masked>
