@@ -687,7 +687,7 @@ if (WebUI.waitForElementClickable(scheduleMenu, 5, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementVisible(msgObj, 30)
 	
 	String msg = ""
-	for (int i = 0; i < 15; i++) {
+	for (int i = 0; i < 2; i++) {
 		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
 		if (msg != null && msg.contains("CT")) break
 		WebUI.delay(1)
