@@ -641,7 +641,9 @@ assert false : "❌ LOA number not found. Message was: " + msg
 WebUI.comment("✅ Captured LOA No: " + loaNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Direct Purchased\\No SQ\\LOA_DP_CR_RN_LOA_PREPARE_LOA.xlsx"
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/DLOA_DP_CR_RN_LOA_PREPARE_LOA.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

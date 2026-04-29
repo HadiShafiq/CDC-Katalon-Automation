@@ -342,7 +342,9 @@ if (rnNo == "") {
 WebUI.comment("✅ Captured RN No: " + rnNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\DP_PR_DLOA_RN_NO_2026.xlsx"
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/DP_PR_DLOA_RN_NO_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

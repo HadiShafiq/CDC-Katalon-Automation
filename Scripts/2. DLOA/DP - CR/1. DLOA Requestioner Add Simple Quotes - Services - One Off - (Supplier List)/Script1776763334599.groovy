@@ -905,7 +905,9 @@ if (sqNo == "") {
 WebUI.comment("✅ Captured SQ No: " + sqNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
-String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Direct Purchased\\No SQ\\FL_DP_CR_DLOA_Requestioner_Service_NEW.xlsx"
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/FL_DP_CR_DLOA_Requestioner_Service_NEW.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

@@ -1090,7 +1090,9 @@ WebUI.comment("✅ Captured LOA No: " + loaNo)
  * Purpose:
  * - append LOA number and message into same Excel file
  * ========================= */
-String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Dry Run\\Direct_LOA_Non-Zonal_One-Off_PK7_ProductplusService_AP_201_2026.xlsx"
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/Direct_LOA_Non-Zonal_One-Off_PK7_ProductplusService_AP_201_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
