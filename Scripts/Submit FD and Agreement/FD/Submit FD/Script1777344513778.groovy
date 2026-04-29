@@ -540,6 +540,51 @@ for (int i = 1; i <= agencyLoopCount; i++) {
 	WebUI.delay(0.5)
 }
 
+// =========================
+// Get Contract No.
+// =========================
+TestObject contractNoObj = new TestObject('contractNoObj')
+contractNoObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//td[label[normalize-space()='Contract No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
+)
+
+WebUI.waitForElementVisible(contractNoObj, 20)
+
+String contractNo = WebUI.getText(contractNoObj).trim()
+println("Contract No = " + contractNo)
+
+
+// =========================
+// Set File Ref Agency
+// =========================
+String fileRefAgencyInput = "File Ref " + contractNo
+println("File Ref Agency = " + fileRefAgencyInput)
+
+t(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/File Ref Agency'), fileRefAgencyInput)
+WebUI.delay(0.5)
+
+// =========================
+// Upload Approval Letter Agency Attachment
+// =========================
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
+
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload Button'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+up(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Icon Choose File'), uploadFilePath,3)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload File Icon'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Close button'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 
 // =========================
 // Schedule
@@ -616,6 +661,106 @@ if (WebUI.waitForElementClickable(scheduleMenu, 5, FailureHandling.OPTIONAL)) {
 	waitBlockUI(10)
 	WebUI.delay(0.5)
 
-
-
-
+	/* =========================
+	 * SUCCESS MESSAGE - CT ONLY
+	 * Purpose:
+	 * - wait for loader disappear
+	 * - capture success message
+	 * - extract dynamic CT number
+	 * ========================= */
+	TestObject blockUI = new TestObject('blockUI')
+	blockUI.addProperty("xpath", ConditionType.EQUALS,
+		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+	)
+	
+	if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+		WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+	}
+	
+	TestObject msgObj = new TestObject('msg_CT_saved')
+	msgObj.addProperty("xpath", ConditionType.EQUALS,
+		"//span[contains(@class,'ui-messages-info-detail') and " +
+		"contains(.,'Fulfilment Details Creation') and " +
+		"contains(.,'is successfully submitted to Contract Approver')]"
+	)
+	
+	WebUI.waitForElementVisible(msgObj, 30)
+	
+	String msg = ""
+	for (int i = 0; i < 15; i++) {
+		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+		if (msg != null && msg.contains("CT")) break
+		WebUI.delay(1)
+	}
+	
+	msg = (msg == null) ? "" : msg.trim()
+	WebUI.comment("Message: " + msg)
+	
+	def matcher = (msg =~ /(CT\d+)/)
+	String ctNo = matcher.find() ? matcher.group(1) : ""
+	
+	if (ctNo == "") {
+		WebUI.takeScreenshot()
+		assert false : "❌ CT number not found. Message was: " + msg
+	}
+	
+	WebUI.comment("✅ Captured CT No: " + ctNo)
+	
+	/* =========================
+	 * EXCEL APPEND
+	 * Purpose:
+	 * - append CT number and message into same Excel file
+	 * ========================= */
+	/* PATH HADI */
+	String filePath = "C:\\Users\\hadishafiq\\Desktop\\PrepData\\Direct_LOA_Non-Zonal_One-Off_PK7_Product_AP_201_2026.xlsx"
+	//String filePath = "C:\\Users\\nurul.atikah\\Documents\\CDC - Work\\Automation\\Test Data\\Application_NO\\Direct_LOA_Non-Zonal_One-Off_PK7_Product_AP_201_2026.xlsx"
+	
+	String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+	
+	def path = Paths.get(filePath)
+	XSSFWorkbook wb
+	def sheet
+	FileInputStream fis = null
+	
+	if (Files.exists(path)) {
+		fis = new FileInputStream(filePath)
+		wb = new XSSFWorkbook(fis)
+		sheet = wb.getSheet("Result")
+		if (sheet == null) sheet = wb.createSheet("Result")
+	} else {
+		wb = new XSSFWorkbook()
+		sheet = wb.createSheet("Result")
+	
+		def header = sheet.createRow(0)
+		header.createCell(0).setCellValue("DateTime")
+		header.createCell(1).setCellValue("CT No")
+		header.createCell(2).setCellValue("Message")
+	}
+	
+	if (fis != null) fis.close()
+	
+	int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+	def row = sheet.createRow(nextRow)
+	
+	row.createCell(0).setCellValue(now)
+	row.createCell(1).setCellValue(ctNo)
+	row.createCell(2).setCellValue(msg)
+	
+	FileOutputStream fos = new FileOutputStream(filePath)
+	wb.write(fos)
+	fos.close()
+	wb.close()
+	
+	WebUI.comment("✅ Appended to Excel: " + filePath)
+	
+	/* =========================
+	 * SIGN OUT
+	 * Purpose:
+	 * - logout from system
+	 * - close browser
+	 * ========================= */
+	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+	
+	WebUI.waitForPageLoad(20)
+	WebUI.closeBrowser()
