@@ -539,6 +539,83 @@ for (int i = 1; i <= agencyLoopCount; i++) {
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 }
+
+
+// =========================
+// Schedule
+// =========================
+
+TestObject scheduleMenu = findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Schedule Side Menu')
+
+if (WebUI.waitForElementClickable(scheduleMenu, 5, FailureHandling.OPTIONAL)) {
+
+	c(scheduleMenu)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	int scheduleCount = 2
+
+	for (int i = 0; i < scheduleCount; i++) {
+
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Schedule/Schedule Add Button'))
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+
+		TestObject fromYear = new TestObject("fromYear_${i}")
+		fromYear.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromYear_label']")
+		selectDropdownByIndex(fromYear, Startyear)
+		
+		TestObject fromMonth = new TestObject("fromMonth_${i}")
+		fromMonth.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromMonth_label']")
+		selectDropdownByIndex(fromMonth, Startmonth)
+
+		TestObject toYear = new TestObject("toYear_${i}")
+		toYear.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toYear_label']")
+		selectDropdownByIndex(toYear, Endyear)
+
+		TestObject toMonth = new TestObject("toMonth_${i}")
+		toMonth.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toMonth_label']")
+		selectDropdownByIndex(toMonth, Endmonth)
 	
+	}
+
+	} else {
+		println("Schedule menu not available / not clickable, skip to next step")
+	}
+	
+	TestObject Appmenu = findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings')
+	
+	if (WebUI.waitForElementClickable(Appmenu, 5, FailureHandling.OPTIONAL)) {
+		WebUI.click(Appmenu)
+		waitBlockUI(20)
+	} else {
+		println("Approver Settings menu not clickable / not available")
+	}
+	
+	String approverName = ApproverName.toString().trim()
+	TestObject approver = new TestObject('approver_dynamic')
+	approver.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
+	)
+	
+	WebUI.waitForElementClickable(approver, 20)
+	WebUI.click(approver)
+	WebUI.delay(0.5)
+	
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'))
+	waitBlockUI(10)
+	WebUI.delay(0.5)
+	
+	c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
+	waitBlockUI(10)
+	WebUI.delay(0.5)
+
+
 
 

@@ -96,6 +96,36 @@
       <value></value>
       <variableId>be803a0e-540e-4663-a885-ee477f3107d8</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>36af927f-aeac-4bd7-9c5b-0a44717097b5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>640bda06-7726-4bff-9d8e-8ff0975834a1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>00e10751-2b8d-4af5-8328-6169174aa819</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d84ab46d-f8ea-4c3c-8348-41fea8fbf5b3</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>bf7440c6-d866-47f6-b29c-f43c0baa0280</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'870926145529'</defaultValue>
       <description></description>
@@ -200,5 +230,40 @@
       <id>be803a0e-540e-4663-a885-ee477f3107d8</id>
       <masked>false</masked>
       <name>PTJCode3</name>
+   </variable>
+   <variable>
+      <defaultValue>6</defaultValue>
+      <description></description>
+      <id>36af927f-aeac-4bd7-9c5b-0a44717097b5</id>
+      <masked>false</masked>
+      <name>Startmonth</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>640bda06-7726-4bff-9d8e-8ff0975834a1</id>
+      <masked>false</masked>
+      <name>Startyear</name>
+   </variable>
+   <variable>
+      <defaultValue>9</defaultValue>
+      <description></description>
+      <id>00e10751-2b8d-4af5-8328-6169174aa819</id>
+      <masked>false</masked>
+      <name>Endmonth</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>d84ab46d-f8ea-4c3c-8348-41fea8fbf5b3</id>
+      <masked>false</masked>
+      <name>Endyear</name>
+   </variable>
+   <variable>
+      <defaultValue>'Shamsul Azri Bin Abu Bakar'</defaultValue>
+      <description></description>
+      <id>bf7440c6-d866-47f6-b29c-f43c0baa0280</id>
+      <masked>false</masked>
+      <name>ApproverName</name>
    </variable>
 </TestCaseEntity>
