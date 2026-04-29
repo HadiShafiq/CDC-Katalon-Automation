@@ -504,7 +504,7 @@ t(findTestObject('Object Repository/DLOA/8. Prepare LOA/File Reference No_2'), F
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/Date Picker COntract Details icon'), 20)
 
-pickDate("2026-04-23")   // <-- put your date here
+pickDate("2026-04-29")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -552,7 +552,7 @@ WebUI.delay(1)
 
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Date Picker LOA and Attachment'), 20)
-pickDate("2026-04-23")   // <-- put your date here
+pickDate("2026-04-29")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 

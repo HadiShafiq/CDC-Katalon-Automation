@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//tbody[contains(@id,'lovTb_data')]/tr[1]/td[2]</value>
+         <value>//tbody[contains(@id,'lovTb_data')]/tr[1]/td[1]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -23,7 +23,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>td</value>
-      <webElementGuid>3454435a-9827-4d3e-91ff-e02b80cc164a</webElementGuid>
+      <webElementGuid>94680701-a972-447b-b953-fef232c1cebc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -31,7 +31,7 @@
       <name>role</name>
       <type>Main</type>
       <value>gridcell</value>
-      <webElementGuid>4466defd-7893-4db6-a207-819f3e53ea02</webElementGuid>
+      <webElementGuid>00403fdb-cb42-4cc4-a9de-3208c0db899f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -41,7 +41,7 @@
       <value>
 						Siti Roveah Binti Simon 
 				</value>
-      <webElementGuid>c6b845b1-4a1f-4661-994e-f0b757505472</webElementGuid>
+      <webElementGuid>f0230938-adc6-4620-a820-63fc5df01d27</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt659:lovTb_data&quot;)/tr[@class=&quot;ui-widget-content ui-datatable-even ui-state-hover&quot;]/td[1]</value>
-      <webElementGuid>170fdfc9-4932-43a4-af66-889634f06be2</webElementGuid>
+      <webElementGuid>9c0188d8-afc2-480f-9c2e-69c81e722419</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//tbody[@id='_scCreateManualSourcing_WAR_NGePportlet_:form:j_idt659:lovTb_data']/tr/td</value>
-      <webElementGuid>77cc45ce-565f-4d14-99bc-085a4250dcb7</webElementGuid>
+      <webElementGuid>60458bbd-fef6-4775-8c8b-2f49bfb4a0eb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='IC No.'])[2]/following::td[1]</value>
-      <webElementGuid>d23d386f-7ef0-4794-b680-fed06bb91cef</webElementGuid>
+      <webElementGuid>64981905-35c2-4bf1-ab17-aa492d29852b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='User Name'])[3]/following::td[1]</value>
-      <webElementGuid>4d6b46a6-2a9c-4175-8c2a-42f90ec2cb3e</webElementGuid>
+      <webElementGuid>9b58b1ba-db7b-4baa-b2d9-244c9bc57713</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -81,7 +81,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Select'])[1]/preceding::td[2]</value>
-      <webElementGuid>dfc947b7-bf3b-42e3-a776-c061f49b3510</webElementGuid>
+      <webElementGuid>0a5daf30-2709-4f5d-bb3e-a71e33340656</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -89,7 +89,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Cancel'])[1]/preceding::td[2]</value>
-      <webElementGuid>163e2893-9e6b-426b-934b-ca55a4583711</webElementGuid>
+      <webElementGuid>e7677255-0f03-40d1-8ea8-86a6016bb134</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -97,7 +97,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Siti Roveah Binti Simon']/parent::*</value>
-      <webElementGuid>9bbf6f39-b872-4ace-9add-300e955d7914</webElementGuid>
+      <webElementGuid>3a731ff1-e436-481b-a66a-09bbd030b491</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -105,7 +105,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//div[2]/span/div/div/table/tbody/tr/td</value>
-      <webElementGuid>5430162d-7ced-41f9-a9a0-23fa9fe99e54</webElementGuid>
+      <webElementGuid>b31b9efd-46da-4e0e-9d1f-989e4edd9911</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,6 +117,6 @@
 				' or . = '
 						Siti Roveah Binti Simon 
 				')]</value>
-      <webElementGuid>9818b5a6-a1b1-4e53-ac7d-c3fa60514af6</webElementGuid>
+      <webElementGuid>f482dfb8-b443-4683-aec1-c420ab7d74f7</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
