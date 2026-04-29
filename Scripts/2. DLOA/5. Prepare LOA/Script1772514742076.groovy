@@ -581,9 +581,11 @@ try {
 	WebUI.enhancedClick(userRow)
 }
 
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
+
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Click upload Icon'), 3)
 up(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Choose File'),
-	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+	uploadFilePath,3)
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
