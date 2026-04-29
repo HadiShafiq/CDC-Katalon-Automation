@@ -576,10 +576,9 @@ WebUI.delay(1)
 try {
 	WebUI.doubleClick(userRow)
 } catch (Exception e) {
-	WebUI.delay(0.5)
-	WebUI.click(userRow)
-	WebUI.delay(0.15)
-	WebUI.click(userRow)
+	WebUI.enhancedClick(userRow)
+	WebUI.delay(0.3)
+	WebUI.enhancedClick(userRow)
 }
 
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Click upload Icon'), 3)
