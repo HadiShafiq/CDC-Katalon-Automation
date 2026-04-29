@@ -333,11 +333,12 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 /* =========================
  * General information
  * ========================= */
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'))
 
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
+    uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
@@ -375,16 +376,16 @@ waitBlockUI(30)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
 
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran C - Surat Akuan Sumpah Syarikat'))
 WebUI.delay(1)
 
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 WebUI.delay(1)
@@ -392,8 +393,8 @@ WebUI.delay(1)
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran 7 - Surat Akuan Pembida Berjaya'))
 WebUI.delay(1)
 
-WebUI.uploadFile(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf')
+up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
+    uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
 

@@ -582,7 +582,6 @@ try {
 }
 
 String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-
 c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Click upload Icon'), 3)
 up(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Choose File'),
 	uploadFilePath,3)

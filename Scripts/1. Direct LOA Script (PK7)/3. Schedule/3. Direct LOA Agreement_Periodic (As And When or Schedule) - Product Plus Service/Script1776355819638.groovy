@@ -740,10 +740,11 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * Purpose:
  * - upload LOA signer document
  * ========================= */
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\nurul.atikah\\git\\CDC-Katalon-Automation\\Test Data\\File pdf_for testing.pdf', 3)
+	uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)

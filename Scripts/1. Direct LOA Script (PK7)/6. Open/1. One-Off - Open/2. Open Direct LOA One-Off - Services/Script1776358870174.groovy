@@ -658,8 +658,9 @@ if (agreementValue == 2) {
 	WebUI.click(uploadBtn)
 	waitBlockUI(20)
 	
+	String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 	up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-		'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+		uploadFilePath,3)
 	
 	c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Quotation and Tender Type - Open/Upload Approval Letter of Pegawai Pengawal'), 20)
 	waitBlockUI(30)
@@ -736,7 +737,7 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * ========================= */
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
 up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
-	'C:\\Users\\nurul.atikah\\Documents\\File pdf_for testing.pdf',3)
+	uploadFilePath,3)
 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
 waitBlockUI(30)
