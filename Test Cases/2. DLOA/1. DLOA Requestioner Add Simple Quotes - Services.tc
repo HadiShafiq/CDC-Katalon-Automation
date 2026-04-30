@@ -189,7 +189,7 @@
       <name>RBProcurementType</name>
    </variable>
    <variable>
-      <defaultValue>0</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>a4e6f8ad-396b-4237-a3c6-0d51a5cf7644</id>
       <masked>false</masked>
