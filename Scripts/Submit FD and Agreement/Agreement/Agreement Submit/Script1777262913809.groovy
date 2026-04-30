@@ -361,7 +361,7 @@ WebUI.delay(0.5)
 /* =========================
  * CHANGE LANGUAGE
  * Purpose:
- * - Change Language at Dashboard
+ * - Change Language at Dashboards
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
