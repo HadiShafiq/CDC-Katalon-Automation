@@ -126,6 +126,18 @@
       <value></value>
       <variableId>bf7440c6-d866-47f6-b29c-f43c0baa0280</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c445f543-f8c1-484a-b0c1-99af3ba717f8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>4e5058da-2746-4ec0-8a71-5af252e1b1c5</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'870926145529'</defaultValue>
       <description></description>
@@ -148,7 +160,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001729'</defaultValue>
+      <defaultValue>'LA260000000001587'</defaultValue>
       <description></description>
       <id>f5acaea5-8f2b-4963-9e6e-c6a8d44aac67</id>
       <masked>false</masked>
@@ -265,5 +277,19 @@
       <id>bf7440c6-d866-47f6-b29c-f43c0baa0280</id>
       <masked>false</masked>
       <name>ApproverName</name>
+   </variable>
+   <variable>
+      <defaultValue>'12341234'</defaultValue>
+      <description></description>
+      <id>c445f543-f8c1-484a-b0c1-99af3ba717f8</id>
+      <masked>false</masked>
+      <name>ReferenceNo</name>
+   </variable>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>4e5058da-2746-4ec0-8a71-5af252e1b1c5</id>
+      <masked>false</masked>
+      <name>FinancialInstitution</name>
    </variable>
 </TestCaseEntity>
