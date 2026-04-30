@@ -277,6 +277,23 @@ def claimDocument(String targetDocNo) {
 	return found
 }
 
+/* =========================
+ * Function: Untuk Side Menu Schedule | Performance Bond | Payment Tracking
+ * ========================= */
+def clickSideMenuIfExists(String objectPath) {
+	
+		TestObject menuObj = findTestObject(objectPath)
+	
+		if (WebUI.waitForElementClickable(menuObj, 5, FailureHandling.OPTIONAL)) {
+			c(menuObj)
+			waitBlockUI(20)
+			return true
+		}
+	
+		WebUI.comment("Skip: menu not available -> " + objectPath)
+		return false
+	}
+	
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -586,78 +603,129 @@ c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Uploa
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-// =========================
-// Schedule
-// =========================
+/* =========================
+ * Performance Bond
+ * IF Fulfilment Type : Periodic As And When
+ * ========================= */
 
-TestObject scheduleMenu = findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Schedule Side Menu')
+if (clickSideMenuIfExists(
+	'Object Repository/FD and Agreement/Side Menu/FD Application/Performance Bond Side Menu'
+)) {
+	//Click button Add
+	c(findTestObject('Object Repository/FD and Agreement/Add Button'))
+	
+	// Reference No
+	t(findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Reference No'), ReferenceNo)
 
-if (WebUI.waitForElementClickable(scheduleMenu, 5, FailureHandling.OPTIONAL)) {
+	// Financial Institution
+	selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Performance Bond/Dropdown Financial Institution'), FinancialInstitution)
 
-	c(scheduleMenu)
+	//Amount 
+	
+	//Date 
+	
+	//Upload
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload Button'))
 	waitBlockUI(20)
 	WebUI.delay(0.5)
+	
+	up(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Icon Choose File'), uploadFilePath,3)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload File Icon'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Close button'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	waitBlockUI(20)
+}
+
+/* =========================
+ * Schedule
+ * IF Fulfilment Type : Periodic Schedule
+ * ========================= */
+
+if (clickSideMenuIfExists(
+	'Object Repository/FD and Agreement/Side Menu/FD Application/Schedule Side Menu'
+)) {
 
 	int scheduleCount = 2
 
 	for (int i = 0; i < scheduleCount; i++) {
 
-		c(findTestObject('Object Repository/FD and Agreement/FD Application/Schedule/Schedule Add Button'))
+		c(findTestObject(
+			'Object Repository/FD and Agreement/FD Application/Schedule/Schedule Add Button'
+		))
 		waitBlockUI(20)
-		WebUI.delay(0.5)
 
 		TestObject fromYear = new TestObject("fromYear_${i}")
-		fromYear.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromYear_label']")
+		fromYear.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromYear_label']"
+		)
 		selectDropdownByIndex(fromYear, Startyear)
-		
+
 		TestObject fromMonth = new TestObject("fromMonth_${i}")
-		fromMonth.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromMonth_label']")
+		fromMonth.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:fromMonth_label']"
+		)
 		selectDropdownByIndex(fromMonth, Startmonth)
 
 		TestObject toYear = new TestObject("toYear_${i}")
-		toYear.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toYear_label']")
+		toYear.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toYear_label']"
+		)
 		selectDropdownByIndex(toYear, Endyear)
 
 		TestObject toMonth = new TestObject("toMonth_${i}")
-		toMonth.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toMonth_label']")
+		toMonth.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:payScheduleTableId:${i}:toMonth_label']"
+		)
 		selectDropdownByIndex(toMonth, Endmonth)
-	
 	}
+}
 
-	} else {
-		println("Schedule menu not available / not clickable, skip to next step")
-	}
-	
-	TestObject Appmenu = findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings')
-	
-	if (WebUI.waitForElementClickable(Appmenu, 5, FailureHandling.OPTIONAL)) {
-		WebUI.click(Appmenu)
-		waitBlockUI(20)
-	} else {
-		println("Approver Settings menu not clickable / not available")
-	}
-	
+
+/* =========================
+ * Approver Settings
+ * ========================= */
+
+if (clickSideMenuIfExists(
+	'Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings'
+)) {
+
 	String approverName = ApproverName.toString().trim()
+
 	TestObject approver = new TestObject('approver_dynamic')
 	approver.addProperty(
 		"xpath",
 		ConditionType.EQUALS,
 		"//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
 	)
-	
-	WebUI.waitForElementClickable(approver, 20)
-	WebUI.click(approver)
-	WebUI.delay(0.5)
-	
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'))
+
+	c(approver, 20)
+
+	c(findTestObject(
+		'Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'
+	))
+
 	waitBlockUI(10)
-	WebUI.delay(0.5)
+}
 	
-	c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
+/* =========================
+* Submit Button
+* ========================= */
+	// c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
 	waitBlockUI(10)
 	WebUI.delay(0.5)
 
