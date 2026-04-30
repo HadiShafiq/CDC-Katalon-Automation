@@ -192,7 +192,7 @@ TestObject msgObj = new TestObject('msg_CT_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
 	"contains(.,'Fulfilment Details Creation') and " +
-	"contains(.,'is approved.')]"
+	"contains(.,'is approved')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)

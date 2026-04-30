@@ -309,7 +309,6 @@ def clickProcurementType(int option) {
 	waitBlockUI(20)
 }
 
-
 /* =========================================================
  * 7) CALENDAR PICKER DATE
  * ========================================================= */
@@ -576,6 +575,8 @@ int rbType = Integer.parseInt(RBProcurementType.toString())
 
 //Procurement Type Category
 clickProcurementType(rbType)
+waitBlockUI(20)
+WebUI.waitForPageLoad(20)
 
 // IF NOT 1 OR 3 → isi Reason + Justification
 if (!(rbType == 1 || rbType == 3)) {
@@ -595,7 +596,7 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-04-29")   // <-- put your date here
+pickDate("2026-04-29") 
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -884,24 +885,20 @@ msgObj.addProperty("xpath", ConditionType.EQUALS,
 WebUI.waitForElementVisible(msgObj, 30)
 
 // Wait until message text contains "SQ"
-String msg = ""
-for (int i = 0; i < 15; i++) {
-	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("SQ")) break
-	WebUI.delay(1)
-}
-
+String msg = WebUI.getText(msgObj, FailureHandling.STOP_ON_FAILURE)
 msg = (msg == null) ? "" : msg.trim()
+
 WebUI.comment("Message: " + msg)
 
 // ===== 3) Extract SQ number dynamically =====
 def matcher = (msg =~ /(SQ\d+)/)   // e.g. SQ260000000000604
 String sqNo = matcher.find() ? matcher.group(1) : ""
 
-if (sqNo == "") {
+if (!sqNo) {
 	WebUI.takeScreenshot()
-	assert false : "❌ SQ number not found. Message was: " + msg
+	assert false : "❌ SQ not found. Message was: " + msg
 }
+
 WebUI.comment("✅ Captured SQ No: " + sqNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
