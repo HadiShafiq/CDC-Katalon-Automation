@@ -291,6 +291,14 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
  * 1 = first radio
  * 2 = second radio
  * etc.
+ *//
+
+/**
+ * Click procurement type radio button by business option number.
+ * Mapping:
+ * 1 = first radio
+ * 2 = second radio
+ * etc.
  */
 def clickProcurementType(int option) {
 	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
@@ -572,7 +580,7 @@ int rbType = Integer.parseInt(RBProcurementType.toString())
 
 //Procurement Type Category
 clickProcurementType(rbType)
-waitBlockUI(20)
+
 // IF NOT 1 OR 3 → isi Reason + Justification
 if (!(rbType == 1 || rbType == 3)) {
 
@@ -591,14 +599,7 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-<<<<<<< HEAD
-String startDate = StartDate   // dari test suite variable / excel
-
-pickDate(startDate)
-//pickDate("2026-04-29") 
-=======
-pickDate("2026-04-30") 
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
+pickDate("2026-04-28")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -864,7 +865,6 @@ WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Ite
 waitBlockUI(30)
 
 /* =========================
-<<<<<<< HEAD
  * WAIT LOADER + CAPTURE SQ MESSAGE (DYNAMIC SQxxxx) + APPEND TO EXCEL (SAME FILE)
  * ========================= */
 
@@ -889,7 +889,7 @@ WebUI.waitForElementVisible(msgObj, 30)
 
 // Wait until message text contains "SQ"
 String msg = ""
-for (int i = 0; i < 2; i++) {
+for (int i = 0; i < 15; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
 	if (msg != null && msg.contains("SQ")) break
 	WebUI.delay(1)
@@ -902,11 +902,10 @@ WebUI.comment("Message: " + msg)
 def matcher = (msg =~ /(SQ\d+)/)   // e.g. SQ260000000000604
 String sqNo = matcher.find() ? matcher.group(1) : ""
 
-if (!sqNo) {
+if (sqNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ SQ not found. Message was: " + msg
+	assert false : "❌ SQ number not found. Message was: " + msg
 }
-
 WebUI.comment("✅ Captured SQ No: " + sqNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
@@ -953,97 +952,6 @@ fos.close()
 wb.close()
 
 WebUI.comment("✅ Appended to Excel: " + filePath)
-=======
-  	 * SUCCESS MESSAGE - SQ ONLY
-	 * Purpose:
-	 * - wait for loader disappear
-	 * - capture success message
-	 * - extract dynamic SQ number
-	 * ========================= */
-	TestObject blockUI = new TestObject('blockUI')
-	blockUI.addProperty("xpath", ConditionType.EQUALS,
-		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
-	)
-	
-	if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
-		WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
-	}
-	
-	TestObject msgObj = new TestObject('msg_SQ_saved')
-		msgObj.addProperty("xpath", ConditionType.EQUALS,
-			"//span[contains(@class,'ui-messages-info-detail') and " +
-			"contains(normalize-space(.),'Simple Quote') and " +
-			"contains(normalize-space(.),'is successfully submitted')]"
-	)
-	
-	WebUI.waitForElementVisible(msgObj, 30)
-	
-	String msg = ""
-	for (int i = 0; i < 2; i++) {
-		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-		if (msg != null && msg.contains("SQ")) break
-		WebUI.delay(1)
-	}
-	
-	msg = (msg == null) ? "" : msg.trim()
-	WebUI.comment("Message: " + msg)
-	
-	def matcher = (msg =~ /(SQ\d+)/)
-	String sqNo = matcher.find() ? matcher.group(1) : ""
-	
-	if (sqNo == "") {
-		WebUI.takeScreenshot()
-		assert false : "❌ SQ number not found. Message was: " + msg
-	}
-	
-	WebUI.comment("✅ Captured SQ No: " + sqNo)
-	
-	/* =========================
-	 * EXCEL APPEND
-	 * Purpose:
-	 * - append SQ number and message into same Excel file
-	 * ========================= */
-	String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
-	new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-	String filePath = baseDir + "/FD_Submission_AP_201_2026.xlsx"
-	String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
-	
-	def path = Paths.get(filePath)
-	XSSFWorkbook wb
-	def sheet
-	FileInputStream fis = null
-	
-	if (Files.exists(path)) {
-		fis = new FileInputStream(filePath)
-		wb = new XSSFWorkbook(fis)
-		sheet = wb.getSheet("Result")
-		if (sheet == null) sheet = wb.createSheet("Result")
-	} else {
-		wb = new XSSFWorkbook()
-		sheet = wb.createSheet("Result")
-	
-		def header = sheet.createRow(0)
-		header.createCell(0).setCellValue("DateTime")
-		header.createCell(1).setCellValue("SQ No")
-		header.createCell(2).setCellValue("Message")
-	}
-	
-	if (fis != null) fis.close()
-	
-	int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-	def row = sheet.createRow(nextRow)
-	
-	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(sqNo)
-	row.createCell(2).setCellValue(msg)
-	
-	FileOutputStream fos = new FileOutputStream(filePath)
-	wb.write(fos)
-	fos.close()
-	wb.close()
-	
-	WebUI.comment("✅ Appended to Excel: " + filePath)
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
 
 /* =========================
  * Sign Out
