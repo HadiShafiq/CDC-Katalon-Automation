@@ -291,14 +291,6 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
  * 1 = first radio
  * 2 = second radio
  * etc.
- *//
-
-/**
- * Click procurement type radio button by business option number.
- * Mapping:
- * 1 = first radio
- * 2 = second radio
- * etc.
  */
 def clickProcurementType(int option) {
 	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
