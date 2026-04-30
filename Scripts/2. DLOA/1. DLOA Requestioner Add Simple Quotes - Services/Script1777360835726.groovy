@@ -591,7 +591,7 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-04-28")   // <-- put your date here
+pickDate("2026-04-30")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -851,10 +851,10 @@ if (rbType == 1) {
  * Save LOA (unchanged)
  * ========================= */
 //WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
-WebUI.click(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
 
-waitBlockUI(30)
+waitBlockUI(10)
 
 /* =========================
  * WAIT LOADER + CAPTURE SQ MESSAGE (DYNAMIC SQxxxx) + APPEND TO EXCEL (SAME FILE)
@@ -881,7 +881,7 @@ WebUI.waitForElementVisible(msgObj, 30)
 
 // Wait until message text contains "SQ"
 String msg = ""
-for (int i = 0; i < 15; i++) {
+for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
 	if (msg != null && msg.contains("SQ")) break
 	WebUI.delay(1)
