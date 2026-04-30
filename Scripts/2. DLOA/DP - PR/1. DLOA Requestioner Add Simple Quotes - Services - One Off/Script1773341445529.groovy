@@ -447,11 +447,12 @@ WebUI.waitForElementVisible(msgObj, 30)
 
 // Wait until message text contains "SQ"
 String msg = ""
-for (int i = 0; i < 15; i++) {
+for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
 	if (msg != null && msg.contains("SQ")) break
 	WebUI.delay(1)
 }
+
 
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
