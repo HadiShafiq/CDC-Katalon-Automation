@@ -421,7 +421,7 @@ waitBlockUI(20)
 WebUI.delay(0.5)
 
 
-int agencyLoopCount = 3
+int agencyLoopCount = 2
 
 for (int i = 1; i <= agencyLoopCount; i++) {
 
