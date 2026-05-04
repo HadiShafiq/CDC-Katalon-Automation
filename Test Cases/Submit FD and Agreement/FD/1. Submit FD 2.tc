@@ -166,7 +166,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001587'</defaultValue>
+      <defaultValue>'LA260000000001776'</defaultValue>
       <description></description>
       <id>69a2a0f0-1ba3-4575-b360-58e4fc3add47</id>
       <masked>false</masked>
@@ -250,7 +250,7 @@
       <name>PTJCode3</name>
    </variable>
    <variable>
-      <defaultValue>6</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>32f588fe-aa3c-4d6c-acec-398a5b61ef94</id>
       <masked>false</masked>
@@ -264,7 +264,7 @@
       <name>Startyear</name>
    </variable>
    <variable>
-      <defaultValue>9</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>d6c18f1f-30c8-46e5-8411-c6e457b36b2c</id>
       <masked>false</masked>
