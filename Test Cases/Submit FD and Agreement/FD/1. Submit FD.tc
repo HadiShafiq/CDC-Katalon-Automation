@@ -152,7 +152,7 @@
       <name>Username</name>
    </variable>
    <variable>
-      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <defaultValue>'P@ssw0rd12345'</defaultValue>
       <description></description>
       <id>656c416f-413d-4988-9b9d-746aea9ff6c9</id>
       <masked>false</masked>
