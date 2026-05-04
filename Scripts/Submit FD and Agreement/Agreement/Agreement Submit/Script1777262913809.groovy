@@ -278,6 +278,57 @@ def claimDocument(String targetDocNo) {
 }
 
 /* =========================================================
+ * 7) CALENDAR PICKER DATE
+ * ========================================================= */
+
+def pickDate(String yyyyMmDd) {
+	
+		TestObject dp = new TestObject('dp')
+		dp.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+		)
+		WebUI.waitForElementVisible(dp, 20)
+	
+		def parts = yyyyMmDd.split('-')
+		int targetYear = parts[0] as int
+		int targetMonthIndex = (parts[1] as int) - 1
+		String targetDay = String.valueOf(parts[2] as int)
+	
+		TestObject nextBtn = new TestObject('dpNext')
+		nextBtn.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
+		)
+	
+		TestObject prevBtn = new TestObject('dpPrev')
+		prevBtn.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
+		)
+	
+		int guard = 0
+		while (guard < 48) {
+	
+			TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
+			targetDayObj.addProperty("xpath", ConditionType.EQUALS,
+				"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
+				"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
+			)
+	
+			if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
+				WebUI.waitForElementClickable(targetDayObj, 20)
+				WebUI.click(targetDayObj)
+				return
+			}
+	
+			// kalau target belum ada, click next dulu
+			WebUI.click(nextBtn)
+			WebUI.delay(0.3)
+			guard++
+		}
+	
+		WebUI.takeScreenshot()
+		assert false : "Date not found in datepicker: " + yyyyMmDd
+	}
+/* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE 	
@@ -406,17 +457,187 @@ WebUI.delay(1)
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 waitBlockUI(20)
-WebUI.delay(0.5)
+WebUI.delay(1)
 
-t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Phsicalcontract)
+//t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Phsicalcontract)
 waitBlockUI(20)
-WebUI.delay(0.5)
+WebUI.delay(1)
 
+/*=============================
+ * AGREEMENT SIGNER INFORMATION
+===============================*/
 c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Signer Information'))
 waitBlockUI(20)
-WebUI.delay(0.5)
+WebUI.delay(1)
 
+//Witness
 c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Signer Information/Witness Add Button'))
 waitBlockUI(20)
+WebUI.delay(1)
+
+//Name
+t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Signer Information/Input Name'), Name)
+waitBlockUI(20)
+WebUI.delay(1)
+
+//IdNo
+t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Signer Information/Input Identification'), Id_No)
+waitBlockUI(20)
+WebUI.delay(1)
+
+//Designation
+t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Signer Information/Designation'), Designation)
+waitBlockUI(20)
+WebUI.delay(1)
+
+/*=============================
+ * AGREEMENT CONTRACT DOCUMENT
+===============================*/
+c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Contract Document'))
+waitBlockUI(20)
+WebUI.delay(1)
+
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
+//Contract Document and Attachments
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload Button'))
+waitBlockUI(20)
+WebUI.delay(1)
+
+up(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload'),uploadFilePath,3)
+waitBlockUI(20)
+WebUI.delay(1)
+
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload File Button'))
+waitBlockUI(20)
+WebUI.delay(1)
+
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Click Close Icon'))
+waitBlockUI(20)
+WebUI.delay(1)
+
+// Calendar
+c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 WebUI.delay(0.5)
 
+pickDate("2026-05-10") //pick date here
+
+waitBlockUI(20)
+WebUI.delay(1)
+
+// ==============================
+// SAFE UPLOAD HELPER
+// ==============================
+def uploadFileSafe(TestObject chooseBtn, String filePath, int timeout = 20) {
+
+	waitBlockUI(timeout)
+
+	WebUI.waitForElementPresent(chooseBtn, timeout)
+	WebUI.waitForElementVisible(chooseBtn, timeout)
+	WebUI.waitForElementClickable(chooseBtn, timeout)
+
+	WebUI.delay(1)
+
+	up(chooseBtn, filePath, 3)
+
+	waitBlockUI(timeout)
+}
+
+
+// ==============================
+// CONTRACT DOCUMENT UPLOAD FLOW
+// ==============================
+
+// 1. Open Upload Popup
+TestObject uploadBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Signing Page')
+
+WebUI.waitForElementPresent(uploadBtn, 20)
+WebUI.waitForElementVisible(uploadBtn, 20)
+WebUI.waitForElementClickable(uploadBtn, 20)
+
+c(uploadBtn)
+waitBlockUI(20)
+
+
+// 2. Upload File (Contract Document - Choose Button 1)
+uploadFileSafe(
+	findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 1'),
+	uploadFilePath,
+	20
+)
+
+
+// 3. Click Upload File Button
+TestObject uploadFileBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload File Button')
+
+WebUI.waitForElementPresent(uploadFileBtn, 20)
+WebUI.waitForElementVisible(uploadFileBtn, 20)
+WebUI.waitForElementClickable(uploadFileBtn, 20)
+
+c(uploadFileBtn)
+waitBlockUI(20)
+
+
+// ==============================
+// STAMPING PAGE FLOW
+// ==============================
+
+// 4. Open Stamping Page
+TestObject stampingPageBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Stamping Page')
+
+WebUI.waitForElementPresent(stampingPageBtn, 20)
+WebUI.waitForElementVisible(stampingPageBtn, 20)
+WebUI.waitForElementClickable(stampingPageBtn, 20)
+
+c(stampingPageBtn)
+waitBlockUI(20)
+
+
+// 5. Open Upload Dialog (Stamping)
+WebUI.waitForElementPresent(uploadBtn, 20)
+WebUI.waitForElementVisible(uploadBtn, 20)
+WebUI.waitForElementClickable(uploadBtn, 20)
+
+c(uploadBtn)
+waitBlockUI(20)
+
+
+// 6. Upload File (Stamping - Choose Button 2)
+uploadFileSafe(
+	findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 2'),
+	uploadFilePath,
+	20
+)
+
+
+// 7. Upload File Button (Stamping Submit)
+WebUI.waitForElementPresent(uploadFileBtn, 20)
+WebUI.waitForElementVisible(uploadFileBtn, 20)
+WebUI.waitForElementClickable(uploadFileBtn, 20)
+
+c(uploadFileBtn)
+waitBlockUI(20)
+
+
+/* =========================
+ * Approver Settings
+ * ========================= */
+c(findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings'))
+
+// 2. dynamic value
+String approverName = ApproverName.toString().trim()
+
+TestObject approver = new TestObject('approver_dynamic')
+approver.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//li[contains(@class,'ui-picklist-item') and normalize-space()='" + approverName + "']"
+)
+
+// 3. wait/click element
+c(approver, 20)
+
+// 4. click right button
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'))
+
+// 5. wait UI finish
+waitBlockUI(10)
