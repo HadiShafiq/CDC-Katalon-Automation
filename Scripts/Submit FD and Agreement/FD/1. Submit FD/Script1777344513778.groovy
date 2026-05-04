@@ -294,6 +294,72 @@ def clickSideMenuIfExists(String objectPath) {
 		return false
 	}
 	
+	/* =========================================================
+	 * 7) CALENDAR PICKER DATE
+	 * ========================================================= */
+	
+def pickDate(String yyyyMmDd) {
+
+	// Ensure datepicker is visible
+	TestObject dp = new TestObject('dp')
+	dp.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']")
+	WebUI.waitForElementVisible(dp, 20)
+
+	def parts = yyyyMmDd.split('-')
+	int targetYear  = parts[0] as int
+	int targetMonth = parts[1] as int   // 1..12
+	String targetDay = String.valueOf(parts[2] as int) // "01" -> "1"
+
+	// English month names used by jQuery UI datepicker
+	Map<String, Integer> monthMap = [
+		"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,
+		"July":7,"August":8,"September":9,"October":10,"November":11,"December":12
+	]
+
+	TestObject monthObj = new TestObject('dpMonth')
+	monthObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-month']")
+
+	TestObject yearObj = new TestObject('dpYear')
+	yearObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-year']")
+
+	TestObject nextBtn = new TestObject('dpNext')
+	nextBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]")
+
+	TestObject prevBtn = new TestObject('dpPrev')
+	prevBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]")
+
+	// Navigate month/year until correct (safety max 48 clicks)
+	int guard = 0
+	while (guard < 48) {
+		String curMonthName = WebUI.getText(monthObj).trim()
+		int curMonth = monthMap.get(curMonthName)
+		int curYear = WebUI.getText(yearObj).trim() as int
+
+		if (curYear == targetYear && curMonth == targetMonth) break
+
+		if (curYear < targetYear || (curYear == targetYear && curMonth < targetMonth)) {
+			WebUI.click(nextBtn)
+		} else {
+			WebUI.click(prevBtn)
+		}
+		WebUI.delay(1) // must be number, not string
+		guard++
+	}
+
+	// Click the day (avoid other-month/disabled cells)
+	String dayXpath =
+		"//*[@id='ui-datepicker-div']//td[" +
+		"not(contains(@class,'ui-datepicker-other-month')) and " +
+		"not(contains(@class,'ui-state-disabled'))" +
+		"]//a[normalize-space(.)='${targetDay}']"
+
+	TestObject dayObj = new TestObject("day_" + targetDay)
+	dayObj.addProperty("xpath", ConditionType.EQUALS, dayXpath)
+
+	WebUI.waitForElementClickable(dayObj, 20)
+	WebUI.click(dayObj)
+}
+	
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -625,7 +691,14 @@ if (clickSideMenuIfExists(
 		Amount, 20
 	 )
 		
-	//Date 
+	 // Calendar
+	 c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
+	 WebUI.delay(1)
+	 
+	 //Date
+	 pickDate("2026-04-18")   // <-- put your date here
+	 waitBlockUI(20)
+	 WebUI.delay(1)
 	
 	//Upload
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Upload Button'))
