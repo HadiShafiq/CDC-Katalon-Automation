@@ -6,12 +6,12 @@
    <UUID>a017e825-919c-4ac5-9e6e-4b26212b1bd2</UUID>
    <createdEdition>ENTERPRISE</createdEdition>
    <createdVersion>10.4.3</createdVersion>
-   <freeLicense>true</freeLicense>
+   <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
    <modifiedEdition>ENTERPRISE</modifiedEdition>
-   <modifiedVersion>11.1.2</modifiedVersion>
+   <modifiedVersion>11.1.1</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\hadishafiq\git\CDC-Katalon-Automation\Direct LOA.prj</projectFileLocation>
+   <projectFileLocation>C:\Users\nurul.atikah\git\CDC-Katalon-Automation\Direct LOA.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

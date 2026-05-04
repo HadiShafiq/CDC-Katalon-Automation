@@ -6,7 +6,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.StaleElementReferenceException
-import java.math.BigDecimal
+//import java.math.BigDecimal
 import java.util.Arrays
 
 class WebHelper {

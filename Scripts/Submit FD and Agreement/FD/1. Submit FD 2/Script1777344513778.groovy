@@ -703,6 +703,8 @@ if (clickSideMenuIfExists(
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	waitBlockUI(20)*/
+	
+	
 }
 
 /* =========================
@@ -756,7 +758,6 @@ if (clickSideMenuIfExists(
 		selectDropdownByIndex(toMonth, Endmonth)
 	}
 }
-
 
 /* =========================
  * Approver Settings

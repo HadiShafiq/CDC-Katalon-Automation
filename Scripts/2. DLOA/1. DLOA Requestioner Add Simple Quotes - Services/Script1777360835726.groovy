@@ -312,64 +312,50 @@ def clickProcurementType(int option) {
 
 def pickDate(String yyyyMmDd) {
 
-	// Ensure datepicker is visible
 	TestObject dp = new TestObject('dp')
-	dp.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']")
+	dp.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+	)
 	WebUI.waitForElementVisible(dp, 20)
 
 	def parts = yyyyMmDd.split('-')
-	int targetYear  = parts[0] as int
-	int targetMonth = parts[1] as int   // 1..12
-	String targetDay = String.valueOf(parts[2] as int) // "01" -> "1"
-
-	// English month names used by jQuery UI datepicker
-	Map<String, Integer> monthMap = [
-		"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,
-		"July":7,"August":8,"September":9,"October":10,"November":11,"December":12
-	]
-
-	TestObject monthObj = new TestObject('dpMonth')
-	monthObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-month']")
-
-	TestObject yearObj = new TestObject('dpYear')
-	yearObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-year']")
+	int targetYear = parts[0] as int
+	int targetMonthIndex = (parts[1] as int) - 1
+	String targetDay = String.valueOf(parts[2] as int)
 
 	TestObject nextBtn = new TestObject('dpNext')
-	nextBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]")
+	nextBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
+	)
 
 	TestObject prevBtn = new TestObject('dpPrev')
-	prevBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]")
+	prevBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
+	)
 
-	// Navigate month/year until correct (safety max 48 clicks)
 	int guard = 0
 	while (guard < 48) {
-		String curMonthName = WebUI.getText(monthObj).trim()
-		int curMonth = monthMap.get(curMonthName)
-		int curYear = WebUI.getText(yearObj).trim() as int
 
-		if (curYear == targetYear && curMonth == targetMonth) break
+		TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
+		targetDayObj.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
+			"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
+		)
 
-		if (curYear < targetYear || (curYear == targetYear && curMonth < targetMonth)) {
-			WebUI.click(nextBtn)
-		} else {
-			WebUI.click(prevBtn)
+		if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
+			WebUI.waitForElementClickable(targetDayObj, 20)
+			WebUI.click(targetDayObj)
+			return
 		}
-		WebUI.delay(1) // must be number, not string
+
+		// kalau target belum ada, click next dulu
+		WebUI.click(nextBtn)
+		WebUI.delay(0.3)
 		guard++
 	}
 
-	// Click the day (avoid other-month/disabled cells)
-	String dayXpath =
-		"//*[@id='ui-datepicker-div']//td[" +
-		"not(contains(@class,'ui-datepicker-other-month')) and " +
-		"not(contains(@class,'ui-state-disabled'))" +
-		"]//a[normalize-space(.)='${targetDay}']"
-
-	TestObject dayObj = new TestObject("day_" + targetDay)
-	dayObj.addProperty("xpath", ConditionType.EQUALS, dayXpath)
-
-	WebUI.waitForElementClickable(dayObj, 20)
-	WebUI.click(dayObj)
+	WebUI.takeScreenshot()
+	assert false : "Date not found in datepicker: " + yyyyMmDd
 }
 
 	/*===================================
@@ -591,7 +577,7 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-04-30")   // <-- put your date here
+pickDate("2026-05-04")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
