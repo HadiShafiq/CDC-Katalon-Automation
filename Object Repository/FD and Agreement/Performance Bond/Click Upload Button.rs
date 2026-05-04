@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Input Amount</name>
+   <name>Click Upload Button</name>
    <tag></tag>
-   <elementGuidId>c355af28-1638-4cfc-a2c1-51226cec1b53</elementGuidId>
+   <elementGuidId>2349abb0-1a50-4676-9947-1fb5f31feb63</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//input[contains(@id,'tableBond:0:') and contains(@class,'ppRightBtn')]</value>
+         <value>//button[contains(@onclick,'uploadBondDlg') and .//span[contains(@class,'ui-icon-upload')]]</value>
       </entry>
       <entry>
          <key>BASIC</key>

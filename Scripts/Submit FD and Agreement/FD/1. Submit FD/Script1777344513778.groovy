@@ -621,23 +621,26 @@ if (clickSideMenuIfExists(
 	selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Performance Bond/Dropdown Financial Institution'), FinancialInstitution)
 
 	//Amount 
-	
+	t(findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'), 
+		Amount, 20
+	 )
+		
 	//Date 
 	
 	//Upload
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload Button'))
+	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Upload Button'))
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	
-	up(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Icon Choose File'), uploadFilePath,3)
+	up(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Choose File'), uploadFilePath,3)
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload File Icon'))
+	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Upload File Icon'))
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Close button'))
+	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Close button'))
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	waitBlockUI(20)

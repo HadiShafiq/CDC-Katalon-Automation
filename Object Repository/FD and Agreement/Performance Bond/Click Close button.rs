@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Input Amount</name>
+   <name>Click Close button</name>
    <tag></tag>
-   <elementGuidId>c355af28-1638-4cfc-a2c1-51226cec1b53</elementGuidId>
+   <elementGuidId>21fb6a85-6f0c-496d-acdf-30b31a2b87fa</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//input[contains(@id,'tableBond:0:') and contains(@class,'ppRightBtn')]</value>
+         <value>//*[@id=&quot;_ctFulfilmentDetail_WAR_NGePportlet_:form:uploadBondDlg&quot;]/div[1]/a/span</value>
       </entry>
       <entry>
          <key>BASIC</key>
