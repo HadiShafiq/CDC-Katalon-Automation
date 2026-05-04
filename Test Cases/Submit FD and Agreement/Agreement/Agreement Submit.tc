@@ -36,6 +36,30 @@
       <value></value>
       <variableId>7aefa8d2-f92f-4937-946a-822da8909831</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>410b5b89-cdfd-4fdc-9f37-1299d36dd0a5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>12e17e55-1efa-42cd-8430-f01d09dedc74</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>48355035-071c-4430-8466-dcec42aa1ac8</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'870926145529'</defaultValue>
       <description></description>
@@ -65,10 +89,38 @@
       <name>Document_Number</name>
    </variable>
    <variable>
-      <defaultValue>'AP201-20260427-001-TEST'</defaultValue>
+      <defaultValue>'AP201-20260427-001-111'</defaultValue>
       <description></description>
       <id>7aefa8d2-f92f-4937-946a-822da8909831</id>
       <masked>false</masked>
       <name>Phsicalcontract</name>
+   </variable>
+   <variable>
+      <defaultValue>'Abu bin Halim'</defaultValue>
+      <description></description>
+      <id>410b5b89-cdfd-4fdc-9f37-1299d36dd0a5</id>
+      <masked>false</masked>
+      <name>Name</name>
+   </variable>
+   <variable>
+      <defaultValue>'911110011011'</defaultValue>
+      <description></description>
+      <id>12e17e55-1efa-42cd-8430-f01d09dedc74</id>
+      <masked>false</masked>
+      <name>Id_No</name>
+   </variable>
+   <variable>
+      <defaultValue>'Manager'</defaultValue>
+      <description></description>
+      <id>48355035-071c-4430-8466-dcec42aa1ac8</id>
+      <masked>false</masked>
+      <name>Designation</name>
+   </variable>
+   <variable>
+      <defaultValue>'Shamsul Azri Bin Abu Bakar'</defaultValue>
+      <description></description>
+      <id>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</id>
+      <masked>false</masked>
+      <name>ApproverName</name>
    </variable>
 </TestCaseEntity>
