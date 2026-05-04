@@ -425,7 +425,7 @@ WebUI.delay(1)
  * LOGIN
  * Purpose:
  * - open login form
- * - enter username and password
+ * - enter username and password 123
  * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
