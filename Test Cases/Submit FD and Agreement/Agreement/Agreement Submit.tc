@@ -82,18 +82,18 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001729'</defaultValue>
+      <defaultValue>'LA260000000001711'</defaultValue>
       <description></description>
       <id>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</id>
       <masked>false</masked>
       <name>Document_Number</name>
    </variable>
    <variable>
-      <defaultValue>'AP201-20260427-001-111'</defaultValue>
+      <defaultValue>'AP201-20260427-001-112'</defaultValue>
       <description></description>
       <id>7aefa8d2-f92f-4937-946a-822da8909831</id>
       <masked>false</masked>
-      <name>Phsicalcontract</name>
+      <name>Physicalcontract</name>
    </variable>
    <variable>
       <defaultValue>'Abu bin Halim'</defaultValue>

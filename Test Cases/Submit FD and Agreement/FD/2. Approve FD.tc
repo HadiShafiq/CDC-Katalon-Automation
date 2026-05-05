@@ -52,7 +52,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'CT260000000000939'</defaultValue>
+      <defaultValue>'CT260000000000934'</defaultValue>
       <description></description>
       <id>0b73b421-fc5f-4d8b-8653-18293ee7d699</id>
       <masked>false</masked>
