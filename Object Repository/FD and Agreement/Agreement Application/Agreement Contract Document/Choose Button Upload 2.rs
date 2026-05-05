@@ -6,12 +6,11 @@
    <elementGuidId>621920f5-d288-478b-b0b6-d73fb280575a</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>(//div[contains(@class,'fileupload-buttonbar')]//input[@type='file'])[3]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[@id='_ctAgreement_WAR_NGePportlet_:form:upStampedPageDlg']//input[@type='file']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
