@@ -788,7 +788,7 @@ if (clickSideMenuIfExists(
 /* =========================
 * Submit Button
 * ========================= */
-	// c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
+	c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
 	waitBlockUI(10)
 	WebUI.delay(0.5)
 
@@ -812,7 +812,7 @@ if (clickSideMenuIfExists(
 	msgObj.addProperty("xpath", ConditionType.EQUALS,
 		"//span[contains(@class,'ui-messages-info-detail') and " +
 		"contains(.,'Fulfilment Details Creation') and " +
-		"contains(.,'is successfully submitted to Contract Approver')]"
+		"contains(.,'is successfully submitted to Contract Approver.')]"
 	)
 	
 	WebUI.waitForElementVisible(msgObj, 30)

@@ -283,51 +283,52 @@ def claimDocument(String targetDocNo) {
 
 def pickDate(String yyyyMmDd) {
 	
-		TestObject dp = new TestObject('dp')
-		dp.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+	TestObject dp = new TestObject('dp')
+	dp.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+	)
+	WebUI.waitForElementVisible(dp, 20)
+	
+	def parts = yyyyMmDd.split('-')
+	int targetYear = parts[0] as int
+	int targetMonthIndex = (parts[1] as int) - 1
+	String targetDay = String.valueOf(parts[2] as int)
+	
+	TestObject nextBtn = new TestObject('dpNext')
+	nextBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
+	)
+	
+	TestObject prevBtn = new TestObject('dpPrev')
+	prevBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
+	)
+	
+	int guard = 0
+	while (guard < 48) {
+	
+		TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
+		targetDayObj.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
+			"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
 		)
-		WebUI.waitForElementVisible(dp, 20)
 	
-		def parts = yyyyMmDd.split('-')
-		int targetYear = parts[0] as int
-		int targetMonthIndex = (parts[1] as int) - 1
-		String targetDay = String.valueOf(parts[2] as int)
-	
-		TestObject nextBtn = new TestObject('dpNext')
-		nextBtn.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
-		)
-	
-		TestObject prevBtn = new TestObject('dpPrev')
-		prevBtn.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
-		)
-	
-		int guard = 0
-		while (guard < 48) {
-	
-			TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
-			targetDayObj.addProperty("xpath", ConditionType.EQUALS,
-				"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
-				"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
-			)
-	
-			if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
-				WebUI.waitForElementClickable(targetDayObj, 20)
-				WebUI.click(targetDayObj)
-				return
-			}
-	
-			// kalau target belum ada, click next dulu
-			WebUI.click(nextBtn)
-			WebUI.delay(0.3)
-			guard++
+		if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
+			WebUI.waitForElementClickable(targetDayObj, 20)
+			WebUI.click(targetDayObj)
+			return
 		}
+	
+		// kalau target belum ada, click next dulu
+		WebUI.click(nextBtn)
+		WebUI.delay(0.3)
+		guard++
+	}
 	
 		WebUI.takeScreenshot()
 		assert false : "Date not found in datepicker: " + yyyyMmDd
-	}
+}
+
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -459,13 +460,13 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 waitBlockUI(20)
 WebUI.delay(1)
 
-//t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Phsicalcontract)
+t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Physicalcontract)
 waitBlockUI(20)
 WebUI.delay(1)
 
-/*=============================
- * AGREEMENT SIGNER INFORMATION
-===============================*/
+//=============================
+// AGREEMENT SIGNER INFORMATION
+//=============================
 c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Signer Information'))
 waitBlockUI(20)
 WebUI.delay(1)
@@ -490,9 +491,9 @@ t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agree
 waitBlockUI(20)
 WebUI.delay(1)
 
-/*=============================
- * AGREEMENT CONTRACT DOCUMENT
-===============================*/
+//=============================
+//AGREEMENT CONTRACT DOCUMENT
+//=============================
 c(findTestObject('Object Repository/FD and Agreement/Side Menu/Agreement/Side Menu Agreement Contract Document'))
 waitBlockUI(20)
 WebUI.delay(1)
@@ -557,10 +558,9 @@ c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agree
 waitBlockUI(20)
 WebUI.delay(1)
 
-
-/* =========================
- * Approver Settings
- * ========================= */
+// ========================
+// Approver Settings
+//=========================
 c(findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings'))
 
 // 2. dynamic value
@@ -578,6 +578,119 @@ c(approver, 20)
 
 // 4. click right button
 c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'))
-
+WebUI.delay(2)
 // 5. wait UI finish
 waitBlockUI(10)
+
+// ========================
+// SUBMIT BUTTON
+//=========================
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+waitBlockUI(10)
+WebUI.delay(0.5)
+
+/* ========================
+ * SUCCESS MESSAGE - CT ONLY
+ * Purpose:
+ * - wait for loader disappear
+ * - capture success message
+ * - extract dynamic CT number
+* ========================= */
+TestObject blockUI = new TestObject('blockUI')
+	blockUI.addProperty("xpath", ConditionType.EQUALS,
+		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+	)
+	
+	if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+		WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+	}
+	
+	TestObject msgObj = new TestObject('msg_CT_saved')
+	msgObj.addProperty("xpath", ConditionType.EQUALS,
+		"//span[contains(@class,'ui-messages-info-detail') and " +
+		"contains(.,'Agreement') and " +
+		"contains(.,'is successfully submitted to Contract Approver')]"
+	)
+	
+	WebUI.waitForElementVisible(msgObj, 30)
+	
+	String msg = ""
+	for (int i = 0; i < 2; i++) {
+		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+		if (msg != null && msg.contains("CT")) break
+		WebUI.delay(1)
+	}
+	
+	msg = (msg == null) ? "" : msg.trim()
+	WebUI.comment("Message: " + msg)
+	
+	def matcher = (msg =~ /(CT\d+)/)
+	String ctNo = matcher.find() ? matcher.group(1) : ""
+	
+	if (ctNo == "") {
+		WebUI.takeScreenshot()
+		assert false : "❌ CT number not found. Message was: " + msg
+	}
+	
+WebUI.comment("✅ Captured CT No: " + ctNo)
+	
+/* =========================
+ * EXCEL APPEND
+ * Purpose: Append CT number and message into Excel
+ * ========================= */
+String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
+String filePath = baseDir + '/FD_Submission_Agreement_AP_201_2026.xlsx'
+String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
+
+// Pastikan folder wujud
+new File(baseDir).mkdirs()
+
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+def path = Paths.get(filePath)
+
+try {
+    if (Files.exists(path)) {
+        fis = new FileInputStream(filePath)
+        wb = new XSSFWorkbook(fis)
+        sheet = wb.getSheet('Result') ?: wb.createSheet('Result')
+    } else {
+        wb = new XSSFWorkbook()
+        sheet = wb.createSheet('Result')
+        
+        // Cipta Header jika fail baru
+        def header = sheet.createRow(0)
+        header.createCell(0).setCellValue('DateTime')
+        header.createCell(1).setCellValue('CT No')
+        header.createCell(2).setCellValue('Message')
+    }
+
+    // Kira baris seterusnya
+    int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+    def row = sheet.createRow(nextRow)
+    row.createCell(0).setCellValue(now)
+    row.createCell(1).setCellValue(ctNo)
+    row.createCell(2).setCellValue(msg)
+
+    // Simpan fail
+    FileOutputStream fos = new FileOutputStream(filePath)
+    wb.write(fos)
+    fos.close()
+    
+} catch (Exception e) {
+    WebUI.comment("❌ Gagal menulis ke Excel: " + e.getMessage())
+} finally {
+    if (fis != null) fis.close()
+    if (wb != null) wb.close()
+}
+
+WebUI.comment('✅ Appended to Excel: ' + filePath)
+
+/* =========================
+ * SIGN OUT
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
