@@ -498,7 +498,10 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-//Contract Document and Attachments
+
+// ==============================
+// CONTRACT DOCUMENT UPLOAD FLOW
+// ==============================
 c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload Button'))
 waitBlockUI(20)
 WebUI.delay(1)
@@ -525,97 +528,34 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 // ==============================
-// SAFE UPLOAD HELPER
+// SIGNING UPLOAD DOCUMENT
 // ==============================
-def uploadFileSafe(TestObject chooseBtn, String filePath, int timeout = 20) {
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Signing Page'))
+waitBlockUI(20)
+WebUI.delay(1)
 
-	waitBlockUI(timeout)
+up(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 1'),uploadFilePath,3)
+waitBlockUI(20)
+WebUI.delay(1)
 
-	WebUI.waitForElementPresent(chooseBtn, timeout)
-	WebUI.waitForElementVisible(chooseBtn, timeout)
-	WebUI.waitForElementClickable(chooseBtn, timeout)
-
-	WebUI.delay(1)
-
-	up(chooseBtn, filePath, 3)
-
-	waitBlockUI(timeout)
-}
-
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload File Button 1'))
+waitBlockUI(20)
+WebUI.delay(1)
 
 // ==============================
-// CONTRACT DOCUMENT UPLOAD FLOW
+// STAMPING UPLOAD DOCUMENT
 // ==============================
-
-// 1. Open Upload Popup
-TestObject uploadBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Signing Page')
-
-WebUI.waitForElementPresent(uploadBtn, 20)
-WebUI.waitForElementVisible(uploadBtn, 20)
-WebUI.waitForElementClickable(uploadBtn, 20)
-
-c(uploadBtn)
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Stamping Page'))
 waitBlockUI(20)
+WebUI.delay(1)
 
-
-// 2. Upload File (Contract Document - Choose Button 1)
-uploadFileSafe(
-	findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 1'),
-	uploadFilePath,
-	20
-)
-
-
-// 3. Click Upload File Button
-TestObject uploadFileBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload File Button')
-
-WebUI.waitForElementPresent(uploadFileBtn, 20)
-WebUI.waitForElementVisible(uploadFileBtn, 20)
-WebUI.waitForElementClickable(uploadFileBtn, 20)
-
-c(uploadFileBtn)
+up(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 2'),uploadFilePath,3)
 waitBlockUI(20)
+WebUI.delay(1)
 
-
-// ==============================
-// STAMPING PAGE FLOW
-// ==============================
-
-// 4. Open Stamping Page
-TestObject stampingPageBtn = findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Button Stamping Page')
-
-WebUI.waitForElementPresent(stampingPageBtn, 20)
-WebUI.waitForElementVisible(stampingPageBtn, 20)
-WebUI.waitForElementClickable(stampingPageBtn, 20)
-
-c(stampingPageBtn)
+c(findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Upload File Button 2'))
 waitBlockUI(20)
-
-
-// 5. Open Upload Dialog (Stamping)
-WebUI.waitForElementPresent(uploadBtn, 20)
-WebUI.waitForElementVisible(uploadBtn, 20)
-WebUI.waitForElementClickable(uploadBtn, 20)
-
-c(uploadBtn)
-waitBlockUI(20)
-
-
-// 6. Upload File (Stamping - Choose Button 2)
-uploadFileSafe(
-	findTestObject('Object Repository/FD and Agreement/Agreement Application/Agreement Contract Document/Choose Button Upload 2'),
-	uploadFilePath,
-	20
-)
-
-
-// 7. Upload File Button (Stamping Submit)
-WebUI.waitForElementPresent(uploadFileBtn, 20)
-WebUI.waitForElementVisible(uploadFileBtn, 20)
-WebUI.waitForElementClickable(uploadFileBtn, 20)
-
-c(uploadFileBtn)
-waitBlockUI(20)
+WebUI.delay(1)
 
 
 /* =========================
