@@ -57,87 +57,87 @@
          <variableId>1f5d0707-ac21-4b9c-8d97-8dbf24c37b99</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServicePeriod</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>cf345cda-9cd2-42b2-bbab-2b32f380d46d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Ministry1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>fe603aa1-cd2c-45d3-8552-de19fc22e2b3</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Jabatan1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>858fddb0-ac98-4ea5-9add-5a9e2515891a</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PTJCode1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>2d658d12-df70-4964-95b6-4d9e85a77741</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Ministry2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>4b5f9eec-11b2-403d-bc27-17821c1ecda4</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Jabatan2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>a6a867b4-22f8-4b85-bc77-7e65435dfbd8</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PTJCode2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>35a28944-9988-4afc-a659-f619735b3fe2</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Ministry3</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>02b23f4d-ee8b-47d1-b89a-815fcebed18d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Jabatan3</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>153b8d4d-868e-4760-815c-bd8eb484aadd</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PTJCode3</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>cb9aff5a-1f67-4b48-830c-845aad38f827</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Startmonth</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>6c24c989-3cac-4160-9b96-cd2680a00765</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Startyear</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>9a48d7cc-3a21-4391-b127-9d054b59d358</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Endmonth</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>a0d39ca1-86df-4e6f-a3fd-b49de4230a81</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Endyear</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>1e8f4494-ed89-4a77-8aa8-3426b6f931f0</variableId>
       </variableLink>
       <variableLink>

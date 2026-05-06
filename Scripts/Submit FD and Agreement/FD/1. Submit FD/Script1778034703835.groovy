@@ -742,7 +742,7 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate(dateInput) //pick date here
+	pickDate("2026-04-08") //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)
@@ -868,7 +868,7 @@ if (clickSideMenuIfExists(
 
 /* =========================
  * Submit Button
- * ========================= 
+ * =========================*/
 
 TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
@@ -879,7 +879,7 @@ WebUI.waitForElementClickable(submitBtn, 20)
 WebUI.delay(1)
 
 c(submitBtn)
-waitBlockUI(20)*/
+waitBlockUI(20)
 
 	/* =========================
 	 * SUCCESS MESSAGE - CT ONLY
