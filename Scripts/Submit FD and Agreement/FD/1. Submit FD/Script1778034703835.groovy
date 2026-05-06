@@ -510,7 +510,7 @@ waitBlockUI(20)
 WebUI.delay(0.5)
 
 
-int agencyLoopCount = 3
+int agencyLoopCount = 2
 
 for (int i = 1; i <= agencyLoopCount; i++) {
 
@@ -860,11 +860,7 @@ if (clickSideMenuIfExists(
 		"//div[contains(@class,'ui-picklist-target')]//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
 	)
 
-<<<<<<< HEAD
-	WebUI.waitForElementVisible(approverSelected, 10)
-=======
 	WebUI.waitForElementVisible(approverSelected, 1)
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
 
 	println("Approver successfully selected: " + approverName)
 }

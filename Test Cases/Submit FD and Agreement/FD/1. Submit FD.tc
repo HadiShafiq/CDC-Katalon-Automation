@@ -175,7 +175,7 @@
       <name>ServicePeriod</name>
    </variable>
    <variable>
-      <defaultValue>13</defaultValue>
+      <defaultValue>12</defaultValue>
       <description></description>
       <id>fe603aa1-cd2c-45d3-8552-de19fc22e2b3</id>
       <masked>false</masked>
@@ -189,49 +189,49 @@
       <name>Jabatan1</name>
    </variable>
    <variable>
-      <defaultValue>'27020304'</defaultValue>
+      <defaultValue>'42240201'</defaultValue>
       <description></description>
       <id>2d658d12-df70-4964-95b6-4d9e85a77741</id>
       <masked>false</masked>
       <name>PTJCode1</name>
    </variable>
    <variable>
-      <defaultValue>12</defaultValue>
+      <defaultValue>13</defaultValue>
       <description></description>
       <id>4b5f9eec-11b2-403d-bc27-17821c1ecda4</id>
       <masked>false</masked>
       <name>Ministry2</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>a6a867b4-22f8-4b85-bc77-7e65435dfbd8</id>
       <masked>false</masked>
       <name>Jabatan2</name>
    </variable>
    <variable>
-      <defaultValue>'42010112'</defaultValue>
+      <defaultValue>'24010301'</defaultValue>
       <description></description>
       <id>35a28944-9988-4afc-a659-f619735b3fe2</id>
       <masked>false</masked>
       <name>PTJCode2</name>
    </variable>
    <variable>
-      <defaultValue>13</defaultValue>
+      <defaultValue>12</defaultValue>
       <description></description>
       <id>02b23f4d-ee8b-47d1-b89a-815fcebed18d</id>
       <masked>false</masked>
       <name>Ministry3</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>153b8d4d-868e-4760-815c-bd8eb484aadd</id>
       <masked>false</masked>
       <name>Jabatan3</name>
    </variable>
    <variable>
-      <defaultValue>'24010301'</defaultValue>
+      <defaultValue>'42140301'</defaultValue>
       <description></description>
       <id>cb9aff5a-1f67-4b48-830c-845aad38f827</id>
       <masked>false</masked>
