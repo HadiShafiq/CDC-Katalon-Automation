@@ -481,7 +481,23 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Physical Contract No'),PhysicalContractNo)
+// =========================
+// Get Contract No.
+// =========================
+TestObject contractNoObj = new TestObject('contractNoObj')
+contractNoObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//td[label[normalize-space()='Contract No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
+)
+
+WebUI.waitForElementVisible(contractNoObj, 20)
+
+String contractNo = WebUI.getText(contractNoObj).trim()
+println("Contract No = " + contractNo)
+
+String physicalContract = "PHY-" + contractNo
+t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Physical Contract No'),physicalContract)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
@@ -650,21 +666,6 @@ println("Agency checkbox ticked = " + isTicked)
 if (isTicked) {
 
 	// =========================
-	// Get Contract No.
-	// =========================
-	TestObject contractNoObj = new TestObject('contractNoObj')
-	contractNoObj.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		"//td[label[normalize-space()='Contract No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
-	)
-
-	WebUI.waitForElementVisible(contractNoObj, 20)
-
-	String contractNo = WebUI.getText(contractNoObj).trim()
-	println("Contract No = " + contractNo)
-
-	// =========================
 	// Set File Ref Agency
 	// =========================
 	String fileRefAgencyInput = "File Ref " + contractNo
@@ -703,15 +704,39 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Add Button'))
 	
 	// Reference No
+	String ReferenceNo = "Ref" + contractNo
 	t(findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Reference No'), ReferenceNo)
 
 	// Financial Institution
 	selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Performance Bond/Dropdown Financial Institution'), FinancialInstitution)
 
-	//Amount 
-	t(findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'), 
-		Amount, 20
-	 )
+	// =========================
+	// Get Amount
+	// =========================
+	TestObject amountObj = new TestObject('amountObj')
+	amountObj.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//label[contains(.,'Performance Bond Amount')]/following::input[1]"
+	)
+	
+	WebUI.waitForElementVisible(amountObj, 20)
+	
+	String amountNo = WebUI.getAttribute(amountObj, 'value').trim()
+	println("Amount No = " + amountNo)
+	
+	// =========================
+	// Set Amount
+	// =========================
+	String amountInput = amountNo
+	println(amountInput)
+	
+	// Amount -- refer same value
+	t(
+		findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'),
+		amountInput,
+		20
+	)
 		
 	// Calendar
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
@@ -843,7 +868,7 @@ if (clickSideMenuIfExists(
 
 /* =========================
  * Submit Button
- * ========================= */
+ * ========================= 
 
 TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
@@ -854,7 +879,7 @@ WebUI.waitForElementClickable(submitBtn, 20)
 WebUI.delay(1)
 
 c(submitBtn)
-waitBlockUI(20)
+waitBlockUI(20)*/
 
 	/* =========================
 	 * SUCCESS MESSAGE - CT ONLY

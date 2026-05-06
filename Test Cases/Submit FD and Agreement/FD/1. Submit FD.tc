@@ -130,22 +130,10 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>ec4c5a5c-b54f-4b0b-a05e-0a585796a094</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
    </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>abc95328-2f9d-427e-9427-7c3ef4218262</variableId>
-   </variableLinks>
    <variable>
-      <defaultValue>'870926145529'</defaultValue>
+      <defaultValue>'690127065209'</defaultValue>
       <description></description>
       <id>ed6b5c3f-fa24-4dbe-a66f-09232d6d00b0</id>
       <masked>false</masked>
@@ -159,14 +147,14 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>9</defaultValue>
+      <defaultValue>0</defaultValue>
       <description></description>
       <id>e0c47af5-6d01-4d72-9269-3c3e459971be</id>
       <masked>false</masked>
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001708'</defaultValue>
+      <defaultValue>'CT260000000000986'</defaultValue>
       <description></description>
       <id>0e90d95f-069c-4055-a987-72f58e791481</id>
       <masked>false</masked>
@@ -285,24 +273,10 @@
       <name>ApproverName</name>
    </variable>
    <variable>
-      <defaultValue>'100123'</defaultValue>
-      <description></description>
-      <id>ec4c5a5c-b54f-4b0b-a05e-0a585796a094</id>
-      <masked>false</masked>
-      <name>ReferenceNo</name>
-   </variable>
-   <variable>
       <defaultValue>'2'</defaultValue>
       <description></description>
       <id>44542d14-46e7-4fe1-9dc9-66628fd45ae0</id>
       <masked>false</masked>
       <name>FinancialInstitution</name>
-   </variable>
-   <variable>
-      <defaultValue>'3000'</defaultValue>
-      <description></description>
-      <id>abc95328-2f9d-427e-9427-7c3ef4218262</id>
-      <masked>false</masked>
-      <name>Amount</name>
    </variable>
 </TestCaseEntity>
