@@ -860,7 +860,7 @@ if (clickSideMenuIfExists(
 		"//div[contains(@class,'ui-picklist-target')]//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
 	)
 
-	WebUI.waitForElementVisible(approverSelected, 30)
+	WebUI.waitForElementVisible(approverSelected, 10)
 
 	println("Approver successfully selected: " + approverName)
 }

@@ -388,7 +388,7 @@ WebUI.delay(1)
 // =========================
 // Convert Katalon variable to list
 // Example variable:
-// Document_Numbers = LA260000000001729,LA260000000001730,LA260000000001731
+// Document_Number = LA260000000001729,LA260000000001730,LA260000000001731
 // =========================
 
 String docNumbersRaw = Document_Number
@@ -400,7 +400,9 @@ List<String> docList = docNumbersRaw
 	.collect { it.trim() }
 	.findAll { it }
 
+List<String> successList = []
 List<String> failedList = []
+List<String> skippedList = []
 
 for (String docNo : docList) {
 
@@ -409,17 +411,36 @@ for (String docNo : docList) {
 	boolean result = claimDocument(docNo)
 
 	if (result) {
+
 		WebUI.comment("✅ SUCCESS CLAIM: " + docNo)
+		successList.add(docNo)
+
 	} else {
-		WebUI.comment("❌ FAILED CLAIM: " + docNo)
-		failedList.add(docNo)
+
+		// Do second check here before confirm fail
+		boolean stillAvailableToClaim = checkDocumentStillAvailableToClaim(docNo)
+
+		if (stillAvailableToClaim) {
+			WebUI.comment("❌ FAILED CLAIM: " + docNo)
+			failedList.add(docNo)
+		} else {
+			WebUI.comment("⚠️ SKIPPED / NOT FOUND / ALREADY CLAIMED: " + docNo)
+			skippedList.add(docNo)
+		}
 	}
 }
 
+// =========================
+// Final Summary
+// =========================
 
-// =========================
-// Final validation
-// =========================
+WebUI.comment("Total Document = " + docList.size())
+WebUI.comment("✅ Success Count = " + successList.size())
+WebUI.comment("❌ Failed Count = " + failedList.size())
+WebUI.comment("⚠️ Skipped Count = " + skippedList.size())
+
+WebUI.comment("❌ Failed List = " + failedList)
+WebUI.comment("⚠️ Skipped List = " + skippedList)
 
 assert failedList.size() == 0 : "❌ These Document No failed to claim: " + failedList
 /* =========================
