@@ -742,7 +742,7 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate("2026-04-18") //pick date here
+	pickDate(dateInput) //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)

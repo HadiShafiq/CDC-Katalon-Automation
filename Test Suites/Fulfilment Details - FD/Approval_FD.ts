@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>Approval_FD</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>3</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>true</rerunImmediately>
+   <testSuiteGuid>32561509-b920-4ff9-a56d-bd8f428aa8d6</testSuiteGuid>
+   <testCaseLink>
+      <guid>bdc0ef8c-a57c-4545-abf7-06f4d0722a7b</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Submit FD and Agreement/FD/2. Approve FD</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>56071148-b66a-4804-a4e1-d3975722f048</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Fulfillment - FD/Approval_FD</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>92b68223-e8e2-42aa-8c16-6a2e1895c996</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>7b8ed9b9-fd90-47d1-8ea1-a5c8e9827e84</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DocumentType</value>
+         <variableId>d39c8683-1303-4953-83fe-b6e021d7f9b2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
+         <variableId>0b73b421-fc5f-4d8b-8653-18293ee7d699</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>
