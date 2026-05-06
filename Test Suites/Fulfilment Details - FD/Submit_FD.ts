@@ -152,11 +152,5 @@
          <value>FinancialInstitution</value>
          <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
       </variableLink>
-      <variableLink>
-         <testDataLinkId>e2bb4105-23cf-4bbe-b196-c5d38358cb09</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>DateInput</value>
-         <variableId>3e2e6dad-1f38-46b2-9668-7ba3432879c0</variableId>
-      </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

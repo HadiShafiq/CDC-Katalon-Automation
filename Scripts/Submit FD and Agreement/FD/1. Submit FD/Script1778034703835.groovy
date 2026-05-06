@@ -837,18 +837,18 @@ if (clickSideMenuIfExists(
 		"//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
 	)
 
-	WebUI.waitForElementVisible(approverLeft, 20)
-	WebUI.waitForElementClickable(approverLeft, 20)
-	c(approverLeft, 20)
+	WebUI.waitForElementVisible(approverLeft, 1)
+	WebUI.waitForElementClickable(approverLeft, 1)
+	c(approverLeft, 1)
 
 	TestObject approverRightBtn = findTestObject(
 		'Object Repository/FD and Agreement/FD Application/Approver Setting/Approver Right button'
 	)
 
-	WebUI.waitForElementClickable(approverRightBtn, 20)
+	WebUI.waitForElementClickable(approverRightBtn, 1)
 	c(approverRightBtn)
 
-	waitBlockUI(20)
+	waitBlockUI(3)
 
 	// =========================
 	// Wait approver moved/loaded to selected/right list
@@ -860,7 +860,7 @@ if (clickSideMenuIfExists(
 		"//div[contains(@class,'ui-picklist-target')]//li[contains(@class,'ui-picklist-item') and normalize-space()='${approverName}']"
 	)
 
-	WebUI.waitForElementVisible(approverSelected, 30)
+	WebUI.waitForElementVisible(approverSelected, 1)
 
 	println("Approver successfully selected: " + approverName)
 }
@@ -873,13 +873,13 @@ if (clickSideMenuIfExists(
 TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
 waitBlockUI(20)
-WebUI.waitForElementVisible(submitBtn, 20)
-WebUI.waitForElementClickable(submitBtn, 20)
+WebUI.waitForElementVisible(submitBtn, 1)
+WebUI.waitForElementClickable(submitBtn, 1)
 
 WebUI.delay(1)
 
 c(submitBtn)
-waitBlockUI(20)
+waitBlockUI(3)
 
 	/* =========================
 	 * SUCCESS MESSAGE - CT ONLY
