@@ -577,7 +577,7 @@ if (!(rbType == 1 || rbType == 3)) {
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Start Date Picker icon'), 20)
 WebUI.delay(1)
 
-pickDate("2026-05-04")   // <-- put your date here
+pickDate(dateValue)   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -935,7 +935,6 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
  * Sign Out
  * ========================= */
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 
 // wait until logout is completed (choose one)

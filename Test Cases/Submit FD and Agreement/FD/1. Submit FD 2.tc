@@ -285,14 +285,14 @@
       <name>ApproverName</name>
    </variable>
    <variable>
-      <defaultValue>'100123'</defaultValue>
+      <defaultValue>'CT'</defaultValue>
       <description></description>
       <id>e62d2ab7-6181-43d2-b9d9-babed13522d4</id>
       <masked>false</masked>
       <name>ReferenceNo</name>
    </variable>
    <variable>
-      <defaultValue>'2'</defaultValue>
+      <defaultValue>'3'</defaultValue>
       <description></description>
       <id>8eac3e94-d547-44c1-8252-ae04eec0d854</id>
       <masked>false</masked>

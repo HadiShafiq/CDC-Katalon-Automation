@@ -126,6 +126,12 @@
       <value></value>
       <variableId>716c13ea-c59e-4667-a7e3-89159e98c328</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>8bf871ed-2c86-4eee-858d-60c6a6e0d814</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -265,5 +271,12 @@
       <id>716c13ea-c59e-4667-a7e3-89159e98c328</id>
       <masked>false</masked>
       <name>AddSupplierNameNormal</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-05-07'</defaultValue>
+      <description></description>
+      <id>8bf871ed-2c86-4eee-858d-60c6a6e0d814</id>
+      <masked>false</masked>
+      <name>dateValue</name>
    </variable>
 </TestCaseEntity>

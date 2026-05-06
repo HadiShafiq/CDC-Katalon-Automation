@@ -278,7 +278,7 @@ def claimDocument(String targetDocNo) {
 }
 
 /* =========================
- * Function: Untuk Side Menu Schedule | Performance Bond | Payment Tracking
+ * Function: Untuk Side Menu Schedule | Performance Bond 
  * ========================= */
 def clickSideMenuIfExists(String objectPath) {
 	
@@ -624,7 +624,6 @@ WebUI.waitForElementVisible(contractNoObj, 20)
 String contractNo = WebUI.getText(contractNoObj).trim()
 println("Contract No = " + contractNo)
 
-
 // =========================
 // Set File Ref Agency
 // =========================
@@ -662,7 +661,7 @@ WebUI.delay(0.5)
 
 if (clickSideMenuIfExists(
 	'Object Repository/FD and Agreement/Side Menu/FD Application/Performance Bond Side Menu'
-)) {
+	)) {
 	//Click button Add
 	c(findTestObject('Object Repository/FD and Agreement/Add Button'))
 	
@@ -672,16 +671,39 @@ if (clickSideMenuIfExists(
 	// Financial Institution
 	selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Performance Bond/Dropdown Financial Institution'), FinancialInstitution)
 
-	//Amount 
-	t(findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'), 
-		Amount, 20
-	 )
+	// =========================
+	// Get Amount
+	// =========================
+	TestObject amountObj = new TestObject('amountObj')
+	amountObj.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//label[contains(.,'Performance Bond Amount')]/following::input[1]"
+	)
+	
+	WebUI.waitForElementVisible(amountObj, 20)
+	
+	String amountNo = WebUI.getAttribute(amountObj, 'value').trim()
+	println("Amount No = " + amountNo)
+	
+	// =========================
+	// Set Amount
+	// =========================
+	String amountInput = amountNo
+	println(amountInput)
+	
+	// Amount -- refer same value
+	t(
+		findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'),
+		amountInput,
+		20
+	)
 		
 	// Calendar
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate("2026-04-18") //pick date here
+	pickDate("2026-05-08") //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)
@@ -703,8 +725,6 @@ if (clickSideMenuIfExists(
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	waitBlockUI(20)*/
-	
-	
 }
 
 /* =========================
@@ -714,7 +734,7 @@ if (clickSideMenuIfExists(
 
 if (clickSideMenuIfExists(
 	'Object Repository/FD and Agreement/Side Menu/FD Application/Schedule Side Menu'
-)) {
+	)) {
 
 	int scheduleCount = 2
 
@@ -765,7 +785,7 @@ if (clickSideMenuIfExists(
 
 if (clickSideMenuIfExists(
 	'Object Repository/FD and Agreement/Side Menu/FD Application/Approver Settings'
-)) {
+	)) {
 
 	String approverName = ApproverName.toString().trim()
 
@@ -788,109 +808,108 @@ if (clickSideMenuIfExists(
 /* =========================
 * Submit Button
 * ========================= */
-	c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
-	waitBlockUI(10)
-	WebUI.delay(0.5)
+c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
+waitBlockUI(10)
+WebUI.delay(0.5)
 
-	/* =========================
-	 * SUCCESS MESSAGE - CT ONLY
-	 * Purpose:
-	 * - wait for loader disappear
-	 * - capture success message
-	 * - extract dynamic CT number
-	 * ========================= */
-	TestObject blockUI = new TestObject('blockUI')
-	blockUI.addProperty("xpath", ConditionType.EQUALS,
-		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
-	)
+/* =========================
+* SUCCESS MESSAGE - CT ONLY
+* Purpose:
+* - wait for loader disappear
+* - capture success message
+* - extract dynamic CT number
+* ========================= */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
 	
-	if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
-		WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
-	}
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
 	
-	TestObject msgObj = new TestObject('msg_CT_saved')
-	msgObj.addProperty("xpath", ConditionType.EQUALS,
-		"//span[contains(@class,'ui-messages-info-detail') and " +
-		"contains(.,'Fulfilment Details Creation') and " +
-		"contains(.,'is successfully submitted to Contract Approver.')]"
-	)
+TestObject msgObj = new TestObject('msg_CT_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Fulfilment Details Creation') and " +
+	"contains(.,'is successfully submitted to Contract Approver.')]"
+)
 	
-	WebUI.waitForElementVisible(msgObj, 30)
+WebUI.waitForElementVisible(msgObj, 30)
 	
-	String msg = ""
-	for (int i = 0; i < 2; i++) {
-		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-		if (msg != null && msg.contains("CT")) break
-		WebUI.delay(1)
-	}
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("CT")) break
+	WebUI.delay(1)
+}
 	
-	msg = (msg == null) ? "" : msg.trim()
-	WebUI.comment("Message: " + msg)
+msg = (msg == null) ? "" : msg.trim()
+WebUI.comment("Message: " + msg)
 	
-	def matcher = (msg =~ /(CT\d+)/)
-	String ctNo = matcher.find() ? matcher.group(1) : ""
+def matcher = (msg =~ /(CT\d+)/)
+String ctNo = matcher.find() ? matcher.group(1) : ""
 	
-	if (ctNo == "") {
-		WebUI.takeScreenshot()
-		assert false : "❌ CT number not found. Message was: " + msg
-	}
+if (ctNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ CT number not found. Message was: " + msg
+}
 	
-	WebUI.comment("✅ Captured CT No: " + ctNo)
+WebUI.comment("✅ Captured CT No: " + ctNo)
 	
-	/* =========================
-	 * EXCEL APPEND
-	 * Purpose:
-	 * - append CT number and message into same Excel file
-	 * ========================= */
-	String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
-	new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-	String filePath = baseDir + "/FD_Submission_AP_201_2026.xlsx"
-	String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+/* =========================
+* EXCEL APPEND
+* Purpose:
+* - append CT number and message into same Excel file
+* ========================= */
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/FD_Submission_AP_201_2026.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 	
-	def path = Paths.get(filePath)
-	XSSFWorkbook wb
-	def sheet
-	FileInputStream fis = null
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
 	
-	if (Files.exists(path)) {
-		fis = new FileInputStream(filePath)
-		wb = new XSSFWorkbook(fis)
-		sheet = wb.getSheet("Result")
-		if (sheet == null) sheet = wb.createSheet("Result")
-	} else {
-		wb = new XSSFWorkbook()
-		sheet = wb.createSheet("Result")
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
 	
-		def header = sheet.createRow(0)
-		header.createCell(0).setCellValue("DateTime")
-		header.createCell(1).setCellValue("CT No")
-		header.createCell(2).setCellValue("Message")
-	}
-	
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("CT No")
+	header.createCell(2).setCellValue("Message")
+}
 	if (fis != null) fis.close()
 	
-	int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-	def row = sheet.createRow(nextRow)
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
 	
-	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(ctNo)
-	row.createCell(2).setCellValue(msg)
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(ctNo)
+row.createCell(2).setCellValue(msg)
 	
-	FileOutputStream fos = new FileOutputStream(filePath)
-	wb.write(fos)
-	fos.close()
-	wb.close()
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
 	
-	WebUI.comment("✅ Appended to Excel: " + filePath)
+WebUI.comment("✅ Appended to Excel: " + filePath)
 	
-	/* =========================
-	 * SIGN OUT
-	 * Purpose:
-	 * - logout from system
-	 * - close browser
-	 * ========================= */
-	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+/* =========================
+* SIGN OUT
+* Purpose:
+* - logout from system
+* - close browser
+* ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 	
-	WebUI.waitForPageLoad(20)
-	WebUI.closeBrowser()
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
