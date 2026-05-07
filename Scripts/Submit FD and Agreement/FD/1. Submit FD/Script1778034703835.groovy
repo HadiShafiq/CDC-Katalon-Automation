@@ -730,6 +730,77 @@ if (clickSideMenuIfExists(
 
 	println("Agency Side Menu not found or hidden → skip Agency process")
 }
+
+// =========================
+// Check Agency Checkbox Ticked
+// =========================
+def webDriverAgency = DriverFactory.getWebDriver()
+
+List<WebElement> agencyCheckboxes = webDriverAgency.findElements(By.xpath(
+	"//input[contains(@id,'tableAgencyDetails') and @type='checkbox']"
+))
+
+boolean isTicked = false
+
+println("Total Agency checkbox found = " + agencyCheckboxes.size())
+
+for (int x = 0; x < agencyCheckboxes.size(); x++) {
+
+	WebElement cb = agencyCheckboxes.get(x)
+
+	boolean checkedBySelected = cb.isSelected()
+	String checkedAttr = cb.getAttribute("checked")
+	String ariaChecked = cb.getAttribute("aria-checked")
+
+	println("Checkbox row " + x +
+		" | isSelected = " + checkedBySelected +
+		" | checked = " + checkedAttr +
+		" | aria-checked = " + ariaChecked
+	)
+
+	if (checkedBySelected || checkedAttr == "true" || checkedAttr == "checked" || ariaChecked == "true") {
+		isTicked = true
+		println("Ticked checkbox found at row " + x)
+		break
+	}
+}
+
+println("Agency checkbox ticked = " + isTicked)
+
+
+// =========================
+// If ticked, Set File Ref + Upload
+// =========================
+if (isTicked) {
+
+	String fileRefAgencyInput = "File Ref " + contractNo
+	println("File Ref Agency = " + fileRefAgencyInput)
+
+	t(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/File Ref Agency'), fileRefAgencyInput)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload Button'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	up(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Icon Choose File'), uploadFilePath, 3)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload File Icon'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Close button'))
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+} else {
+
+	println("No agency checkbox ticked → skip File Ref and upload")
+}
+
 /* =========================
  * Performance Bond
  * IF Fulfilment Type : Periodic As And When
@@ -938,7 +1009,7 @@ waitBlockUI(3)
 	msgObj.addProperty("xpath", ConditionType.EQUALS,
 		"//span[contains(@class,'ui-messages-info-detail') and " +
 		"contains(.,'Fulfilment Details Creation') and " +
-		"contains(.,'is successfully submitted to Contract Approver.')]"
+		"contains(.,'is successfully submitted to Central Contract Approver.')]"
 	)
 	
 	WebUI.waitForElementVisible(msgObj, 30)
