@@ -350,6 +350,7 @@ def pickDate(String yyyyMmDd) {
 	assert false : "Date not found in datepicker: " + yyyyMmDd
 }
 	
+
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -388,6 +389,12 @@ options.setExperimentalOption("prefs", prefs)
 
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
+
+/* =========================================================
+ * 9) Upload Files
+ * ========================================================= */
+String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
+
 
 /* =========================
  * OPEN APPLICATION
@@ -454,16 +461,17 @@ selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreeme
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-//Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number)
-waitBlockUI(20)
+// =========================
+// Input Document Number
+// =========================
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number) 
+waitBlockUI(10) 
 WebUI.delay(0.5)
-
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
 // wait loader gone
-waitBlockUI(30)
+waitBlockUI(20)
 
 // wait table/data loaded (VERY IMPORTANT)
 TestObject table = new TestObject('taskTable')
@@ -485,6 +493,7 @@ WebUI.delay(0.5)
 // Get Contract No.
 // =========================
 TestObject contractNoObj = new TestObject('contractNoObj')
+
 contractNoObj.addProperty(
 	"xpath",
 	ConditionType.EQUALS,
@@ -494,203 +503,233 @@ contractNoObj.addProperty(
 WebUI.waitForElementVisible(contractNoObj, 20)
 
 String contractNo = WebUI.getText(contractNoObj).trim()
+
 println("Contract No = " + contractNo)
 
+// =========================
+// Prepare Physical Contract No
+// =========================
 String physicalContract = "PHY-" + contractNo
-t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Physical Contract No'),physicalContract)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Service Period'),ServicePeriod)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-c(findTestObject('Object Repository/FD and Agreement/Side Menu/FD Application/Agency Side Menu'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-
-int agencyLoopCount = 2
-
-for (int i = 1; i <= agencyLoopCount; i++) {
-
-	// =========================
-	// Get data by loop
-	// =========================
-	def ministryValue = binding.getVariable("Ministry${i}")
-	def jabatanValue  = binding.getVariable("Jabatan${i}")
-	def ptjCodeValue  = binding.getVariable("PTJCode${i}")
-
-	// =========================
-	// Add Agency
-	// =========================
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Add Button Agency'))
-	waitBlockUI(20)
-	WebUI.delay(0.5)
-
-	// =========================
-	// Select Ministry
-	// =========================
-	selectDropdownByIndex(
-		findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Ministry Dropdown'),
-		ministryValue
-	)
-	waitBlockUI(20)
-	WebUI.delay(0.5)
-
-	// =========================
-	// Select Jabatan
-	// =========================
-	selectDropdownByIndex(
-		findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Jabatan Dropdown'),
-		jabatanValue
-	)
-	waitBlockUI(20)
-	WebUI.delay(2)
-
-	// =========================
-	// Input PTJ Code
-	// =========================
-	TestObject safeArea = new TestObject("safeArea_Header_${i}")
-	safeArea.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:agencyPopUpId_header']/span"
-	)
-
-	TestObject ptjCode = findTestObject(
-		'Object Repository/FD and Agreement/FD Application/Agency/PTJ Code'
-	)
-
-	String ptjCodeInput = ptjCodeValue.toString().trim()
-
-	WebUI.waitForElementVisible(ptjCode, 20)
-	WebUI.waitForElementClickable(ptjCode, 20)
-	WebUI.click(ptjCode)
-	WebUI.delay(0.5)
-
-	WebUI.sendKeys(ptjCode, Keys.chord(Keys.CONTROL, 'a'))
-	WebUI.delay(0.3)
-	WebUI.sendKeys(ptjCode, Keys.chord(Keys.BACK_SPACE))
-	WebUI.delay(0.5)
-
-	for (char ch : ptjCodeInput.toCharArray()) {
-		WebUI.sendKeys(ptjCode, ch.toString())
-		WebUI.delay(0.15)
-	}
-
-	WebUI.click(safeArea, FailureHandling.OPTIONAL)
-
-	waitBlockUI(10)
-	WebUI.delay(1)
-
-	String finalPTJCode = WebUI.getAttribute(ptjCode, 'value')
-	println("Loop ${i} Final PTJ Code = " + finalPTJCode)
-
-	// =========================
-	// Search Agency
-	// =========================
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Search Agency'))
-	waitBlockUI(20)
-	WebUI.delay(0.5)
-
-	// =========================
-	// Select First Agency Row
-	// =========================
-	TestObject firstAgencyRow = new TestObject("firstAgencyRow_${i}")
-	firstAgencyRow.addProperty(
-		"xpath",
-		ConditionType.EQUALS,
-		"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:tableAgency_data']/tr[1]"
-	)
-
-	if (!WebUI.waitForElementVisible(firstAgencyRow, 10, FailureHandling.OPTIONAL)) {
-		WebUI.delay(2)
-	}
-
-	WebUI.waitForElementClickable(firstAgencyRow, 20)
-	WebUI.scrollToElement(firstAgencyRow, 2)
-
-	try {
-		WebUI.click(firstAgencyRow)
-	} catch (Exception e) {
-		WebUI.enhancedClick(firstAgencyRow, FailureHandling.OPTIONAL)
-	}
-
-	WebUI.delay(1)
-	waitBlockUI(20)
-	WebUI.delay(1)
-
-	// =========================
-	// Click Select Button
-	// =========================
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Select Button'))
-	waitBlockUI(20)
-	WebUI.delay(0.5)
-}
 
 // =========================
-// Check ALL Agency Checkboxes
+// Dynamic field detection
 // =========================
-def webDriverAgency = DriverFactory.getWebDriver()
+TestObject physicalTextarea = new TestObject('physicalContractTextarea')
 
-List<WebElement> agencyCheckboxes = webDriverAgency.findElements(By.xpath(
-	"//input[contains(@id,'tableAgencyDetails') and @type='checkbox']"
-))
+physicalTextarea.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//label[normalize-space()='Physical Contract No.']/ancestor::td/following-sibling::td//textarea"
+)
 
-boolean isTicked = false
+TestObject physicalInput = new TestObject('physicalContractInput')
 
-println("Total Agency checkbox found = " + agencyCheckboxes.size())
+physicalInput.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//label[normalize-space()='Physical Contract No.']/following::input[1]"
+)
 
-for (int i = 0; i < agencyCheckboxes.size(); i++) {
+TestObject physicalContractObj
 
-	WebElement cb = agencyCheckboxes.get(i)
+if (WebUI.verifyElementPresent(physicalTextarea, 3, FailureHandling.OPTIONAL)) {
 
-	boolean checkedBySelected = cb.isSelected()
-	String checkedAttr = cb.getAttribute("checked")
-
-	println("Checkbox row " + i +
-		" | isSelected = " + checkedBySelected +
-		" | checked attribute = " + checkedAttr
-	)
-
-	if (checkedBySelected || checkedAttr == "true" || checkedAttr == "checked") {
-		isTicked = true
-		println("Ticked checkbox found at row " + i)
-		break
-	}
-}
-
-println("Agency checkbox ticked = " + isTicked)
-
-if (isTicked) {
-
-	// =========================
-	// Set File Ref Agency
-	// =========================
-	String fileRefAgencyInput = "File Ref " + contractNo
-
-	t(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/File Ref Agency'), fileRefAgencyInput)
-
-	// =========================
-	// Upload
-	// =========================
-	String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload Button'))
-	waitBlockUI(20)
-
-	up(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Icon Choose File'), uploadFilePath, 3)
-	waitBlockUI(20)
-
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Upload File Icon'))
-	waitBlockUI(20)
-
-	c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Upload Icon/Click Close button'))
-	waitBlockUI(20)
+	println("Physical Contract No field = textarea")
+	physicalContractObj = physicalTextarea
 
 } else {
-	println("No agency checkbox ticked → skip upload")
+
+	println("Physical Contract No field = input")
+	physicalContractObj = physicalInput
+}
+
+// =========================
+// Input Physical Contract No
+// =========================
+t(physicalContractObj, physicalContract)
+
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+// =========================
+// Service Period
+// =========================
+
+TestObject servicePeriod1 = new TestObject('servicePeriod1')
+servicePeriod1.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:dperiod']"
+)
+
+TestObject servicePeriod2 = new TestObject('servicePeriod2')
+servicePeriod2.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:centralDelPeriod']"
+)
+
+TestObject servicePeriodObj
+
+if (WebUI.verifyElementPresent(servicePeriod1, 3, FailureHandling.OPTIONAL)) {
+
+	println("Using dperiod field")
+	servicePeriodObj = servicePeriod1
+
+} else {
+
+	println("Using centralDelPeriod field")
+	servicePeriodObj = servicePeriod2
+}
+
+// =========================
+// Input Service Period
+// =========================
+t(servicePeriodObj, ServicePeriod)
+
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+if (clickSideMenuIfExists(
+	'Object Repository/FD and Agreement/Side Menu/FD Application/Agency Side Menu'
+)) {
+
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+
+	int agencyLoopCount = 3
+
+	for (int i = 1; i <= agencyLoopCount; i++) {
+
+		// =========================
+		// Get data by loop
+		// =========================
+		def ministryValue = binding.getVariable("Ministry${i}")
+		def jabatanValue  = binding.getVariable("Jabatan${i}")
+		def ptjCodeValue  = binding.getVariable("PTJCode${i}")
+
+		// =========================
+		// Add Agency
+		// =========================
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Add Button Agency'))
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+
+		// =========================
+		// Select Ministry
+		// =========================
+		selectDropdownByIndex(
+			findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Ministry Dropdown'),
+			ministryValue
+		)
+
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+
+		// =========================
+		// Select Jabatan
+		// =========================
+		selectDropdownByIndex(
+			findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Jabatan Dropdown'),
+			jabatanValue
+		)
+
+		waitBlockUI(20)
+		WebUI.delay(2)
+
+		// =========================
+		// Input PTJ Code
+		// =========================
+		TestObject safeArea = new TestObject("safeArea_Header_${i}")
+		safeArea.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:agencyPopUpId_header']/span"
+		)
+
+		TestObject ptjCode = findTestObject(
+			'Object Repository/FD and Agreement/FD Application/Agency/PTJ Code'
+		)
+
+		String ptjCodeInput = ptjCodeValue.toString().trim()
+
+		WebUI.waitForElementVisible(ptjCode, 20)
+		WebUI.waitForElementClickable(ptjCode, 20)
+
+		WebUI.click(ptjCode)
+		WebUI.delay(0.5)
+
+		WebUI.sendKeys(ptjCode, Keys.chord(Keys.CONTROL, 'a'))
+		WebUI.delay(0.3)
+
+		WebUI.sendKeys(ptjCode, Keys.chord(Keys.BACK_SPACE))
+		WebUI.delay(0.5)
+
+		for (char ch : ptjCodeInput.toCharArray()) {
+			WebUI.sendKeys(ptjCode, ch.toString())
+			WebUI.delay(0.15)
+		}
+
+		WebUI.click(safeArea, FailureHandling.OPTIONAL)
+
+		waitBlockUI(10)
+		WebUI.delay(1)
+
+		String finalPTJCode = WebUI.getAttribute(ptjCode, 'value')
+		println("Loop ${i} Final PTJ Code = " + finalPTJCode)
+
+		// =========================
+		// Search Agency
+		// =========================
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Search Agency'))
+
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+
+		// =========================
+		// Select First Agency Row
+		// =========================
+		TestObject firstAgencyRow = new TestObject("firstAgencyRow_${i}")
+
+		firstAgencyRow.addProperty(
+			"xpath",
+			ConditionType.EQUALS,
+			"//*[@id='_ctFulfilmentDetail_WAR_NGePportlet_:form:tableAgency_data']/tr[1]"
+		)
+
+		if (!WebUI.waitForElementVisible(firstAgencyRow, 10, FailureHandling.OPTIONAL)) {
+			WebUI.delay(2)
+		}
+
+		WebUI.waitForElementClickable(firstAgencyRow, 20)
+		WebUI.scrollToElement(firstAgencyRow, 2)
+
+		try {
+			WebUI.click(firstAgencyRow)
+		} catch (Exception e) {
+			WebUI.enhancedClick(firstAgencyRow, FailureHandling.OPTIONAL)
+		}
+
+		WebUI.delay(1)
+		waitBlockUI(20)
+		WebUI.delay(1)
+
+		// =========================
+		// Click Select Button
+		// =========================
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Agency/Select Button'))
+
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+	}
+
+	// =========================
+	// Continue checkbox + upload process
+	// =========================
+
+} else {
+
+	println("Agency Side Menu not found or hidden → skip Agency process")
 }
 /* =========================
  * Performance Bond
@@ -698,8 +737,7 @@ if (isTicked) {
  * ========================= */
 
 if (clickSideMenuIfExists(
-	'Object Repository/FD and Agreement/Side Menu/FD Application/Performance Bond Side Menu'
-)) {
+	'Object Repository/FD and Agreement/Side Menu/FD Application/Performance Bond Side Menu')) {
 	//Click button Add
 	c(findTestObject('Object Repository/FD and Agreement/Add Button'))
 	
@@ -742,7 +780,7 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate("2026-04-08") //pick date here
+	pickDate("2026-05-08") //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)
@@ -868,7 +906,7 @@ if (clickSideMenuIfExists(
 
 /* =========================
  * Submit Button
- * =========================*/
+ * =========================
 
 TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
@@ -879,7 +917,7 @@ WebUI.waitForElementClickable(submitBtn, 1)
 WebUI.delay(1)
 
 c(submitBtn)
-waitBlockUI(3)
+waitBlockUI(3)*/
 
 	/* =========================
 	 * SUCCESS MESSAGE - CT ONLY
@@ -933,7 +971,7 @@ waitBlockUI(3)
 	 * ========================= */
 	String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 	new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-	String filePath = baseDir + "/FD_Submission_AP_201_2026.xlsx"
+	String filePath = baseDir + "/FD_Submission__DLOA_AP_201_2026.xlsx"
 	String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 	
 	def path = Paths.get(filePath)

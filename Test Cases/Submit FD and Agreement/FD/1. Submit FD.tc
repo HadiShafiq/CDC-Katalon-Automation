@@ -133,7 +133,7 @@
       <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'690127065209'</defaultValue>
+      <defaultValue>'811221025332'</defaultValue>
       <description></description>
       <id>ed6b5c3f-fa24-4dbe-a66f-09232d6d00b0</id>
       <masked>false</masked>
@@ -147,14 +147,14 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>0</defaultValue>
+      <defaultValue>7</defaultValue>
       <description></description>
       <id>e0c47af5-6d01-4d72-9269-3c3e459971be</id>
       <masked>false</masked>
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'CT260000000000986'</defaultValue>
+      <defaultValue>'LA260000000001607'</defaultValue>
       <description></description>
       <id>0e90d95f-069c-4055-a987-72f58e791481</id>
       <masked>false</masked>
@@ -266,7 +266,7 @@
       <name>Endyear</name>
    </variable>
    <variable>
-      <defaultValue>'Shamsul Azri Bin Abu Bakar'</defaultValue>
+      <defaultValue>'Dahlia Omar'</defaultValue>
       <description></description>
       <id>4766180f-90c5-4c28-8992-1c2816a9f56d</id>
       <masked>false</masked>
