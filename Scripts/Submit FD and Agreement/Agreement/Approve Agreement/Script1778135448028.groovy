@@ -276,7 +276,7 @@ wb.close()
 WebUI.comment("✅ Appended to Excel: " + filePath)
 
 /* =========================
- * SIGN OUT
+ * SIGN OUT agreement
  * Purpose:
  * - logout from system
  * - close browser
