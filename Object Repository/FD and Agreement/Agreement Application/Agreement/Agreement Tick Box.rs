@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Side Menu Agreement Contract Document</name>
+   <name>Agreement Tick Box</name>
    <tag></tag>
-   <elementGuidId>2569cd3a-b2b6-409e-994a-948950abc5f0</elementGuidId>
+   <elementGuidId>819db4f5-245b-4688-9177-021260b38b98</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//a[contains(.,'Agreement Contract Document')]</value>
+         <value>//*[@id='_ctAgreement_WAR_NGePportlet_:form:disclaimerCheckBox']//div[contains(@class,'ui-chkbox-box')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

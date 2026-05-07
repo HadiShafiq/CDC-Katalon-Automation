@@ -391,10 +391,9 @@ WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
 
 /* =========================================================
- * 9) Upload Files
+ * String for Upload Files
  * ========================================================= */
 String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-
 
 /* =========================
  * OPEN APPLICATION
@@ -906,7 +905,7 @@ if (clickSideMenuIfExists(
 
 /* =========================
  * Submit Button
- * =========================
+ * =========================*/
 
 TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
@@ -917,7 +916,7 @@ WebUI.waitForElementClickable(submitBtn, 1)
 WebUI.delay(1)
 
 c(submitBtn)
-waitBlockUI(3)*/
+waitBlockUI(3)
 
 	/* =========================
 	 * SUCCESS MESSAGE - CT ONLY
