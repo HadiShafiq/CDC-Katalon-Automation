@@ -7,8 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//textarea[contains(@id,':questionTbl:') and substring(@id, string-length(@id) - string-length(':specification') + 1) = ':specification']&#xd;
-</value>
+         <value>//div[contains(@id,':spg_header') and .//span[normalize-space()='Service List']] /following-sibling::*[1] //textarea[contains(@id,':questionTbl:') and contains(@id,':specification')]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -23,7 +22,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>textarea</value>
-      <webElementGuid>662793a5-cc9f-46d3-a017-f555e6160650</webElementGuid>
+      <webElementGuid>9800e603-48ce-44a7-8dfa-a851385dcebd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -31,7 +30,7 @@
       <name>id</name>
       <type>Main</type>
       <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification</value>
-      <webElementGuid>5bb5a3fd-a7d0-4823-9361-ea76325d2904</webElementGuid>
+      <webElementGuid>097e66af-7009-43da-ab5b-f2a66c8aa1ad</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,7 +38,7 @@
       <name>name</name>
       <type>Main</type>
       <value>_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification</value>
-      <webElementGuid>599d7a7c-621f-47cd-b2c5-22439c5b7832</webElementGuid>
+      <webElementGuid>e8d02ae6-a6fa-47fb-a45f-7e2e5b14b2c3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +46,7 @@
       <name>cols</name>
       <type>Main</type>
       <value>20</value>
-      <webElementGuid>d5ab1f4d-18db-41a9-8958-1ae0b8444fb7</webElementGuid>
+      <webElementGuid>38bca7fc-2f3e-459b-ad94-7f408fd8f371</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -55,7 +54,7 @@
       <name>rows</name>
       <type>Main</type>
       <value>5</value>
-      <webElementGuid>3c6ef45e-1c40-48f9-b012-f7c28132b27e</webElementGuid>
+      <webElementGuid>fca174f4-6d21-4383-ac79-385f65899574</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +62,7 @@
       <name>onkeydown</name>
       <type>Main</type>
       <value>limitTextAreaWithBreakline(this,1000);</value>
-      <webElementGuid>093f3f8c-28d5-4597-80ee-dd8018b12648</webElementGuid>
+      <webElementGuid>e5d6a9f8-028c-4c7d-9936-d2eaac1511bf</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -71,7 +70,7 @@
       <name>onkeyup</name>
       <type>Main</type>
       <value>limitTextAreaWithBreakline(this,1000);</value>
-      <webElementGuid>4ab56904-ea64-49f3-b839-a11da9ca0074</webElementGuid>
+      <webElementGuid>9fefbc2f-22ff-4f59-85fc-8e3c0ce4071a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -79,7 +78,7 @@
       <name>onmouseout</name>
       <type>Main</type>
       <value>limitTextAreaWithBreakline(this,1000);</value>
-      <webElementGuid>24563271-9b43-4841-a9da-0cf29b1c9ae8</webElementGuid>
+      <webElementGuid>341a83fa-b93d-412e-b7ce-912ee2305a71</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -87,7 +86,7 @@
       <name>class</name>
       <type>Main</type>
       <value>ui-inputfield ui-inputtextarea ui-widget ui-state-default ui-corner-all ui-state-hover ui-state-focus focus</value>
-      <webElementGuid>e8f49c91-15ae-4a48-b24d-44e5e030a78b</webElementGuid>
+      <webElementGuid>9d26cc46-0673-4be9-a594-da69e2405531</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -95,7 +94,7 @@
       <name>role</name>
       <type>Main</type>
       <value>textbox</value>
-      <webElementGuid>674f5a1f-e736-49c6-bf90-0f9c6c3a93f8</webElementGuid>
+      <webElementGuid>880ce027-d9ae-4731-9eec-da492de8ca7d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -103,7 +102,7 @@
       <name>aria-disabled</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>749c86fb-71f3-4d42-a84b-d5be0209bceb</webElementGuid>
+      <webElementGuid>6416e389-30d4-4251-87db-9993a4b55ccc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -111,7 +110,7 @@
       <name>aria-readonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>110d8f28-1939-4368-aeef-a567566fe6ab</webElementGuid>
+      <webElementGuid>974fb609-9e27-497f-aaa5-e32d756aac05</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -119,7 +118,7 @@
       <name>aria-multiline</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>41175429-4ccc-450c-8fca-3fd026911cdf</webElementGuid>
+      <webElementGuid>8c65354d-ba67-4d60-b9f1-41da1df97825</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -127,7 +126,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification&quot;)</value>
-      <webElementGuid>9b28a9bc-cc54-4c33-ba56-754663144048</webElementGuid>
+      <webElementGuid>934042e0-1917-4649-92ed-f5e163189abb</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -135,7 +134,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//textarea[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification']</value>
-      <webElementGuid>97006a80-33a3-4454-9144-768bcbc12752</webElementGuid>
+      <webElementGuid>cd946cb0-0334-4b4e-9f17-bf2ce946c562</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -143,7 +142,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//tbody[@id='_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl_data']/tr[2]/td/textarea</value>
-      <webElementGuid>2bee859b-856b-4c9a-943f-c8b96d2a724e</webElementGuid>
+      <webElementGuid>d3d3264f-ac1c-4917-a8fd-d8bf494bbb7d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -151,7 +150,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//tr[2]/td/textarea</value>
-      <webElementGuid>9465eb81-df70-4f48-a08c-85726f05df36</webElementGuid>
+      <webElementGuid>2fb3b091-43e2-471a-84f2-56ad4615df4b</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -159,6 +158,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//textarea[@id = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification' and @name = '_scReviewManualSourcing_WAR_NGePportlet_:form:j_idt1011:questionTbl:1:specification']</value>
-      <webElementGuid>2427f703-aa07-4994-8c97-94b4a7d80c60</webElementGuid>
+      <webElementGuid>f38846c3-859c-4fc4-8b8e-dfe0066ffaae</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
