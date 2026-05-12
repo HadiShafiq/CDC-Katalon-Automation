@@ -22,7 +22,7 @@
          <masked>false</masked>
          <name>QuotationTenderType</name>
       </iterationNameVariable>
-      <testCaseId>Test Cases/1. Direct LOA Script (PK7)/1. One-Off/3. Direct LOA One-Off - Product Plus Service</testCaseId>
+      <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/1. One-Off/3. Direct LOA One-Off - Product Plus Service</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>bf15b9d5-ea9e-4160-bf05-6f047229527e</id>

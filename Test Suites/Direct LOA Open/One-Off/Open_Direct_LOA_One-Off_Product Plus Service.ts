@@ -22,7 +22,7 @@
          <masked>false</masked>
          <name>Username</name>
       </iterationNameVariable>
-      <testCaseId>Test Cases/1. Direct LOA Script (PK7)/6. Open/1. One-Off - Open/3. Open Direct LOA One-Off - Product Plus Service</testCaseId>
+      <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/6. Open/1. One-Off - Open/3. Open Direct LOA One-Off - Product Plus Service</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>0a282801-09c7-4c07-bdf8-4d201fed0066</id>

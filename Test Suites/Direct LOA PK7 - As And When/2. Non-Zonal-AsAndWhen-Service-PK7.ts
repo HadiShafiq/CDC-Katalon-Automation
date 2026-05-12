@@ -15,7 +15,7 @@
       <guid>3e21dcd9-f0dd-4195-9ea8-5e2f290511ae</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/1. Direct LOA Script (PK7)/3. Schedule/2. Direct LOA Agreement_Periodic (As And When or Schedule) - Service</testCaseId>
+      <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/3. Schedule/2. Direct LOA Agreement_Periodic (As And When or Schedule) - Service</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>f7b58b76-9a96-444c-a58d-88c5e8a8d5c9</id>

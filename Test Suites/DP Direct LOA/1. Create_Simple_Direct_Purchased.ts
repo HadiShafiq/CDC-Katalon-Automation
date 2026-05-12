@@ -22,7 +22,7 @@
          <masked>false</masked>
          <name>Password</name>
       </iterationNameVariable>
-      <testCaseId>Test Cases/2. DLOA/DP - CR/1. DLOA Requestioner Add Simple Quotes - Services - One Off - (Supplier List)</testCaseId>
+      <testCaseId>Test Cases/2. DLOA - DP/DP - CR/1. DLOA Requestioner Add Simple Quotes - Services - One Off - (Supplier List)</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>1390c7e8-93c7-47c8-b7bd-222b35e59d51</id>
@@ -158,7 +158,7 @@
       <guid>3194c36b-b19a-4062-b89a-1d50b3802604</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. DLOA/5. Prepare LOA</testCaseId>
+      <testCaseId>Test Cases/2. DLOA - DP/5. Prepare LOA</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

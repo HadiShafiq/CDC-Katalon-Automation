@@ -15,7 +15,7 @@
       <guid>b6d50e3c-1e7c-4e1d-8ed8-f51a10fffc90</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/1. Direct LOA Script (PK7)/1. One-Off/1. Direct LOA One-Off - Product</testCaseId>
+      <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/1. One-Off/1. Direct LOA One-Off - Product</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>34d0854f-ebac-4a6c-b727-62f8790ec043</id>
