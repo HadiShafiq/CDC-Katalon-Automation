@@ -12,13 +12,13 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>1498f498-32d3-462f-bf65-cbb4ec4a685b</testSuiteGuid>
    <testCaseLink>
-      <guid>3ab37cb9-ecf1-4e4a-b58f-d6fe164030dc</guid>
+      <guid>1db05c59-b67d-4531-9af9-c24056360f38</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Approve</testCaseId>
+      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Submit</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
-         <id>e289ac97-6f3d-48a3-b0be-96e595e16db7</id>
+         <id>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</id>
          <iterationEntity>
             <iterationType>ALL</iterationType>
             <value></value>
@@ -27,27 +27,27 @@
       </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
          <variableId>a1980804-e585-42ae-a0f2-a3e04e475933</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
          <variableId>ebab0792-ae7e-41e0-a605-81c0891add77</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DocumentType</value>
          <variableId>0a2992be-ff02-4491-a1b2-1be169ec7c08</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
          <variableId>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</variableId>
       </variableLink>
       <variableLink>
@@ -57,27 +57,27 @@
          <variableId>7aefa8d2-f92f-4937-946a-822da8909831</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Name</value>
          <variableId>410b5b89-cdfd-4fdc-9f37-1299d36dd0a5</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Id_No</value>
          <variableId>12e17e55-1efa-42cd-8430-f01d09dedc74</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Designation</value>
          <variableId>48355035-071c-4430-8466-dcec42aa1ac8</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>ApproverName</value>
          <variableId>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</variableId>
       </variableLink>
    </testCaseLink>

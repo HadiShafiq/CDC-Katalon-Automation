@@ -12,21 +12,30 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>27dd8aa7-c48c-4464-bbee-23551c79ef36</testSuiteGuid>
    <testCaseLink>
-      <guid>5fa84500-a69f-4c14-b030-660759e38bc8</guid>
+      <guid>dc4e33cc-298b-4cf0-9901-95567cf4fca0</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Submit</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Approve</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>0ba7a89c-abad-47f5-927c-ed486c6b9924</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Agreement/Approval_Agreement</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>0ba7a89c-abad-47f5-927c-ed486c6b9924</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
          <variableId>de3caf25-93e3-4c4a-8cbf-e033f8e9e404</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>0ba7a89c-abad-47f5-927c-ed486c6b9924</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
          <variableId>2e0bfa5a-e42a-42f8-9662-061d1d5bf35d</variableId>
       </variableLink>
       <variableLink>
@@ -36,9 +45,9 @@
          <variableId>58f3cebb-fe08-420f-811a-879cdee798ab</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>0ba7a89c-abad-47f5-927c-ed486c6b9924</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
          <variableId>119ab531-80cf-4d11-8048-78f53ded37e8</variableId>
       </variableLink>
    </testCaseLink>

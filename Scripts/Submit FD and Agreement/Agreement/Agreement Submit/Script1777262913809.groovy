@@ -460,7 +460,67 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 waitBlockUI(20)
 WebUI.delay(1)
 
-t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),Physicalcontract)
+/* =========================
+ * Get Contract No.
+ * =========================*/
+TestObject contractNoObj = new TestObject('contractNoObj')
+
+contractNoObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//td[label[normalize-space()='Contract No.']]/following-sibling::td[1]//a"
+)
+
+WebUI.waitForElementVisible(contractNoObj, 20)
+
+String contractNo = WebUI.getText(contractNoObj).trim()
+
+println("Contract No = " + contractNo)
+
+/*  ============================
+ *  Prepare Physical Contract No
+ *  ============================*/
+String physicalContract = "PHY-" + contractNo
+
+/*  =========================
+ *  Input Physical Contract No
+ *  ========================= */
+
+TestObject physicalText= new TestObject('physicalContractText')
+
+physicalText.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//input[@id='_ctAgreement_WAR_NGePportlet_:form:contractPhysicalNo']"
+)
+
+TestObject physicalInput = new TestObject('physicalContractInput')
+
+physicalInput.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//label[normalize-space()='Physical Contract No.']/following::input[1]"
+)
+
+TestObject physicalContractObj
+
+if (WebUI.verifyElementPresent(physicalText, 3, FailureHandling.OPTIONAL)) {
+
+	println("Physical Contract No field = textarea")
+	physicalContractObj = physicalText
+
+} else {
+
+	println("Physical Contract No field = input")
+	physicalContractObj = physicalInput
+}
+
+/*  =========================
+ *  Input Physical Contract No
+ *  ========================= */
+t(physicalContractObj, physicalContract)
+
+//t(findTestObject('Object Repository/FD and Agreement/Agreement Application/Create Agreement/Physical Contract No'),physicalContract)
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -523,7 +583,7 @@ WebUI.delay(1)
 c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
 WebUI.delay(0.5)
 
-pickDate("2026-05-10") //pick date here
+pickDate("2026-05-13") //pick date here
 
 waitBlockUI(20)
 WebUI.delay(1)

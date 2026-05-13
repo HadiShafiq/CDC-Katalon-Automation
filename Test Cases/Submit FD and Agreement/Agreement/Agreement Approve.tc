@@ -5,122 +5,57 @@
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>c6b1bec4-73cf-4940-a1a8-8d9a813a22c0</testCaseGuid>
+   <testCaseGuid>da0c47fd-83da-4a83-ae28-06c1fe1af88e</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>a1980804-e585-42ae-a0f2-a3e04e475933</variableId>
+      <variableId>de3caf25-93e3-4c4a-8cbf-e033f8e9e404</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>ebab0792-ae7e-41e0-a605-81c0891add77</variableId>
+      <variableId>2e0bfa5a-e42a-42f8-9662-061d1d5bf35d</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>0a2992be-ff02-4491-a1b2-1be169ec7c08</variableId>
+      <variableId>58f3cebb-fe08-420f-811a-879cdee798ab</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>7aefa8d2-f92f-4937-946a-822da8909831</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>410b5b89-cdfd-4fdc-9f37-1299d36dd0a5</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>12e17e55-1efa-42cd-8430-f01d09dedc74</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>48355035-071c-4430-8466-dcec42aa1ac8</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
-      <variableId>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</variableId>
+      <variableId>119ab531-80cf-4d11-8048-78f53ded37e8</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'870926145529'</defaultValue>
+      <defaultValue>'690127065209'</defaultValue>
       <description></description>
-      <id>a1980804-e585-42ae-a0f2-a3e04e475933</id>
+      <id>de3caf25-93e3-4c4a-8cbf-e033f8e9e404</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>ebab0792-ae7e-41e0-a605-81c0891add77</id>
+      <id>2e0bfa5a-e42a-42f8-9662-061d1d5bf35d</id>
       <masked>false</masked>
       <name>Password</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
       <description></description>
-      <id>0a2992be-ff02-4491-a1b2-1be169ec7c08</id>
+      <id>58f3cebb-fe08-420f-811a-879cdee798ab</id>
       <masked>false</masked>
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001711'</defaultValue>
+      <defaultValue>'CT260000000000934'</defaultValue>
       <description></description>
-      <id>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</id>
+      <id>119ab531-80cf-4d11-8048-78f53ded37e8</id>
       <masked>false</masked>
       <name>Document_Number</name>
-   </variable>
-   <variable>
-      <defaultValue>'AP201-20260427-001-112'</defaultValue>
-      <description></description>
-      <id>7aefa8d2-f92f-4937-946a-822da8909831</id>
-      <masked>false</masked>
-      <name>Physicalcontract</name>
-   </variable>
-   <variable>
-      <defaultValue>'Abu bin Halim'</defaultValue>
-      <description></description>
-      <id>410b5b89-cdfd-4fdc-9f37-1299d36dd0a5</id>
-      <masked>false</masked>
-      <name>Name</name>
-   </variable>
-   <variable>
-      <defaultValue>'911110011011'</defaultValue>
-      <description></description>
-      <id>12e17e55-1efa-42cd-8430-f01d09dedc74</id>
-      <masked>false</masked>
-      <name>Id_No</name>
-   </variable>
-   <variable>
-      <defaultValue>'Manager'</defaultValue>
-      <description></description>
-      <id>48355035-071c-4430-8466-dcec42aa1ac8</id>
-      <masked>false</masked>
-      <name>Designation</name>
-   </variable>
-   <variable>
-      <defaultValue>'Shamsul Azri Bin Abu Bakar'</defaultValue>
-      <description></description>
-      <id>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</id>
-      <masked>false</masked>
-      <name>ApproverName</name>
    </variable>
 </TestCaseEntity>
