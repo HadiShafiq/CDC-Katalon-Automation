@@ -15,8 +15,17 @@
       <guid>3ab37cb9-ecf1-4e4a-b58f-d6fe164030dc</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Submit</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Approve</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>e289ac97-6f3d-48a3-b0be-96e595e16db7</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Agreement/Submit_Agreement</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>

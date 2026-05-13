@@ -12,10 +12,10 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>27dd8aa7-c48c-4464-bbee-23551c79ef36</testSuiteGuid>
    <testCaseLink>
-      <guid>b1b3c40c-7e0d-452a-a3c9-e4d1d80fd78e</guid>
+      <guid>5fa84500-a69f-4c14-b030-660759e38bc8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Approve Agreement</testCaseId>
+      <testCaseId>Test Cases/Submit FD and Agreement/Agreement/Agreement Submit</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

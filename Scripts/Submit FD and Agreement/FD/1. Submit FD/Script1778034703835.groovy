@@ -390,9 +390,9 @@ options.setExperimentalOption("prefs", prefs)
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
 
-/* =========================================================
+/* ============================
  * String for Upload Files
- * ========================================================= */
+ * ============================ */
 String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 
 /* =========================
@@ -453,16 +453,15 @@ c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 selectDropdownByIndex(findTestObject('Object Repository/FD and Agreement/Agreement Application/Common TaskList Funtion/MyTask DocumentType Dropdown'), DocumentType)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-// =========================
-// Input Document Number
-// =========================
+/* =========================
+ * Input Document Number
+ * =========================*/
 t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number) 
 waitBlockUI(10) 
 WebUI.delay(0.5)
@@ -488,9 +487,9 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-// =========================
-// Get Contract No.
-// =========================
+/* =========================
+ * Get Contract No.
+ * =========================*/
 TestObject contractNoObj = new TestObject('contractNoObj')
 
 contractNoObj.addProperty(
@@ -505,14 +504,14 @@ String contractNo = WebUI.getText(contractNoObj).trim()
 
 println("Contract No = " + contractNo)
 
-// =========================
-// Prepare Physical Contract No
-// =========================
+/*  ============================
+ *  Prepare Physical Contract No
+ *  ============================*/
 String physicalContract = "PHY-" + contractNo
 
-// =========================
-// Dynamic field detection
-// =========================
+/*  =========================
+ *  Dynamic field detection
+ *  ========================= */
 TestObject physicalTextarea = new TestObject('physicalContractTextarea')
 
 physicalTextarea.addProperty(
@@ -542,17 +541,16 @@ if (WebUI.verifyElementPresent(physicalTextarea, 3, FailureHandling.OPTIONAL)) {
 	physicalContractObj = physicalInput
 }
 
-// =========================
-// Input Physical Contract No
-// =========================
+/*  =========================
+ *  Input Physical Contract No
+ *  ========================= */
 t(physicalContractObj, physicalContract)
 
 waitBlockUI(20)
 WebUI.delay(0.5)
-
-// =========================
-// Service Period
-// =========================
+/*  =========================
+ *  Service Period
+ *  ========================= */
 
 TestObject servicePeriod1 = new TestObject('servicePeriod1')
 servicePeriod1.addProperty(
@@ -581,9 +579,10 @@ if (WebUI.verifyElementPresent(servicePeriod1, 3, FailureHandling.OPTIONAL)) {
 	servicePeriodObj = servicePeriod2
 }
 
-// =========================
-// Input Service Period
-// =========================
+/*  =========================
+ *  Input Service Period
+ *  ========================= */
+
 t(servicePeriodObj, ServicePeriod)
 
 waitBlockUI(20)
@@ -872,8 +871,6 @@ if (clickSideMenuIfExists(
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	waitBlockUI(20)*/
-	
-	
 }
 
 /* =========================
@@ -989,37 +986,37 @@ WebUI.delay(1)
 c(submitBtn)
 waitBlockUI(3)
 
-	/* =========================
-	 * SUCCESS MESSAGE - CT ONLY
-	 * Purpose:
-	 * - wait for loader disappear
-	 * - capture success message
-	 * - extract dynamic CT number
-	 * ========================= */
-	TestObject blockUI = new TestObject('blockUI')
-	blockUI.addProperty("xpath", ConditionType.EQUALS,
-		"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
-	)
+/* =========================
+ * SUCCESS MESSAGE - CT ONLY
+ * Purpose:
+ * - wait for loader disappear
+ * - capture success message
+ * - extract dynamic CT number
+ * ========================= */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
 	
-	if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
-		WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
-	}
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
 	
-	TestObject msgObj = new TestObject('msg_CT_saved')
-	msgObj.addProperty("xpath", ConditionType.EQUALS,
-		"//span[contains(@class,'ui-messages-info-detail') and " +
-		"contains(.,'Fulfilment Details Creation') and " +
-		"contains(.,'is successfully submitted to Central Contract Approver.')]"
-	)
+TestObject msgObj = new TestObject('msg_CT_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Fulfilment Details Creation') and " +
+	"contains(.,'is successfully submitted to Central Contract Approver.')]"
+)
 	
-	WebUI.waitForElementVisible(msgObj, 30)
+WebUI.waitForElementVisible(msgObj, 30)
 	
-	String msg = ""
-	for (int i = 0; i < 2; i++) {
-		msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-		if (msg != null && msg.contains("CT")) break
-		WebUI.delay(1)
-	}
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("CT")) break
+	WebUI.delay(1)
+}
 	
 	msg = (msg == null) ? "" : msg.trim()
 	WebUI.comment("Message: " + msg)
@@ -1032,62 +1029,59 @@ waitBlockUI(3)
 		assert false : "❌ CT number not found. Message was: " + msg
 	}
 	
-	WebUI.comment("✅ Captured CT No: " + ctNo)
+WebUI.comment("✅ Captured CT No: " + ctNo)
+
+/* =========================
+ * EXCEL APPEND
+ * Purpose:
+ * - append CT number and message into same Excel file
+ * ========================= */
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/FD_Submission__DLOA_AP_201_2026.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 	
-	/* =========================
-	 * EXCEL APPEND
-	 * Purpose:
-	 * - append CT number and message into same Excel file
-	 * ========================= */
-	String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
-	new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-	String filePath = baseDir + "/FD_Submission__DLOA_AP_201_2026.xlsx"
-	String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
 	
-	def path = Paths.get(filePath)
-	XSSFWorkbook wb
-	def sheet
-	FileInputStream fis = null
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
 	
-	if (Files.exists(path)) {
-		fis = new FileInputStream(filePath)
-		wb = new XSSFWorkbook(fis)
-		sheet = wb.getSheet("Result")
-		if (sheet == null) sheet = wb.createSheet("Result")
-	} else {
-		wb = new XSSFWorkbook()
-		sheet = wb.createSheet("Result")
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("CT No")
+	header.createCell(2).setCellValue("Message")
+}
 	
-		def header = sheet.createRow(0)
-		header.createCell(0).setCellValue("DateTime")
-		header.createCell(1).setCellValue("CT No")
-		header.createCell(2).setCellValue("Message")
-	}
+if (fis != null) fis.close()
 	
-	if (fis != null) fis.close()
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
 	
-	int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-	def row = sheet.createRow(nextRow)
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(ctNo)
+row.createCell(2).setCellValue(msg)
 	
-	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(ctNo)
-	row.createCell(2).setCellValue(msg)
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
 	
-	FileOutputStream fos = new FileOutputStream(filePath)
-	wb.write(fos)
-	fos.close()
-	wb.close()
+WebUI.comment("✅ Appended to Excel: " + filePath)
 	
-	WebUI.comment("✅ Appended to Excel: " + filePath)
+/* =========================
+ * SIGN OUT
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 	
-	/* =========================
-	 * SIGN OUT
-	 * Purpose:
-	 * - logout from system
-	 * - close browser
-	 * ========================= */
-	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-	WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-	
-	WebUI.waitForPageLoad(20)
-	WebUI.closeBrowser()
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()

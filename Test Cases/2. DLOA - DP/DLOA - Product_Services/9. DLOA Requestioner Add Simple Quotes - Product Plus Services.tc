@@ -315,7 +315,7 @@
       <name>AddSupplierNameNormal</name>
    </variable>
    <variable>
-      <defaultValue>'2026-05-012'</defaultValue>
+      <defaultValue>'2026-05-14'</defaultValue>
       <description></description>
       <id>b0528c54-dd2e-42c8-9826-a2dde56f1c30</id>
       <masked>false</masked>
