@@ -23,20 +23,38 @@ import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
-/* =========================
- * HELPERS
+/* =========================================================
+ * HELPER SECTION
  * Purpose:
- * - reusable utility for conversion, wait, click, text input, upload
- * - keep script stable without changing main flow
- * ========================= */
+ * - common reusable functions
+ * - grouped by type for easier maintenance
+ * - logic unchanged, only rearranged and commented
+ * ========================================================= */
 
-// Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
+
+/* =========================================================
+ * 1) BASIC DATA / CONVERSION HELPER
+ * ========================================================= */
+
+/**
+ * Convert Excel / CSV value to int safely.
+ * Example supported values:
+ * "0", 0, 0.0, "1.0"
+ */
 int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
 
-// PrimeFaces overlay wait
+
+/* =========================================================
+ * 2) PAGE / OVERLAY WAIT HELPER
+ * ========================================================= */
+
+/**
+ * Wait until PrimeFaces / block UI overlay disappears.
+ * Use this after click, dropdown selection, save, popup action, etc.
+ */
 def waitBlockUI(int timeout = 30) {
 	TestObject blockUI = new TestObject('blockUI')
 	blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -48,20 +66,34 @@ def waitBlockUI(int timeout = 30) {
 	}
 }
 
-/* ---------- Lightweight wait wrappers ---------- */
-// wait until element visible
+
+/* =========================================================
+ * 3) LIGHTWEIGHT ELEMENT WAIT / ACTION HELPERS
+ * ========================================================= */
+
+/**
+ * Wait until element is visible.
+ */
 def wVisible(TestObject obj, int timeout = 1) {
 	waitBlockUI(Math.min(timeout, 1))
 	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// wait until element clickable
+/**
+ * Wait until element is clickable.
+ * This first ensures element is visible.
+ */
 def wClickable(TestObject obj, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// click with wait + tiny retry
+/**
+ * Click element with:
+ * - wait
+ * - scroll
+ * - small retry if first click fails
+ */
 def c(TestObject obj, int timeout = 1) {
 	for (int i=0; i<2; i++) {
 		try {
@@ -80,7 +112,9 @@ def c(TestObject obj, int timeout = 1) {
 	waitBlockUI(1)
 }
 
-// double click with wait
+/**
+ * Double click element with wait.
+ */
 def dc(TestObject obj, int timeout = 1) {
 	try {
 		wClickable(obj, timeout)
@@ -93,77 +127,35 @@ def dc(TestObject obj, int timeout = 1) {
 	}
 }
 
-// setText with wait
+/**
+ * Set text with wait.
+ * Best for normal text field.
+ * For sensitive formatted field, use JS/manual typing separately.
+ */
 def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-def setZoneQtyByRow = { int rowIndex, String qtyValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
-
-	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
-	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(qtyObj, 20)
-	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(qtyEl, qtyValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-
-def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
-
-	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
-	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(priceObj, 20)
-	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(priceEl, unitPriceValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-// upload with wait
+/**
+ * Upload file with wait.
+ */
 def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.uploadFile(obj, filePath)
 	waitBlockUI(1)
 }
 
-/* =========================
- * PRIMEFACES DROPDOWN HELPERS
- * Purpose:
- * - open PrimeFaces dropdown
- * - click option by index
- * - support both PrimeFaces and real select
- * ========================= */
+
+/* =========================================================
+ * 4) PRIMEFACES DROPDOWN HELPERS
+ * ========================================================= */
+
+/**
+ * Open PrimeFaces dropdown panel.
+ * Used for dropdown that is not a real <select>.
+ */
 def openPFDropdown(TestObject triggerObj) {
 
 	TestObject panelOpen = new TestObject('pfPanelOpen')
@@ -181,7 +173,12 @@ def openPFDropdown(TestObject triggerObj) {
 	}
 }
 
-// click PrimeFaces option by index (0-based)
+/**
+ * Click PrimeFaces dropdown option by 0-based index.
+ * Example:
+ * 0 = first option
+ * 1 = second option
+ */
 def clickPFOptionByIndex(int index0) {
 	TestObject opt = new TestObject("pfOpt_" + index0)
 	opt.addProperty("xpath", ConditionType.EQUALS,
@@ -194,7 +191,10 @@ def clickPFOptionByIndex(int index0) {
 }
 
 /**
- * Universal dropdown select by index (SAFE)
+ * Universal dropdown select by index.
+ * Supports:
+ * - real <select>
+ * - PrimeFaces custom dropdown
  */
 def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 
@@ -223,6 +223,147 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
+
+/* =========================================================
+ * 5) TABLE / POPUP INPUT HELPERS
+ * ========================================================= */
+
+/**
+ * Set zone quantity by popup row index.
+ * Used for popup table:
+ * specZoneQtyTbl:{rowIndex}:zoneQty
+ */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
+
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+/**
+ * Set unit price / rate by popup row index.
+ * Used for popup table:
+ * specAnswerTbl:{rowIndex}:ratePerUomAns
+ */
+def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+
+	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
+	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(priceObj, 20)
+	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(priceEl, unitPriceValue)
+	)
+
+	waitBlockUI(30)
+	WebUI.delay(0.5)
+}
+
+
+/* =========================================================
+ * 6) SPECIAL RADIO / OPTION HELPER
+ * ========================================================= */
+
+/**
+ * Click procurement type radio button by business option number.
+ * Mapping:
+ * 1 = first radio
+ * 2 = second radio
+ * etc.
+ */
+def clickProcurementType(int option) {
+	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
+
+	TestObject obj = new TestObject("procurementType_" + option)
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(obj, 20)
+	WebUI.waitForElementClickable(obj, 20)
+
+	WebUI.executeJavaScript(
+		"arguments[0].click();",
+		Arrays.asList(WebUiCommonHelper.findWebElement(obj, 20))
+	)
+
+	waitBlockUI(20)
+}
+
+
+/* =========================================================
+ * 7) CALENDAR PICKER DATE
+ * ========================================================= */
+
+def pickDate(String yyyyMmDd) {
+
+	TestObject dp = new TestObject('dp')
+	dp.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+	)
+	WebUI.waitForElementVisible(dp, 20)
+
+	def parts = yyyyMmDd.split('-')
+	int targetYear = parts[0] as int
+	int targetMonthIndex = (parts[1] as int) - 1
+	String targetDay = String.valueOf(parts[2] as int)
+
+	TestObject nextBtn = new TestObject('dpNext')
+	nextBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
+	)
+
+	TestObject prevBtn = new TestObject('dpPrev')
+	prevBtn.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
+	)
+
+	int guard = 0
+	while (guard < 48) {
+
+		TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
+		targetDayObj.addProperty("xpath", ConditionType.EQUALS,
+			"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
+			"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
+		)
+
+		if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
+			WebUI.waitForElementClickable(targetDayObj, 20)
+			WebUI.click(targetDayObj)
+			return
+		}
+
+		// kalau target belum ada, click next dulu
+		WebUI.click(nextBtn)
+		WebUI.delay(0.3)
+		guard++
+	}
+
+	WebUI.takeScreenshot()
+	assert false : "Date not found in datepicker: " + yyyyMmDd
+}
+
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -237,13 +378,15 @@ String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 ChromeOptions options = new ChromeOptions()
 options.setBinary(chromeBinary)
 
-//Bypass security pop up for google chrome 
+// Bypass browser security popup
 options.setAcceptInsecureCerts(true)
 
+// Disable HTTPS-first strict behavior
 options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
 
+// Browser profile options
 options.addArguments("--guest")
-//options.addArguments("--incognito")
+// options.addArguments("--incognito")
 options.addArguments("--user-data-dir=" + userDataDir)
 options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
 options.addArguments("--disable-save-password-bubble")
@@ -252,13 +395,14 @@ options.addArguments("--no-first-run")
 options.addArguments("--no-default-browser-check")
 options.addArguments("--remote-allow-origins=*")
 
+// Browser preferences
 Map<String, Object> prefs = new HashMap<>()
 prefs.put("credentials_enable_service", false)
 prefs.put("profile.password_manager_enabled", false)
 prefs.put("profile.default_content_setting_values.notifications", 2)
 options.setExperimentalOption("prefs", prefs)
 
-
+// Launch browser
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
 
@@ -304,105 +448,29 @@ c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Submit Username an
 waitBlockUI(30)
 WebUI.delay(0.5)
 
-
 /* =========================
- * CHANGE LANGUAGE
+ * LANGUAGE
  * Purpose:
- * - Change Language at Dashboard
+ * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
 
-/* =========================
- * Tasklit
- * Purpose:
- * - Serach Application No
- * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+//TaskList
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 //Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
+WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
     Document_Number)
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
 //Click TaskList Description
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-/* =========================
- * General information
- * ========================= */
-String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Branch Information'), 3)
-up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Choose File Branch Information'),
-	uploadFilePath,3)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click LOA Signing Date By Supplier'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
-
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Supplier Signer Details Dropdown'), Supplier_Signer_Dropdown)
-
-//Supplier Witness Details
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Name'),
-    Witness_Name)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Identification No'),
-    Witness_IC)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Designation'),
-    Designation)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Address'),
-    Address)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Telephone No'),
-    Telephone_No)
-
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Fax No'),
-    Fax_no)
-
-/* =========================
- * LOA and Attachment
- * ========================= */
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Side Menu Supplier/Side Menu Supplier LOA Attachment'))
-waitBlockUI(30)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
-
-up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    uploadFilePath,3)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran C - Surat Akuan Sumpah Syarikat'))
-WebUI.delay(1)
-
-up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-   uploadFilePath,3)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-WebUI.delay(1)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Click Lampiran 7 - Surat Akuan Pembida Berjaya'))
-WebUI.delay(1)
-
-up(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/LOA and Attachment/Upload File'),
-    uploadFilePath,3)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Click Upload File icon'))
-
-/* =========================
- * Zone Item Product
- * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'))
-
+//Button Assign
 // Count all visible Assign buttons
 TestObject allAssignButtons = new TestObject("allAssignButtons")
 allAssignButtons.addProperty(
@@ -417,59 +485,43 @@ WebUI.comment("Total Assign buttons found: " + assignCount)
 
 // Loop through even row indexes: 0,2,4,6...
 for (int i = 0; i < assignCount; i++) {
-    int rowIndex = i * 2
+    WebUI.comment("Click Assign button #" + i)
 
-    WebUI.comment("Click Assign button at row index: " + rowIndex)
+    TestObject assignBtn = new TestObject("assignBtn")
+    assignBtn.addProperty(
+        "xpath",
+        ConditionType.EQUALS,
+        "(//button[.//span[normalize-space()='Assign']])[" + (i + 1) + "]"
+    )
 
-    c(findTestObject(
-        'Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product',
-        ['index': rowIndex]
-	))
-	WebUI.delay(1)
+    WebUI.click(assignBtn)
+    WebUI.delay(1)
+
+    // STEP 3: DO WORK IN DETAIL PAGE
+    t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Item Code'),P_Item_Code)
+    c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Click Search'))
+	c(findTestObject ('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Click Hyperlink Product'))
 	
-	t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Input Item Code'),
-		P_Item_Code)
-	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Item Code'))
-	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Item Code'))
-	
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Type'), DropdownType)
-	
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Measurement'), Dropdown_Measurement)
-	
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown brand'), Dropdown_brand)
-	
-	selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Color'), Dropdown_Color)
-	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Extension Attribute'))
-	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Radio Button Assign Code'))
-	
+	//Choose dropdown type, measurement, color, brand
+	selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Type'),Dropdown_Type)
+	selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown brand'),Dropdown_Brand)
+	selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Measurement'),Dropdown_Measurement)
+	selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Product/Dropdown Color'),Dropdown_Color)
+	c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Click Search'))
+	c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Radio Button Assign Code Product'))
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product 1'))
-	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
-	
+
 }
-/* =========================
- * Accept and Reject Button
- * ========================= */
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Accept Button Supplier'))
+// ========================
+// SUBMIT BUTTON
+//=========================
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+waitBlockUI(10)
+WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Confirmation Yes'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
-
-//c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Reject Button Supplier'))
-
-/* =========================
- * SUCCESS MESSAGE
- * Purpose:
- * - wait for loader disappear
- * - capture success message
- * - extract dynamic LOA number
- * ========================= */
+// ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
@@ -479,41 +531,40 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-TestObject msgObj = new TestObject('msg_LOA_saved')
+// ===== 2) Wait success message (global text; RN number changes) =====
+TestObject msgObj = new TestObject('msg_RN_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Letter of Acceptance (LOA)') and contains(.,'is acknowledged')]"
+	"contains(.,'Request Note') and contains(.,'is successfully submitted.')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
+// Wait until message text contains "RN"
 String msg = ""
-for (int i = 0; i < 15; i++) {
+for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("LA")) break
+	if (msg != null && msg.contains("RN")) break
 	WebUI.delay(1)
 }
 
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-def matcher = (msg =~ /(LA\d+)/)
-String loaNo = matcher.find() ? matcher.group(1) : ""
+// ===== 3) Extract RN number dynamically =====
+def matcher = (msg =~ /(RN\d+)/)   // e.g. RN260000000001152
+String rnNo = matcher.find() ? matcher.group(1) : ""
 
-if (loaNo == "") {
+if (rnNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ LOA number not found. Message was: " + msg
+	assert false : "❌ RN number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured LOA No: " + loaNo)
+WebUI.comment("✅ Captured RN No: " + rnNo)
 
-/* =========================
- * EXCEL APPEND
- * Purpose:
- * - append LOA number and message into same Excel file
- * ========================= */
+// ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/Direct_LOA_Supplier_Product_AP_201_2026.xlsx"
+String filePath = baseDir + "/DLOA_RN_NO_Submitted_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -532,19 +583,22 @@ if (Files.exists(path)) {
 
 	def header = sheet.createRow(0)
 	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("LOA No")
+	header.createCell(1).setCellValue("RN No")
 	header.createCell(2).setCellValue("Message")
 }
 
+// Close input stream to avoid Excel file lock
 if (fis != null) fis.close()
 
+// Next empty row
 int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
 def row = sheet.createRow(nextRow)
 
 row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(loaNo)
+row.createCell(1).setCellValue(rnNo)
 row.createCell(2).setCellValue(msg)
 
+// Save back to SAME file
 FileOutputStream fos = new FileOutputStream(filePath)
 wb.write(fos)
 fos.close()
@@ -554,12 +608,8 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 
 /* =========================
  * SIGN OUT
- * Purpose:
- * - logout from system
- * - close browser
  * ========================= */
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
