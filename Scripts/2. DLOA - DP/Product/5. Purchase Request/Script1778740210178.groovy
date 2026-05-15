@@ -256,30 +256,31 @@ def setZoneQtyByRow = { int rowIndex, String qtyValue ->
 }
 
 /**
- * Set unit price / rate by popup row index.
+ * Set order quantity/ rate by popup row index.
  * Used for popup table:
  * specAnswerTbl:{rowIndex}:ratePerUomAns
  */
-def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+def setOrderedQtyByRow = { int rowIndex, String qtyValue ->
 
-	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
-	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+    String xpath = "//div[contains(@class,'ui-dialog')]//tr[@data-ri='" + rowIndex + "']//input[contains(@name,'orderedQty')]"
 
-	WebUI.waitForElementVisible(priceObj, 20)
-	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+    TestObject qtyObj = new TestObject("orderedQty_" + rowIndex)
+    qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-	WebUI.executeJavaScript(
-		"""
+    WebUI.waitForElementVisible(qtyObj, 20)
+    WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+    WebUI.executeJavaScript(
+        """
         arguments[0].value = arguments[1];
         arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
         arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
         """,
-		Arrays.asList(priceEl, unitPriceValue)
-	)
+        Arrays.asList(qtyEl, qtyValue)
+    )
 
-	waitBlockUI(30)
-	WebUI.delay(0.5)
+    waitBlockUI(30)
+    WebUI.delay(0.5)
 }
 
 
@@ -469,11 +470,15 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-//Tick 
+// =========================
+// General - Tick 
+// =========================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 
 // =========================
-// Delivery Address & Item
+// Delivery Address & Item - PTJ
 // =========================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
@@ -482,10 +487,82 @@ t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Addre
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 
 // =========================
-// Choose Approver
+// Delivery Address & Item - Ordered Quantity
 // =========================
+int loopCount = 2
+
+for (int i = 0; i < loopCount; i++) {
+
+    String xpath = "(//input[contains(@name,'orderedQty')])[" + (i + 1) + "]"
+
+    TestObject orderedQuantityField = new TestObject("orderedQuantityField_" + i)
+    orderedQuantityField.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+    WebUI.comment("Fill Ordered Quantity row #" + (i + 1))
+
+    WebUI.waitForElementVisible(orderedQuantityField, 20)
+
+    WebElement el = WebUiCommonHelper.findWebElement(orderedQuantityField, 20)
+
+    // 🔥 1. CLEAR VALUE FIRST
+    WebUI.executeJavaScript(
+        """
+        arguments[0].value = '';
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+        Arrays.asList(el)
+    )
+
+    WebUI.delay(0.5)
+
+    // 🔥 2. SET NEW VALUE
+    t(orderedQuantityField, Ordered_Quantity, 20)
+
+    waitBlockUI(20)
+    WebUI.delay(1)
+
+    // 🔥 3. TRIGGER TAB (force JSF update)
+    WebUI.sendKeys(orderedQuantityField, Keys.chord(Keys.TAB))
+
+    waitBlockUI(20)
+    WebUI.delay(1)
+}
+
+// =========================
+// Charge Line Assigment
+// =========================
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Charge Line Assignment'))
+int loopCountA = 2
+
+for (int i = 0; i < loopCountA; i++) {
+
+    WebUI.comment("Tick row #" + (i + 1))
+
+    String chkXpath = "(//input[contains(@id,'chargeLineTbl') and contains(@type,'checkbox')])[" + (i + 1) + "]"
+
+    TestObject chkObj = new TestObject("chk_" + i)
+    chkObj.addProperty("xpath", ConditionType.EQUALS, chkXpath)
+
+    WebUI.waitForElementClickable(chkObj, 20)
+
+    WebElement chkEl = WebUiCommonHelper.findWebElement(chkObj, 20)
+
+    if (!chkEl.isSelected()) {
+        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(chkEl))
+    }
+
+    WebUI.delay(0.5)
+}
+
+	
+// ==================================
+// Approver List - Choose Approver
+// ==================================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Approver List'))
 TestObject approverGroup = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Group Dropdown')
 TestObject approverName  = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Name Dropdown')
@@ -503,6 +580,12 @@ WebUI.scrollToElement(approverName, 1)
 // Select Approver Name
 selectDropdownByIndex(approverName, 5)
 WebUI.delay(1)
+
+// =========================
+// Charge Line Assignment
+// =========================
+
+
 // ========================
 // SUBMIT BUTTON
 //=========================

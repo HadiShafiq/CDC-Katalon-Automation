@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[contains(@id,'j_idt226')]//div[contains(@class,'ui-chkbox-box')]</value>
+         <value>//span[contains(.,'I declare')]/ancestor::tr[1]/td[1]//div[contains(@class,'ui-chkbox-box')]</value>
       </entry>
       <entry>
          <key>BASIC</key>
