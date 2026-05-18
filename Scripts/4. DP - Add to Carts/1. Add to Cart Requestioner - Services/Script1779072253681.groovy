@@ -529,6 +529,8 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	
+	selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/3. Price Type Dropdown'), PriceType)
+	
 	//Add to Cart Pop Up (Price Type Dropdown)
 	int rbType = Integer.parseInt(RBProcurementType.toString())
 	
@@ -539,12 +541,12 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	if (!(rbType == 1 || rbType == 3)) {
 	
 		selectDropdownByIndex(
-			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/3. Price Type Dropdown'),
+			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/4. Reason DropDown'),
 			ReasonPK7
 		)
 	
 		WebUI.setText(
-			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/4. Reason DropDown'),
+			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/5. Justification'),
 			Justification
 		)
 	}
@@ -555,9 +557,14 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	WebUI.delay(0.5)
 	
 	
+	/* =========================
+	 * Request Note)
+	 * ========================= */
+	  c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/7. Delivery or Service Period'), 20)
+	  waitBlockUI(20)
+	  WebUI.delay(0.5)
 	
-	
-	
+	  
 	
 	
 	
