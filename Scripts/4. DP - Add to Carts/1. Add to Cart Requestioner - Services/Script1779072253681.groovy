@@ -24,7 +24,7 @@ import java.util.Arrays
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
 /* =========================================================
- * HELPER SECTIONs
+ * HELPER SECTION
  * Purpose:
  * - common reusable functions
  * - grouped by type for easier maintenance
