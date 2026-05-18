@@ -24,7 +24,7 @@ import java.util.Arrays
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
 /* =========================================================
- * HELPER SECTION 123
+ * HELPER SECTION
  * Purpose:
  * - common reusable functions
  * - grouped by type for easier maintenance
@@ -470,17 +470,10 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-// =========================
-// General - Tick 
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
 /* =========================
- * Approve
+ * Acknowledge
  * ========================= */
-c(findTestObject('Object Repository/DLOA/7. Approve RN/Click Button Approve'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Acknowledge'))
 waitBlockUI(30)
 WebUI.delay(1)
 
@@ -500,39 +493,39 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 }
 
 // ===== 2) Wait success message (global text; RN number changes) =====
-TestObject msgObj = new TestObject('msg_PR_saved')
+TestObject msgObj = new TestObject('msg_PO_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Purchase Request') and contains(.,'is approved and has been sent to iGFMAS for verification.')]"
+	"contains(.,'Purchase Order') and contains(.,'is acknowledged.')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "PR"
+// Wait until message text contains "PO"
 String msg = ""
 for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("PR")) break
+	if (msg != null && msg.contains("PO")) break
 	WebUI.delay(1)
 }
 
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract RN number dynamically =====
-def matcher = (msg =~ /(PR\d+)/)   // e.g. RN260000000001152
+// ===== 3) Extract PO number dynamically =====
+def matcher = (msg =~ /(PO\d+)/)   // e.g. PO260000000001152
 String prNo = matcher.find() ? matcher.group(1) : ""
 
 if (prNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ PR number not found. Message was: " + msg
+	assert false : "❌ PO number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured PR No: " + prNo)
+WebUI.comment("✅ Captured PO No: " + prNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DLOA_PURCHASE_REQUEST_2026.xlsx"
+String filePath = baseDir + "/ACKNOWLEDGE_PURCHASE_REQUEST_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -551,7 +544,7 @@ if (Files.exists(path)) {
 
 	def header = sheet.createRow(0)
 	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("PR No")
+	header.createCell(1).setCellValue("PO No")
 	header.createCell(2).setCellValue("Message")
 }
 
@@ -563,7 +556,7 @@ int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum()
 def row = sheet.createRow(nextRow)
 
 row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(rnNo)
+row.createCell(1).setCellValue(prNo)
 row.createCell(2).setCellValue(msg)
 
 // Save back to SAME file

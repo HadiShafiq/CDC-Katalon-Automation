@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Sign</name>
+   <name>Click Approval Letter</name>
    <tag></tag>
-   <elementGuidId>70b80aea-6c49-41f8-9d57-6086fa745d3d</elementGuidId>
+   <elementGuidId>d7f9dea1-bfbd-4498-a005-f39b99ccfc5c</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//button[.//span[normalize-space()='Sign']])[2]</value>
+         <value>//button[contains(@class,'ui-button') and .//span[contains(@class,'ui-icon-upload')]]</value>
       </entry>
       <entry>
          <key>BASIC</key>

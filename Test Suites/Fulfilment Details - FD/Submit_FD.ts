@@ -54,12 +54,6 @@
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
-         <variableId>1f5d0707-ac21-4b9c-8d97-8dbf24c37b99</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
          <variableId>cf345cda-9cd2-42b2-bbab-2b32f380d46d</variableId>
       </variableLink>
       <variableLink>
@@ -151,6 +145,12 @@
          <type>DATA_COLUMN</type>
          <value>FinancialInstitution</value>
          <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f873d493-dca0-48cf-b4a3-d66f696afc18</variableId>
       </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

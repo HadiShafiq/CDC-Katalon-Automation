@@ -595,7 +595,7 @@ if (clickSideMenuIfExists(
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 
-	int agencyLoopCount = 3
+	int agencyLoopCount = 1
 
 	for (int i = 1; i <= agencyLoopCount; i++) {
 
@@ -846,7 +846,7 @@ if (clickSideMenuIfExists(
 	)
 		
 	// Calendar
-	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
+	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 1'), 20)
 	WebUI.delay(0.5)
 	
 	pickDate("2026-05-08") //pick date here
@@ -871,6 +871,42 @@ if (clickSideMenuIfExists(
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	waitBlockUI(20)*/
+	
+	// =================================
+	// Performance Bond Deferment [TICK]
+	// ==================================
+	int performanceBondFlag = performanceBondValue //nilai ini ubah dekat variable, kalau 2 akan skip tak akan TICK 
+	
+	if (performanceBondFlag == 1) {
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Checkbox Performance Bond'))
+		// Calendar
+		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 2'), 20)
+		WebUI.delay(0.5)
+		
+		pickDate("2026-05-18") //pick date here
+		waitBlockUI(20)
+		WebUI.delay(1)
+		
+		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 3'), 20)
+		WebUI.delay(0.5)
+		
+		pickDate("2026-06-18") //pick date here
+		waitBlockUI(20)
+		WebUI.delay(1)
+		
+		//File Reference No
+		String FileRefeNo = "FR" + contractNo
+		t(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/File Reference No'),FileRefeNo)
+		
+		//Approval Letter
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Click Approval Letter'))
+		
+		up(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Click Choose'), uploadFilePath, 3)
+		waitBlockUI(20)
+		WebUI.delay(0.5)
+		
+		c(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Button Upload - Performance Bond'))	
+	}
 }
 
 /* =========================
@@ -975,7 +1011,7 @@ if (clickSideMenuIfExists(
  * Submit Button
  * =========================*/
 
-TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
+//TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
 waitBlockUI(20)
 WebUI.waitForElementVisible(submitBtn, 1)

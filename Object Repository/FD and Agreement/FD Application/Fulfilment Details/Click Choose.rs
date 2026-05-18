@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Sign</name>
+   <name>Click Choose</name>
    <tag></tag>
-   <elementGuidId>70b80aea-6c49-41f8-9d57-6086fa745d3d</elementGuidId>
+   <elementGuidId>a2d203ca-f365-45bd-b590-ea2806ab1fb3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//button[.//span[normalize-space()='Sign']])[2]</value>
+         <value>//input[@type='file' and contains(@id,'uploadWaiver')]</value>
       </entry>
       <entry>
          <key>BASIC</key>

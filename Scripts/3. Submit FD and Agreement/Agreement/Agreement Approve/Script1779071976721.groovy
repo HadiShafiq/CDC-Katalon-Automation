@@ -180,7 +180,7 @@ waitBlockUI(20)
 WebUI.delay(0.5)
 
 //click Sign
-c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign'))
+c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign WO GPKI'))
 waitBlockUI(20)
 WebUI.delay(0.5)
 

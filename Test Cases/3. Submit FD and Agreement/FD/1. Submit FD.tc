@@ -34,12 +34,6 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>1f5d0707-ac21-4b9c-8d97-8dbf24c37b99</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId></testDataLinkId>
-      <type>DEFAULT</type>
-      <value></value>
       <variableId>cf345cda-9cd2-42b2-bbab-2b32f380d46d</variableId>
    </variableLinks>
    <variableLinks>
@@ -132,8 +126,14 @@
       <value></value>
       <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>f873d493-dca0-48cf-b4a3-d66f696afc18</variableId>
+   </variableLinks>
    <variable>
-      <defaultValue>'690127065209'</defaultValue>
+      <defaultValue>'870926145529'</defaultValue>
       <description></description>
       <id>ed6b5c3f-fa24-4dbe-a66f-09232d6d00b0</id>
       <masked>false</masked>
@@ -147,25 +147,18 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>0</defaultValue>
+      <defaultValue>9</defaultValue>
       <description></description>
       <id>e0c47af5-6d01-4d72-9269-3c3e459971be</id>
       <masked>false</masked>
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'CT260000000000986'</defaultValue>
+      <defaultValue>'LA260000000001379'</defaultValue>
       <description></description>
       <id>0e90d95f-069c-4055-a987-72f58e791481</id>
       <masked>false</masked>
       <name>Document_Number</name>
-   </variable>
-   <variable>
-      <defaultValue>'Phy - CT260000000000939'</defaultValue>
-      <description></description>
-      <id>1f5d0707-ac21-4b9c-8d97-8dbf24c37b99</id>
-      <masked>false</masked>
-      <name>PhysicalContractNo</name>
    </variable>
    <variable>
       <defaultValue>'30'</defaultValue>
@@ -175,7 +168,7 @@
       <name>ServicePeriod</name>
    </variable>
    <variable>
-      <defaultValue>12</defaultValue>
+      <defaultValue>0</defaultValue>
       <description></description>
       <id>fe603aa1-cd2c-45d3-8552-de19fc22e2b3</id>
       <masked>false</masked>
@@ -278,5 +271,12 @@
       <id>44542d14-46e7-4fe1-9dc9-66628fd45ae0</id>
       <masked>false</masked>
       <name>FinancialInstitution</name>
+   </variable>
+   <variable>
+      <defaultValue>'2'</defaultValue>
+      <description></description>
+      <id>f873d493-dca0-48cf-b4a3-d66f696afc18</id>
+      <masked>false</masked>
+      <name>performanceBondValue</name>
    </variable>
 </TestCaseEntity>

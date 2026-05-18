@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Sign</name>
+   <name>Checkbox Performance Bond</name>
    <tag></tag>
-   <elementGuidId>70b80aea-6c49-41f8-9d57-6086fa745d3d</elementGuidId>
+   <elementGuidId>6bf8f43e-5262-45b5-b6ba-76d582ca138a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//button[.//span[normalize-space()='Sign']])[2]</value>
+         <value>(//div[contains(@class,'ui-chkbox-box')])[3]</value>
       </entry>
       <entry>
          <key>BASIC</key>

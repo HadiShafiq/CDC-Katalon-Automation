@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Sign</name>
+   <name>Click Icon Date 3</name>
    <tag></tag>
-   <elementGuidId>70b80aea-6c49-41f8-9d57-6086fa745d3d</elementGuidId>
+   <elementGuidId>357fe1e0-9dc4-4115-8bcd-74510eb57d3b</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//button[.//span[normalize-space()='Sign']])[2]</value>
+         <value>(//span[contains(@class,'ui-icon-calendar')]/ancestor::button)[3]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Click Icon Date</name>
+   <name>Button Upload - Performance Bond</name>
    <tag></tag>
-   <elementGuidId>e084febf-d115-43b6-874c-f13000718110</elementGuidId>
+   <elementGuidId>75f15f79-452d-4d81-b1f1-554d7a5dc046</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//span[contains(@class,'ui-icon-calendar')]/ancestor::button</value>
+         <value>(//button[.//span[contains(@class,'ui-icon-arrowreturnthick-1-n')]])[1]</value>
       </entry>
       <entry>
          <key>BASIC</key>

@@ -580,7 +580,7 @@ waitBlockUI(20)
 WebUI.delay(1)
 
 // Calendar
-c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date'), 20)
+c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 1'), 20)
 WebUI.delay(0.5)
 
 pickDate("2026-05-13") //pick date here

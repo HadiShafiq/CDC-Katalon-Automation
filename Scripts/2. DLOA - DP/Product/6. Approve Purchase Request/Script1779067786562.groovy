@@ -485,7 +485,7 @@ waitBlockUI(30)
 WebUI.delay(1)
 
 //click Sign
-c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign'))
+c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign WO GPKI'))
 waitBlockUI(20)
 WebUI.delay(0.5)
 
@@ -519,8 +519,8 @@ for (int i = 0; i < 2; i++) {
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract RN number dynamically =====
-def matcher = (msg =~ /(PR\d+)/)   // e.g. RN260000000001152
+// ===== 3) Extract PR number dynamically =====
+def matcher = (msg =~ /(PR\d+)/)   // e.g. PR260000000001152
 String prNo = matcher.find() ? matcher.group(1) : ""
 
 if (prNo == "") {
@@ -532,7 +532,7 @@ WebUI.comment("✅ Captured PR No: " + prNo)
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DLOA_PURCHASE_REQUEST_2026.xlsx"
+String filePath = baseDir + "/DLOA_APPROVE_PURCHASE_REQUEST_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -563,7 +563,7 @@ int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum()
 def row = sheet.createRow(nextRow)
 
 row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(rnNo)
+row.createCell(1).setCellValue(prNo)
 row.createCell(2).setCellValue(msg)
 
 // Save back to SAME file
