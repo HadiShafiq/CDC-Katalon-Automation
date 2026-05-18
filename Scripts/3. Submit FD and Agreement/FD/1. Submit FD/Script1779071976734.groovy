@@ -281,9 +281,9 @@ def claimDocument(String targetDocNo) {
 	return found
 }
 
-/* =========================
+/* ===========================================================================
  * Function: Untuk Side Menu Schedule | Performance Bond | Payment Tracking
- * ========================= */
+ * =========================================================================== */
 def clickSideMenuIfExists(String objectPath) {
 	
 		TestObject menuObj = findTestObject(objectPath)
@@ -298,9 +298,9 @@ def clickSideMenuIfExists(String objectPath) {
 		return false
 	}
 	
-	/* =========================================================
-	 * 7) CALENDAR PICKER DATE
-	 * ========================================================= */
+/* =========================================================
+ * 7) CALENDAR PICKER DATE
+ * ========================================================= */
 	
 def pickDate(String yyyyMmDd) {
 
@@ -349,8 +349,6 @@ def pickDate(String yyyyMmDd) {
 	WebUI.takeScreenshot()
 	assert false : "Date not found in datepicker: " + yyyyMmDd
 }
-	
-
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -548,6 +546,7 @@ t(physicalContractObj, physicalContract)
 
 waitBlockUI(20)
 WebUI.delay(0.5)
+
 /*  =========================
  *  Service Period
  *  ========================= */
@@ -730,9 +729,9 @@ if (clickSideMenuIfExists(
 	println("Agency Side Menu not found or hidden → skip Agency process")
 }
 
-// =========================
-// Check Agency Checkbox Ticked
-// =========================
+/* ===================================
+ * Check Agency Checkbox Ticked
+ * ===================================*/
 def webDriverAgency = DriverFactory.getWebDriver()
 
 List<WebElement> agencyCheckboxes = webDriverAgency.findElements(By.xpath(
@@ -766,10 +765,9 @@ for (int x = 0; x < agencyCheckboxes.size(); x++) {
 
 println("Agency checkbox ticked = " + isTicked)
 
-
-// =========================
-// If ticked, Set File Ref + Upload
-// =========================
+/* ==================================
+ * If ticked, Set File Ref + Upload
+ * ==================================*/
 if (isTicked) {
 
 	String fileRefAgencyInput = "File Ref " + contractNo
@@ -841,8 +839,7 @@ if (clickSideMenuIfExists(
 	// Amount -- refer same value
 	t(
 		findTestObject('Object Repository/FD and Agreement/Performance Bond/Input Amount'),
-		amountInput,
-		20
+		amountInput, 20
 	)
 		
 	// Calendar
@@ -875,7 +872,7 @@ if (clickSideMenuIfExists(
 	// =================================
 	// Performance Bond Deferment [TICK]
 	// ==================================
-	int performanceBondFlag = performanceBondValue //nilai ini ubah dekat variable, kalau 2 akan skip tak akan TICK 
+	int performanceBondFlag = tickPerformanceBond //nilai ini ubah dekat variable, kalau 2 akan skip tak akan TICK 
 	
 	if (performanceBondFlag == 1) {
 		c(findTestObject('Object Repository/FD and Agreement/FD Application/Fulfilment Details/Checkbox Performance Bond'))
@@ -1006,12 +1003,11 @@ if (clickSideMenuIfExists(
 	println("Approver successfully selected: " + approverName)
 }
 
-
 /* =========================
  * Submit Button
  * =========================*/
 
-//TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
+TestObject submitBtn = findTestObject('Object Repository/FD and Agreement/Submit Button')
 
 waitBlockUI(20)
 WebUI.waitForElementVisible(submitBtn, 1)

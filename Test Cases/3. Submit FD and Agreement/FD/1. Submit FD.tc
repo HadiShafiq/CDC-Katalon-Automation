@@ -260,23 +260,23 @@
    </variable>
    <variable>
       <defaultValue>'Shamsul Azri Bin Abu Bakar'</defaultValue>
-      <description></description>
+      <description>690127065209</description>
       <id>4766180f-90c5-4c28-8992-1c2816a9f56d</id>
       <masked>false</masked>
       <name>ApproverName</name>
    </variable>
    <variable>
       <defaultValue>'2'</defaultValue>
-      <description></description>
+      <description>Bank mana mana tak kisah</description>
       <id>44542d14-46e7-4fe1-9dc9-66628fd45ae0</id>
       <masked>false</masked>
       <name>FinancialInstitution</name>
    </variable>
    <variable>
-      <defaultValue>'2'</defaultValue>
-      <description></description>
+      <defaultValue>1</defaultValue>
+      <description>Data ni kalau nk untick jadikan 2</description>
       <id>f873d493-dca0-48cf-b4a3-d66f696afc18</id>
       <masked>false</masked>
-      <name>performanceBondValue</name>
+      <name>tickPerformanceBond</name>
    </variable>
 </TestCaseEntity>
