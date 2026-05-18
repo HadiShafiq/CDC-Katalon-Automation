@@ -6,11 +6,11 @@
    <elementGuidId>1812d152-7b24-42b1-8304-894a5b1464f9</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//label[normalize-space()='Archie Approver 001']/ancestor::div[contains(@class,'ui-selectonemenu')]//div[contains(@class,'ui-selectonemenu-trigger')]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//td[label[normalize-space()='Approver Group']]/following-sibling::td//label[contains(@class,'ui-selectonemenu-label')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
