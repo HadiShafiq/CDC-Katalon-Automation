@@ -295,20 +295,18 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
 def clickProcurementType(int option) {
 
 	String xpath =
-		"//input[@type='radio' and contains(@id,'procType:${option - 1}')]"
+		"//input[@type='radio' and contains(@id,'procType:${option - 1}')]" +
+		"/ancestor::div[contains(@class,'ui-radiobutton')]" +
+		"//div[contains(@class,'ui-radiobutton-box')]"
 
 	TestObject obj = new TestObject("procType_" + option)
 	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-	WebElement element = WebUiCommonHelper.findWebElement(obj, 10)
-
-	WebUI.executeJavaScript(
-		"arguments[0].click();",
-		Arrays.asList(element)
-	)
+	WebUI.waitForElementClickable(obj, 20)
+	WebUI.click(obj)
 
 	waitBlockUI(10)
-	WebUI.delay(0.3)
+	WebUI.delay(0.5)
 }
 
 /* =========================================================
@@ -525,11 +523,13 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	WebUI.delay(0.5)
 	
 	//Add to Cart Pop Up (Order Quantity)
-	t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/2. Order Quantity TextField'), 20)
+	t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/2. Order Quantity TextField'), OrderQuantity)
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 	
 	selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/3. Price Type Dropdown'), PriceType)
+	
+	
 	
 	//Add to Cart Pop Up (Price Type Dropdown)
 	int rbType = Integer.parseInt(RBProcurementType.toString())
@@ -560,36 +560,59 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	/* =========================
 	 * Request Note)
 	 * ========================= */
-	  c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/7. Delivery or Service Period'), 20)
+	  t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/7. Delivery or Service Period'), DeliveryServicePeriod)
 	  waitBlockUI(20)
 	  WebUI.delay(0.5)
 	
+	  //Procurement Type Category
+	  selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/8. Procurement Type Category'), ProcurementTypeCategory)
 	  
+	  //Title
+	  t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/9. Tilte'), Title)
+	  waitBlockUI(20)
+	  WebUI.delay(0.5)
+	
+	
+	  // =========================
+	  // Choose Approver
+	  // =========================
+		  TestObject approverGroup = findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/10. Approver Group Dropdown')
+		  TestObject approverName  = findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/11. Approver Name Dropdown')
+				  
+		  // Select Approver Group
+		  selectDropdownByIndex(approverGroup, 20)
+		  waitBlockUI(20)
+		  WebUI.delay(2)
+				  
+		  // Wait until Approver Name dropdown is ready
+		  wVisible(approverName, 20)
+		  WebUI.waitForElementClickable(approverName, 20)
+		  WebUI.scrollToElement(approverName, 2)
+		  WebUI.delay(1)
+				  
+		  // Select Approver Name
+		  selectDropdownByIndex(approverName, 6)
+		  waitBlockUI(20)
+		  WebUI.delay(1)
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+		/* =========================
+		 * Save LOA (unchanged)
+		 * ========================= */
+		//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
+		c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
+		//c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
+
+		waitBlockUI(10)
 
 /* =========================
- * Save LOA (unchanged)
+ * WAIT LOADER + CAPTURE RN MESSAGE (DYNAMIC RNxxxx) + APPEND TO EXCEL (SAME FILE)
+ * Example message:
+ *   "Request Note RN260000000001152 is successfully submitted."
  * ========================= */
-//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
-c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
 
-waitBlockUI(10)
-
-/* =========================
- * WAIT LOADER + CAPTURE SQ MESSAGE (DYNAMIC SQxxxx) + APPEND TO EXCEL (SAME FILE)
- * ========================= */
 
 // ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
 TestObject blockUI = new TestObject('blockUI')
@@ -601,40 +624,40 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-// ===== 2) Wait success message (global text; SQ number changes) =====
-TestObject msgObj = new TestObject('msg_SQ_saved')
+// ===== 2) Wait success message (global text; RN number changes) =====
+TestObject msgObj = new TestObject('msg_RN_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Simple Quote') and contains(.,'is successfully submitted')]"
+	"contains(.,'Request Note') and contains(.,'is successfully submitted')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "SQ"
+// Wait until message text contains "RN"
 String msg = ""
-for (int i = 0; i < 2; i++) {
+for (int i = 0; i < 15; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("SQ")) break
+	if (msg != null && msg.contains("RN")) break
 	WebUI.delay(1)
 }
 
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract SQ number dynamically =====
-def matcher = (msg =~ /(SQ\d+)/)   // e.g. SQ260000000000604
-String sqNo = matcher.find() ? matcher.group(1) : ""
+// ===== 3) Extract RN number dynamically =====
+def matcher = (msg =~ /(RN\d+)/)   // e.g. RN260000000001152
+String rnNo = matcher.find() ? matcher.group(1) : ""
 
-if (sqNo == "") {
+if (rnNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ SQ number not found. Message was: " + msg
+	assert false : "❌ RN number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured SQ No: " + sqNo)
+WebUI.comment("✅ Captured RN No: " + rnNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/FL_DP_CR_DLOA_Requestioner_Service_NEW.xlsx"
+String filePath = baseDir + "/DP_Add_to_Cart.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -653,7 +676,7 @@ if (Files.exists(path)) {
 
 	def header = sheet.createRow(0)
 	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("SQ No")
+	header.createCell(1).setCellValue("RN No")
 	header.createCell(2).setCellValue("Message")
 }
 
@@ -665,7 +688,7 @@ int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum()
 def row = sheet.createRow(nextRow)
 
 row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(sqNo)
+row.createCell(1).setCellValue(rnNo)
 row.createCell(2).setCellValue(msg)
 
 // Save back to SAME file
@@ -680,6 +703,7 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
  * Sign Out
  * ========================= */
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 
 // wait until logout is completed (choose one)
