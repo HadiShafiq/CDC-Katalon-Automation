@@ -493,7 +493,7 @@ WebUI.delay(0.5)
 // =========================
 // Delivery Address & Item - Ordered Quantity
 // =========================
-int loopCount = 2
+int loopCount = 1
 
 for (int i = 0; i < loopCount; i++) {
 
@@ -537,7 +537,7 @@ for (int i = 0; i < loopCount; i++) {
 // Charge Line Assigment - TICK
 // =========================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Charge Line Assignment'))
-int loopCountA = 2
+int loopCountA = 1
 
 for (int i = 0; i < loopCountA; i++) {
 

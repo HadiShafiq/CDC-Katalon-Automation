@@ -6,12 +6,11 @@
    <elementGuidId>badd0d3c-296e-4a9e-a194-eff4f08a9af8</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>	(//button[.//span[normalize-space()='Search']])[1]</value>
+         <key>BASIC</key>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>(//button[.//span[normalize-space()='Search']])[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
