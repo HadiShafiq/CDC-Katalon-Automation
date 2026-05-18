@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Approver Name Dropdown</name>
+   <name>Click Button Update</name>
    <tag></tag>
-   <elementGuidId>71cd4593-46d7-4916-8c0b-f76e1e7de19c</elementGuidId>
+   <elementGuidId>bd1ddefa-8a72-471e-be7c-9aea11cd4de4</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id=&quot;_flPurchaseRequest_WAR_NGePportlet_:form:approverDropdown&quot;]/div[3]</value>
+         <value>//button[.//span[normalize-space()='Update']]</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

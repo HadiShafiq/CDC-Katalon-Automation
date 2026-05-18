@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Approver Name Dropdown</name>
+   <name>Choose Result - Copy</name>
    <tag></tag>
-   <elementGuidId>71cd4593-46d7-4916-8c0b-f76e1e7de19c</elementGuidId>
+   <elementGuidId>20780baa-e8bd-4016-8c63-b17f4aac40ba</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id=&quot;_flPurchaseRequest_WAR_NGePportlet_:form:approverDropdown&quot;]/div[3]</value>
+         <value>//tbody[contains(@id,'lovTb_data')]/tr//tbody[contains(@id,'lovTb_data')]/tr</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Approver Name Dropdown</name>
+   <name>Select Button Search</name>
    <tag></tag>
-   <elementGuidId>71cd4593-46d7-4916-8c0b-f76e1e7de19c</elementGuidId>
+   <elementGuidId>cd8fc6c1-06ae-440f-8bab-029a920fd2ac</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id=&quot;_flPurchaseRequest_WAR_NGePportlet_:form:approverDropdown&quot;]/div[3]</value>
+         <value>(//button[contains(@id,'slbtn')])[2]</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

@@ -42,6 +42,42 @@
       <value></value>
       <variableId>a57b82d2-b42b-4361-9bd5-bdf96b2e20f8</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9fdf6e40-a6e9-49b9-9995-a9758a1f8194</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>1e9ccf00-d5bf-463f-bb24-82e61a06691a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>233f3464-3569-4182-8767-133adff1045e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>43c155f9-38f2-418a-98a3-f49755cd5fe3</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>e7364ed8-19cf-4ed8-89b4-fdef7ecf9c7e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d57d8a2b-09b0-4225-bfec-cd86a0011b14</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'790101010101'</defaultValue>
       <description></description>
@@ -83,5 +119,47 @@
       <id>a57b82d2-b42b-4361-9bd5-bdf96b2e20f8</id>
       <masked>false</masked>
       <name>Ordered_Quantity</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>9fdf6e40-a6e9-49b9-9995-a9758a1f8194</id>
+      <masked>false</masked>
+      <name>Transaction_Indicator</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>1e9ccf00-d5bf-463f-bb24-82e61a06691a</id>
+      <masked>false</masked>
+      <name>Listing_VOT</name>
+   </variable>
+   <variable>
+      <defaultValue>'B10'</defaultValue>
+      <description></description>
+      <id>233f3464-3569-4182-8767-133adff1045e</id>
+      <masked>false</masked>
+      <name>VOT_Search</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>43c155f9-38f2-418a-98a3-f49755cd5fe3</id>
+      <masked>false</masked>
+      <name>Listing_Program</name>
+   </variable>
+   <variable>
+      <defaultValue>'010102'</defaultValue>
+      <description></description>
+      <id>e7364ed8-19cf-4ed8-89b4-fdef7ecf9c7e</id>
+      <masked>false</masked>
+      <name>Program_Search</name>
+   </variable>
+   <variable>
+      <defaultValue>'B0'</defaultValue>
+      <description></description>
+      <id>d57d8a2b-09b0-4225-bfec-cd86a0011b14</id>
+      <masked>false</masked>
+      <name>Description_Search</name>
    </variable>
 </TestCaseEntity>

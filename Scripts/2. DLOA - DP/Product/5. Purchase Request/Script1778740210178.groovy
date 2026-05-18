@@ -482,7 +482,7 @@ WebUI.delay(0.5)
 // =========================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Address'), Address)
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Address)
 t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Address Input'), Address_Input)
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
@@ -534,7 +534,7 @@ for (int i = 0; i < loopCount; i++) {
 }
 
 // =========================
-// Charge Line Assigment
+// Charge Line Assigment - TICK
 // =========================
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Charge Line Assignment'))
 int loopCountA = 2
@@ -548,9 +548,9 @@ for (int i = 0; i < loopCountA; i++) {
     TestObject chkObj = new TestObject("chk_" + i)
     chkObj.addProperty("xpath", ConditionType.EQUALS, chkXpath)
 
-    WebUI.waitForElementClickable(chkObj, 20)
+    WebUI.waitForElementClickable(chkObj, 2)
 
-    WebElement chkEl = WebUiCommonHelper.findWebElement(chkObj, 20)
+    WebElement chkEl = WebUiCommonHelper.findWebElement(chkObj, 2)
 
     if (!chkEl.isSelected()) {
         WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(chkEl))
@@ -559,7 +559,63 @@ for (int i = 0; i < loopCountA; i++) {
     WebUI.delay(0.5)
 }
 
-	
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Transaction Indicator'), Transaction_Indicator)
+
+//VOT
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click VOT 1'))
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_VOT)
+t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), VOT_Search)
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
+
+//Program/Activity
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Program_Activity'))
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_Program)
+t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), Program_Search)
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
+
+//Account Code
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Account Code'))
+
+// =========================
+// Input Description Search
+// =========================
+TestObject descriptionInput = findTestObject(
+	'Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Description_Input'
+)
+
+String descriptionValue = Description_Search.toString().trim()
+
+WebUI.waitForElementVisible(descriptionInput, 20)
+WebUI.waitForElementClickable(descriptionInput, 20)
+
+WebUI.click(descriptionInput)
+WebUI.delay(0.5)
+
+WebUI.sendKeys(descriptionInput, Keys.chord(Keys.CONTROL, 'a'))
+WebUI.delay(0.3)
+
+WebUI.sendKeys(descriptionInput, Keys.chord(Keys.BACK_SPACE))
+WebUI.delay(0.5)
+
+for (char ch : descriptionValue.toCharArray()) {
+	WebUI.sendKeys(descriptionInput, ch.toString())
+	WebUI.delay(0.15)
+}
+
+waitBlockUI(10)
+WebUI.delay(1)
+
+String finalDescription = WebUI.getAttribute(descriptionInput, 'value')
+println("Final Description Search = " + finalDescription)
+
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button Search Code'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result 1'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search 1'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Button Update'))
+
 // ==================================
 // Approver List - Choose Approver
 // ==================================
@@ -581,10 +637,6 @@ WebUI.scrollToElement(approverName, 1)
 selectDropdownByIndex(approverName, 5)
 WebUI.delay(1)
 
-// =========================
-// Charge Line Assignment
-// =========================
-
 
 // ========================
 // SUBMIT BUTTON
@@ -604,18 +656,19 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 }
 
 // ===== 2) Wait success message (global text; RN number changes) =====
-TestObject msgObj = new TestObject('msg_RN_saved')
+TestObject msgObj = new TestObject('msg_PR_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@class,'ui-messages-info-detail') "
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Purchase Request') and contains(.,'is successfully submitted.')]" 
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "RN"
+// Wait until message text contains "PR"
 String msg = ""
 for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("RN")) break
+	if (msg != null && msg.contains("PR")) break
 	WebUI.delay(1)
 }
 
@@ -623,14 +676,14 @@ msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
 // ===== 3) Extract RN number dynamically =====
-def matcher = (msg =~ /(RN\d+)/)   // e.g. RN260000000001152
-String rnNo = matcher.find() ? matcher.group(1) : ""
+def matcher = (msg =~ /(PR\d+)/)   // e.g. RN260000000001152
+String prNo = matcher.find() ? matcher.group(1) : ""
 
-if (rnNo == "") {
+if (prNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ RN number not found. Message was: " + msg
+	assert false : "❌ PR number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured RN No: " + rnNo)
+WebUI.comment("✅ Captured PR No: " + prNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
@@ -654,7 +707,7 @@ if (Files.exists(path)) {
 
 	def header = sheet.createRow(0)
 	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("RN No")
+	header.createCell(1).setCellValue("PR No")
 	header.createCell(2).setCellValue("Message")
 }
 

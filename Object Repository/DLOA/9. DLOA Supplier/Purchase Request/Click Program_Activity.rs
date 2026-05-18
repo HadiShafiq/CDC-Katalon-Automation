@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Approver Name Dropdown</name>
+   <name>Click Program_Activity</name>
    <tag></tag>
-   <elementGuidId>71cd4593-46d7-4916-8c0b-f76e1e7de19c</elementGuidId>
+   <elementGuidId>005ac69f-834d-4650-8174-ea0813c93e31</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id=&quot;_flPurchaseRequest_WAR_NGePportlet_:form:approverDropdown&quot;]/div[3]</value>
+         <value>(//tr[.//label[normalize-space()='VOT']]//img[contains(@src,'search.png')])[4]</value>
       </entry>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
