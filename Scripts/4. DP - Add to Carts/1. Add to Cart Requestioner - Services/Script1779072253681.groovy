@@ -596,8 +596,6 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 		  WebUI.delay(1)
 	
 	
-	
-
 		/* =========================
 		 * Save LOA (unchanged)
 		 * ========================= */
