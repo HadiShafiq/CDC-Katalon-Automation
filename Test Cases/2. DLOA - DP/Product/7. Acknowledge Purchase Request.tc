@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>7. Acknowledge Purchase Request</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>d045c7a0-9c5f-456a-a8b3-1fe61ca08a4a</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a84e5fb4-88cc-4c50-a659-de1b8cb9325c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a9bc5f5f-2059-43a0-8420-5e98fd34eaa0</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'690127065209'</defaultValue>
+      <description></description>
+      <id>a84e5fb4-88cc-4c50-a659-de1b8cb9325c</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>a9bc5f5f-2059-43a0-8420-5e98fd34eaa0</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'PR260000000002238'</defaultValue>
+      <description></description>
+      <id>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</id>
+      <masked>false</masked>
+      <name>Document_Number</name>
+   </variable>
+</TestCaseEntity>
