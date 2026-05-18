@@ -40,6 +40,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>91b161ff-c23d-46f7-8446-11dc0d09418a</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>b6238533-37ee-4795-92c9-70029ab181fd</variableId>
    </variableLinks>
    <variableLinks>
@@ -82,6 +88,13 @@
       <id>975db35c-82c6-48f2-a386-18dcf279b90a</id>
       <masked>false</masked>
       <name>ItemCode</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>91b161ff-c23d-46f7-8446-11dc0d09418a</id>
+      <masked>false</masked>
+      <name>PriceType</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
