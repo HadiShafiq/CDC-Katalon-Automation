@@ -521,20 +521,22 @@ for (int i = 0; i < itemCodeList.size(); i++) {
 	WebUI.delay(1)
 
 	// Click Action dropdown
-	c(findTestObject(
-		'Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Action - Simple Quote'
-	), 20)
+	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Action - Simple Quote'), 20)
 
 	waitBlockUI(20)
 	WebUI.delay(0.5)
 
 	// Click Add to Compare
-	c(findTestObject(
-		'Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Add to Compare'
-	), 20)
+	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Add to Compare'), 20)
 
 	waitBlockUI(30)
 	WebUI.delay(1)
 }
 
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Button View Compare'))
+
+/*====================
+ * Catalogue Search
+ *====================*/
+
+
