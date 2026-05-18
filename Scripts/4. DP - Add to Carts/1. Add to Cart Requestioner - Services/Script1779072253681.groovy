@@ -293,14 +293,19 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
  * etc.
  */
 def clickProcurementType(int option) {
-	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
 
-	TestObject obj = new TestObject("procurementType_" + option)
+	String xpath =
+		"//input[@type='radio' and contains(@id,'procType:${option - 1}')]"
+
+	TestObject obj = new TestObject("procType_" + option)
 	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
 	WebElement element = WebUiCommonHelper.findWebElement(obj, 10)
 
-	WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(element))
+	WebUI.executeJavaScript(
+		"arguments[0].click();",
+		Arrays.asList(element)
+	)
 
 	waitBlockUI(10)
 	WebUI.delay(0.3)
@@ -514,11 +519,120 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 	waitBlockUI(30)
 	WebUI.delay(1)
 		
-	// Click Action dropdown
-	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Action - Simple Quote'), 20)
+	// Click Add to Cart Image
+	c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/1. Click Add to Cart Button'), 20)
 	waitBlockUI(20)
 	WebUI.delay(0.5)
-		
+	
+	//Add to Cart Pop Up (Order Quantity)
+	t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/2. Order Quantity TextField'), 20)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	
+	//Add to Cart Pop Up (Price Type Dropdown)
+	int rbType = Integer.parseInt(RBProcurementType.toString())
+	
+	// Procurement Type Category
+	clickProcurementType(rbType)
+	
+	// IF NOT 1 OR 3 → isi Reason + Justification
+	if (!(rbType == 1 || rbType == 3)) {
+	
+		selectDropdownByIndex(
+			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/3. Price Type Dropdown'),
+			ReasonPK7
+		)
+	
+		WebUI.setText(
+			findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/4. Reason DropDown'),
+			Justification
+		)
+	}
+	
+	// Click Proceed Button
+	c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/6. Click Proceed Button'), 20)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	// Click Add to Simple Quote
 	c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Add to Simple Quote'), 20)
 	waitBlockUI(30)
