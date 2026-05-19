@@ -42,6 +42,42 @@
       <value></value>
       <variableId>c63e7cbc-0747-4ac3-bd74-3b904a426c12</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>ad2960cc-3e6d-4743-b956-717e94dc31dc</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>4537842a-e348-46aa-b34b-31f92d499e3e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>1928e317-df1e-47ab-b656-897f10f146c0</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9cde32cd-796a-4bd5-b3f4-d0844b8df8d2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a36abf13-8292-4b15-9960-c8ebe060d786</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>2b1e5190-2f3d-41fc-a07a-23c5feed55d9</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -57,14 +93,14 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'10101801004000020C'</defaultValue>
+      <defaultValue>'441217070000300057\r\n'</defaultValue>
       <description></description>
       <id>70fcbe20-d5f3-4435-bd6c-944c95667f56</id>
       <masked>false</masked>
       <name>ItemCode1</name>
    </variable>
    <variable>
-      <defaultValue>'441217070000300057'</defaultValue>
+      <defaultValue>'10101801004000020C'</defaultValue>
       <description></description>
       <id>166f0904-a7c5-48fd-99a9-91e89b928e06</id>
       <masked>false</masked>
@@ -83,5 +119,47 @@
       <id>c63e7cbc-0747-4ac3-bd74-3b904a426c12</id>
       <masked>false</masked>
       <name>SupplierName</name>
+   </variable>
+   <variable>
+      <defaultValue>'Title 1'</defaultValue>
+      <description></description>
+      <id>ad2960cc-3e6d-4743-b956-717e94dc31dc</id>
+      <masked>false</masked>
+      <name>Title</name>
+   </variable>
+   <variable>
+      <defaultValue>10</defaultValue>
+      <description></description>
+      <id>4537842a-e348-46aa-b34b-31f92d499e3e</id>
+      <masked>false</masked>
+      <name>Order_Quantity</name>
+   </variable>
+   <variable>
+      <defaultValue>10</defaultValue>
+      <description></description>
+      <id>1928e317-df1e-47ab-b656-897f10f146c0</id>
+      <masked>false</masked>
+      <name>Delivery</name>
+   </variable>
+   <variable>
+      <defaultValue>4</defaultValue>
+      <description></description>
+      <id>9cde32cd-796a-4bd5-b3f4-d0844b8df8d2</id>
+      <masked>false</masked>
+      <name>RBProcurementType</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>a36abf13-8292-4b15-9960-c8ebe060d786</id>
+      <masked>false</masked>
+      <name>ReasonPK7</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test Justification'</defaultValue>
+      <description></description>
+      <id>2b1e5190-2f3d-41fc-a07a-23c5feed55d9</id>
+      <masked>false</masked>
+      <name>Justification</name>
    </variable>
 </TestCaseEntity>

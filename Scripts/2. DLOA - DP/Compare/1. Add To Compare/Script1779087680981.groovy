@@ -292,8 +292,8 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
  * 2 = second radio
  * etc.
  */
-def clickProcurementType(int option) {
-	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
+def clickProcurementType1(int option) {
+	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procType:${option - 1}']"
 
 	TestObject obj = new TestObject("procurementType_" + option)
 	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
@@ -532,11 +532,135 @@ for (int i = 0; i < itemCodeList.size(); i++) {
 	waitBlockUI(30)
 	WebUI.delay(1)
 }
+WebUI.delay(1)
 
 c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Button View Compare'))
+waitBlockUI(20)
+WebUI.delay(1)
 
 /*====================
  * Catalogue Search
  *====================*/
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Dropdown Item'))
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Item Inquiry'))
+t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Title'), Title)
+t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Order Quantity'),Order_Quantity)
+t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Delivery Term'),Delivery)
+
+//RadioButton 
+int rbType = Integer.parseInt(RBProcurementType.toString())
+//Procurement Type Category
+clickProcurementType1(rbType)
+// IF NOT 1 isi Reason + Justification
+if (!(rbType == 1 )) {
+
+	selectDropdownByIndex(
+		findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Dropdown Reason'),
+		ReasonPK7
+	)
+
+	WebUI.setText(
+		findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Justification'),
+		Justification
+	)
+}
+
+//Button Submit
+c(findTestObject('Object Repository/FD and Agreement/Submit Button'))
 
 
+/* =========================
+ * SUCCESS MESSAGE - PI ONLY
+ * ========================= */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+	
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+	
+TestObject msgObj = new TestObject('msg_PI_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Item Inquiry') and " +
+	"contains(.,'is successfully submitted.')]"
+) 
+	
+WebUI.waitForElementVisible(msgObj, 30)
+	
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("PI")) break
+	WebUI.delay(1)
+}
+	
+	msg = (msg == null) ? "" : msg.trim()
+	WebUI.comment("Message: " + msg)
+	
+	def matcher = (msg =~ /(PI\d+)/)
+	String piNo = matcher.find() ? matcher.group(1) : ""
+	
+	if (piNo == "") {
+		WebUI.takeScreenshot()
+		assert false : "❌ PI number not found. Message was: " + msg
+	}
+	
+WebUI.comment("✅ Captured PI No: " + piNo)
+
+/* =========================
+ * EXCEL APPEND
+ * ========================= */
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/Item_Inquiry_Submitted.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+	
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+	
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
+	
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("PI No")
+	header.createCell(2).setCellValue("Message")
+}
+	
+if (fis != null) fis.close()
+	
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
+	
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(piNo)
+row.createCell(2).setCellValue(msg)
+	
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
+	
+WebUI.comment("✅ Appended to Excel: " + filePath)
+
+/* =========================
+ * Sign Out
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+
+// wait until logout is completed (choose one)
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
