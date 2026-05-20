@@ -252,7 +252,7 @@
       <name>FileReference2</name>
    </variable>
    <variable>
-      <defaultValue>'3,000,000'</defaultValue>
+      <defaultValue>'455000'</defaultValue>
       <description></description>
       <id>a06665a1-310e-4252-8afa-94868e147ba6</id>
       <masked>false</masked>
@@ -266,7 +266,7 @@
       <name>FulfilmentType</name>
    </variable>
    <variable>
-      <defaultValue>'0'</defaultValue>
+      <defaultValue>'1000'</defaultValue>
       <description></description>
       <id>68f1e4a3-e9e2-49f1-83ce-8a92dce79b3f</id>
       <masked>false</masked>
