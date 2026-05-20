@@ -6,11 +6,11 @@
    <elementGuidId>7cb03d9e-c52a-450d-b212-7b50a4860ceb</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[@id='quicklink']/div/div/ul/li[4]/div[2]/a</value>
+         <key>CSS</key>
       </entry>
       <entry>
-         <key>CSS</key>
+         <key>XPATH</key>
+         <value>//a[normalize-space()='Create LOA']</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -22,7 +22,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>a</value>
-      <webElementGuid>4a3a8868-ea87-4cc7-8248-481fd72573f0</webElementGuid>
+      <webElementGuid>09a2949c-ceef-4333-b9cd-2075afbd2087</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -30,7 +30,7 @@
       <name>class</name>
       <type>Main</type>
       <value>menuItemLink</value>
-      <webElementGuid>dc6b1da3-f67e-4713-8c45-8d5919398423</webElementGuid>
+      <webElementGuid>5b4ac42d-fc53-4160-bbf2-91dabe301f8b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -38,7 +38,7 @@
       <name>href</name>
       <type>Main</type>
       <value>/web/epapp/create-manual-sourcing</value>
-      <webElementGuid>c776f42d-41d1-4735-af42-dc20df2a442c</webElementGuid>
+      <webElementGuid>e1079a3e-abf0-406e-910b-98cfc75bc705</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -46,7 +46,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Create LOA</value>
-      <webElementGuid>3d31c2a7-eed2-4227-992c-fbcf61439a7c</webElementGuid>
+      <webElementGuid>c6d51e67-9326-464b-9dc1-10d92bd45a76</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -54,7 +54,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>id(&quot;quicklink&quot;)/div[@class=&quot;mainparent grid&quot;]/div[@class=&quot;layoutitem grid-item&quot;]/ul[@class=&quot;subparent&quot;]/li[@class=&quot;layoutsubitem&quot;]/div[2]/a[@class=&quot;menuItemLink&quot;]</value>
-      <webElementGuid>b2eb8fbd-9a83-4fac-bfb3-bc1424e5da8d</webElementGuid>
+      <webElementGuid>cf2891f7-1784-4f61-953a-4d9a76e6c13b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -62,7 +62,7 @@
       <name>xpath:idRelative</name>
       <type>Main</type>
       <value>//div[@id='quicklink']/div/div/ul/li[4]/div[2]/a</value>
-      <webElementGuid>f12a5b76-852f-4690-bbc0-9cddc9d8f24d</webElementGuid>
+      <webElementGuid>9c156f91-c56c-47f4-839f-67fba88fa024</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -70,7 +70,7 @@
       <name>xpath:link</name>
       <type>Main</type>
       <value>//a[contains(text(),'Create LOA')]</value>
-      <webElementGuid>d4dd4bf5-2d6d-4642-9d36-0d6e26a9d5a7</webElementGuid>
+      <webElementGuid>567c51a1-f3fa-49f6-8844-4938b53aa67a</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -78,7 +78,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Bidding Management'])[1]/following::a[1]</value>
-      <webElementGuid>39a729c5-1557-4a11-b0f9-e268d847920d</webElementGuid>
+      <webElementGuid>35b75df3-2305-4d71-b46b-fd94798680cc</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -86,7 +86,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Quotation/Tender Maintenance'])[1]/following::a[2]</value>
-      <webElementGuid>c0edefd4-00b3-401b-8e91-706f2d668397</webElementGuid>
+      <webElementGuid>8acdd05b-e4f0-4768-9cd5-eb98bc10d38e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -94,7 +94,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='No. Of Supplier Based On Criteria'])[1]/preceding::a[1]</value>
-      <webElementGuid>45dd84bc-ff95-40e1-b6bc-b3e33d0b892c</webElementGuid>
+      <webElementGuid>7db1b6d9-a96a-4a85-bd7e-2f76f3899cbb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -102,7 +102,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>(.//*[normalize-space(text()) and normalize-space(.)='Market Research'])[1]/preceding::a[2]</value>
-      <webElementGuid>3af6f70f-8dde-4905-9041-2d110f08c29c</webElementGuid>
+      <webElementGuid>975370b8-2529-43fa-b52b-1e2709d5f161</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -110,7 +110,7 @@
       <name>xpath:neighbor</name>
       <type>Main</type>
       <value>//*/text()[normalize-space(.)='Create LOA']/parent::*</value>
-      <webElementGuid>316476b3-40d5-428d-831b-d01c563d1071</webElementGuid>
+      <webElementGuid>331574b3-c1d4-4360-8fa4-44d52cee3497</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -118,7 +118,7 @@
       <name>xpath:href</name>
       <type>Main</type>
       <value>//a[contains(@href, '/web/epapp/create-manual-sourcing')]</value>
-      <webElementGuid>403d4694-fc05-4ad3-8e9f-30b129431fe5</webElementGuid>
+      <webElementGuid>66ef550a-47b9-44d7-81aa-30e22197b1fd</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -126,7 +126,7 @@
       <name>xpath:position</name>
       <type>Main</type>
       <value>//li[4]/div[2]/a</value>
-      <webElementGuid>2751efa0-4945-4855-a470-d5f8250d5406</webElementGuid>
+      <webElementGuid>51fb13e6-de53-4d00-ae9f-0bab2c8a4b98</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -134,6 +134,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//a[@href = '/web/epapp/create-manual-sourcing' and (text() = 'Create LOA' or . = 'Create LOA')]</value>
-      <webElementGuid>2f210dcf-de6e-49f9-8201-51de9976b5ac</webElementGuid>
+      <webElementGuid>51482973-8bf0-4023-afe4-e1d1d0b0897d</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

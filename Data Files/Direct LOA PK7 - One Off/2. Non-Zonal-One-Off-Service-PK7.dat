@@ -7,11 +7,11 @@
    <containsHeaders>true</containsHeaders>
    <csvSeperator></csvSeperator>
    <dataFileGUID>cb292e63-115b-4abe-9f4b-73e859301204</dataFileGUID>
-   <dataSourceUrl>C:\Users\hadishafiq\Desktop\Data Prep Excel AP 201\Direct LOA (PK7)\1. One Off\LOA_Variables_PK7_Service_AP_201.xlsx</dataSourceUrl>
+   <dataSourceUrl>C:\Users\hadishafiq\Downloads\Data_Izzah (1).xlsx</dataSourceUrl>
    <driver>ExcelFile</driver>
    <isInternalPath>false</isInternalPath>
    <query></query>
    <secureUserAccount>false</secureUserAccount>
-   <sheetName>Sheet1</sheetName>
+   <sheetName>DLOA_SERVICE_ONE_OFF</sheetName>
    <usingGlobalDBSetting>false</usingGlobalDBSetting>
 </DataFileEntity>

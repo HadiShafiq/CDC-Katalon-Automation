@@ -271,7 +271,7 @@ DriverFactory.changeWebDriver(driver)
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
-waitBlockUI(20)
+waitBlockUI(1)
 
 /* =========================
  * LANGUAGE
