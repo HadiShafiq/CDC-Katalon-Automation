@@ -328,7 +328,7 @@ waitBlockUI(30)
  * - input supplier name
  * - search supplier
  * ========================= */
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/LOA - Supplier Dropdown'), 2)
+selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/LOA - Supplier Dropdown'), 1)
 
 t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'), SupplierName, 20)
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'), 20)

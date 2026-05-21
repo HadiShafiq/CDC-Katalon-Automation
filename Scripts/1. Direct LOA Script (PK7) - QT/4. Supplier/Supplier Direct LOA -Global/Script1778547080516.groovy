@@ -527,7 +527,7 @@ for (int i = 1; i <= stotalLoop; i++) {
 	
 	WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
 	
-	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details - OK'))
 	
 }
     WebUI.delay(1)

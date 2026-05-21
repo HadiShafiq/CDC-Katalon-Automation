@@ -23,7 +23,7 @@
             <iterationType>ALL</iterationType>
             <value></value>
          </iterationEntity>
-         <testDataId>Data Files/Direct LOA PK7 - Schedule/2. Non-Zonal-Schedule-Service-PK7</testDataId>
+         <testDataId>Data Files/Direct LOA PK7 - One Off/DLOA</testDataId>
       </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
@@ -35,7 +35,7 @@
       <variableLink>
          <testDataLinkId>f7b58b76-9a96-444c-a58d-88c5e8a8d5c9</testDataLinkId>
          <type>DATA_COLUMN</type>
-         <value>password</value>
+         <value>Password</value>
          <variableId>d1d73ff2-1d68-401f-8602-4d2b3b7476df</variableId>
       </variableLink>
       <variableLink>
@@ -141,9 +141,9 @@
          <variableId>6563656d-0fdb-4540-b989-ffdb670bfacd</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>f7b58b76-9a96-444c-a58d-88c5e8a8d5c9</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>LOASigner</value>
          <variableId>2e28a000-53cf-43bd-9de7-9091adf5792e</variableId>
       </variableLink>
       <variableLink>

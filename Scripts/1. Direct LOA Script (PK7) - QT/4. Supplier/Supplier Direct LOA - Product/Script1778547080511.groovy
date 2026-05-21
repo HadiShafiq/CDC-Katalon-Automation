@@ -444,6 +444,8 @@ for (int i = 0; i < assignCount; i++) {
 	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Search Extension Attribute'))
 	
+	//c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Button Yes'))
+	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Radio Button Assign Code'))
 	
 	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Click Assign Button Product 1'))

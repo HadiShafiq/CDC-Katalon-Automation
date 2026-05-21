@@ -23,7 +23,7 @@
             <iterationType>ALL</iterationType>
             <value></value>
          </iterationEntity>
-         <testDataId>Data Files/Supplier/Supplier_Services</testDataId>
+         <testDataId>Data Files/Direct LOA PK7 - One Off/DLOA</testDataId>
       </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
@@ -87,33 +87,33 @@
          <variableId>ee9bcc57-22e3-4d9d-8cdd-12b9e0eb4c12</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>P_Item_Code</value>
          <variableId>a58abf04-c39e-427c-87f7-7edec8051615</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DropdownType</value>
          <variableId>41286bf7-3ab7-408f-8322-19c455307902</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Dropdown_Measurement</value>
          <variableId>9a084f86-a3e3-4bd6-a1e1-12edddf44caf</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Dropdown_brand</value>
          <variableId>37ee92be-d90d-4527-8470-f1bd6aba08b3</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Dropdown_Color</value>
          <variableId>d5b5c7e9-0987-4edc-96ca-45b5445f962e</variableId>
       </variableLink>
       <variableLink>
@@ -123,9 +123,9 @@
          <variableId>79024148-638c-4375-bbdf-8136d0cbfb99</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>b66c1819-4267-4954-af5d-f4b86ce7821e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>S_Item_Name</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5437cce8-f8a4-439e-acae-978df186026e</variableId>
       </variableLink>
    </testCaseLink>

@@ -63,9 +63,9 @@
          <variableId>4f4993c6-a9a4-44f2-b63e-dc60b19709db</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2bbac694-55f1-48a0-b59a-119d59444f6e</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Reason</value>
          <variableId>ba61adce-5ee9-42fe-82c7-2a938e4ea7af</variableId>
       </variableLink>
       <variableLink>
