@@ -16,32 +16,23 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/2. DLOA - DP/4. Approve Request Notes</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>eae19a0e-e384-46f6-93aa-b4fba736c410</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/DP - Approve Request Note/DP - Approve Request Note</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>eae19a0e-e384-46f6-93aa-b4fba736c410</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5b71c10a-4de6-42f5-9bdd-11753431a1c0</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>eae19a0e-e384-46f6-93aa-b4fba736c410</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>adea1ebf-3a4c-4de4-bf06-f2e34741c73c</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>eae19a0e-e384-46f6-93aa-b4fba736c410</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>96f4a1a3-d8ad-4801-a922-15984c79a694</variableId>
       </variableLink>
    </testCaseLink>

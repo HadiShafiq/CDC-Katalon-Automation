@@ -16,104 +16,95 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/4. Supplier/Supplier Direct LOA - Product</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>35046600-e771-449b-8005-7568b30e0e01</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/Direct LOA PK7 - One Off/DLOA</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>78ca2f76-6284-4949-8cb3-3ccf9aacc249</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>b67335c3-42a2-4021-9d49-6657276c03ad</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>7f2d7af1-45f2-480e-b3ef-347eaad5b990</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Supplier_Signer_Dropdown</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>3f580123-81c6-4399-837c-179747b69d71</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Witness_Name</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>eecf51ce-1e0c-48ea-9d22-f289830c7e1f</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Witness_IC</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>3b0f6fd8-3044-4925-ba6d-a34b993b03e6</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Designation</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>9767dec2-1325-4e5c-9432-83277c67b951</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Address</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>fcab2b0a-da6c-421c-b6f1-d4f822073920</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Telephone_No</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>a60e35e7-3b4f-4329-9b63-c6667387cabf</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Fax_no</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>065d146b-17b4-4bac-80e0-36525723c1d2</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>P_Item_Code</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>4cfd7a31-b16a-46c5-bbfd-f1e3109b5bd3</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>DropdownType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>182e5dcc-015e-4541-b690-ed0ac3969400</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Dropdown_Measurement</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>c2be9981-91bb-4953-b77e-8b080da9a35b</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Dropdown_brand</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>9ba3aca7-6bc3-4d43-b2da-49fe586d8c7e</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>35046600-e771-449b-8005-7568b30e0e01</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Dropdown_Color</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>88e2c717-d329-458e-8d27-5d0555e95faa</variableId>
       </variableLink>
    </testCaseLink>

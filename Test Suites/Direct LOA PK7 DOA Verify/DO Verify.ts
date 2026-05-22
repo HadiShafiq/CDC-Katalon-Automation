@@ -16,32 +16,23 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/5. Verify/DO Verify LOA</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>1eab4a3f-0cbb-4509-9c61-1f0ba9c29580</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/Direct LOA PK7 - One Off/DLOA</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>1eab4a3f-0cbb-4509-9c61-1f0ba9c29580</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>27ee4c72-a57b-46cc-9c46-b55c08ce70b5</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>1eab4a3f-0cbb-4509-9c61-1f0ba9c29580</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>15acaff8-1e37-4eb3-ba6e-bc45fcab04c6</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>1eab4a3f-0cbb-4509-9c61-1f0ba9c29580</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>cc5ff501-a6da-4366-a739-893a80e1c5f1</variableId>
       </variableLink>
    </testCaseLink>

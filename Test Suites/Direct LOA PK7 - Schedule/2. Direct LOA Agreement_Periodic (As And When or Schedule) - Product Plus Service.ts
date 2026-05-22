@@ -16,128 +16,119 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/1. Direct LOA Script (PK7) - QT/3. Schedule/3. Direct LOA Agreement_Periodic (As And When or Schedule) - Product Plus Service</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>477a54f1-66d1-4ace-88cd-3eae25482b9e</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/Direct LOA PK7 - One Off/DLOA</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>50d41e79-25b6-45eb-bea2-6cd9632a8fc0</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>694dd1df-016b-41b4-90ac-97a5d1d10102</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>SupplierName</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>752ea199-656a-4211-860d-eb3546b48417</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProcurementTypeCategory</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>768aeb4b-fb02-44db-85e6-a476c8ac3f18</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProcurementMethod</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>c0283586-f92d-4043-abd4-f1cc83ce368f</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>QuotationTenderType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>ceb0a3f3-a545-43e4-a4bb-750aa7768ae6</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Reason</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5650a9bd-d8c5-4e71-8665-3157c613143c</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProcurementCategory</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>bd81d8ac-064e-44e7-b9fc-66ddec63280d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>TitleLetterofAcceptance</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>56e60f1b-2109-4833-8b36-622c171676ed</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>FileReference1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>70089cca-531c-4cd5-a90b-b1cd7e6b72c2</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>FileReference2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>cd2facb7-9a12-460a-bd28-189a7570ab8e</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>LOAOfferedPrice</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5ef9f323-4338-4472-bb2f-52dd5672ff7d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>FulfilmentType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>8230259f-0ea9-440b-81f6-060c6bce3992</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>SalesTaxValue</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>a5a9d2a9-dc24-4b84-8a1c-8624f2da5366</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>PerformanceBond</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>cbe9956f-126e-4c22-8087-7d56f99dbcfb</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>RequiredOnlineVerification</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>0702ca03-b678-45f4-a354-d7373a0d77ca</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ContractType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>2fd5af47-7dcb-48d5-9328-76f06b997bb7</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Agreement</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>9f1257fb-7251-4c96-ad32-c1b7ddf017ff</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ContractPeriod</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5156298b-9955-4054-bb90-e4ea6beb13c6</variableId>
       </variableLink>
       <variableLink>
@@ -147,15 +138,15 @@
          <variableId>7c18cc0e-da9e-459f-a6d0-d17cfb5692c8</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProductSpecification1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>b0eb3606-7055-4b0f-931b-71089024b14d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProductUOM</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>ec4a6040-5bcb-437f-a88e-714e906abcb5</variableId>
       </variableLink>
       <variableLink>
@@ -165,21 +156,21 @@
          <variableId>8d27b5c0-af18-410a-b685-01af6db2b7c7</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProductQuaty</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>3409d6d0-fb72-48c1-80f7-77adfa65762c</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProductUnitPrice</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>f6579824-ca66-41b5-9670-a0d57ee3c293</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ProductSpecification2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>087c2277-5fa2-4be7-a598-82f285181a4d</variableId>
       </variableLink>
       <variableLink>
@@ -195,39 +186,39 @@
          <variableId>c37289f8-d4ad-4f9a-8b53-70333b983ccd</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServiceSpecification1</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>e7f4377c-1cdf-42c9-bb52-e03d410aa212</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServiceUOM</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>936fa653-921f-4a3b-94a5-56fe8c1fab72</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServiceQty</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>73820ad2-f86d-4ec6-9825-1d180e5dc57f</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServiceUnitPrice</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>873701d1-893e-4389-9f41-93b358d8d083</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>FreqperUOM</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>6ecb343a-c23b-4923-9564-0b9f9220ec24</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>477a54f1-66d1-4ace-88cd-3eae25482b9e</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ServiceSpecification2</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5328164b-4bec-40c9-8152-fc5e30646869</variableId>
       </variableLink>
       <variableLink>

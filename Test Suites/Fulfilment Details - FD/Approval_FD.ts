@@ -16,38 +16,29 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/3. Submit FD and Agreement/FD/2. Approve FD</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>56071148-b66a-4804-a4e1-d3975722f048</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/Fulfillment - FD/Approval_FD</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>92b68223-e8e2-42aa-8c16-6a2e1895c996</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>7b8ed9b9-fd90-47d1-8ea1-a5c8e9827e84</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>DocumentType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>d39c8683-1303-4953-83fe-b6e021d7f9b2</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>56071148-b66a-4804-a4e1-d3975722f048</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>0b73b421-fc5f-4d8b-8653-18293ee7d699</variableId>
       </variableLink>
    </testCaseLink>

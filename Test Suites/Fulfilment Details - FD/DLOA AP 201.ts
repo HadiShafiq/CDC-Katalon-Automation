@@ -16,38 +16,29 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/3. Submit FD and Agreement/FD/1. Submit FD</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>6beda65b-c221-4cde-9836-7748056968ee</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/Fulfillment - FD/Submit_FD</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>ed6b5c3f-fa24-4dbe-a66f-09232d6d00b0</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>689a9689-da70-40ab-9984-cacda10d0894</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>DocumentType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>e0c47af5-6d01-4d72-9269-3c3e459971be</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>0e90d95f-069c-4055-a987-72f58e791481</variableId>
       </variableLink>
       <variableLink>
@@ -135,15 +126,15 @@
          <variableId>1e8f4494-ed89-4a77-8aa8-3426b6f931f0</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ApproverName</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>4766180f-90c5-4c28-8992-1c2816a9f56d</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>6beda65b-c221-4cde-9836-7748056968ee</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>FinancialInstitution</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>44542d14-46e7-4fe1-9dc9-66628fd45ae0</variableId>
       </variableLink>
       <variableLink>

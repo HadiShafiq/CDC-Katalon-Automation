@@ -23,32 +23,23 @@
          <name>Password</name>
       </iterationNameVariable>
       <testCaseId>Test Cases/2. DLOA - DP/3. Prepare Request Note</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>0d15d189-56b3-4941-8d2b-a69e828ffbda</id>
-         <iterationEntity>
-            <iterationType>ALL</iterationType>
-            <value></value>
-         </iterationEntity>
-         <testDataId>Data Files/DP - Prepare Request Note/DP - Prepare Request Note</testDataId>
-      </testDataLink>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Username</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>5b5ce961-c88f-4c8c-bbf2-3cca246803fb</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Password</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>652b0dba-a196-438f-b3f1-66a74f79d505</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>0d15d189-56b3-4941-8d2b-a69e828ffbda</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Document_Number</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>f8ee4008-76b1-4e8f-910f-d2118b04c27b</variableId>
       </variableLink>
       <variableLink>
