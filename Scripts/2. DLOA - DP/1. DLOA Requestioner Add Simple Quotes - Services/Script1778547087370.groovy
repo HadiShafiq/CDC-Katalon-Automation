@@ -707,8 +707,9 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(1)
 
     // Input Specification 2 TextBox for Service
-    TestObject spec2Service = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input Specification 2 TextBox')
+    TestObject spec2Service = findTestObject('Object Repository/DLOA/DP_Req/Input Specification 2 TextBox')
     String serviceSpec2WithLoopIndex = ServiceSpecification2 + i  // Add loop index to Specification Text
+	WebUI.waitForElementVisible(spec2Service, 20)
     WebUI.setText(spec2Service, serviceSpec2WithLoopIndex) // type new value
     waitBlockUI(30)
     WebUI.delay(1)

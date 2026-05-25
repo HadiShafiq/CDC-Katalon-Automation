@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>2. Supplier Simple Quote Respond</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>b9238737-546f-4235-905a-c82bcd48b144</testSuiteGuid>
+   <testCaseLink>
+      <guid>e7e89679-57d6-44de-9001-50b7b4c94bda</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA - DP/2. Supplier Simple Quote Respond</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Direct_Purchased/DP_Izzah</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>3672ac2c-0d96-4af8-8043-b8af989b452a</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>password</value>
+         <variableId>e25605f2-fa4a-454f-88b9-3f374de56b0d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UnitPrice</value>
+         <variableId>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>sqNo</value>
+         <variableId>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

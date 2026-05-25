@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>3. Prepare Request Notes</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>c32f52bf-7a41-4c7e-a7d4-84659c6cd055</testSuiteGuid>
+   <testCaseLink>
+      <guid>7a5dd1a2-3e5e-4b2e-9a64-3c7cb353a6d5</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA - DP/3. Prepare Request Note</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>538cbf91-7a7d-46cd-83df-9ae66ed81efa</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Direct_Purchased/DP_Izzah</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>5b5ce961-c88f-4c8c-bbf2-3cca246803fb</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>password</value>
+         <variableId>652b0dba-a196-438f-b3f1-66a74f79d505</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
+         <variableId>f8ee4008-76b1-4e8f-910f-d2118b04c27b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>preparedBy</value>
+         <variableId>9aba768d-9643-4721-93b4-e1d90936708b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>KumpulanPTJ</value>
+         <variableId>66696209-a499-49d7-86f7-e72b996e1ed8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>538cbf91-7a7d-46cd-83df-9ae66ed81efa</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>PTJ</value>
+         <variableId>ea4cad2d-0c94-41e3-a440-916f899ae326</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

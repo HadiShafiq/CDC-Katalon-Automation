@@ -487,7 +487,7 @@ WebUI.delay(1)
 
 //WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
 
-pickDate("2026-04-29")   // <-- put your date here
+pickDate("2026-05-25")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 
@@ -562,7 +562,7 @@ WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zo
 WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
 
 //click simbol YES at popup 
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Yes Popup'))
+WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click OK Popup'))
 
 /* =========================
  * Accept and Reject Button

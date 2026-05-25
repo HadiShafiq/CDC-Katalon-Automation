@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>5. Prepare LOA</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>0411e306-a48b-4247-b43f-30afe3be835f</testSuiteGuid>
+   <testCaseLink>
+      <guid>40f91d5a-f6d0-49d4-8d0e-7a4e9ccb6259</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/2. DLOA - DP/5. Prepare LOA</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>daa43945-3cce-41be-8b60-d0a341a2e4c2</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/Direct_Purchased/DP_Izzah</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Username</value>
+         <variableId>a2006292-188a-46a1-af1b-8f6ab7efabef</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>password</value>
+         <variableId>906a869d-6446-45ab-9248-64eb5191d341</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Document_Number</value>
+         <variableId>b9cac366-99f1-479e-bec4-ee07ff043065</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FileReference1</value>
+         <variableId>f8fdb46e-da1f-49b1-a3a6-e88df41c81a9</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FileReference2</value>
+         <variableId>9823215e-b500-4028-ac87-ea1674c553cd</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Aggrement</value>
+         <variableId>c526d4e1-396e-4024-960c-4dd9a857a7ce</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>daa43945-3cce-41be-8b60-d0a341a2e4c2</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>LOASigner</value>
+         <variableId>83ad7b03-0205-4426-8499-1d788df0d18a</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

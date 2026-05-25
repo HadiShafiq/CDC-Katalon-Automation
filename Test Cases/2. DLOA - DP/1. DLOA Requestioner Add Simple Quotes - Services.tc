@@ -154,14 +154,14 @@
       <name>Keyword</name>
    </variable>
    <variable>
-      <defaultValue>'761223090000000000'</defaultValue>
+      <defaultValue>'811516050000000000'</defaultValue>
       <description></description>
       <id>9fed7203-4d71-4c76-b06e-c26397419066</id>
       <masked>false</masked>
       <name>ItemCode</name>
    </variable>
    <variable>
-      <defaultValue>'AINHALIM ENTERPRISE'</defaultValue>
+      <defaultValue>'ACE'</defaultValue>
       <description></description>
       <id>a7278ddb-b7c8-4500-8e71-f46d611f3932</id>
       <masked>false</masked>
@@ -182,14 +182,14 @@
       <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>5</defaultValue>
       <description></description>
       <id>4533820c-0316-4654-8d7f-2ab485bd94bd</id>
       <masked>false</masked>
       <name>RBProcurementType</name>
    </variable>
    <variable>
-      <defaultValue>0</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>a4e6f8ad-396b-4237-a3c6-0d51a5cf7644</id>
       <masked>false</masked>
