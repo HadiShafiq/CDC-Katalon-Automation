@@ -15,7 +15,7 @@
       <guid>8387b3fa-e2b4-4160-8d9c-e2f459873cdd</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. DLOA - DP/4. Approve Request Notes</testCaseId>
+      <testCaseId>Test Cases/2. LOA - DP/4. Approve Request Notes</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>eae19a0e-e384-46f6-93aa-b4fba736c410</id>

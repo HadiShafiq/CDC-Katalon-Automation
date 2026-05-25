@@ -22,7 +22,7 @@
          <masked>false</masked>
          <name>Password</name>
       </iterationNameVariable>
-      <testCaseId>Test Cases/2. DLOA - DP/3. Prepare Request Note</testCaseId>
+      <testCaseId>Test Cases/2. LOA - DP/3. Prepare Request Note</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>0d15d189-56b3-4941-8d2b-a69e828ffbda</id>
