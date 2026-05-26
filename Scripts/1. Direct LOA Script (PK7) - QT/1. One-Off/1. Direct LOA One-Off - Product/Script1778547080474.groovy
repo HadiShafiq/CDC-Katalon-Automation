@@ -278,8 +278,8 @@ waitBlockUI(20)
  * Purpose:
  * - switch system language to English
  * ========================= */
-wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
-WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
+wVisible(findTestObject('null'), 20)
+WebUI.selectOptionByValue(findTestObject('null'), 'en_US', true)
 waitBlockUI(20)
 WebUI.delay(0.5)
 WebUI.delay(1)
@@ -291,16 +291,16 @@ WebUI.delay(1)
  * - enter username and password
  * - submit login
  * ========================= */
-c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
+c(findTestObject('null'), 20)
 WebUI.delay(0.5)
 
-t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Username'), Username, 20)
+t(findTestObject('null'), Username, 20)
 WebUI.delay(0.5)
 
-t(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Password'), Password, 20)
+t(findTestObject('null'), Password, 20)
 WebUI.delay(0.5)
 
-c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Submit Username and Password'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 WebUI.delay(0.5)
 
@@ -309,8 +309,8 @@ WebUI.delay(0.5)
  * Purpose:
  * - open Direct LOA creation screen
  * ========================= */
-WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Dashboard/Create LOA'), 20)
+WebUI.selectOptionByValue(findTestObject('null'), 'en_US', true)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
 /* =========================
@@ -318,7 +318,7 @@ waitBlockUI(30)
  * Purpose:
  * - open supplier search popup
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier - Direct LOA'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
 /* =========================
@@ -328,10 +328,10 @@ waitBlockUI(30)
  * - input supplier name
  * - search supplier
  * ========================= */
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/LOA - Supplier Dropdown'), 1)
+selectDropdownByIndex(findTestObject('null'), 1)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Key In Business Name'), SupplierName, 20)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Button Search Supplier'), 20)
+t(findTestObject('null'), SupplierName, 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
 /* =========================
@@ -340,7 +340,7 @@ waitBlockUI(30)
  * - choose supplier row from result
  * - confirm selection
  * ========================= */
-TestObject supplierRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Click the Supplier')
+TestObject supplierRow = findTestObject('null')
 wVisible(supplierRow, 20)
 WebUI.scrollToElement(supplierRow, 2)
 
@@ -352,7 +352,7 @@ try {
 WebUI.delay(0.5)
 WebUI.doubleClick(supplierRow, FailureHandling.OPTIONAL)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Search Supplier From Requistioner/Select Supplier'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(1)
 WebUI.delay(2)
 
@@ -361,7 +361,7 @@ WebUI.delay(2)
  * Purpose:
  * - select procurement method and related dropdown values
  * ========================= */
-TestObject DPM = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Procurement Method')
+TestObject DPM = findTestObject('null')
 
 // first click may reset/close dropdown
 WebUI.click(DPM)
@@ -374,16 +374,16 @@ WebUI.delay(2)
 // select procurement method
 selectDropdownByIndex(DPM, ProcurementMethod)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/DropDown Procurement Type Category'), ProcurementTypeCategory)
+selectDropdownByIndex(findTestObject('null'), ProcurementTypeCategory)
 waitBlockUI(20)
 WebUI.delay(0.5)
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Quotation_Tender Type'), QuotationTenderType)
+selectDropdownByIndex(findTestObject('null'), QuotationTenderType)
 waitBlockUI(20)
 WebUI.delay(0.5)
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Reason PK 7'), Reason)
+selectDropdownByIndex(findTestObject('null'), Reason)
 waitBlockUI(20)
 WebUI.delay(0.5)
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Procurement Category'), ProcurementCategory)
+selectDropdownByIndex(findTestObject('null'), ProcurementCategory)
 waitBlockUI(20)
 WebUI.delay(0.5)
 /* =========================
@@ -392,7 +392,7 @@ WebUI.delay(0.5)
  * - input title, reference no, LOA price
  * - trigger blur/calculation with TAB
  * ========================= */
-TestObject ministryTA = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Title Letter of Acceptance')
+TestObject ministryTA = findTestObject('null')
 t(ministryTA, TitleLetterofAcceptance, 20)
 WebUI.sendKeys(ministryTA, Keys.chord(Keys.TAB))
 WebUI.delay(1)
@@ -437,7 +437,7 @@ WebUI.delay(1)
 String finalRef1 = WebUI.getAttribute(fileRef1, 'value')
 println("Final File Reference No_1 = " + finalRef1)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/File Reference No_2'), FileReference2, 20)
+t(findTestObject('null'), FileReference2, 20)
 WebUI.delay(1)
 
 /* =========================
@@ -527,10 +527,10 @@ println("Final Sales Tax / Service Tax (RM) = " + finalValue3)
  * - select fulfilment type, performance bond, contract type
  * - input duration
  * ========================= */
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Fullfilment Type'), FulfilmentType)
+selectDropdownByIndex(findTestObject('null'), FulfilmentType)
 WebUI.delay(1)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Performance Bond'), PerformanceBond)
+selectDropdownByIndex(findTestObject('null'), PerformanceBond)
 WebUI.delay(2)
 
 //Verification Radio Button
@@ -556,7 +556,7 @@ def clickRequiredOnlineVerification(def value) {
 // call your variable here
 clickRequiredOnlineVerification(RequiredOnlineVerification)
 
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Dropdown Contract Type'), ContractType)
+selectDropdownByIndex(findTestObject('null'), ContractType)
 
 /* =========================
  * Period Month
@@ -609,9 +609,9 @@ println("Final Month Period / Duration = " + finalDuration)
  * Purpose:
  * - open and select date
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Date Picker icon'), 20)
+c(findTestObject('null'), 20)
 WebUI.delay(1)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Click Date'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(20)
 
 /* =========================
@@ -680,12 +680,12 @@ clickAgreementReq(Agreement)
  * - tick category checkbox
  * - confirm and save selection
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Category Code'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Category Code/Click CheckBox Category Code'), 20)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Category Code/Click OK Category Code'), 20)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Category Code/Click Yes Pop Up Category Code'), 20)
+c(findTestObject('null'), 20)
+c(findTestObject('null'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
 /* =========================
@@ -695,14 +695,14 @@ waitBlockUI(30)
  * - set LOA date
  * - open signer popup
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Letter Of Acceptance And Attachment'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Date Picker LOA and Attachment'), 20)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/General infomation Tab/Click Date'), 20)
+c(findTestObject('null'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(20)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Button LOA Signer'), 20)
+c(findTestObject('null'), 20)
 WebUI.delay(1)
 waitBlockUI(10)
 
@@ -713,18 +713,18 @@ waitBlockUI(10)
  * - search LOA signer
  * - select signer row
  * ========================= */
-selectDropdownByIndex(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Dropdown Username'), 1)
+selectDropdownByIndex(findTestObject('null'), 1)
 WebUI.delay(0.5)
 
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Input User Name'), LOASigner, 20)
-WebUI.delay(0.5)
-waitBlockUI(30)
-
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Search User Name'), 20)
+t(findTestObject('null'), LOASigner, 20)
 WebUI.delay(0.5)
 waitBlockUI(30)
 
-TestObject userRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click in user Table')
+c(findTestObject('null'), 20)
+WebUI.delay(0.5)
+waitBlockUI(30)
+
+TestObject userRow = findTestObject('null')
 wVisible(userRow, 20)
 WebUI.scrollToElement(userRow, 2)
 
@@ -743,11 +743,11 @@ WebUI.doubleClick(userRow, FailureHandling.OPTIONAL)
  * ========================= */
 String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click upload Icon'), 3)
-up(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Choose File'),
+c(findTestObject('null'), 3)
+up(findTestObject('null'),
 	uploadFilePath,3)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Upload Icon LOA Signer Document'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 
 /* =========================
@@ -756,7 +756,7 @@ waitBlockUI(30)
  * To choose radio button for zonal
  *
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
+c(findTestObject('null'), 20)
 
 
 def clickZoneLocRadio(int option) {
@@ -793,7 +793,7 @@ if (ZoneLocation.toString().trim() == "1") {
 
 	// Zonal Coverage DropDown
 	selectDropdownByIndex(
-		findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zonal Coverage DropDown'),
+		findTestObject('null'),
 		ZonalCoverage
 	)
 	waitBlockUI(30)
@@ -825,12 +825,12 @@ if (ZoneLocation.toString().trim() == "1") {
 		WebUI.comment("Processing " + zoneName)
 
 		// open popup
-		c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Button Zone'))
+		c(findTestObject('null'))
 		waitBlockUI(30)
 		WebUI.delay(1)
 
 		// set zone name
-		TestObject zoneNameObj = findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Zone Name')
+		TestObject zoneNameObj = findTestObject('null')
 		WebElement zoneNameEl = WebUiCommonHelper.findWebElement(zoneNameObj, 20)
 
 		WebUI.executeJavaScript(
@@ -846,7 +846,7 @@ if (ZoneLocation.toString().trim() == "1") {
 		}
 
 		// click add locality
-		c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zonal/Add Locality'))
+		c(findTestObject('null'))
 		waitBlockUI(30)
 		WebUI.delay(1)
 	}
@@ -864,7 +864,7 @@ if (ZoneLocation.toString().trim() == "1") {
  * ========================= */
 
 // Click Side Menu Zone Item
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Zone Item'), 20)
+c(findTestObject('null'), 20)
 waitBlockUI(30)
 WebUI.delay(1)
 
@@ -875,13 +875,13 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.comment("Loop #${i} of ${loopCount}")
 
 	// Click Action Item for Product on every loop, including first loop
-		c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Click Action Item for Product'), 20)
+		c(findTestObject('null'), 20)
 		waitBlockUI(20)
 		WebUI.delay(1)
 	
 
 	// Input Specification for Product 1 (Dynamic Text + Loop Index)
-	TestObject spec1Product = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input Specification 1 TextBox')
+	TestObject spec1Product = findTestObject('null')
 	WebUI.waitForElementVisible(spec1Product, 20)
 	WebUI.waitForElementClickable(spec1Product, 20)
 	WebUI.click(spec1Product)
@@ -894,7 +894,7 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(2)
 
 	// Input UOM for Product
-	TestObject uom = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input UOM')
+	TestObject uom = findTestObject('null')
 	wVisible(uom, 20)
 	WebUI.click(uom)
 	t(uom, ProductUOM, 20)
@@ -904,9 +904,9 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(1)
 
 	// Price Type (REAL <select>) - 0-based data
-	wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Dropdown Price Type'), 20)
+	wVisible(findTestObject('null'), 20)
 	WebUI.selectOptionByIndex(
-		findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Dropdown Price Type'),
+		findTestObject('null'),
 		toInt(PriceType)
 	)
 
@@ -914,14 +914,14 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(1)
 
 	// Input Unit Price
-	t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Unit Price(RM)'),
+	t(findTestObject('null'),
 		ProductUnitPrice, 20
 	)
 	waitBlockUI(30)
 	WebUI.delay(1)
 
 	// Input Quantity
-	TestObject ProductQty = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Quantity')
+	TestObject ProductQty = findTestObject('null')
 	t(ProductQty, ProductQuaty, 20)
 	WebUI.sendKeys(ProductQty, Keys.chord(Keys.TAB))
 	waitBlockUI(30)
@@ -932,12 +932,12 @@ for (int i = 1; i <= loopCount; i++) {
 	 * ========================= */
 
 	// Click Action Item for Specification
-	TestObject specBtn = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Action Item Click Specification')
+	TestObject specBtn = findTestObject('null')
 	WebUI.waitForElementVisible(specBtn, 20)
 	WebUI.waitForElementClickable(specBtn, 20)
 	WebUI.click(specBtn)
 
-	TestObject clickSpec = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Click Specification')
+	TestObject clickSpec = findTestObject('null')
 	WebUI.waitForElementClickable(clickSpec, 20)
 	WebUI.click(clickSpec)
 
@@ -945,7 +945,7 @@ for (int i = 1; i <= loopCount; i++) {
 	WebUI.delay(2)
 
 	// Input Specification 2 TextBox (Dynamic + Loop Index)
-	TestObject spec2Product = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input Specification 2 TextBox')
+	TestObject spec2Product = findTestObject('null')
 
 	String productSpec2WithLoopIndex = ProductSpecification2 + i
 	WebUI.setText(spec2Product, productSpec2WithLoopIndex)
@@ -960,8 +960,8 @@ for (int i = 1; i <= loopCount; i++) {
  * - navigate to payment deduction side menu
  * - submit LOA application
  * ========================= */
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Payment Deduction'), 20)
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
+c(findTestObject('null'), 20)
+WebUI.click(findTestObject('null'))
 
 waitBlockUI(30)
 
@@ -1060,8 +1060,8 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
  * - logout from system
  * - close browser
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+WebUI.click(findTestObject('null'))
+WebUI.click(findTestObject('null'))
 
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()

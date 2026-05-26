@@ -83,17 +83,17 @@ WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 
 WebUI.maximizeWindow()
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
+WebUI.selectOptionByValue(findTestObject('null'), 'en_US', true)
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'))
+WebUI.click(findTestObject('null'))
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Login/Username'), '710527085562')
+WebUI.setText(findTestObject('null'), '710527085562')
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Login/Password'), 'P@ssw0rd1234')
+WebUI.setText(findTestObject('null'), 'P@ssw0rd1234')
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Login/Submit Username and Password'))
+WebUI.click(findTestObject('null'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+WebUI.click(findTestObject('null'))
 
 WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Page_Task List - ePerolehan/span_My Task_ui-icon ui-icon-plusthick'))
 
@@ -102,34 +102,34 @@ WebUI.setText(findTestObject('Object Repository/Zone item_Zonal/Page_Task List -
 
 WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Page_Task List - ePerolehan/span_Search'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+WebUI.click(findTestObject('null'))
 
 //click side menu Zone Item
 WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Side Menu/Side Menu Zone Item'))
 
 // Zonal
-WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Radio Button Zonal'))
+WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Dropdown Zone Coverage'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Choose State'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Add Zonal'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Checkbox Wilayah'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.setText(findTestObject('Object Repository/Zone item_Zonal/Zonal/Input Zone Name'),
+ WebUI.setText(findTestObject('null'),
 	 'Zonal')
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Click OK Add Locality'))
+ WebUI.click(findTestObject('null'))
  
  //Product
- WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Click Action Item for Product'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input Specification 1 TextBox'),
+ WebUI.setText(findTestObject('null'),
 	 'Testing')
  
- TestObject uom = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input UOM')
+ TestObject uom = findTestObject('null')
  
  WebUI.click(uom)
  
@@ -140,30 +140,30 @@ WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Radio Button
  
  WebUI.sendKeys(uom, Keys.chord(Keys.ENTER))
  
- WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Dropdown Price Type'),
+ WebUI.selectOptionByValue(findTestObject('null'),
 	 '298', true)
  
  // kne add click pencil icon for quantity
  WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Object Repository/Zone item/Page_Letter Of Acceptance (LOA) - ePerolehan/Zonal/span_Grand Total (RM)_ui-button-icon-left u_2834a0'))
  
  
- WebUI.setText(findTestObject('Object Repository/Zone item_Zonal/Zonal/Input Product Quantity'),
+ WebUI.setText(findTestObject('null'),
 	 '10')
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Click OK Product Quantity'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Click Pencil Icon unit Price'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.setText(findTestObject('Object Repository/Zone item_Zonal/Zonal/Input Unit Price(RM)'),
+ WebUI.setText(findTestObject('null'),
 	 '30000')
  
- WebUI.click(findTestObject('Object Repository/Zone item_Zonal/Zonal/Click OK Unit Price(RM)'))
+ WebUI.click(findTestObject('null'))
  
- WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Action Item Click Specification'))
+ WebUI.click(findTestObject('null'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Click Specification'))
+WebUI.click(findTestObject('null'))
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Input Specification 2 TextBox'),
+WebUI.setText(findTestObject('null'),
 	'Product')
  
  
@@ -176,16 +176,16 @@ WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requist
 
 
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Quantity'), 
+WebUI.setText(findTestObject('null'), 
     '10')
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Product/Unit Price(RM)'), 
+WebUI.setText(findTestObject('null'), 
     '300000')
 
 
 //Service
 // Dynamic TestObject for Click Button Add SERVICE
-TestObject AddService = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Click Action Item for Service')
+TestObject AddService = findTestObject('null')
 
 scrollToElement(AddService, 5)
 
@@ -194,11 +194,11 @@ waitForElementClickable(AddService, 20)
 click(AddService)
 
 //Add Specification
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input Specification 1 TextBox'), 
+WebUI.setText(findTestObject('null'), 
     'testing')
 
 //Add OUM on service table
-TestObject uomService = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input UOM')
+TestObject uomService = findTestObject('null')
 
 WebUI.waitForElementVisible(uomService, 20)
 
@@ -211,19 +211,19 @@ WebUI.delay(2)
 WebUI.sendKeys(uomService, Keys.chord(Keys.ENTER))
 
 //Add Freq. Per UOM
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Quantity'), 
+WebUI.setText(findTestObject('null'), 
     '10')
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Unit Price(RM)'), 
+WebUI.setText(findTestObject('null'), 
     '300000')
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Freq per UOM'), 
+WebUI.setText(findTestObject('null'), 
     '10')
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Action Item Click Specification'))
+WebUI.click(findTestObject('null'))
 
 // Click SERVICE Specification (last visible)
-def spec = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Click Specification')
+def spec = findTestObject('null')
 
 WebUI.waitForElementVisible(spec, 10)
 
@@ -231,10 +231,10 @@ def el = WebUiCommonHelper.findWebElement(spec, 10)
 
 DriverFactory.getWebDriver().executeScript('arguments[0].click();', el)
 
-WebUI.setText(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Zone Item Tab/Add Service/Input Specification 2 TextBox'), 
+WebUI.setText(findTestObject('null'), 
     'service')
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Side Menu/Side Menu Payment Deduction'))*/
+WebUI.click(findTestObject('null'))*/
 
 
 
