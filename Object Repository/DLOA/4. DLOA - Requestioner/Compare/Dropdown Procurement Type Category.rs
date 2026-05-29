@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Dropdown Procurement Type Category</name>
+   <tag></tag>
+   <elementGuidId>9ff465e3-a3f7-465c-ba64-6984d7dadae1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[contains(@id,'procTypeCategory')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span.ui-icon.ui-icon-triangle-1-s</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>15047aaf-236b-4d48-842c-e7d60e37a8c0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-icon ui-icon-triangle-1-s</value>
+      <webElementGuid>22a2dcc9-ed3d-4152-9757-5a958e6a9cc1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;_Catalogue_WAR_NGePportlet_:form:procTypeCategory&quot;)/div[@class=&quot;ui-selectonemenu-trigger ui-state-default ui-corner-right ui-state-hover&quot;]/span[@class=&quot;ui-icon ui-icon-triangle-1-s&quot;]</value>
+      <webElementGuid>3e445b4f-ab5b-4d3b-88d7-cd3c2bda7220</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='_Catalogue_WAR_NGePportlet_:form:procTypeCategory']/div[3]/span</value>
+      <webElementGuid>a2c22657-f27a-4423-a986-ccbd74518f1c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//td/div/div[3]/span</value>
+      <webElementGuid>01ffc11f-f9d2-41de-8594-363850da8d5b</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

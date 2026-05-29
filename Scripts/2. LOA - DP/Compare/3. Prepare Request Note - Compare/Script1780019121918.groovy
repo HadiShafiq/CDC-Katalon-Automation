@@ -318,56 +318,70 @@ def clickProcurementType(int option) {
 
 def pickDate(String yyyyMmDd) {
 
+	// Ensure datepicker is visible
 	TestObject dp = new TestObject('dp')
-	dp.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
-	)
+	dp.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']")
 	WebUI.waitForElementVisible(dp, 20)
 
 	def parts = yyyyMmDd.split('-')
-	int targetYear = parts[0] as int
-	int targetMonthIndex = (parts[1] as int) - 1
-	String targetDay = String.valueOf(parts[2] as int)
+	int targetYear  = parts[0] as int
+	int targetMonth = parts[1] as int   // 1..12
+	String targetDay = String.valueOf(parts[2] as int) // "01" -> "1"
+
+	// English month names used by jQuery UI datepicker
+	Map<String, Integer> monthMap = [
+		"January":1,"February":2,"March":3,"April":4,"May":5,"June":6,
+		"July":7,"August":8,"September":9,"October":10,"November":11,"December":12
+	]
+
+	TestObject monthObj = new TestObject('dpMonth')
+	monthObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-month']")
+
+	TestObject yearObj = new TestObject('dpYear')
+	yearObj.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//span[@class='ui-datepicker-year']")
 
 	TestObject nextBtn = new TestObject('dpNext')
-	nextBtn.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
-	)
+	nextBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]")
 
 	TestObject prevBtn = new TestObject('dpPrev')
-	prevBtn.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
-	)
+	prevBtn.addProperty("xpath", ConditionType.EQUALS, "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]")
 
+	// Navigate month/year until correct (safety max 48 clicks)
 	int guard = 0
 	while (guard < 48) {
+		String curMonthName = WebUI.getText(monthObj).trim()
+		int curMonth = monthMap.get(curMonthName)
+		int curYear = WebUI.getText(yearObj).trim() as int
 
-		TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
-		targetDayObj.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
-			"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
-		)
+		if (curYear == targetYear && curMonth == targetMonth) break
 
-		if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
-			WebUI.waitForElementClickable(targetDayObj, 20)
-			WebUI.click(targetDayObj)
-			return
+		if (curYear < targetYear || (curYear == targetYear && curMonth < targetMonth)) {
+			WebUI.click(nextBtn)
+		} else {
+			WebUI.click(prevBtn)
 		}
-
-		// kalau target belum ada, click next dulu
-		WebUI.click(nextBtn)
-		WebUI.delay(0.3)
+		WebUI.delay(1) // must be number, not string
 		guard++
 	}
 
-	WebUI.takeScreenshot()
-	assert false : "Date not found in datepicker: " + yyyyMmDd
+	// Click the day (avoid other-month/disabled cells)
+	String dayXpath =
+		"//*[@id='ui-datepicker-div']//td[" +
+		"not(contains(@class,'ui-datepicker-other-month')) and " +
+		"not(contains(@class,'ui-state-disabled'))" +
+		"]//a[normalize-space(.)='${targetDay}']"
+
+	TestObject dayObj = new TestObject("day_" + targetDay)
+	dayObj.addProperty("xpath", ConditionType.EQUALS, dayXpath)
+
+	WebUI.waitForElementClickable(dayObj, 20)
+	WebUI.click(dayObj)
 }
 
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
-// USE ENVIRONMENT VARIABLE 	
+// USE ENVIRONMENT VARIABLE
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")
 String chromeDriverPath = System.getenv("CHROME_DRIVER_PATH")
 
@@ -455,180 +469,100 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-// TaskList
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'), 20)
-waitBlockUI(20)
+
+/* =========================
+ * SEARCHING TASKLIST
+ * Purpose:
+ * -Search RN No. in TaskList
+ * ========================= */
+//TaskList
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 WebUI.delay(1)
 
-// Expand My Task
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'), 20)
-waitBlockUI(20)
-WebUI.delay(1)
-
-// Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),
-	Document_Number, 20
-)
-waitBlockUI(20)
-WebUI.delay(1)
-
-// Search
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'), 20)
-waitBlockUI(30)
+//Input Document Number
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
+    Document_Number)
 WebUI.delay(2)
 
-// Click TaskList Description
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'), 20)
-waitBlockUI(20)
-/* =========================
- * Click Prepare LOA
- * ========================= */
-WebUI.click(findTestObject('Object Repository/DLOA/8. Prepare LOA/Click Prepare LOA Button'))
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
-t(findTestObject('Object Repository/DLOA/8. Prepare LOA/File Reference No_1'), FileReference1, 20)
-t(findTestObject('Object Repository/DLOA/8. Prepare LOA/File Reference No_2'), FileReference2, 20)
+//Click TaskList Description
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-c(findTestObject('Object Repository/DLOA/8. Prepare LOA/Date Picker COntract Details icon'), 20)
+//Price Type (dropdown)
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Dropdown Price Type'), ddPriceType)
+WebUI.delay(0.2)
 
-pickDate("2026-05-25")   // <-- put your date here
-waitBlockUI(20)
-WebUI.delay(1)
+//Click button Proceed
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Button Proceed'))
 
-//Agreement Radio Button 
-// value: 1 = Yes, 2 = No
-def clickAgreementReq(def value) {
+//Select Dropdown Procurement Type
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Dropdown Procurement Type Category'), ddProcurementType)
 
-    WebUI.comment("DEBUG Aggrement raw value = [" + value + "]")
-    WebUI.comment("DEBUG Aggrement class = " + (value == null ? "null" : value.getClass().getName()))
-
-    if (value == null || value.toString().trim() == "") {
-        assert false : "❌ Agreement value is empty"
-    }
-
-    String rawValue = value.toString().trim()
-    int intValue = rawValue.toInteger()
-
-    WebUI.comment("DEBUG Aggrement intValue = " + intValue)
-
-    String label = (intValue == 1) ? "Yes" : "No"
-    WebUI.comment("DEBUG Agreement label = " + label)
-
-    TestObject opt = new TestObject("agreementReq_" + label)
-    opt.addProperty("xpath", ConditionType.EQUALS,
-        "//*[@id='_scDpLoaList_WAR_NGePportlet_:form:agreementReq']//label[normalize-space(.)='${label}']"
-    )
-
-    WebUI.waitForElementClickable(opt, 20)
-    WebUI.click(opt)
-
-    if (intValue == 2) {
-        WebUI.comment("DEBUG value = 2, clicking popup Yes")
-        c(findTestObject('Object Repository/DLOA/8. Prepare LOA/Click pop up Yes'), 20)
-    }
-}
-
-clickAgreementReq(Aggrement)
-/* =========================
- * LOA & Attachment
- * ========================= */
-c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Side Menu LOA And Attachment'), 20)
-waitBlockUI(30)
-WebUI.delay(1)
-
-
-c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Date Picker LOA and Attachment'), 20)
-pickDate("2026-05-25")   // <-- put your date here
+//Select Approver Group
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Dropdown Approver Group'), KumpulanPTJ)
 waitBlockUI(20)
 WebUI.delay(1)
 
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Button LOA Signer'), 20)
-waitBlockUI(10)
+//Select Approver Name
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Dropdown Approver Name'), PTJ)
 
-// Username dropdown
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Dropdown Username'), 1)
-
-t(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Input User Name'), LOASigner, 20)
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Search User Name'), 20)
-waitBlockUI(30)
-
-TestObject userRow = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LOA And Attachment Tab/Click in user Table')
-
-wVisible(userRow, 20)
-WebUI.scrollToElement(userRow, 2)
-waitBlockUI(10)
-WebUI.delay(1)
-
-try {
-	WebUI.doubleClick(userRow)
-} catch (Exception e) {
-	WebUI.enhancedClick(userRow)
-	WebUI.delay(0.3)
-	WebUI.enhancedClick(userRow)
-}
-
-String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Click upload Icon'), 3)
-up(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Choose File'),
-	uploadFilePath,3)
-
-c(findTestObject('Object Repository/DLOA/8. Prepare LOA/LOA And Attachment/Upload Icon LOA Signer Document'), 20)
-waitBlockUI(30)
+//Button Submit
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Submit Button'))
+WebUI.delay(0.2)
 
 /* =========================
- * Save LOA (unchanged)
+ * WAIT LOADER + CAPTURE RN MESSAGE (DYNAMIC RNxxxx) + APPEND TO EXCEL (SAME FILE)
+ * Example message:
+ *   "Request Note RN260000000001152 is successfully submitted."
  * ========================= */
-//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'), 20)
-waitBlockUI(30)
-
-/* =========================
-* WAIT LOADER + CAPTURE LOA MESSAGE (DYNAMIC LAxxxx) + APPEND TO EXCEL (SAME FILE)
-* ========================= */
 
 // ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
-"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
 )
 
 if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
-WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-// ===== 2) Wait success message (global text; LOA number changes) =====
-TestObject msgObj = new TestObject('msg_LOA_saved')
+// ===== 2) Wait success message (global text; RN number changes) =====
+TestObject msgObj = new TestObject('msg_RN_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
-"//span[contains(@class,'ui-messages-info-detail') and " +
-"contains(.,'Letter of Acceptance (LOA)') and contains(.,'submitted successfully')]"
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Request Note') and contains(.,'is successfully submitted')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "LA"
+// Wait until message text contains "RN"
 String msg = ""
 for (int i = 0; i < 15; i++) {
-msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-if (msg != null && msg.contains("LA")) break
-WebUI.delay(1)
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("RN")) break
+	WebUI.delay(1)
 }
 
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract LA number dynamically =====
-def matcher = (msg =~ /(LA\d+)/) // e.g. LA260000000000604
-String loaNo = matcher.find() ? matcher.group(1) : ""
+// ===== 3) Extract RN number dynamically =====
+def matcher = (msg =~ /(RN\d+)/)   // e.g. RN260000000001152
+String rnNo = matcher.find() ? matcher.group(1) : ""
 
-if (loaNo == "") {
-WebUI.takeScreenshot()
-assert false : "❌ LOA number not found. Message was: " + msg
+if (rnNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ RN number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured LOA No: " + loaNo)
+WebUI.comment("✅ Captured RN No: " + rnNo)
 
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DLOA_DP_CR_RN_LOA_PREPARE_LOA.xlsx"
+String filePath = baseDir + "/PREPARE_RN_NO_(COMPARE).xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -637,18 +571,18 @@ def sheet
 FileInputStream fis = null
 
 if (Files.exists(path)) {
-fis = new FileInputStream(filePath)
-wb = new XSSFWorkbook(fis)
-sheet = wb.getSheet("Result")
-if (sheet == null) sheet = wb.createSheet("Result")
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
 } else {
-wb = new XSSFWorkbook()
-sheet = wb.createSheet("Result")
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
 
-def header = sheet.createRow(0)
-header.createCell(0).setCellValue("DateTime")
-header.createCell(1).setCellValue("LOA No")
-header.createCell(2).setCellValue("Message")
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("RN No")
+	header.createCell(2).setCellValue("Message")
 }
 
 // Close input stream to avoid Excel file lock
@@ -659,7 +593,7 @@ int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum()
 def row = sheet.createRow(nextRow)
 
 row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(loaNo)
+row.createCell(1).setCellValue(rnNo)
 row.createCell(2).setCellValue(msg)
 
 // Save back to SAME file
@@ -669,7 +603,6 @@ fos.close()
 wb.close()
 
 WebUI.comment("✅ Appended to Excel: " + filePath)
-
 
 /* =========================
  * Sign Out

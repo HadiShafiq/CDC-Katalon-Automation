@@ -24,6 +24,18 @@
       <value></value>
       <variableId>ac6b253d-ade6-4256-a121-af9e3b0931f0</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>44ed23bc-c325-47d8-809f-bd304fab7795</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>3eb7b7a8-dd6d-497f-b110-7927bef17ddf</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'NURULAINMOF'</defaultValue>
       <description></description>
@@ -39,10 +51,24 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PI260000000000343 '</defaultValue>
+      <defaultValue>'PI260000000000345'</defaultValue>
       <description>Sebelum RUN ni claim dulu.</description>
       <id>ac6b253d-ade6-4256-a121-af9e3b0931f0</id>
       <masked>false</masked>
       <name>Document_Number</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>44ed23bc-c325-47d8-809f-bd304fab7795</id>
+      <masked>false</masked>
+      <name>stockAvailability</name>
+   </variable>
+   <variable>
+      <defaultValue>'0.89'</defaultValue>
+      <description></description>
+      <id>3eb7b7a8-dd6d-497f-b110-7927bef17ddf</id>
+      <masked>false</masked>
+      <name>Offered_Per_Unit</name>
    </variable>
 </TestCaseEntity>

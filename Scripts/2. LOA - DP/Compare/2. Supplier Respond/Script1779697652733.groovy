@@ -31,7 +31,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  * - logic unchanged, only rearranged and commented
  * ========================================================= */
 
-
 /* =========================================================
  * 1) BASIC DATA / CONVERSION HELPER
  * ========================================================= */
@@ -45,7 +44,6 @@ int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
-
 
 /* =========================================================
  * 2) PAGE / OVERLAY WAIT HELPER
@@ -65,7 +63,6 @@ def waitBlockUI(int timeout = 30) {
 		WebUI.waitForElementNotVisible(blockUI, timeout, FailureHandling.OPTIONAL)
 	}
 }
-
 
 /* =========================================================
  * 3) LIGHTWEIGHT ELEMENT WAIT / ACTION HELPERS
@@ -147,7 +144,6 @@ def up(TestObject obj, String filePath, int timeout = 1) {
 	waitBlockUI(1)
 }
 
-
 /* =========================================================
  * 4) PRIMEFACES DROPDOWN HELPERS
  * ========================================================= */
@@ -223,7 +219,6 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
-
 /* =========================================================
  * 5) TABLE / POPUP INPUT HELPERS
  * ========================================================= */
@@ -282,7 +277,6 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
 	WebUI.delay(0.5)
 }
 
-
 /* =========================================================
  * 6) SPECIAL RADIO / OPTION HELPER
  * ========================================================= */
@@ -310,7 +304,6 @@ def clickProcurementType(int option) {
 
 	waitBlockUI(20)
 }
-
 
 /* =========================================================
  * 7) CALENDAR PICKER DATE
@@ -379,7 +372,40 @@ def pickDate(String yyyyMmDd) {
 }
 
 /* =========================================================
- * 8) BROWSER SETUP
+ * 8) RADIO BUTTON FOR STOCK AVAILABILITY - value: 1 = Yes, 2 = No
+ * ========================================================= */
+def clickStockAvailability(def value) {
+
+	WebUI.comment("DEBUG stock raw value = [" + value + "]")
+	WebUI.comment("DEBUG stock class = " + (value == null ? "null" : value.getClass().getName()))
+
+	if (value == null || value.toString().trim() == "") {
+		assert false : "❌ Stock Availability value is empty"
+	}
+
+	String rawValue = value.toString().trim()
+	int intValue = rawValue.toInteger()
+
+	WebUI.comment("DEBUG Stock Availability intValue = " + intValue)
+
+	String label = (intValue == 1) ? "Yes" : "No"
+	WebUI.comment("DEBUG Stock Availability label = " + label)
+
+	TestObject opt = new TestObject("stockAvailability_" + label)
+	opt.addProperty("xpath", ConditionType.EQUALS,
+		"//*[@id='_ReviewPurchaseInquiry_WAR_NGePportlet_:form:stockAvailable']//label[normalize-space(.)='${label}']"
+	)
+
+	WebUI.waitForElementClickable(opt, 20)
+	WebUI.click(opt)
+
+	if (intValue == 2) {
+		// No additional action required for NO
+	}
+}
+
+/* =========================================================
+ * 9) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")
@@ -422,10 +448,6 @@ DriverFactory.changeWebDriver(driver)
 
 /* =========================
  * OPEN APPLICATION
- * Purpose:
- * - open NGeP SIT portal
- * - maximize browser
- * - wait initial page load
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
@@ -433,8 +455,6 @@ waitBlockUI(20)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * - switch system language to English
  * ========================= */
 wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
@@ -444,10 +464,6 @@ WebUI.delay(1)
 
 /* =========================
  * LOGIN
- * Purpose:
- * - open login form
- * - enter username and password
- * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
 WebUI.delay(0.5)
@@ -464,30 +480,135 @@ WebUI.delay(0.5)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-
 /* =========================
  * SEARCHING TASKLIST
- * Purpose:
- * -Search RN No. in TaskList
  * ========================= */
 //TaskList
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 WebUI.delay(1)
 
 //Input Document Number
-WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
     Document_Number)
 WebUI.delay(2)
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
 //Click TaskList Description
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
+/* =========================
+ * SUPPLIER RESPONSE DETAIL
+ * ========================= */
+//Stock Availability -  RADIO BUTTON
+clickStockAvailability(stockAvailability)
+
+//New Price Offered per Unit (RM)
+t(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/New Price Offered per Unit'), 
+	Offered_Per_Unit)
+
+//Button Submit
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Submit Button'))
+WebUI.delay(0.2)
+c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/Compare/Sign Button'))
+
+/* =========================
+ * SUCCESS MESSAGE - PI ONLY
+ * ========================= */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+	
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+	
+TestObject msgObj = new TestObject('msg_PI_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Item Inquiry') and " +
+	"contains(.,'is successfully submitted.')]"
+)
+	
+WebUI.waitForElementVisible(msgObj, 30)
+	
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("PI")) break
+	WebUI.delay(1)
+}
+	
+	msg = (msg == null) ? "" : msg.trim()
+	WebUI.comment("Message: " + msg)
+	
+	def matcher = (msg =~ /(PI\d+)/)
+	String piNo = matcher.find() ? matcher.group(1) : ""
+	
+	if (piNo == "") {
+		WebUI.takeScreenshot()
+		assert false : "❌ PI number not found. Message was: " + msg
+	}
+	
+WebUI.comment("✅ Captured PI No: " + piNo)
+
+/* =========================
+ * EXCEL APPEND
+ * ========================= */
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/Item_Inquiry_Submitted.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+	
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+	
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
+	
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("PI No")
+	header.createCell(2).setCellValue("Message")
+}
+	
+if (fis != null) fis.close()
+	
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
+	
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(piNo)
+row.createCell(2).setCellValue(msg)
+	
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
+	
+WebUI.comment("✅ Appended to Excel: " + filePath)
+
+/* =========================
+ * Sign Out
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+
+// wait until logout is completed (choose one)
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
