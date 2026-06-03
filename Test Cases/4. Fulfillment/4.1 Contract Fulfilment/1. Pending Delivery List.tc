@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>1. Pending Delivery List</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>b894431c-7fd7-4735-86e5-dd4df40792b5</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9a7e5401-658f-447e-8b13-94247441946d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d22fe032-7e57-4d02-8f6a-cc786febc176</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c61d89f5-e069-46da-a708-ba171f8c3741</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'khairul707'</defaultValue>
+      <description></description>
+      <id>9a7e5401-658f-447e-8b13-94247441946d</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>d22fe032-7e57-4d02-8f6a-cc786febc176</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'PO260000000003005'</defaultValue>
+      <description></description>
+      <id>c61d89f5-e069-46da-a708-ba171f8c3741</id>
+      <masked>false</masked>
+      <name>Document_Number</name>
+   </variable>
+</TestCaseEntity>

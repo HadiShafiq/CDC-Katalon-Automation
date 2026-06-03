@@ -15,7 +15,7 @@
       <guid>52bb21cb-13e0-4bd1-bf57-41affd595747</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. LOA - DP/1. DLOA Requestioner Add Simple Quotes - Services</testCaseId>
+      <testCaseId>Test Cases/2. DP - LOA/1. DLOA Requestioner Add Simple Quotes - Services</testCaseId>
       <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

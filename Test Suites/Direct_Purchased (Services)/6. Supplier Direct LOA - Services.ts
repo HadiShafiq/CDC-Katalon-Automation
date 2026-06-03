@@ -15,7 +15,7 @@
       <guid>b59e9c38-b87c-4a96-9b44-37339290f7ba</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. LOA - DP/6. Supplier Direct LOA - Services</testCaseId>
+      <testCaseId>Test Cases/2. DP - LOA/6. Supplier Direct LOA - Services</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>5c44c58f-3418-4dba-ab16-755e2964f3fe</id>

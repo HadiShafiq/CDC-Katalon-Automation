@@ -15,7 +15,7 @@
       <guid>a6b44c78-a7b2-48ff-8d2e-bf4c4fef536e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. LOA - DP/7. DO Verify LOA</testCaseId>
+      <testCaseId>Test Cases/2. DP - LOA/7. DO Verify LOA</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>808fedf3-4f0e-4c4c-93aa-ac31f5021a61</id>

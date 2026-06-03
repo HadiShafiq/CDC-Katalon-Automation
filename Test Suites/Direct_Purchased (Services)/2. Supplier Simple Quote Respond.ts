@@ -15,7 +15,7 @@
       <guid>e7e89679-57d6-44de-9001-50b7b4c94bda</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/2. LOA - DP/2. Supplier Simple Quote Respond</testCaseId>
+      <testCaseId>Test Cases/2. DP - LOA/2. Supplier Simple Quote Respond</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>3f0e1ace-7430-4bd9-9a39-a5fbc8f53e72</id>
