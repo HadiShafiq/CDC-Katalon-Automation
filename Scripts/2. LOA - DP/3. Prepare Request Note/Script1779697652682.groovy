@@ -492,7 +492,7 @@ WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/
 WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
 // Set how many loops you want
-int loopCount = 2
+int loopCount = 1
 
 for (int i = 0; i < loopCount; i++) {
 

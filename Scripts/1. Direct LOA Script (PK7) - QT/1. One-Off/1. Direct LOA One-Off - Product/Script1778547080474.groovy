@@ -269,7 +269,9 @@ DriverFactory.changeWebDriver(driver)
  * - maximize browser
  * - wait initial page load
  * ========================= */
-WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
+//WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
+WebUI.navigateToUrl('http://ngepuat.eperolehan.com.my/home')
+
 WebUI.maximizeWindow()
 waitBlockUI(20)
 

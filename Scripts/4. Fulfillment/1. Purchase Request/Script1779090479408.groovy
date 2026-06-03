@@ -612,7 +612,22 @@ String finalDescription = WebUI.getAttribute(descriptionInput, 'value')
 println("Final Description Search = " + finalDescription)
 
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button Search Code'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result 1'))
+TestObject chooseResult1 = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result 1')
+
+wVisible(chooseResult1, 20)
+WebUI.scrollToElement(chooseResult1, 2)
+
+try {
+    WebUI.click(chooseResult1)
+} catch (Exception e) {
+    WebUI.enhancedClick(chooseResult1, FailureHandling.OPTIONAL)
+}
+
+WebUI.delay(0.5)
+WebUI.doubleClick(chooseResult1, FailureHandling.OPTIONAL)
+
+waitBlockUI(1)
+WebUI.delay(2)
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search 1'))
 c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Button Update'))
 
