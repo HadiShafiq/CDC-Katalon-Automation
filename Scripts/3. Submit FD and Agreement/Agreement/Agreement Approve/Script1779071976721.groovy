@@ -32,7 +32,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import static common.WebHelper.* 
 
 /* =========================================================
- * 8) BROWSER SETUP
+ * 1) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")

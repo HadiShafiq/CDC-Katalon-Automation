@@ -659,7 +659,7 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 TestObject msgObj = new TestObject('msg_PR_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Purchase Request') and contains(.,'is successfully submitted.')]" 
+	"contains(.,'Purchase Request') and contains(.,'is successfully submitted.')]"  
 )
 
 WebUI.waitForElementVisible(msgObj, 30)

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>6. Approve Purchase Request</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>ce568347-0b75-43ad-9331-21af99e8852d</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>50cb63ae-6592-42d8-866c-f4749e00d97e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>60e7c64d-3243-4738-afbf-a18c5283b6f5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>8e50b09c-078f-4dce-9d71-13592eac76c6</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'690127065209'</defaultValue>
+      <description></description>
+      <id>50cb63ae-6592-42d8-866c-f4749e00d97e</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>60e7c64d-3243-4738-afbf-a18c5283b6f5</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'PR260000000002455'</defaultValue>
+      <description></description>
+      <id>8e50b09c-078f-4dce-9d71-13592eac76c6</id>
+      <masked>false</masked>
+      <name>Document_Number</name>
+   </variable>
+</TestCaseEntity>

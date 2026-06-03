@@ -477,172 +477,16 @@ c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Check
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-// =========================
-// Delivery Address & Item - PTJ
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Address)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Address Input'), Address_Input)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-// =========================
-// Delivery Address & Item - Ordered Quantity
-// =========================
-int loopCount = 1
-
-for (int i = 0; i < loopCount; i++) {
-
-    String xpath = "(//input[contains(@name,'orderedQty')])[" + (i + 1) + "]"
-
-    TestObject orderedQuantityField = new TestObject("orderedQuantityField_" + i)
-    orderedQuantityField.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-    WebUI.comment("Fill Ordered Quantity row #" + (i + 1))
-
-    WebUI.waitForElementVisible(orderedQuantityField, 20)
-
-    WebElement el = WebUiCommonHelper.findWebElement(orderedQuantityField, 20)
-
-    // 🔥 1. CLEAR VALUE FIRST
-    WebUI.executeJavaScript(
-        """
-        arguments[0].value = '';
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-        Arrays.asList(el)
-    )
-
-    WebUI.delay(0.5)
-
-    // 🔥 2. SET NEW VALUE
-    t(orderedQuantityField, Ordered_Quantity, 20)
-
-    waitBlockUI(20)
-    WebUI.delay(1)
-
-    // 🔥 3. TRIGGER TAB (force JSF update)
-    WebUI.sendKeys(orderedQuantityField, Keys.chord(Keys.TAB))
-
-    waitBlockUI(20)
-    WebUI.delay(1)
-}
-
-// =========================
-// Charge Line Assigment - TICK
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Charge Line Assignment'))
-int loopCountA = 1
-
-for (int i = 0; i < loopCountA; i++) {
-
-    WebUI.comment("Tick row #" + (i + 1))
-
-    String chkXpath = "(//input[contains(@id,'chargeLineTbl') and contains(@type,'checkbox')])[" + (i + 1) + "]"
-
-    TestObject chkObj = new TestObject("chk_" + i)
-    chkObj.addProperty("xpath", ConditionType.EQUALS, chkXpath)
-
-    WebUI.waitForElementClickable(chkObj, 2)
-
-    WebElement chkEl = WebUiCommonHelper.findWebElement(chkObj, 2)
-
-    if (!chkEl.isSelected()) {
-        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(chkEl))
-    }
-
-    WebUI.delay(0.5)
-}
-
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Transaction Indicator'), Transaction_Indicator)
-
-//VOT
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click VOT 1'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_VOT)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), VOT_Search)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
-
-//Program/Activity
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Program_Activity'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_Program)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), Program_Search)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
-
-//Account Code
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Account Code'))
-
-// =========================
-// Input Description Search
-// =========================
-TestObject descriptionInput = findTestObject(
-	'Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Description_Input'
-)
-
-String descriptionValue = Description_Search.toString().trim()
-
-WebUI.waitForElementVisible(descriptionInput, 20)
-WebUI.waitForElementClickable(descriptionInput, 20)
-
-WebUI.click(descriptionInput)
-WebUI.delay(0.5)
-
-WebUI.sendKeys(descriptionInput, Keys.chord(Keys.CONTROL, 'a'))
-WebUI.delay(0.3)
-
-WebUI.sendKeys(descriptionInput, Keys.chord(Keys.BACK_SPACE))
-WebUI.delay(0.5)
-
-for (char ch : descriptionValue.toCharArray()) {
-	WebUI.sendKeys(descriptionInput, ch.toString())
-	WebUI.delay(0.15)
-}
-
-waitBlockUI(10)
+/* =========================
+ * Approve
+ * ========================= */
+c(findTestObject('Object Repository/DLOA/7. Approve RN/Click Button Approve'))
+waitBlockUI(30)
 WebUI.delay(1)
 
-String finalDescription = WebUI.getAttribute(descriptionInput, 'value')
-println("Final Description Search = " + finalDescription)
-
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button Search Code'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result 1'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search 1'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Button Update'))
-
-// ==================================
-// Approver List - Choose Approver
-// ==================================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Approver List'))
-TestObject approverGroup = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Group Dropdown')
-TestObject approverName  = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Name Dropdown')
-			
-// Select Approver Group
-selectDropdownByIndex(approverGroup, 11)
+//click Sign
+c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign WO GPKI'))
 waitBlockUI(20)
-WebUI.delay(2)
-			
-// Wait until Approver Name dropdown is ready
-wVisible(approverName, 1)
-WebUI.waitForElementClickable(approverName, 1)
-WebUI.scrollToElement(approverName, 1)
-			
-// Select Approver Name
-selectDropdownByIndex(approverName, 5)
-WebUI.delay(1)
-
-
-// ========================
-// SUBMIT BUTTON
-//=========================
-c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
-waitBlockUI(10)
 WebUI.delay(0.5)
 
 // ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
@@ -659,7 +503,7 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 TestObject msgObj = new TestObject('msg_PR_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Purchase Request') and contains(.,'is successfully submitted.')]" 
+	"contains(.,'Purchase Request') and contains(.,'is approved and has been sent to iGFMAS for verification.')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
@@ -675,8 +519,8 @@ for (int i = 0; i < 2; i++) {
 msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract RN number dynamically =====
-def matcher = (msg =~ /(PR\d+)/)   // e.g. RN260000000001152
+// ===== 3) Extract PR number dynamically =====
+def matcher = (msg =~ /(PR\d+)/)   // e.g. PR260000000001152
 String prNo = matcher.find() ? matcher.group(1) : ""
 
 if (prNo == "") {
@@ -688,7 +532,7 @@ WebUI.comment("✅ Captured PR No: " + prNo)
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DLOA_PURCHASE_REQUEST_2026.xlsx"
+String filePath = baseDir + "/DLOA_APPROVE_PURCHASE_REQUEST_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)

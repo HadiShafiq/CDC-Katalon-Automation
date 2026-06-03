@@ -387,7 +387,7 @@ def pickDate(String yyyyMmDd) {
 	}
 
 /* =========================================================
- * 8) BROWSER SETUP
+ * 1) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE 	
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")
@@ -657,9 +657,9 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 /* =========================
  * Sign Out
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 
 // wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)

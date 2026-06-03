@@ -278,7 +278,7 @@ def claimDocument(String targetDocNo) {
 }
 
 /* =========================================================
- * 8) BROWSER SETUP
+ * 1) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")

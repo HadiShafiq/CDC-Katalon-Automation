@@ -31,7 +31,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  * - logic unchanged, only rearranged and commented
  * ========================================================= */
 
-
 /* =========================================================
  * 1) BASIC DATA / CONVERSION HELPERs
  * ========================================================= */
@@ -45,7 +44,6 @@ int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
-
 
 /* =========================================================
  * 2) PAGE / OVERLAY WAIT HELPER

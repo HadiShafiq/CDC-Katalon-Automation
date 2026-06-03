@@ -30,13 +30,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook
  * - keep script stable without changing main flow
  * ========================= */
 
-// Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
+//Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
 int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
 
-// PrimeFaces overlay wait
+//PrimeFaces overlay wait
 def waitBlockUI(int timeout = 30) {
 	TestObject blockUI = new TestObject('blockUI')
 	blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -49,19 +49,19 @@ def waitBlockUI(int timeout = 30) {
 }
 
 /* ---------- Lightweight wait wrappers ---------- */
-// wait until element visible
+//wait until element visible
 def wVisible(TestObject obj, int timeout = 1) {
 	waitBlockUI(Math.min(timeout, 1))
 	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// wait until element clickable
+//wait until element clickable
 def wClickable(TestObject obj, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// click with wait + tiny retry
+//click with wait + tiny retry
 def c(TestObject obj, int timeout = 1) {
 	for (int i=0; i<2; i++) {
 		try {
@@ -80,7 +80,7 @@ def c(TestObject obj, int timeout = 1) {
 	waitBlockUI(1)
 }
 
-// double click with wait
+//double click with wait
 def dc(TestObject obj, int timeout = 1) {
 	try {
 		wClickable(obj, timeout)
@@ -93,16 +93,14 @@ def dc(TestObject obj, int timeout = 1) {
 	}
 }
 
-// setText with wait
+//setText with wait
 def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
+//HELPERS for zone quantity
 def setZoneQtyByRow = { int rowIndex, String qtyValue ->
 	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
 
@@ -125,10 +123,7 @@ def setZoneQtyByRow = { int rowIndex, String qtyValue ->
 	WebUI.delay(0.5)
 }
 
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-
+//HELPERS for unit price
 def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
 	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
 
@@ -150,7 +145,8 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
 	waitBlockUI(30)
 	WebUI.delay(0.5)
 }
-// upload with wait
+
+//upload with wait
 def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.uploadFile(obj, filePath)
@@ -181,7 +177,7 @@ def openPFDropdown(TestObject triggerObj) {
 	}
 }
 
-// click PrimeFaces option by index (0-based)
+//click PrimeFaces option by index (0-based)
 def clickPFOptionByIndex(int index0) {
 	TestObject opt = new TestObject("pfOpt_" + index0)
 	opt.addProperty("xpath", ConditionType.EQUALS,
@@ -223,9 +219,7 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
-/* =========================
- * Function: Claim document by Document No
- * ========================= */
+//Function: Claim document by Document No
 def claimDocument(String targetDocNo) {
 
 	boolean found = false
@@ -324,13 +318,12 @@ def pickDate(String yyyyMmDd) {
 		WebUI.delay(0.3)
 		guard++
 	}
-	
 		WebUI.takeScreenshot()
 		assert false : "Date not found in datepicker: " + yyyyMmDd
 }
 
 /* =========================================================
- * 8) BROWSER SETUP
+ * 1) BROWSER SETUP
  * ========================================================= */
 // USE ENVIRONMENT VARIABLE 	
 String chromeBinary = System.getenv("CHROME_BINARY_PATH")

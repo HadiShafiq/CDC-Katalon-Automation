@@ -469,7 +469,6 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-
 /* =========================
  * SEARCHING TASKLIST
  * Purpose:
@@ -607,9 +606,9 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 /* =========================
  * Sign Out
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 
 // wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)
