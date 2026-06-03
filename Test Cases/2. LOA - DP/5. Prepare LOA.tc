@@ -49,7 +49,7 @@
       <variableId>83ad7b03-0205-4426-8499-1d788df0d18a</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'khairul707'</defaultValue>
+      <defaultValue>'881204115188'</defaultValue>
       <description></description>
       <id>a2006292-188a-46a1-af1b-8f6ab7efabef</id>
       <masked>false</masked>
@@ -63,7 +63,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'RN260000000002453'</defaultValue>
+      <defaultValue>'RN260000000002695'</defaultValue>
       <description></description>
       <id>b9cac366-99f1-479e-bec4-ee07ff043065</id>
       <masked>false</masked>

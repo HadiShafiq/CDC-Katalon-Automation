@@ -846,7 +846,7 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 1'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate("2026-05-08") //pick date here
+	pickDate("2026-06-03") //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)
@@ -880,14 +880,14 @@ if (clickSideMenuIfExists(
 		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 2'), 20)
 		WebUI.delay(0.5)
 		
-		pickDate("2026-05-18") //pick date here
+		pickDate("2026-06-03") //pick date here
 		waitBlockUI(20)
 		WebUI.delay(1)
 		
 		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 3'), 20)
 		WebUI.delay(0.5)
 		
-		pickDate("2026-06-18") //pick date here
+		pickDate("2026-06-03") //pick date here
 		waitBlockUI(20)
 		WebUI.delay(1)
 		
@@ -1038,7 +1038,7 @@ TestObject msgObj = new TestObject('msg_CT_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
 	"contains(.,'Fulfilment Details Creation') and " +
-	"contains(.,'is successfully submitted to Central Contract Approver.')]"
+	"contains(.,'is successfully submitted to Contract Approver.')]"
 )
 	
 WebUI.waitForElementVisible(msgObj, 30)

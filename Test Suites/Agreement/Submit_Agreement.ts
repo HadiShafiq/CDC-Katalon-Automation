@@ -15,7 +15,7 @@
       <guid>1db05c59-b67d-4531-9af9-c24056360f38</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/3. Submit FD and Agreement/Agreement/Agreement Submit</testCaseId>
+      <testCaseId>Test Cases/3. Submit FD and Agreement/3.2 Agreement/1. Agreement Submit</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>c09fabe9-4eda-40ed-b2f4-5e22411c13a4</id>
@@ -79,6 +79,12 @@
          <type>DATA_COLUMN</type>
          <value>ApproverName</value>
          <variableId>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>97993f93-ea1c-4c61-90cc-46d75b2c1f52</variableId>
       </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

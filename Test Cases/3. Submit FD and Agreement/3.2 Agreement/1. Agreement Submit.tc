@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>Agreement Submit</name>
+   <name>1. Agreement Submit</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -60,6 +60,12 @@
       <value></value>
       <variableId>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>97993f93-ea1c-4c61-90cc-46d75b2c1f52</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'870926145529'</defaultValue>
       <description></description>
@@ -82,7 +88,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001764'</defaultValue>
+      <defaultValue>'LA260000000002123'</defaultValue>
       <description></description>
       <id>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</id>
       <masked>false</masked>
@@ -122,5 +128,12 @@
       <id>5257ae5f-cb07-41fd-9d9c-8cea5a87b176</id>
       <masked>false</masked>
       <name>ApproverName</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-06-03'</defaultValue>
+      <description></description>
+      <id>97993f93-ea1c-4c61-90cc-46d75b2c1f52</id>
+      <masked>false</masked>
+      <name>dateValue</name>
    </variable>
 </TestCaseEntity>

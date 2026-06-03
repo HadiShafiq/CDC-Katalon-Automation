@@ -487,7 +487,7 @@ WebUI.delay(1)
 
 //WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
 
-pickDate("2026-05-25")   // <-- put your date here
+pickDate("2026-06-03")   // <-- put your date here
 waitBlockUI(20)
 WebUI.delay(1)
 

@@ -15,7 +15,7 @@
       <guid>dc4e33cc-298b-4cf0-9901-95567cf4fca0</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/3. Submit FD and Agreement/Agreement/Agreement Approve</testCaseId>
+      <testCaseId>Test Cases/3. Submit FD and Agreement/3.2 Agreement/2. Agreement Approve</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>0ba7a89c-abad-47f5-927c-ed486c6b9924</id>

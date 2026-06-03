@@ -154,8 +154,8 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000001379'</defaultValue>
-      <description></description>
+      <defaultValue>'LA260000000002123'</defaultValue>
+      <description>*kena claim dulu</description>
       <id>0e90d95f-069c-4055-a987-72f58e791481</id>
       <masked>false</masked>
       <name>Document_Number</name>
@@ -168,7 +168,7 @@
       <name>ServicePeriod</name>
    </variable>
    <variable>
-      <defaultValue>0</defaultValue>
+      <defaultValue>12</defaultValue>
       <description></description>
       <id>fe603aa1-cd2c-45d3-8552-de19fc22e2b3</id>
       <masked>false</masked>
@@ -196,7 +196,7 @@
       <name>Ministry2</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>6</defaultValue>
       <description></description>
       <id>a6a867b4-22f8-4b85-bc77-7e65435dfbd8</id>
       <masked>false</masked>
