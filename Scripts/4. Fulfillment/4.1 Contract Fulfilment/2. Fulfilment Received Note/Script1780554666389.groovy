@@ -448,16 +448,153 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
  * - Serach Application No
  * =========================*/ 
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
-waitBlockUI(20)
-WebUI.delay(0.5)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 //Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
-    Document_Number)
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
+waitBlockUI(20)
 
-//Click TaskList Description
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+TestObject firstRow = findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Tasklist')
+WebUI.waitForElementVisible(firstRow, 20)
+WebUI.scrollToElement(firstRow, 10)
+
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Tasklist'))
+
+//Acknowledge Officer
+selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Dropdown Acknowledge'),ddAcknowledge)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+//Menu Item 
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Menu Item'))
+
+//Menu Item
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Menu Supplier Evaluation'))
+
+//Dropdown score
+String scoreValue = ddScore
+
+for (int i = 0; i < 5; i++) {
+
+	TestObject dropdown = new TestObject("dropdown_" + i)
+	dropdown.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//select[contains(@name,'suppEvalutionDt:" + i + ":score')]"
+	)
+
+	WebUI.waitForElementVisible(dropdown, 10)
+	WebUI.waitForElementClickable(dropdown, 10)
+
+	WebUI.selectOptionByValue(dropdown, scoreValue, false)
+
+	WebUI.delay(0.5) // 🔥 penting untuk slow UI sync
+	
+}
+
+/* ========================
+ * SUBMIT BUTTON
+ * ========================*/
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+waitBlockUI(10)
+WebUI.delay(0.5)
+
+/* ======================================
+ * SUCCESS MESSAGE - After click submit
+ * ====================================== */
+
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+
+// ambil ANY message
+TestObject msgObj = new TestObject('msg_any')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
+)
+
+WebUI.waitForElementVisible(msgObj, 30)
+
+String msg = WebUI.getText(msgObj, FailureHandling.STOP_ON_FAILURE)
+msg = (msg == null) ? "" : msg.trim()
+
+WebUI.comment("Message: " + msg)
+
+// extract FN number
+def matcher = (msg =~ /(FN\d+)/)
+String fnNo = matcher.find() ? matcher.group(1) : ""
+
+if (fnNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ FN number not found. Message was: " + msg
+}
+
+WebUI.comment("✅ Captured FN No: " + poNum)
+
+/* =========================
+ * EXCEL APPEND 
+ * ========================= */
+
+String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
+String filePath = baseDir + '/Submit_Fulfillment_Received_Note.xlsx'
+String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
+
+new File(baseDir).mkdirs()
+
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+def path = Paths.get(filePath)
+
+try {
+	if (Files.exists(path)) {
+		fis = new FileInputStream(filePath)
+		wb = new XSSFWorkbook(fis)
+		sheet = wb.getSheet('Result') ?: wb.createSheet('Result')
+	} else {
+		wb = new XSSFWorkbook()
+		sheet = wb.createSheet('Result')
+
+		// header
+		def header = sheet.createRow(0)
+		header.createCell(0).setCellValue('DateTime')
+		header.createCell(1).setCellValue('FN No')
+		header.createCell(2).setCellValue('Message')
+	}
+
+	int nextRow = sheet.getLastRowNum() + 1
+	def row = sheet.createRow(nextRow)
+
+	row.createCell(0).setCellValue(now)
+	row.createCell(1).setCellValue(fnNo)
+	row.createCell(2).setCellValue(msg)
+
+	FileOutputStream fos = new FileOutputStream(filePath)
+	wb.write(fos)
+	fos.flush()
+	fos.close()
+
+} catch (Exception e) {
+	WebUI.comment("❌ Gagal menulis ke Excel: " + e.getMessage())
+} finally {
+	if (fis != null) fis.close()
+	if (wb != null) wb.close()
+}
+
+WebUI.comment('✅ Appended to Excel: ' + filePath)
+
+/* =========================
+ * SIGN OUT
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()
