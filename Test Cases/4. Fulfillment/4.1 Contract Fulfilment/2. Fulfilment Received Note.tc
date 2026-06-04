@@ -24,6 +24,18 @@
       <value></value>
       <variableId>9cf4e7ee-7e04-415e-8531-e1f7c3979fac</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>0ed66ce9-837f-48ec-9993-4b013dbd356b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>28dab293-3254-48be-929f-a2a1b843d9ba</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'851231015134'</defaultValue>
       <description></description>
@@ -44,5 +56,19 @@
       <id>9cf4e7ee-7e04-415e-8531-e1f7c3979fac</id>
       <masked>false</masked>
       <name>Document_Number</name>
+   </variable>
+   <variable>
+      <defaultValue>34</defaultValue>
+      <description></description>
+      <id>0ed66ce9-837f-48ec-9993-4b013dbd356b</id>
+      <masked>false</masked>
+      <name>ddAcknowledge</name>
+   </variable>
+   <variable>
+      <defaultValue>4</defaultValue>
+      <description></description>
+      <id>28dab293-3254-48be-929f-a2a1b843d9ba</id>
+      <masked>false</masked>
+      <name>ddScore</name>
    </variable>
 </TestCaseEntity>
