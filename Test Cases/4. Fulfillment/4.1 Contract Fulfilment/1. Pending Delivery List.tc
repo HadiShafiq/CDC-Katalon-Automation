@@ -24,8 +24,20 @@
       <value></value>
       <variableId>c61d89f5-e069-46da-a708-ba171f8c3741</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>4e9c196f-d952-4430-8b31-611c4c651274</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>43cf88ea-f368-428f-a634-8b6c50f0f8a9</variableId>
+   </variableLinks>
    <variable>
-      <defaultValue>'khairul707'</defaultValue>
+      <defaultValue>'nurulainmof'</defaultValue>
       <description></description>
       <id>9a7e5401-658f-447e-8b13-94247441946d</id>
       <masked>false</masked>
@@ -39,10 +51,24 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003005'</defaultValue>
+      <defaultValue>'PO260000000003201'</defaultValue>
       <description></description>
       <id>c61d89f5-e069-46da-a708-ba171f8c3741</id>
       <masked>false</masked>
-      <name>Document_Number</name>
+      <name>Purchase_Number</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-06-05'</defaultValue>
+      <description></description>
+      <id>4e9c196f-d952-4430-8b31-611c4c651274</id>
+      <masked>false</masked>
+      <name>dateValue</name>
+   </variable>
+   <variable>
+      <defaultValue>8</defaultValue>
+      <description></description>
+      <id>43cf88ea-f368-428f-a634-8b6c50f0f8a9</id>
+      <masked>false</masked>
+      <name>DeliveryQuantity</name>
    </variable>
 </TestCaseEntity>

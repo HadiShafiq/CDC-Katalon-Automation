@@ -409,10 +409,6 @@ DriverFactory.changeWebDriver(driver)
 
 /* =========================
  * OPEN APPLICATION
- * Purpose:
- * - open NGeP SIT portal
- * - maximize browser
- * - wait initial page load
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
@@ -420,8 +416,6 @@ waitBlockUI(20)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * - switch system language to English
  * ========================= */
 wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
@@ -431,10 +425,6 @@ WebUI.delay(1)
 
 /* =========================
  * LOGIN
- * Purpose:
- * - open login form
- * - enter username and password
- * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
 WebUI.delay(0.5)
@@ -451,38 +441,104 @@ WebUI.delay(0.5)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-//TaskList
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
-
-//Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
-    Document_Number)
-
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
-
-//Click TaskList Description
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
-
 /* =========================
- * Acknowledge
+ * PENDING DELIVERY LIST
  * ========================= */
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Acknowledge'))
-waitBlockUI(30)
-WebUI.delay(1)
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Pending List'))
 
-//click Sign
-c(findTestObject('Object Repository/FD and Agreement/FD Application/FD Approver/Click Sign'))
+//Input Purchase Number
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Purchase Number'),Purchase_Number)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-// ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Search TaskList'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Title'))
+
+//Click Delivery Item
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Menu Delivery Item'))
+
+//Tick
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Tick Box Delivery'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+//Date
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Calender'))
+pickDate(dateValue)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+/* =========================
+ * Get Purchase Order No.
+ * =========================*/
+TestObject poNoObj = new TestObject('poNoObj')
+
+poNoObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//td[label[normalize-space()='Purchase Order No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
+)
+
+WebUI.waitForElementVisible(poNoObj, 20)
+
+String poNo = WebUI.getText(poNoObj).trim()
+
+println("Purchase Order No = " + poNo)
+
+/*  ============================
+ *  Prepare Purchase Order No
+ *  ============================*/
+String purchaseNo = "DO-" + poNo
+
+/* =========================
+ * Delivery Order No field
+ * =========================*/
+TestObject deliveryOrderObj = new TestObject('deliveryOrderObj')
+
+deliveryOrderObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//input[contains(@id,'supplierDoRefNo')]"
+)
+/* =========================
+ * Input Delivery Order No.
+ * =========================*/
+t(deliveryOrderObj, purchaseNo)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+//Click icon 
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Icon Triangle'))
+
+//Input Delivery  Quantity
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Delivery Quantity'), DeliveryQuantity)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+//untuk click tempat lain sebelum submit, untuk pastikan no tu bertukar
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
+
+/* ========================
+ * SUBMIT BUTTON
+ * ========================*/
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+waitBlockUI(10)
+WebUI.delay(0.5)
+
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Sign'))
+waitBlockUI(10)
+WebUI.delay(0.5)
+
+/* ======================================
+ * SUCCESS MESSAGE - After click submit
+ * ====================================== */
+
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
@@ -492,80 +548,82 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-// ===== 2) Wait success message (global text; RN number changes) =====
-TestObject msgObj = new TestObject('msg_PO_saved')
+// ambil ANY message
+TestObject msgObj = new TestObject('msg_any')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Purchase Order') and contains(.,'is acknowledged.')]"
+	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "PO"
-String msg = ""
-for (int i = 0; i < 2; i++) {
-	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("PO")) break
-	WebUI.delay(1)
-}
-
+String msg = WebUI.getText(msgObj, FailureHandling.STOP_ON_FAILURE)
 msg = (msg == null) ? "" : msg.trim()
+
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract PO number dynamically =====
-def matcher = (msg =~ /(PO\d+)/)   // e.g. PO260000000001152
-String prNo = matcher.find() ? matcher.group(1) : ""
+// extract PO number
+def matcher = (msg =~ /(PO\d+)/)
+String poNum = matcher.find() ? matcher.group(1) : ""
 
-if (prNo == "") {
+if (poNum == "") {
 	WebUI.takeScreenshot()
 	assert false : "❌ PO number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured PO No: " + prNo)
 
-// ===== 4) Append to SAME Excel file (no timestamp file) =====
-String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
-new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/ACKNOWLEDGE_PURCHASE_REQUEST_2026.xlsx"
-String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+WebUI.comment("✅ Captured PO No: " + poNum)
 
-def path = Paths.get(filePath)
+
+/* =========================
+ * EXCEL APPEND 
+ * ========================= */
+
+String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
+String filePath = baseDir + '/Submit_Pending_Delivery.xlsx'
+String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
+
+new File(baseDir).mkdirs()
+
 XSSFWorkbook wb
 def sheet
 FileInputStream fis = null
+def path = Paths.get(filePath)
 
-if (Files.exists(path)) {
-	fis = new FileInputStream(filePath)
-	wb = new XSSFWorkbook(fis)
-	sheet = wb.getSheet("Result")
-	if (sheet == null) sheet = wb.createSheet("Result")
-} else {
-	wb = new XSSFWorkbook()
-	sheet = wb.createSheet("Result")
+try {
+	if (Files.exists(path)) {
+		fis = new FileInputStream(filePath)
+		wb = new XSSFWorkbook(fis)
+		sheet = wb.getSheet('Result') ?: wb.createSheet('Result')
+	} else {
+		wb = new XSSFWorkbook()
+		sheet = wb.createSheet('Result')
 
-	def header = sheet.createRow(0)
-	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("PO No")
-	header.createCell(2).setCellValue("Message")
+		// header
+		def header = sheet.createRow(0)
+		header.createCell(0).setCellValue('DateTime')
+		header.createCell(1).setCellValue('PO No')
+		header.createCell(2).setCellValue('Message')
+	}
+
+	int nextRow = sheet.getLastRowNum() + 1
+	def row = sheet.createRow(nextRow)
+
+	row.createCell(0).setCellValue(now)
+	row.createCell(1).setCellValue(poNum)
+	row.createCell(2).setCellValue(msg)
+
+	FileOutputStream fos = new FileOutputStream(filePath)
+	wb.write(fos)
+	fos.flush()
+	fos.close()
+
+} catch (Exception e) {
+	WebUI.comment("❌ Gagal menulis ke Excel: " + e.getMessage())
+} finally {
+	if (fis != null) fis.close()
+	if (wb != null) wb.close()
 }
 
-// Close input stream to avoid Excel file lock
-if (fis != null) fis.close()
-
-// Next empty row
-int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-def row = sheet.createRow(nextRow)
-
-row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(prNo)
-row.createCell(2).setCellValue(msg)
-
-// Save back to SAME file
-FileOutputStream fos = new FileOutputStream(filePath)
-wb.write(fos)
-fos.close()
-wb.close()
-
-WebUI.comment("✅ Appended to Excel: " + filePath)
+WebUI.comment('✅ Appended to Excel: ' + filePath)
 
 /* =========================
  * SIGN OUT
