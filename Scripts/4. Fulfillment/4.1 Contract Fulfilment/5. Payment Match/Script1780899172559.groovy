@@ -409,10 +409,6 @@ DriverFactory.changeWebDriver(driver)
 
 /* =========================
  * OPEN APPLICATION
- * Purpose:
- * - open NGeP SIT portal
- * - maximize browser
- * - wait initial page load
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
@@ -420,8 +416,6 @@ waitBlockUI(20)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * - switch system language to English
  * ========================= */
 wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
@@ -431,10 +425,6 @@ WebUI.delay(1)
 
 /* =========================
  * LOGIN
- * Purpose:
- * - open login form
- * - enter username and password
- * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
 WebUI.delay(0.5)
@@ -451,14 +441,11 @@ WebUI.delay(0.5)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
 //TaskList
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
-
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 //Input Document Number
@@ -470,14 +457,8 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-/* ================
- * ITEM
- * ================ */
-//Bank Account No.Name
-selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Dropdown Bank'), ddBank)
-
 /* =========================
- * FOR INVOICE No.
+ * FOR PAYMENT DESCRIPTION
  * ------------------------
  * Get Purchase Order No.
  * =========================*/
@@ -498,35 +479,29 @@ println("Purchase Order No = " + poNum)
 /*  ============================
  *  Prepare Purchase Order No
  *  ============================*/
-String purchaseNo = "IN-" + poNum
+String purchaseNo = "PD-" + poNum
 
 /* =========================
- * Invoice No. Field
+ * Payment Description Field
  * =========================*/
-TestObject invoiceNo = new TestObject('invoiceNo')
+TestObject paymentDesc = new TestObject('paymentDesc')
 
-invoiceNo.addProperty(
+paymentDesc.addProperty(
 	"xpath",
 	ConditionType.EQUALS,
-	"//input[contains(@id,'supplierInvoiceRef')]"
+	"(//input[contains(@id,'form') and @type='text'])[11]"
 )
-/* =========================
- * Key In Input Invoice No.
- * =========================*/
-t(invoiceNo, purchaseNo)
+/* ====================================
+ * Key In Input Payment Description
+ * ====================================*/
+t(paymentDesc, purchaseNo)
 
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//TICKBOX - I declare
-c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Tick Box - I declare'))
-
-//SUBMIT BUTTON 
-c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Submit Button'))
+//MATCH BUTTON 
+c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Match Button'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Click Sign'))
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Click Sign WO GPKI'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
@@ -556,22 +531,22 @@ msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
 // extract FN number
-def matcher = (msg =~ /(PO\d+)/)
-String poNo = matcher.find() ? matcher.group(1) : ""
+def matcher = (msg =~ /(PA\d+)/)
+String paNo = matcher.find() ? matcher.group(1) : ""
 
-if (poNo == "") {
+if (paNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ PO number not found. Message was: " + msg
+	assert false : "❌ PA number not found. Message was: " + msg
 }
 
-WebUI.comment("✅ Captured PO No: " + poNo)
+WebUI.comment("✅ Captured PA No: " + paNo)
 
 /* =========================
  * EXCEL APPEND 
  * ========================= */
 
 String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
-String filePath = baseDir + '/Create_Invoice_Supplier.xlsx'
+String filePath = baseDir + '/Payment_Match.xlsx'
 String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
 
 new File(baseDir).mkdirs()
@@ -593,7 +568,7 @@ try {
 		// header
 		def header = sheet.createRow(0)
 		header.createCell(0).setCellValue('DateTime')
-		header.createCell(1).setCellValue('PONo')
+		header.createCell(1).setCellValue('PANo')
 		header.createCell(2).setCellValue('Message')
 	}
 
@@ -601,7 +576,7 @@ try {
 	def row = sheet.createRow(nextRow)
 
 	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(poNo)
+	row.createCell(1).setCellValue(paNo)
 	row.createCell(2).setCellValue(msg)
 
 	FileOutputStream fos = new FileOutputStream(filePath)
