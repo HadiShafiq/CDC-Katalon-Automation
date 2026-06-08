@@ -470,85 +470,69 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-//Click Delivery Item
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Menu Delivery Item'))
-
-//Tick
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Tick Box Delivery'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//Date
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Calender'))
-pickDate(dateValue)
-waitBlockUI(20)
-WebUI.delay(0.5)
+/* ================
+ * ITEM
+ * ================ */
+//Bank Account No.Name
+selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Dropdown Bank'), ddBank)
 
 /* =========================
+ * FOR INVOICE No.
+ * ------------------------
  * Get Purchase Order No.
  * =========================*/
-TestObject poNoObj = new TestObject('poNoObj')
+TestObject poNumObj = new TestObject('poNumObj')
 
-poNoObj.addProperty(
+poNumObj.addProperty(
 	"xpath",
 	ConditionType.EQUALS,
 	"//td[label[normalize-space()='Purchase Order No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
 )
 
-WebUI.waitForElementVisible(poNoObj, 20)
+WebUI.waitForElementVisible(poNumObj, 20)
 
-String poNo = WebUI.getText(poNoObj).trim()
+String poNum = WebUI.getText(poNumObj).trim()
 
-println("Purchase Order No = " + poNo)
+println("Purchase Order No = " + poNum)
 
 /*  ============================
  *  Prepare Purchase Order No
  *  ============================*/
-String purchaseNo = "DO-" + poNo
+String purchaseNo = "IN-" + poNum
 
 /* =========================
- * Delivery Order No field
+ * Invoice No. Field
  * =========================*/
-TestObject deliveryOrderObj = new TestObject('deliveryOrderObj')
+TestObject invoiceNo = new TestObject('invoiceNo')
 
-deliveryOrderObj.addProperty(
+invoiceNo.addProperty(
 	"xpath",
 	ConditionType.EQUALS,
-	"//input[contains(@id,'supplierDoRefNo')]"
+	"//input[contains(@id,'supplierInvoiceRef')]"
 )
-/* ===============================
- * Key In Input Delivery Order No.
- * ===============================*/
-t(deliveryOrderObj, purchaseNo)
+/* =========================
+ * Key In Input Invoice No.
+ * =========================*/
+t(invoiceNo, purchaseNo)
+
 waitBlockUI(20)
 WebUI.delay(0.5)
 
-//Click icon 
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Icon Triangle'))
+//TICKBOX - I declare
+c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Tick Box - I declare'))
 
-//Input Delivery  Quantity
-t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Delivery Quantity'), DeliveryQuantity)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//untuk click tempat lain sebelum submit, untuk pastikan no tu bertukar
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
-
-/* ========================
- * SUBMIT BUTTON
- * ========================*/
-c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+//SUBMIT BUTTON 
+c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Submit Button'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Sign'))
+c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Click Sign'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
 /* ======================================
  * SUCCESS MESSAGE - After click submit
  * ====================================== */
-
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
@@ -558,7 +542,7 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-// ambil ANY message
+//ambil ANY message
 TestObject msgObj = new TestObject('msg_any')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
@@ -571,24 +555,23 @@ msg = (msg == null) ? "" : msg.trim()
 
 WebUI.comment("Message: " + msg)
 
-// extract PO number
+// extract FN number
 def matcher = (msg =~ /(PO\d+)/)
-String poNum = matcher.find() ? matcher.group(1) : ""
+String poNo = matcher.find() ? matcher.group(1) : ""
 
-if (poNum == "") {
+if (poNo == "") {
 	WebUI.takeScreenshot()
 	assert false : "❌ PO number not found. Message was: " + msg
 }
 
-WebUI.comment("✅ Captured PO No: " + poNum)
-
+WebUI.comment("✅ Captured PO No: " + poNo)
 
 /* =========================
  * EXCEL APPEND 
  * ========================= */
 
 String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
-String filePath = baseDir + '/Submit_Pending_Delivery.xlsx'
+String filePath = baseDir + '/Create_Invoice_Supplier.xlsx'
 String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
 
 new File(baseDir).mkdirs()
@@ -618,7 +601,7 @@ try {
 	def row = sheet.createRow(nextRow)
 
 	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(poNum)
+	row.createCell(1).setCellValue(poNo)
 	row.createCell(2).setCellValue(msg)
 
 	FileOutputStream fos = new FileOutputStream(filePath)
