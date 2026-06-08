@@ -38,7 +38,7 @@
    </variableLinks>
    <variable>
       <defaultValue>'nurulainmof'</defaultValue>
-      <description></description>
+      <description>*supplier</description>
       <id>9a7e5401-658f-447e-8b13-94247441946d</id>
       <masked>false</masked>
       <name>Username</name>
