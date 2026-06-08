@@ -22,25 +22,39 @@ import java.text.SimpleDateFormat
 import java.util.Arrays
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
-import com.kms.katalon.core.webui.driver.DriverFactory
-import org.openqa.selenium.By
-import org.openqa.selenium.WebElement
-import com.kms.katalon.core.webui.driver.DriverFactory
 
-/* =========================
- * HELPERS TEST
+/* =========================================================
+ * HELPER SECTION
  * Purpose:
- * - reusable utility for conversion, wait, click, text input, upload
- * - keep script stable without changing main flow
- * ========================= */
+ * - common reusable functions
+ * - grouped by type for easier maintenance
+ * - logic unchanged, only rearranged and commented
+ * ========================================================= */
 
-// Convert excel/csv value to int safely: "0", 0, 0.0, "1.0"
+
+/* =========================================================
+ * 1) BASIC DATA / CONVERSION HELPER
+ * ========================================================= */
+
+/**
+ * Convert Excel / CSV value to int safely.
+ * Example supported values:
+ * "0", 0, 0.0, "1.0"
+ */
 int toInt(def v, int defaultVal = 0) {
 	if (v == null) return defaultVal
 	return new BigDecimal(v.toString().trim()).intValue()
 }
 
-// PrimeFaces overlay wait
+
+/* =========================================================
+ * 2) PAGE / OVERLAY WAIT HELPER
+ * ========================================================= */
+
+/**
+ * Wait until PrimeFaces / block UI overlay disappears.
+ * Use this after click, dropdown selection, save, popup action, etc.
+ */
 def waitBlockUI(int timeout = 30) {
 	TestObject blockUI = new TestObject('blockUI')
 	blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -52,20 +66,34 @@ def waitBlockUI(int timeout = 30) {
 	}
 }
 
-/* ---------- Lightweight wait wrappers ---------- */
-// wait until element visible
+
+/* =========================================================
+ * 3) LIGHTWEIGHT ELEMENT WAIT / ACTION HELPERS
+ * ========================================================= */
+
+/**
+ * Wait until element is visible.
+ */
 def wVisible(TestObject obj, int timeout = 1) {
 	waitBlockUI(Math.min(timeout, 1))
 	WebUI.waitForElementVisible(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// wait until element clickable
+/**
+ * Wait until element is clickable.
+ * This first ensures element is visible.
+ */
 def wClickable(TestObject obj, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.waitForElementClickable(obj, timeout, FailureHandling.STOP_ON_FAILURE)
 }
 
-// click with wait + tiny retry
+/**
+ * Click element with:
+ * - wait
+ * - scroll
+ * - small retry if first click fails
+ */
 def c(TestObject obj, int timeout = 1) {
 	for (int i=0; i<2; i++) {
 		try {
@@ -84,7 +112,9 @@ def c(TestObject obj, int timeout = 1) {
 	waitBlockUI(1)
 }
 
-// double click with wait
+/**
+ * Double click element with wait.
+ */
 def dc(TestObject obj, int timeout = 1) {
 	try {
 		wClickable(obj, timeout)
@@ -97,77 +127,35 @@ def dc(TestObject obj, int timeout = 1) {
 	}
 }
 
-// setText with wait
+/**
+ * Set text with wait.
+ * Best for normal text field.
+ * For sensitive formatted field, use JS/manual typing separately.
+ */
 def t(TestObject obj, def value, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.scrollToElement(obj, 1, FailureHandling.OPTIONAL)
 	WebUI.setText(obj, (value == null ? "" : value.toString()))
 }
 
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-def setZoneQtyByRow = { int rowIndex, String qtyValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
-
-	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
-	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(qtyObj, 20)
-	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(qtyEl, qtyValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-
-/* =========================
- * HELPERS for zone quantity
- * ========================= */
-
-def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
-
-	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
-	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-	WebUI.waitForElementVisible(priceObj, 20)
-	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
-
-	WebUI.executeJavaScript(
-		"""
-        arguments[0].value = arguments[1];
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-		Arrays.asList(priceEl, unitPriceValue)
-	)
-
-	waitBlockUI(30)
-	WebUI.delay(0.5)
-}
-// upload with wait
+/**
+ * Upload file with wait.
+ */
 def up(TestObject obj, String filePath, int timeout = 1) {
 	wVisible(obj, timeout)
 	WebUI.uploadFile(obj, filePath)
 	waitBlockUI(1)
 }
 
-/* =========================
- * PRIMEFACES DROPDOWN HELPERS
- * Purpose:
- * - open PrimeFaces dropdown
- * - click option by index
- * - support both PrimeFaces and real select
- * ========================= */
+
+/* =========================================================
+ * 4) PRIMEFACES DROPDOWN HELPERS
+ * ========================================================= */
+
+/**
+ * Open PrimeFaces dropdown panel.
+ * Used for dropdown that is not a real <select>.
+ */
 def openPFDropdown(TestObject triggerObj) {
 
 	TestObject panelOpen = new TestObject('pfPanelOpen')
@@ -185,7 +173,12 @@ def openPFDropdown(TestObject triggerObj) {
 	}
 }
 
-// click PrimeFaces option by index (0-based)
+/**
+ * Click PrimeFaces dropdown option by 0-based index.
+ * Example:
+ * 0 = first option
+ * 1 = second option
+ */
 def clickPFOptionByIndex(int index0) {
 	TestObject opt = new TestObject("pfOpt_" + index0)
 	opt.addProperty("xpath", ConditionType.EQUALS,
@@ -198,7 +191,10 @@ def clickPFOptionByIndex(int index0) {
 }
 
 /**
- * Universal dropdown select by index (SAFE)
+ * Universal dropdown select by index.
+ * Supports:
+ * - real <select>
+ * - PrimeFaces custom dropdown
  */
 def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 
@@ -227,81 +223,100 @@ def selectDropdownByIndex(TestObject dropdownObj, def indexFromData) {
 	assert false : "❌ Dropdown failed (stale/DOM refresh): " + dropdownObj.getObjectId()
 }
 
-/* =========================
- * Function: Claim document by Document No
- * ========================= */
-def claimDocument(String targetDocNo) {
 
-	boolean found = false
+/* =========================================================
+ * 5) TABLE / POPUP INPUT HELPERS
+ * ========================================================= */
 
-	for (int pageIndex = 1; pageIndex <= 10; pageIndex++) {
+/**
+ * Set zone quantity by popup row index.
+ * Used for popup table:
+ * specZoneQtyTbl:{rowIndex}:zoneQty
+ */
+def setZoneQtyByRow = { int rowIndex, String qtyValue ->
+	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specZoneQtyTbl:${rowIndex}:zoneQty')]"
 
-		WebUI.comment("Checking page " + pageIndex + " for Document No: " + targetDocNo)
+	TestObject qtyObj = new TestObject("zoneQty_" + rowIndex)
+	qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-		TestObject targetRow = new TestObject("targetRow_" + targetDocNo)
-		targetRow.addProperty("xpath", ConditionType.EQUALS,
-			"//tbody[contains(@id,'taskListGroupId_data')]//tr[td[normalize-space()='" + targetDocNo + "']]"
-		)
+	WebUI.waitForElementVisible(qtyObj, 20)
+	WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
 
-		if (WebUI.verifyElementPresent(targetRow, 3, FailureHandling.OPTIONAL)) {
+	WebUI.executeJavaScript(
+		"""
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+		Arrays.asList(qtyEl, qtyValue)
+	)
 
-			TestObject claimBtn = new TestObject("claimBtn_" + targetDocNo)
-			claimBtn.addProperty("xpath", ConditionType.EQUALS,
-				"//tbody[contains(@id,'taskListGroupId_data')]//tr[td[normalize-space()='" + targetDocNo + "']]//span[normalize-space()='Claim']/ancestor::button"
-			)
-
-			WebUI.waitForElementClickable(claimBtn, 20)
-			c(claimBtn, 20)
-			waitBlockUI(30)
-			WebUI.delay(1)
-
-			found = true
-			break
-		}
-
-		if (pageIndex < 10) {
-			int nextIndex = pageIndex + 1
-
-			TestObject nextPage = new TestObject("page_" + nextIndex)
-			nextPage.addProperty("xpath", ConditionType.EQUALS,
-				"(//span[contains(@class,'ui-paginator-pages')]/span[normalize-space()='" + nextIndex + "'])[1]"
-			)
-
-			if (WebUI.verifyElementPresent(nextPage, 5, FailureHandling.OPTIONAL)) {
-				WebUI.scrollToElement(nextPage, 3)
-				WebUI.click(nextPage)
-				waitBlockUI(30)
-				WebUI.delay(1)
-			} else {
-				break
-			}
-		}
-	}
-
-	return found
+	waitBlockUI(30)
+	WebUI.delay(0.5)
 }
 
-/* ===========================================================================
- * Function: Untuk Side Menu Schedule | Performance Bond | Payment Tracking
- * =========================================================================== */
-def clickSideMenuIfExists(String objectPath) {
-	
-		TestObject menuObj = findTestObject(objectPath)
-	
-		if (WebUI.waitForElementClickable(menuObj, 5, FailureHandling.OPTIONAL)) {
-			c(menuObj)
-			waitBlockUI(20)
-			return true
-		}
-	
-		WebUI.comment("Skip: menu not available -> " + objectPath)
-		return false
-	}
-	
+/**
+ * Set order quantity/ rate by popup row index.
+ * Used for popup table:
+ * specAnswerTbl:{rowIndex}:ratePerUomAns
+ */
+def setOrderedQtyByRow = { int rowIndex, String qtyValue ->
+
+    String xpath = "//div[contains(@class,'ui-dialog')]//tr[@data-ri='" + rowIndex + "']//input[contains(@name,'orderedQty')]"
+
+    TestObject qtyObj = new TestObject("orderedQty_" + rowIndex)
+    qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+    WebUI.waitForElementVisible(qtyObj, 20)
+    WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+    WebUI.executeJavaScript(
+        """
+        arguments[0].value = arguments[1];
+        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
+        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
+        """,
+        Arrays.asList(qtyEl, qtyValue)
+    )
+
+    waitBlockUI(30)
+    WebUI.delay(0.5)
+}
+
+
+/* =========================================================
+ * 6) SPECIAL RADIO / OPTION HELPER
+ * ========================================================= */
+
+/**
+ * Click procurement type radio button by business option number.
+ * Mapping:
+ * 1 = first radio
+ * 2 = second radio
+ * etc.
+ */
+def clickProcurementType(int option) {
+	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
+
+	TestObject obj = new TestObject("procurementType_" + option)
+	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+	WebUI.waitForElementVisible(obj, 20)
+	WebUI.waitForElementClickable(obj, 20)
+
+	WebUI.executeJavaScript(
+		"arguments[0].click();",
+		Arrays.asList(WebUiCommonHelper.findWebElement(obj, 20))
+	)
+
+	waitBlockUI(20)
+}
+
+
 /* =========================================================
  * 7) CALENDAR PICKER DATE
  * ========================================================= */
-	
+
 def pickDate(String yyyyMmDd) {
 
 	TestObject dp = new TestObject('dp')
@@ -349,6 +364,7 @@ def pickDate(String yyyyMmDd) {
 	WebUI.takeScreenshot()
 	assert false : "Date not found in datepicker: " + yyyyMmDd
 }
+
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -363,13 +379,15 @@ String userDataDir = Files.createTempDirectory("katalon-cft").toString()
 ChromeOptions options = new ChromeOptions()
 options.setBinary(chromeBinary)
 
-//Bypass security pop up for google chrome 
+// Bypass browser security popup
 options.setAcceptInsecureCerts(true)
 
+// Disable HTTPS-first strict behavior
 options.addArguments("--disable-features=HttpsFirstBalancedModeAutoEnable,HttpsUpgrades")
 
+// Browser profile options
 options.addArguments("--guest")
-//options.addArguments("--incognito")
+// options.addArguments("--incognito")
 options.addArguments("--user-data-dir=" + userDataDir)
 options.addArguments("--disable-features=PasswordLeakDetection,PasswordManagerOnboarding")
 options.addArguments("--disable-save-password-bubble")
@@ -378,20 +396,16 @@ options.addArguments("--no-first-run")
 options.addArguments("--no-default-browser-check")
 options.addArguments("--remote-allow-origins=*")
 
+// Browser preferences
 Map<String, Object> prefs = new HashMap<>()
 prefs.put("credentials_enable_service", false)
 prefs.put("profile.password_manager_enabled", false)
 prefs.put("profile.default_content_setting_values.notifications", 2)
 options.setExperimentalOption("prefs", prefs)
 
-
+// Launch browser
 WebDriver driver = new ChromeDriver(options)
 DriverFactory.changeWebDriver(driver)
-
-/* ============================
- * String for Upload Files
- * ============================ */
-String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
 
 /* =========================
  * OPEN APPLICATION
@@ -419,7 +433,7 @@ WebUI.delay(1)
  * LOGIN
  * Purpose:
  * - open login form
- * - enter username and password 123
+ * - enter username and password
  * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
@@ -436,32 +450,25 @@ waitBlockUI(30)
 WebUI.delay(0.5)
 
 /* =========================
- * CHANGE LANGUAGE
+ * LANGUAGE
  * Purpose:
- * - Change Language at Dashboard
+ * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-/* =========================
- * Tasklist MyTask
- * Purpose:
- * - Serach Application No
- * =========================*/ 
+//TaskList
 c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
 //Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'),Document_Number)
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
+    Document_Number)
 
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
-waitBlockUI(20)
 
-TestObject firstRow = findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Tasklist')
-WebUI.waitForElementVisible(firstRow, 20)
-WebUI.scrollToElement(firstRow, 10)
-
-c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Tasklist'))
+//Click TaskList Description
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
 //Acknowledge Officer
 selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Dropdown Acknowledge'),ddAcknowledge)
@@ -520,6 +527,7 @@ TestObject msgObj = new TestObject('msg_any')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
 )
+//Fulfilment Received Note for Products / Services FN260000000003002 is successfully submitted for approval.
 
 WebUI.waitForElementVisible(msgObj, 30)
 
@@ -537,7 +545,7 @@ if (fnNo == "") {
 	assert false : "❌ FN number not found. Message was: " + msg
 }
 
-WebUI.comment("✅ Captured FN No: " + poNum)
+WebUI.comment("✅ Captured FN No: " + fnNo)
 
 /* =========================
  * EXCEL APPEND 

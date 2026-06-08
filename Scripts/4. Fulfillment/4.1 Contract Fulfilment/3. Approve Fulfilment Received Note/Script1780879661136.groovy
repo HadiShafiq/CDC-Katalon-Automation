@@ -470,79 +470,16 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-//Click Delivery Item
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Menu Delivery Item'))
-
-//Tick
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Tick Box Delivery'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//Date
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Calender'))
-pickDate(dateValue)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-/* =========================
- * Get Purchase Order No.
- * =========================*/
-TestObject poNoObj = new TestObject('poNoObj')
-
-poNoObj.addProperty(
-	"xpath",
-	ConditionType.EQUALS,
-	"//td[label[normalize-space()='Purchase Order No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
-)
-
-WebUI.waitForElementVisible(poNoObj, 20)
-
-String poNo = WebUI.getText(poNoObj).trim()
-
-println("Purchase Order No = " + poNo)
-
-/*  ============================
- *  Prepare Purchase Order No
- *  ============================*/
-String purchaseNo = "DO-" + poNo
-
-/* =========================
- * Delivery Order No field
- * =========================*/
-TestObject deliveryOrderObj = new TestObject('deliveryOrderObj')
-
-deliveryOrderObj.addProperty(
-	"xpath",
-	ConditionType.EQUALS,
-	"//input[contains(@id,'supplierDoRefNo')]"
-)
-/* =========================
- * Input Delivery Order No.
- * =========================*/
-t(deliveryOrderObj, purchaseNo)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//Click icon 
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Icon Triangle'))
-
-//Input Delivery  Quantity
-t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Delivery Quantity'), DeliveryQuantity)
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-//untuk click tempat lain sebelum submit, untuk pastikan no tu bertukar
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
-
 /* ========================
- * SUBMIT BUTTON
+ * APPROVE BUTTON
  * ========================*/
-c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Approve Button'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Sign'))
-waitBlockUI(10)
+//click Sign
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Sign WO GPKI'))
+waitBlockUI(20)
 WebUI.delay(0.5)
 
 /* ======================================
@@ -571,24 +508,23 @@ msg = (msg == null) ? "" : msg.trim()
 
 WebUI.comment("Message: " + msg)
 
-// extract PO number
-def matcher = (msg =~ /(PO\d+)/)
-String poNum = matcher.find() ? matcher.group(1) : ""
+// extract FN number
+def matcher = (msg =~ /(FN\d+)/)
+String fnNo = matcher.find() ? matcher.group(1) : ""
 
-if (poNum == "") {
+if (fnNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ PO number not found. Message was: " + msg
+	assert false : "❌ FN number not found. Message was: " + msg
 }
 
-WebUI.comment("✅ Captured PO No: " + poNum)
-
+WebUI.comment("✅ Captured FN No: " + fnNo)
 
 /* =========================
  * EXCEL APPEND 
  * ========================= */
 
 String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
-String filePath = baseDir + '/Submit_Pending_Delivery.xlsx'
+String filePath = baseDir + '/Approve_Fulfillment_Received_Note.xlsx'
 String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
 
 new File(baseDir).mkdirs()
@@ -610,7 +546,7 @@ try {
 		// header
 		def header = sheet.createRow(0)
 		header.createCell(0).setCellValue('DateTime')
-		header.createCell(1).setCellValue('PO No')
+		header.createCell(1).setCellValue('FN No')
 		header.createCell(2).setCellValue('Message')
 	}
 
@@ -618,7 +554,7 @@ try {
 	def row = sheet.createRow(nextRow)
 
 	row.createCell(0).setCellValue(now)
-	row.createCell(1).setCellValue(poNum)
+	row.createCell(1).setCellValue(fnNo)
 	row.createCell(2).setCellValue(msg)
 
 	FileOutputStream fos = new FileOutputStream(filePath)
