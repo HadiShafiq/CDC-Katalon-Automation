@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>FirstEmailVerification</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>dc4c49bd-5edb-432a-bf57-aee9debff102</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>78b8f9e1-4d9e-4c4a-aa2c-c99fb8bdd0c5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>0e2064b9-c3ad-4915-b209-d35bbf092aaf</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9130a049-6164-4e32-b407-4afd34af7f9c</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'izzcdctest@outlook.com'</defaultValue>
+      <description></description>
+      <id>78b8f9e1-4d9e-4c4a-aa2c-c99fb8bdd0c5</id>
+      <masked>false</masked>
+      <name>SupplierEmail</name>
+   </variable>
+   <variable>
+      <defaultValue>'Hoo*6H`7Hn11'</defaultValue>
+      <description></description>
+      <id>0e2064b9-c3ad-4915-b209-d35bbf092aaf</id>
+      <masked>false</masked>
+      <name>SupplierEmailPassword</name>
+   </variable>
+   <variable>
+      <defaultValue>'SMAutoTest1'</defaultValue>
+      <description>Will use this to login</description>
+      <id>9130a049-6164-4e32-b407-4afd34af7f9c</id>
+      <masked>false</masked>
+      <name>IDLogMasuk</name>
+   </variable>
+</TestCaseEntity>
