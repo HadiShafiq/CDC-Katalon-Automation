@@ -70,11 +70,11 @@
       <name>ContractNo</name>
    </variable>
    <variable>
-      <defaultValue>'Change contract extension'</defaultValue>
-      <description>, Change item price, Others (In addition to the above changes)</description>
+      <defaultValue>'Change contract extension,Others (In addition to the above changes)\t'</defaultValue>
+      <description>Change contract extension, Change item price, Change quantity, Change contract value, Change of clause, Change of contract value caused by GST/SST, Others (In addition to the above changes)	</description>
       <id>21facfc0-9419-4148-9ee6-f56308d494a6</id>
       <masked>false</masked>
-      <name>tickLabel</name>
+      <name>tickAmendmentType</name>
    </variable>
    <variable>
       <defaultValue>12</defaultValue>
@@ -91,10 +91,10 @@
       <name>dayValue</name>
    </variable>
    <variable>
-      <defaultValue>'Ahmad Bin Star'</defaultValue>
-      <description></description>
+      <defaultValue>'Quotation Committee\r\n'</defaultValue>
+      <description>Ministry Of Finance, Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak</description>
       <id>dfc64651-6fb7-4e4f-9f43-32b2552ed135</id>
       <masked>false</masked>
-      <name>secretaryName</name>
+      <name>tickApprovingAuthority</name>
    </variable>
 </TestCaseEntity>
