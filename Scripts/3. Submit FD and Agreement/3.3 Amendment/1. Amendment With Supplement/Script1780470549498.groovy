@@ -437,8 +437,167 @@ WebUI.delay(0.5)
 
 /* =========================
  * CHANGE LANGUAGE
- * Purpose:
- * - Change Language at Dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
+
+/* ==========================
+ * CLICK CONTRACT MAINTENANCE
+ * ==========================*/
+c(findTestObject('Object Repository/FD and Agreement/CM - Amendment/Click Contract Maintenance'))
+
+t(findTestObject('Object Repository/FD and Agreement/CM - Amendment/Contract No'), ContractNo)
+
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Click Button Search'))
+
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Click Option'))
+
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Amendment With Supplement'))
+
+/* ==========================
+ * AMENDMENT DETAIL
+ * ==========================*/
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Menu Amendment Detail'))
+
+// Tick Box
+void tickAmendment(List<String> labels) {
+	labels.each { labelText ->
+		println("Ticking: " + labelText)
+		String xpath = ""
+		if (labelText == "Change contract extension") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[1]"
+		}
+		else if (labelText == "Change item price") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[2]"
+		}
+		else if (labelText == "Change quantity") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[3]"
+		}
+		else if (labelText == "Change contract value") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[4]"
+		}
+		else if (labelText == "Change of clause") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[5]"
+		}
+		else if (labelText == "Change of contract value caused by GST/SST") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[6]"
+		}
+		else if (labelText == "Others (In addition to the above changes)") {
+			xpath = "(//div[contains(@class,'ui-chkbox-box')])[7]"
+		}
+		else {
+			// fallback (kalau label lain)
+			xpath = "//label[contains(normalize-space(),'" + labelText + "')]/ancestor::tr//div[contains(@class,'ui-chkbox-box')]"
+		}
+		TestObject checkbox = new TestObject()
+		checkbox.addProperty(
+			"xpath",
+		ConditionType.EQUALS,
+			xpath
+		)
+		WebUI.waitForElementPresent(checkbox, 10)
+		WebUI.scrollToElement(checkbox, 5)
+		String classAttr = WebUI.getAttribute(checkbox, "class")
+
+		if (classAttr == null || !classAttr.contains("ui-state-active")) {
+			WebUI.click(checkbox)
+		}
+		WebUI.delay(1)
+	}
+}
+
+//Call function
+tickAmendment(
+    tickLabel.split(',').collect { it.trim() }
+)
+/* =========================
+ * FOR FILE REFRENCES NO.
+ * ------------------------
+ * Get LOANo. and  CTNo.
+ * =========================*/
+TestObject loaNo = new TestObject('loaNo')
+
+loaNo.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//label[normalize-space()='Letter of Acceptance (LOA) No.']/ancestor::td/following-sibling::td[1]//a"
+)
+
+WebUI.waitForElementVisible(loaNo, 20)
+
+String loaNum = WebUI.getText(loaNo).trim()
+
+println("LOA No = " + loaNum)
+
+/*  ============================
+ *  Prepare Purchase Order No
+ *  ============================*/
+String loaNumber = "FILE REF - " + loaNum
+
+/* =========================
+ * File References Field
+ * =========================*/
+TestObject fileRef = new TestObject('fileRef')
+
+fileRef.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"(//input[contains(@id,'form') and @type='text'])[1]"
+)
+/* ====================================
+ * Key In Input Payment Description
+ * ====================================*/
+t(fileRef, loaNumber)
+WebUI.delay(2)
+
+/* ===================================
+ * Change contract extension - Display A
+ * ===================================*/
+//fill Display A - FOR [ ] Change contract extension
+TestObject monthsField = new TestObject()
+monthsField.addProperty("xpath", ConditionType.EQUALS,
+	"//input[contains(@id,'extendMonthsId')]"
+)
+
+TestObject daysField = new TestObject()
+daysField.addProperty("xpath", ConditionType.EQUALS,
+	"//input[contains(@id,'extendDaysId')]"
+)
+
+/* ==================================================
+ * Fill Display A Fields
+ * (Months & Days)
+ * Using JavaScript to bypass PrimeFaces auto-reset ("0")
+ * ==================================================*/
+//MONTHS FIELD
+if (WebUI.waitForElementVisible(monthsField, 10)) {
+
+    WebElement monthEl = WebUiCommonHelper.findWebElement(monthsField, 10)
+
+    WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(monthEl))
+    WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(monthEl))
+    WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(monthEl, monthValue))
+
+    WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(monthEl))
+    WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(monthEl))
+    WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(monthEl))
+}
+
+//DAYS FIELD
+if (WebUI.waitForElementVisible(daysField, 10)) {
+	
+	WebElement dayEl = WebUiCommonHelper.findWebElement(daysField, 10)
+	
+	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(dayEl))
+	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(dayEl))
+	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(dayEl, dayValue))
+	
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(dayEl))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(dayEl))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(dayEl))
+}
+
+/* ==============================================================
+ * ALL SECTION WILL DISPLAY - Approving Authority [TICK BOX]
+ * ==============================================================*/
+
 
