@@ -45,11 +45,11 @@
       <name>SupplierEmailPassword</name>
    </variable>
    <variable>
-      <defaultValue>'SMAUTOTEST1'</defaultValue>
+      <defaultValue>'SMAUTOTEST2'</defaultValue>
       <description>All caps </description>
       <id>dbeb24b4-23ef-4d0e-975b-2dd6d9111ada</id>
       <masked>false</masked>
-      <name>IDLogMasuk</name>
+      <name>Username</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>

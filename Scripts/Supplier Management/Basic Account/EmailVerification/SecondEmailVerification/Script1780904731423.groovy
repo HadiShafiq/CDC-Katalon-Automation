@@ -469,7 +469,7 @@ def findByXPath(String xpath) {
  * - maximize browser
  * - wait initial page load
  * ========================= */
- WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/NGeP-portlet/rest/pm/createliferay')
+WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/NGeP-portlet/rest/pm/createliferay')
 WebUI.maximizeWindow()
 waitBlockUI(20)
 
@@ -520,8 +520,41 @@ WebUI.switchToWindowIndex(1)
 waitBlockUI(5)
 
 //Login Page login+password
-t(findTestObject('Object Repository/Home Page/LoginPage/LoginID'),IDLogMasuk)
+t(findTestObject('Object Repository/Home Page/LoginPage/LoginID'),Username)
 waitBlockUI(5)
 t(findTestObject('Object Repository/Home Page/LoginPage/Password'),tempPassword)
-c(findTestObject('Object Repository/Home Page/LoginPage/LoginButton'))
+c(findTestObject('Object Repository/Home Page/LoginPage/LoginButtonMalay'))
 waitBlockUI(5)
+
+//Bug? Have to relogin and then will go to change password page
+
+/* =========================
+ * LANGUAGE
+ * Purpose:
+ * - switch system language to English
+ * ========================= */
+wVisible(findTestObject('Object Repository/Home Page/LanguageSelect'), 20)
+WebUI.selectOptionByValue(findTestObject('Object Repository/Home Page/LanguageSelect'), 'en_US', true)
+	waitBlockUI(20)
+	WebUI.delay(0.5)
+	WebUI.delay(1)
+	
+c(findTestObject('Object Repository/Home Page/LoginHomePage'))
+t(findTestObject('Object Repository/Home Page/LoginPage/LoginID'),Username)
+waitBlockUI(5)
+t(findTestObject('Object Repository/Home Page/LoginPage/Password'),tempPassword)
+c(findTestObject('Object Repository/Home Page/LoginPage/LoginButtonEng'))
+
+//Change Password Page
+
+//Password inputs
+t(findTestObject('Object Repository/EmailVerification/PasswordManagementPage/OldPassword'),tempPassword)
+waitBlockUI(5)
+t(findTestObject('Object Repository/EmailVerification/PasswordManagementPage/NewPassword'),Password)
+waitBlockUI(5)
+t(findTestObject('Object Repository/EmailVerification/PasswordManagementPage/RetypeNewPassword'),Password)
+waitBlockUI(5)
+
+//Submit
+c(findTestObject('Object Repository/EmailVerification/PasswordManagementPage/PasswordSubmit'))
+

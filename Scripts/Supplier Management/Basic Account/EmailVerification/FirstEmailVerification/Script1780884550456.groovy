@@ -474,16 +474,16 @@ WebUI.maximizeWindow()
 waitBlockUI(20)
 
 //enter email + next
-t(findTestObject('Object Repository/EmailVerification/SignIn/EmailSignInBox'), SupplierEmail)
-c(findTestObject('Object Repository/EmailVerification/SignIn/SignInNext'))
+t(findTestObject('Object Repository/EmailVerification/OutlookSignIn/EmailSignInBox'), SupplierEmail)
+c(findTestObject('Object Repository/EmailVerification/OutlookSignIn/SignInNext'))
 waitBlockUI(10)
 
 //Password + next
-t(findTestObject('Object Repository/EmailVerification/SignIn/PasswordBox'),SupplierEmailPassword)
-c(findTestObject('Object Repository/EmailVerification/SignIn/PasswordNext'))
+t(findTestObject('Object Repository/EmailVerification/OutlookSignIn/PasswordBox'),SupplierEmailPassword)
+c(findTestObject('Object Repository/EmailVerification/OutlookSignIn/PasswordNext'))
 
 //Stay signed in NO
-c(findTestObject('Object Repository/EmailVerification/SignIn/StaySignedInNO'))
+c(findTestObject('Object Repository/EmailVerification/OutlookSignIn/StaySignedInNO'))
 waitBlockUI(10)
 // In Outlook page
 // Find email from CDC

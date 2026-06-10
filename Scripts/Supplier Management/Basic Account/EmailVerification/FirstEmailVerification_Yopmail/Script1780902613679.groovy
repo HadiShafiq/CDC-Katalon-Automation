@@ -20,6 +20,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.text.SimpleDateFormat
 import java.util.Arrays
+import internal.GlobalVariable
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 
@@ -509,7 +510,7 @@ WebUI.waitForElementPresent(findTestObject('Object Repository/EmailVerification/
 t(findTestObject('Object Repository/EmailVerification/PengaktifanPenggunaPembekal/KodPengaktifan'),activationKey)
 	waitBlockUI(10)
 //ID Log Masuk
-t(findTestObject('Object Repository/EmailVerification/PengaktifanPenggunaPembekal/IDLogMasukBox'),IDLogMasuk)
+t(findTestObject('Object Repository/EmailVerification/PengaktifanPenggunaPembekal/IDLogMasukBox'),Username)
 //Next
 c(findTestObject('Object Repository/EmailVerification/PengaktifanPenggunaPembekal/Serah'))
 waitBlockUI(5)
@@ -535,6 +536,7 @@ waitBlockUI(5)
 	// Store as Global Variable if needed across test cases
 	GlobalVariable.ePNumber = ePNumber
 	
+	// need something to print the epNumber
 
 	
 	
