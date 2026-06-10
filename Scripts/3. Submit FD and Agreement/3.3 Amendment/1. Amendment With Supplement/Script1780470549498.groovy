@@ -507,8 +507,9 @@ void tickAmendment(List<String> labels) {
 
 //Call function
 tickAmendment(
-    tickLabel.split(',').collect { it.trim() }
+    tickAmendmentType.split(',').collect { it.trim() }
 )
+
 /* =========================
  * FOR FILE REFRENCES NO.
  * ------------------------
@@ -528,9 +529,9 @@ String loaNum = WebUI.getText(loaNo).trim()
 
 println("LOA No = " + loaNum)
 
-/*  ============================
- *  Prepare Purchase Order No
- *  ============================*/
+/* ============================
+ * Prepare Purchase Order No
+ * ============================*/
 String loaNumber = "FILE REF - " + loaNum
 
 /* =========================
@@ -549,9 +550,9 @@ fileRef.addProperty(
 t(fileRef, loaNumber)
 WebUI.delay(2)
 
-/* ===================================
- * Change contract extension - Display A
- * ===================================*/
+/*=================================================================================
+ *                      CHANGE CONTRACT EXTENSION - Display A
+ * ================================================================================*/
 //fill Display A - FOR [ ] Change contract extension
 TestObject monthsField = new TestObject()
 monthsField.addProperty("xpath", ConditionType.EQUALS,
@@ -599,5 +600,43 @@ if (WebUI.waitForElementVisible(daysField, 10)) {
 /* ==============================================================
  * ALL SECTION WILL DISPLAY - Approving Authority [TICK BOX]
  * ==============================================================*/
+void tickApproving(def labels) {
 
+    if (labels instanceof String) {
+        labels = [labels]
+    }
+
+    labels.each { labelText ->
+
+        println("Ticks: " + labelText)
+
+        String xpath = ""
+
+        if (labelText == "Ministry Of Finance") {
+            xpath = "(//div[contains(@class,'ui-chkbox-box')])[8]"
+        }
+        else if (labelText == "Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak") {
+            xpath = "(//div[contains(@class,'ui-chkbox-box')])[9]"
+        }
+        else {
+            xpath = "//label[contains(normalize-space(),'" + labelText + "')]/ancestor::tr//div[contains(@class,'ui-chkbox-box')]"
+        }
+
+        TestObject checkbox = new TestObject()
+        checkbox.addProperty("xpath", ConditionType.EQUALS, xpath)
+
+        WebUI.waitForElementPresent(checkbox, 10)
+        WebUI.scrollToElement(checkbox, 5)
+
+        String classAttr = WebUI.getAttribute(checkbox, "class")
+
+        if (classAttr == null || !classAttr.contains("ui-state-active")) {
+            WebUI.click(checkbox)
+        }
+
+        WebUI.delay(1)
+    }
+}
+//Call function
+tickApproving("Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak")
 
