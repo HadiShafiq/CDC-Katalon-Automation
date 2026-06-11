@@ -46,7 +46,25 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>dfc64651-6fb7-4e4f-9f43-32b2552ed135</variableId>
+      <variableId>eb13bcb3-8de4-4644-944c-07ae652a995d</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>626f7e77-ca07-49c3-8c45-72632d22957f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>e2b64d66-d006-4286-89db-a1622d603a3c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>27a85b77-e8e8-4ab3-96a7-237f1c24ca5c</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'300000000013'</defaultValue>
@@ -70,11 +88,11 @@
       <name>ContractNo</name>
    </variable>
    <variable>
-      <defaultValue>'Change contract extension,Others (In addition to the above changes)\t'</defaultValue>
+      <defaultValue>'6,8,9'</defaultValue>
       <description>Change contract extension, Change item price, Change quantity, Change contract value, Change of clause, Change of contract value caused by GST/SST, Others (In addition to the above changes)	</description>
       <id>21facfc0-9419-4148-9ee6-f56308d494a6</id>
       <masked>false</masked>
-      <name>tickAmendmentType</name>
+      <name>tickAmendmentnAuthority</name>
    </variable>
    <variable>
       <defaultValue>12</defaultValue>
@@ -91,10 +109,31 @@
       <name>dayValue</name>
    </variable>
    <variable>
-      <defaultValue>'Quotation Committee\r\n'</defaultValue>
-      <description>Ministry Of Finance, Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak</description>
-      <id>dfc64651-6fb7-4e4f-9f43-32b2552ed135</id>
+      <defaultValue>'100'</defaultValue>
+      <description></description>
+      <id>eb13bcb3-8de4-4644-944c-07ae652a995d</id>
       <masked>false</masked>
-      <name>tickApprovingAuthority</name>
+      <name>amountValue</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-06-20'</defaultValue>
+      <description></description>
+      <id>626f7e77-ca07-49c3-8c45-72632d22957f</id>
+      <masked>false</masked>
+      <name>dateValue</name>
+   </variable>
+   <variable>
+      <defaultValue>'3000.00'</defaultValue>
+      <description></description>
+      <id>e2b64d66-d006-4286-89db-a1622d603a3c</id>
+      <masked>false</masked>
+      <name>gstValue</name>
+   </variable>
+   <variable>
+      <defaultValue>'50'</defaultValue>
+      <description></description>
+      <id>27a85b77-e8e8-4ab3-96a7-237f1c24ca5c</id>
+      <masked>false</masked>
+      <name>taxValue</name>
    </variable>
 </TestCaseEntity>
