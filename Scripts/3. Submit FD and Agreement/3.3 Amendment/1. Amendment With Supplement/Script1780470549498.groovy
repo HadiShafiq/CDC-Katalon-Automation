@@ -299,56 +299,81 @@ def clickSideMenuIfExists(String objectPath) {
 	}
 	
 /* =========================================================
- * 7) CALENDAR PICKER DATE
+ * 7) CALENDAR PICKER DATE -- khas untuk AMENDMENT SAHAJA
  * ========================================================= */
 	
 def pickDate(String yyyyMmDd) {
 
-	TestObject dp = new TestObject('dp')
-	dp.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
-	)
-	WebUI.waitForElementVisible(dp, 20)
+    // =========================
+    // a. OPEN DATEPICKER FIRST
+    // =========================
+    TestObject openCalendarBtn = new TestObject('openCalendarBtn')
+    openCalendarBtn.addProperty("xpath", ConditionType.EQUALS,
+        "//button[contains(@class,'ui-datepicker-trigger')]"
+    )
 
-	def parts = yyyyMmDd.split('-')
-	int targetYear = parts[0] as int
-	int targetMonthIndex = (parts[1] as int) - 1
-	String targetDay = String.valueOf(parts[2] as int)
+    WebUI.waitForElementClickable(openCalendarBtn, 10)
+    WebUI.click(openCalendarBtn)
 
-	TestObject nextBtn = new TestObject('dpNext')
-	nextBtn.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
-	)
+    // =========================
+    // b. WAIT FOR DATEPICKER
+    // =========================
+    TestObject dp = new TestObject('dp')
+    dp.addProperty("xpath", ConditionType.EQUALS,
+        "//*[@id='ui-datepicker-div' and not(contains(@style,'display: none'))]"
+    )
+    WebUI.waitForElementVisible(dp, 20)
 
-	TestObject prevBtn = new TestObject('dpPrev')
-	prevBtn.addProperty("xpath", ConditionType.EQUALS,
-		"//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
-	)
+    // =========================
+    // c. PARSE DATE
+    // =========================
+    def parts = yyyyMmDd.split('-')
+    int targetYear = parts[0] as int
+    int targetMonthIndex = (parts[1] as int) - 1
+    String targetDay = String.valueOf(parts[2] as int)
 
-	int guard = 0
-	while (guard < 48) {
+    // =========================
+    // d. NAV BUTTONS
+    // =========================
+    TestObject nextBtn = new TestObject('dpNext')
+    nextBtn.addProperty("xpath", ConditionType.EQUALS,
+        "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-next')]"
+    )
 
-		TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
-		targetDayObj.addProperty("xpath", ConditionType.EQUALS,
-			"//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
-			"and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
-		)
+    TestObject prevBtn = new TestObject('dpPrev')
+    prevBtn.addProperty("xpath", ConditionType.EQUALS,
+        "//*[@id='ui-datepicker-div']//a[contains(@class,'ui-datepicker-prev')]"
+    )
 
-		if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
-			WebUI.waitForElementClickable(targetDayObj, 20)
-			WebUI.click(targetDayObj)
-			return
-		}
+    // =========================
+    // e. LOOP MONTHS
+    // =========================
+    int guard = 0
+    while (guard < 48) {
 
-		// kalau target belum ada, click next dulu
-		WebUI.click(nextBtn)
-		WebUI.delay(0.3)
-		guard++
-	}
+        TestObject targetDayObj = new TestObject("targetDay_${targetYear}_${targetMonthIndex}_${targetDay}")
+        targetDayObj.addProperty("xpath", ConditionType.EQUALS,
+            "//*[@id='ui-datepicker-div']//td[@data-year='${targetYear}' and @data-month='${targetMonthIndex}' " +
+            "and not(contains(@class,'ui-state-disabled'))]//a[normalize-space()='${targetDay}']"
+        )
 
-	WebUI.takeScreenshot()
-	assert false : "Date not found in datepicker: " + yyyyMmDd
+        if (WebUI.verifyElementPresent(targetDayObj, 1, FailureHandling.OPTIONAL)) {
+            WebUI.waitForElementClickable(targetDayObj, 20)
+            WebUI.click(targetDayObj)
+            return
+        }
+
+        // kalau target belum ada → next month
+        WebUI.click(nextBtn)
+        WebUI.delay(0.3)
+        guard++
+    }
+
+    WebUI.takeScreenshot()
+    assert false : "Date not found in datepicker: " + yyyyMmDd
 }
+
+
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -454,61 +479,42 @@ c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Click Option'
 c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Amendment With Supplement'))
 
 /* ==========================
- * AMENDMENT DETAIL
+ * AMENDMENT DETAIL 
  * ==========================*/
+
 c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Menu Amendment Detail'))
 
-// Tick Box
-void tickAmendment(List<String> labels) {
-	labels.each { labelText ->
-		println("Ticking: " + labelText)
-		String xpath = ""
-		if (labelText == "Change contract extension") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[1]"
-		}
-		else if (labelText == "Change item price") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[2]"
-		}
-		else if (labelText == "Change quantity") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[3]"
-		}
-		else if (labelText == "Change contract value") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[4]"
-		}
-		else if (labelText == "Change of clause") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[5]"
-		}
-		else if (labelText == "Change of contract value caused by GST/SST") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[6]"
-		}
-		else if (labelText == "Others (In addition to the above changes)") {
-			xpath = "(//div[contains(@class,'ui-chkbox-box')])[7]"
-		}
-		else {
-			// fallback (kalau label lain)
-			xpath = "//label[contains(normalize-space(),'" + labelText + "')]/ancestor::tr//div[contains(@class,'ui-chkbox-box')]"
-		}
-		TestObject checkbox = new TestObject()
-		checkbox.addProperty(
-			"xpath",
-		ConditionType.EQUALS,
-			xpath
-		)
-		WebUI.waitForElementPresent(checkbox, 10)
-		WebUI.scrollToElement(checkbox, 5)
-		String classAttr = WebUI.getAttribute(checkbox, "class")
+/* ====================================================
+ * TICK BOX FOR - Amendment Type & Approving Authority
+ * 1-7 Amendment Type 
+ * 8-9 Approving Authority
+ * ====================================================*/
+def tickBox(indexValue) {
 
-		if (classAttr == null || !classAttr.contains("ui-state-active")) {
-			WebUI.click(checkbox)
-		}
-		WebUI.delay(1)
-	}
+    indexValue.toString().split(',').each { idx ->
+
+        int indexNo = idx.trim().toInteger()
+
+        TestObject checkbox = new TestObject("checkbox_" + indexNo)
+        checkbox.addProperty(
+            "xpath",
+            ConditionType.EQUALS,
+            "(//div[contains(@class,'ui-chkbox-box')])[" + indexNo + "]"
+        )
+
+        WebUI.waitForElementVisible(checkbox, 10)
+        WebUI.scrollToElement(checkbox, 5)
+
+        String classAttr = WebUI.getAttribute(checkbox, "class")
+
+        if (classAttr == null || !classAttr.contains("ui-state-active")) {
+            WebUI.click(checkbox)
+        }
+    }
 }
 
 //Call function
-tickAmendment(
-    tickAmendmentType.split(',').collect { it.trim() }
-)
+tickBox(tickAmendmentnAuthority)
 
 /* =========================
  * FOR FILE REFRENCES NO.
@@ -551,7 +557,7 @@ t(fileRef, loaNumber)
 WebUI.delay(2)
 
 /*=================================================================================
- *                      CHANGE CONTRACT EXTENSION - Display A
+ *                      CHANGE CONTRACT EXTENSION - Display A [1]
  * ================================================================================*/
 //fill Display A - FOR [ ] Change contract extension
 TestObject monthsField = new TestObject()
@@ -562,6 +568,26 @@ monthsField.addProperty("xpath", ConditionType.EQUALS,
 TestObject daysField = new TestObject()
 daysField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'extendDaysId')]"
+)
+
+TestObject addContAmtField = new TestObject()
+addContAmtField.addProperty("xpath", ConditionType.EQUALS,
+	"//input[contains(@id,'addValueTxt')]"
+)
+
+TestObject openCalendarBtn = new TestObject('openCalendarBtn')
+openCalendarBtn.addProperty("xpath", ConditionType.EQUALS,
+	"//button[contains(@class,'ui-datepicker-trigger')]"
+)
+
+TestObject newGSTField = new TestObject()
+newGSTField.addProperty("xpath", ConditionType.EQUALS,
+	"//input[contains(@id,'newGstAmtTxt')]"
+)
+
+TestObject newTaxField = new TestObject()
+newTaxField.addProperty("xpath", ConditionType.EQUALS,
+	"//input[contains(@id,'newStaxAmtTxt')]"
 )
 
 /* ==================================================
@@ -576,7 +602,7 @@ if (WebUI.waitForElementVisible(monthsField, 10)) {
 
     WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(monthEl))
     WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(monthEl))
-    WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(monthEl, monthValue))
+    WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(monthEl, monthValue)) //baca dr variable
 
     WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(monthEl))
     WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(monthEl))
@@ -597,46 +623,60 @@ if (WebUI.waitForElementVisible(daysField, 10)) {
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(dayEl))
 }
 
-/* ==============================================================
- * ALL SECTION WILL DISPLAY - Approving Authority [TICK BOX]
- * ==============================================================*/
-void tickApproving(def labels) {
+/*===================================================================================================================
+ *   Change item price, Change quantity, Change contract value, Change of clause - Display B [2-4]
+ * ==================================================================================================================*/
+//fill Display B - FOR [ ] 2-4
 
-    if (labels instanceof String) {
-        labels = [labels]
-    }
-
-    labels.each { labelText ->
-
-        println("Ticks: " + labelText)
-
-        String xpath = ""
-
-        if (labelText == "Ministry Of Finance") {
-            xpath = "(//div[contains(@class,'ui-chkbox-box')])[8]"
-        }
-        else if (labelText == "Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak") {
-            xpath = "(//div[contains(@class,'ui-chkbox-box')])[9]"
-        }
-        else {
-            xpath = "//label[contains(normalize-space(),'" + labelText + "')]/ancestor::tr//div[contains(@class,'ui-chkbox-box')]"
-        }
-
-        TestObject checkbox = new TestObject()
-        checkbox.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-        WebUI.waitForElementPresent(checkbox, 10)
-        WebUI.scrollToElement(checkbox, 5)
-
-        String classAttr = WebUI.getAttribute(checkbox, "class")
-
-        if (classAttr == null || !classAttr.contains("ui-state-active")) {
-            WebUI.click(checkbox)
-        }
-
-        WebUI.delay(1)
-    }
+//Additional Contract Amount (RM)
+if (WebUI.waitForElementVisible(addContAmtField, 10)) {
+	
+	WebElement addEl = WebUiCommonHelper.findWebElement(addContAmtField, 10)
+	
+	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(addEl))
+	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(addEl))
+	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(addEl, amountValue))
+	
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(addEl))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(addEl))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(addEl))
 }
-//Call function
-tickApproving("Quotation Committee / Procurement Board / Federal Procurement Board Sabah / Federal Procurement Board Sarawak")
 
+//Calender - PICK DATE
+if (WebUI.waitForElementVisible(openCalendarBtn, 10)) {
+	
+		WebElement btnEl = WebUiCommonHelper.findWebElement(openCalendarBtn, 10)
+	
+		WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(btnEl))
+	
+		pickDate(dateValue)
+	}
+	
+//GST SST
+if (WebUI.waitForElementVisible(newGSTField, 10)) {
+		
+	WebElement gstF = WebUiCommonHelper.findWebElement(newGSTField, 10)
+		
+	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(gstF))
+	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(gstF))
+	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(gstF, gstValue))
+		
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(gstF))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(gstF))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(gstF))
+}
+
+//New Tax
+if (WebUI.waitForElementVisible(newTaxField, 10)) {
+		
+	WebElement taxF = WebUiCommonHelper.findWebElement(newTaxField, 10)
+		
+	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(taxF))
+	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(taxF))
+	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(taxF, taxValue))
+		
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(taxF))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(taxF))
+	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(taxF))
+}
+	
