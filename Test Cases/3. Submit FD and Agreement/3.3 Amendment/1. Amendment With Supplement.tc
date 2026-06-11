@@ -34,6 +34,12 @@
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
+      <variableId>7ea940ab-30c4-4824-894b-207238243ec1</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
       <variableId>88b29391-ce81-4919-b8fe-16e5c8349638</variableId>
    </variableLinks>
    <variableLinks>
@@ -88,11 +94,18 @@
       <name>ContractNo</name>
    </variable>
    <variable>
-      <defaultValue>'6,8,9'</defaultValue>
+      <defaultValue>'1,2,3,5,6,7,8,9'</defaultValue>
       <description>Change contract extension, Change item price, Change quantity, Change contract value, Change of clause, Change of contract value caused by GST/SST, Others (In addition to the above changes)	</description>
       <id>21facfc0-9419-4148-9ee6-f56308d494a6</id>
       <masked>false</masked>
       <name>tickAmendmentnAuthority</name>
+   </variable>
+   <variable>
+      <defaultValue>'Ahmad Hazrul'</defaultValue>
+      <description></description>
+      <id>7ea940ab-30c4-4824-894b-207238243ec1</id>
+      <masked>false</masked>
+      <name>deskOfficer</name>
    </variable>
    <variable>
       <defaultValue>12</defaultValue>
