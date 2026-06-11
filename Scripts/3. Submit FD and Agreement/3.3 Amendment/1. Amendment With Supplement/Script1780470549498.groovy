@@ -489,16 +489,40 @@ c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Menu Amendmen
  * 1-7 Amendment Type 
  * 8-9 Approving Authority
  * ====================================================*/
-def tickBox(indexValue) {
+//def tickBox(indexValue) {
+//
+//    indexValue.toString().split(',').each { idx ->
+//
+//        int indexNo = idx.trim().toInteger()
+//
+//        TestObject checkbox = new TestObject("checkbox_" + indexNo)
+//        checkbox.addProperty(
+//            "xpath",
+//            ConditionType.EQUALS,
+//            "(//div[contains(@class,'ui-chkbox-box')])[" + indexNo + "]"
+//        )
+//
+//        WebUI.waitForElementVisible(checkbox, 10)
+//        WebUI.scrollToElement(checkbox, 5)
+//
+//        String classAttr = WebUI.getAttribute(checkbox, "class")
+//
+//        if (classAttr == null || !classAttr.contains("ui-state-active")) {
+//            WebUI.click(checkbox)
+//        }
+//    }
+//}
 
-    indexValue.toString().split(',').each { idx ->
+def tickBox(indexValue, dropdownValue = null) {
 
-        int indexNo = idx.trim().toInteger()
+    def selectedIndexes = indexValue.toString().split(',').collect { it.trim() }
+
+    selectedIndexes.each { idx ->
+
+        int indexNo = idx.toInteger()
 
         TestObject checkbox = new TestObject("checkbox_" + indexNo)
-        checkbox.addProperty(
-            "xpath",
-            ConditionType.EQUALS,
+        checkbox.addProperty("xpath", ConditionType.EQUALS,
             "(//div[contains(@class,'ui-chkbox-box')])[" + indexNo + "]"
         )
 
@@ -510,11 +534,34 @@ def tickBox(indexValue) {
         if (classAttr == null || !classAttr.contains("ui-state-active")) {
             WebUI.click(checkbox)
         }
+
+        // =========================
+        // INDEX 9 SPECIAL FLOW
+        // =========================
+        if (indexNo == 9 && dropdownValue != null) {
+
+            TestObject dropdownTrigger = new TestObject("dropdown_trigger")
+            dropdownTrigger.addProperty("xpath", ConditionType.EQUALS,
+                "//div[contains(@class,'ui-selectonemenu-trigger')]"
+            )
+
+            WebUI.waitForElementClickable(dropdownTrigger, 10)
+            WebUI.click(dropdownTrigger)
+
+            TestObject option = new TestObject("dropdown_option_" + dropdownValue)
+            option.addProperty("xpath", ConditionType.EQUALS,
+                "//li[contains(normalize-space(),'" + dropdownValue + "')]"
+            )
+
+            WebUI.waitForElementVisible(option, 10)
+            WebUI.click(option)
+        }
     }
 }
-
+	
 //Call function
-tickBox(tickAmendmentnAuthority)
+//Desk Officer Committee - If choose [9] - Quotation Committee Display this
+tickBox(tickAmendmentnAuthority, deskOfficer)
 
 /* =========================
  * FOR FILE REFRENCES NO.
@@ -679,4 +726,36 @@ if (WebUI.waitForElementVisible(newTaxField, 10)) {
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(taxF))
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(taxF))
 }
-	
+
+//Approval Letter - For Upload File
+TestObject uploadIcon = findTestObject('Object Repository/FD and Agreement/CM - Amendment/Upload Button')
+TestObject uploadBtn  = findTestObject('Object Repository/FD and Agreement/CM - Amendment/Upload File Button')
+
+if (WebUI.waitForElementVisible(uploadIcon, 5, FailureHandling.OPTIONAL)) {
+
+	WebUI.click(uploadIcon)
+
+	// tunggu popup upload keluar
+	WebUI.delay(2)
+
+	// create fresh object setiap kali nak upload
+	TestObject fileInput = new TestObject()
+	fileInput.addProperty(
+		"xpath",
+		ConditionType.EQUALS,
+		"//input[contains(@id,'approvalLetterId_input')]"
+	)
+
+	WebUI.waitForElementPresent(fileInput, 10)
+
+	WebUI.uploadFile(fileInput, uploadFilePath)
+
+	if (WebUI.waitForElementClickable(uploadBtn, 20, FailureHandling.OPTIONAL)) {
+		WebUI.click(uploadBtn)
+	}
+
+	waitBlockUI(30)
+
+} else {
+	WebUI.comment("Upload section NOT visible → skip upload")
+}
