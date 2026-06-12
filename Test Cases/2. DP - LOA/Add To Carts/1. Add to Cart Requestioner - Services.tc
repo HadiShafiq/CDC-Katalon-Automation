@@ -148,7 +148,7 @@
       <name>ReasonPK7</name>
    </variable>
    <variable>
-      <defaultValue>'Automated Add to Cart June'</defaultValue>
+      <defaultValue>'Automated Add to Cart 1000001'</defaultValue>
       <description></description>
       <id>0ffc4010-f5d9-4ea2-844e-7a0305ee68b7</id>
       <masked>false</masked>
@@ -162,7 +162,7 @@
       <name>ProcurementTypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>'Automated Add to Cart June'</defaultValue>
+      <defaultValue>'Automated Add to Cart 1000001'</defaultValue>
       <description></description>
       <id>32e46733-5ab3-49f0-87e8-aa951574b989</id>
       <masked>false</masked>

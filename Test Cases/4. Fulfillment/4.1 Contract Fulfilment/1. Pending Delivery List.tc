@@ -36,6 +36,12 @@
       <value></value>
       <variableId>43cf88ea-f368-428f-a634-8b6c50f0f8a9</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>6d2cc1f2-8b6a-4e72-a358-a01ab6c166b8</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'nurulainmof'</defaultValue>
       <description>*supplier</description>
@@ -51,14 +57,14 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003201'</defaultValue>
+      <defaultValue>'PO260000000003403'</defaultValue>
       <description></description>
       <id>c61d89f5-e069-46da-a708-ba171f8c3741</id>
       <masked>false</masked>
       <name>Purchase_Number</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-05'</defaultValue>
+      <defaultValue>'2026-06-12'</defaultValue>
       <description></description>
       <id>4e9c196f-d952-4430-8b31-611c4c651274</id>
       <masked>false</masked>
@@ -70,5 +76,12 @@
       <id>43cf88ea-f368-428f-a634-8b6c50f0f8a9</id>
       <masked>false</masked>
       <name>DeliveryQuantity</name>
+   </variable>
+   <variable>
+      <defaultValue>15</defaultValue>
+      <description></description>
+      <id>6d2cc1f2-8b6a-4e72-a358-a01ab6c166b8</id>
+      <masked>false</masked>
+      <name>DeliveryAmount</name>
    </variable>
 </TestCaseEntity>
