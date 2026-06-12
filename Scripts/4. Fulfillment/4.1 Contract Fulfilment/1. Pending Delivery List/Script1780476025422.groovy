@@ -456,19 +456,17 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-//TaskList
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+//Pending Delivery List Menu
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Pending List'))
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
+//Input Purchase Number
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Purchase Number'), Purchase_Number)
 
-//Input Document Number
-t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
-    Document_Number)
+// Searching Purchase Number
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Search TaskList'))
 
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
-
-//Click TaskList Description
-c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+//Click Title
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Title'))
 
 //Click Delivery Item
 c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Menu Delivery Item'))
@@ -528,6 +526,11 @@ c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click
 
 //Input Delivery  Quantity
 t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Delivery Quantity'), DeliveryQuantity)
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+//Input Delivery  Amount
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Delivery Amount (RM)'), DeliveryAmount)
 waitBlockUI(20)
 WebUI.delay(0.5)
 
