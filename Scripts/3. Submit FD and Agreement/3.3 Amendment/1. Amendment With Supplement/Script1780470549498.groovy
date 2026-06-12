@@ -649,10 +649,10 @@ if (WebUI.waitForElementVisible(daysField, 10)) {
 
 /* ========================================================================================
  * Fill Display B Fields [2,3,4]
- * (Additional Contract Amount (RM) , Effective Date)
+ * (Additional Contract Amount (RM), Effective Date)
  * ----------------------------------------------------------------------------------------
  * Fill Display C Fields [6]
- * (Additional Contract Amount (RM) ,Effective Date, GST, New Tax)
+ * (Additional Contract Amount (RM),Effective Date, GST, New Tax)
  * ----------------------------------------------------------------------------------------
  * Fill Display C Fields [5,7]
  * (Effective Date)

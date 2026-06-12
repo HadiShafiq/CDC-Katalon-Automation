@@ -80,7 +80,7 @@
    </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
-      <description>710527085562</description>
+      <description></description>
       <id>a2313cd3-95e4-4bc0-b1d9-3a59d9e261fa</id>
       <masked>false</masked>
       <name>Username</name>
@@ -93,8 +93,8 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'RN260000000002700'</defaultValue>
-      <description>RN260000000002700</description>
+      <defaultValue>'RN260000000002732'</defaultValue>
+      <description></description>
       <id>34930917-bb67-41ab-b6f9-da2dfb362c87</id>
       <masked>false</masked>
       <name>Document_Number</name>

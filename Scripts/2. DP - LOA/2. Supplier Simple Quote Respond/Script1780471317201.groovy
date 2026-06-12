@@ -549,6 +549,96 @@ WebUI.click(findTestObject('Object Repository/DLOA/5. SUpplier Simple Quote Resp
 waitBlockUI(20)
 WebUI.delay(3)
 
+waitBlockUI(10)
+
+/* =========================
+ * WAIT LOADER + CAPTURE SQ MESSAGE (DYNAMIC SQxxxx) + APPEND TO EXCEL (SAME FILE)
+ * ========================= */
+// ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
+
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+
+// ===== 2) Wait success message (global text; SQ number changes) =====
+TestObject msgObj = new TestObject('msg_SQ_saved')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//span[contains(@class,'ui-messages-info-detail') and " +
+	"contains(.,'Simple Quote') and contains(.,'is successfully submitted')]"
+)
+
+WebUI.waitForElementVisible(msgObj, 30)
+
+// Wait until message text contains "SQ"
+String msg = ""
+for (int i = 0; i < 2; i++) {
+	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
+	if (msg != null && msg.contains("SQ")) break
+	WebUI.delay(1)
+}
+
+msg = (msg == null) ? "" : msg.trim()
+WebUI.comment("Message: " + msg)
+
+// ===== 3) Extract SQ number dynamically =====
+def matcher = (msg =~ /(SQ\d+)/)   // e.g. SQ260000000000604
+String sqNo = matcher.find() ? matcher.group(1) : ""
+
+if (sqNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ SQ number not found. Message was: " + msg
+}
+WebUI.comment("✅ Captured SQ No: " + sqNo)
+
+// ===== 4) Append to SAME Excel file (no timestamp file) =====
+String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
+new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
+String filePath = baseDir + "/FL_DP_Supplier_Submit.xlsx"
+String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+
+def path = Paths.get(filePath)
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+
+if (Files.exists(path)) {
+	fis = new FileInputStream(filePath)
+	wb = new XSSFWorkbook(fis)
+	sheet = wb.getSheet("Result")
+	if (sheet == null) sheet = wb.createSheet("Result")
+} else {
+	wb = new XSSFWorkbook()
+	sheet = wb.createSheet("Result")
+
+	def header = sheet.createRow(0)
+	header.createCell(0).setCellValue("DateTime")
+	header.createCell(1).setCellValue("SQ No")
+	header.createCell(2).setCellValue("Message")
+}
+
+// Close input stream to avoid Excel file lock
+if (fis != null) fis.close()
+
+// Next empty row
+int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
+def row = sheet.createRow(nextRow)
+
+row.createCell(0).setCellValue(now)
+row.createCell(1).setCellValue(sqNo)
+row.createCell(2).setCellValue(msg)
+
+// Save back to SAME file
+FileOutputStream fos = new FileOutputStream(filePath)
+wb.write(fos)
+fos.close()
+wb.close()
+
+WebUI.comment("✅ Appended to Excel: " + filePath)
+
 /* =========================
  * Sign Out
  * ========================= */
@@ -559,5 +649,3 @@ WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistio
 // wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
-
-

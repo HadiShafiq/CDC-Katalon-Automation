@@ -94,7 +94,7 @@
       <name>ContractNo</name>
    </variable>
    <variable>
-      <defaultValue>'1,2,3,5,6,7,8,9'</defaultValue>
+      <defaultValue>'4,7,8,9'</defaultValue>
       <description>Change contract extension, Change item price, Change quantity, Change contract value, Change of clause, Change of contract value caused by GST/SST, Others (In addition to the above changes)	</description>
       <id>21facfc0-9419-4148-9ee6-f56308d494a6</id>
       <masked>false</masked>
