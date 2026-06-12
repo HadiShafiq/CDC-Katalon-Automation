@@ -25,7 +25,7 @@
       <variableId>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'khairul707'</defaultValue>
+      <defaultValue>'NURULAINMOF'</defaultValue>
       <description></description>
       <id>a84e5fb4-88cc-4c50-a659-de1b8cb9325c</id>
       <masked>false</masked>
@@ -39,7 +39,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003005'</defaultValue>
+      <defaultValue>'PR260000000002860'</defaultValue>
       <description></description>
       <id>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</id>
       <masked>false</masked>
