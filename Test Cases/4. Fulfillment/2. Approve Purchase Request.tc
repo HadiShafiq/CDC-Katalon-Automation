@@ -39,11 +39,7 @@
       <name>Password</name>
    </variable>
    <variable>
-<<<<<<< HEAD
-      <defaultValue>'PR260000000002858'</defaultValue>
-=======
       <defaultValue>'PR260000000002860'</defaultValue>
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
       <description></description>
       <id>27c439b5-f99a-4867-9127-031c0a150980</id>
       <masked>false</masked>

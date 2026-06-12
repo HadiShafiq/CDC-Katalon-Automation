@@ -1,100 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>5. Prepare LOA</name>
+   <name>4a. Product - Assign Code</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>971fd503-3bc6-49dc-ab5d-510078181c8f</testCaseGuid>
+   <testCaseGuid>be985c9b-0f58-42b3-aa0b-258ee50a0ded</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>a2006292-188a-46a1-af1b-8f6ab7efabef</variableId>
+      <variableId>db1e5a55-d9ab-4b51-ba3d-fc093c6537b4</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>906a869d-6446-45ab-9248-64eb5191d341</variableId>
+      <variableId>5b967f3b-9403-4d10-af0d-58563b49eb41</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>b9cac366-99f1-479e-bec4-ee07ff043065</variableId>
+      <variableId>490a2d99-7717-44f8-88d7-a4828e579333</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>f8fdb46e-da1f-49b1-a3a6-e88df41c81a9</variableId>
+      <variableId>53c24158-337e-4402-9bc7-7c6024eb1346</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>9823215e-b500-4028-ac87-ea1674c553cd</variableId>
+      <variableId>4451edea-9522-450e-8a38-bdd76f51debc</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>c526d4e1-396e-4024-960c-4dd9a857a7ce</variableId>
+      <variableId>a6315b40-a369-4242-a693-08af0f0d4dbd</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>83ad7b03-0205-4426-8499-1d788df0d18a</variableId>
+      <variableId>81bd2688-c290-4a23-9712-95f794d009a4</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>f78a2690-9764-4aed-a265-4522bea24636</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'881204115188'</defaultValue>
+      <defaultValue>'khairul707'</defaultValue>
       <description></description>
-      <id>a2006292-188a-46a1-af1b-8f6ab7efabef</id>
+      <id>db1e5a55-d9ab-4b51-ba3d-fc093c6537b4</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>906a869d-6446-45ab-9248-64eb5191d341</id>
+      <id>5b967f3b-9403-4d10-af0d-58563b49eb41</id>
       <masked>false</masked>
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'RN260000000002695'</defaultValue>
+      <defaultValue>'RN260000000002453'</defaultValue>
       <description></description>
-      <id>b9cac366-99f1-479e-bec4-ee07ff043065</id>
+      <id>490a2d99-7717-44f8-88d7-a4828e579333</id>
       <masked>false</masked>
       <name>Document_Number</name>
    </variable>
    <variable>
-      <defaultValue>'1000000001112'</defaultValue>
+      <defaultValue>'11141604'</defaultValue>
       <description></description>
-      <id>f8fdb46e-da1f-49b1-a3a6-e88df41c81a9</id>
+      <id>53c24158-337e-4402-9bc7-7c6024eb1346</id>
       <masked>false</masked>
-      <name>FileReference1</name>
-   </variable>
-   <variable>
-      <defaultValue>'AA'</defaultValue>
-      <description></description>
-      <id>9823215e-b500-4028-ac87-ea1674c553cd</id>
-      <masked>false</masked>
-      <name>FileReference2</name>
+      <name>P_Item_Code</name>
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
       <description></description>
-      <id>c526d4e1-396e-4024-960c-4dd9a857a7ce</id>
+      <id>4451edea-9522-450e-8a38-bdd76f51debc</id>
       <masked>false</masked>
-      <name>Aggrement</name>
+      <name>Dropdown_Type</name>
    </variable>
    <variable>
-      <defaultValue>'Siti Roveah Binti Simon '</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
-      <id>83ad7b03-0205-4426-8499-1d788df0d18a</id>
+      <id>a6315b40-a369-4242-a693-08af0f0d4dbd</id>
       <masked>false</masked>
-      <name>LOASigner</name>
+      <name>Dropdown_Brand</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>81bd2688-c290-4a23-9712-95f794d009a4</id>
+      <masked>false</masked>
+      <name>Dropdown_Measurement</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>f78a2690-9764-4aed-a265-4522bea24636</id>
+      <masked>false</masked>
+      <name>Dropdown_Color</name>
    </variable>
 </TestCaseEntity>

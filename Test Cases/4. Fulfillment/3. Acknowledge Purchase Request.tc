@@ -25,11 +25,7 @@
       <variableId>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</variableId>
    </variableLinks>
    <variable>
-<<<<<<< HEAD
-      <defaultValue>'900801087664'</defaultValue>
-=======
       <defaultValue>'NURULAINMOF'</defaultValue>
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
       <description></description>
       <id>a84e5fb4-88cc-4c50-a659-de1b8cb9325c</id>
       <masked>false</masked>
@@ -43,13 +39,8 @@
       <name>Password</name>
    </variable>
    <variable>
-<<<<<<< HEAD
-      <defaultValue>'PO260000000003404'</defaultValue>
-      <description>*Guna no PR untuk cari PO dlm DB </description>
-=======
       <defaultValue>'PR260000000002860'</defaultValue>
       <description></description>
->>>>>>> branch 'master' of https://github.com/HadiShafiq/CDC-Katalon-Automation.git
       <id>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</id>
       <masked>false</masked>
       <name>Document_Number</name>

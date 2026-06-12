@@ -168,7 +168,7 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated - For FL 8.1'</defaultValue>
+      <defaultValue>'Automated - Dry Run for append'</defaultValue>
       <description></description>
       <id>83875ca3-169d-407f-b3c6-cbe4f1a987a5</id>
       <masked>false</masked>
@@ -176,14 +176,14 @@
    </variable>
    <variable>
       <defaultValue>1</defaultValue>
-      <description>1- supply of good , 2 - services</description>
+      <description></description>
       <id>c4ec2239-59b8-482f-9b2c-991a8df20b02</id>
       <masked>false</masked>
       <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>2</defaultValue>
-      <description>1- normal, 2-Ad hoc, 3-g2g, 4-pk7, 5-special</description>
+      <defaultValue>5</defaultValue>
+      <description></description>
       <id>4533820c-0316-4654-8d7f-2ab485bd94bd</id>
       <masked>false</masked>
       <name>RBProcurementType</name>
@@ -210,8 +210,8 @@
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
-      <description>1- one-off, 2-schedule, 3-as and when</description>
+      <defaultValue>3</defaultValue>
+      <description></description>
       <id>84c00480-18ed-4c9e-9af0-6f0349ed9bea</id>
       <masked>false</masked>
       <name>Fulfilmenttype</name>
@@ -273,7 +273,7 @@
       <name>AddSupplierNameNormal</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-20'</defaultValue>
+      <defaultValue>'2026-06-10'</defaultValue>
       <description></description>
       <id>8bf871ed-2c86-4eee-858d-60c6a6e0d814</id>
       <masked>false</masked>
