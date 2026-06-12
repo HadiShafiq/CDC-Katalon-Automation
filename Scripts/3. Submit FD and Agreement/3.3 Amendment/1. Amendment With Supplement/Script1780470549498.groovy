@@ -373,7 +373,6 @@ def pickDate(String yyyyMmDd) {
     assert false : "Date not found in datepicker: " + yyyyMmDd
 }
 
-
 /* =========================================================
  * 8) BROWSER SETUP
  * ========================================================= */
@@ -481,7 +480,6 @@ c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Amendment Wit
 /* ==========================
  * AMENDMENT DETAIL 
  * ==========================*/
-
 c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Menu Amendment Detail'))
 
 /* ====================================================
@@ -489,30 +487,6 @@ c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Menu Amendmen
  * 1-7 Amendment Type 
  * 8-9 Approving Authority
  * ====================================================*/
-//def tickBox(indexValue) {
-//
-//    indexValue.toString().split(',').each { idx ->
-//
-//        int indexNo = idx.trim().toInteger()
-//
-//        TestObject checkbox = new TestObject("checkbox_" + indexNo)
-//        checkbox.addProperty(
-//            "xpath",
-//            ConditionType.EQUALS,
-//            "(//div[contains(@class,'ui-chkbox-box')])[" + indexNo + "]"
-//        )
-//
-//        WebUI.waitForElementVisible(checkbox, 10)
-//        WebUI.scrollToElement(checkbox, 5)
-//
-//        String classAttr = WebUI.getAttribute(checkbox, "class")
-//
-//        if (classAttr == null || !classAttr.contains("ui-state-active")) {
-//            WebUI.click(checkbox)
-//        }
-//    }
-//}
-
 def tickBox(indexValue, dropdownValue = null) {
 
     def selectedIndexes = indexValue.toString().split(',').collect { it.trim() }
@@ -535,9 +509,9 @@ def tickBox(indexValue, dropdownValue = null) {
             WebUI.click(checkbox)
         }
 
-        // =========================
-        // INDEX 9 SPECIAL FLOW
-        // =========================
+        // =============================================================
+        // INDEX 9 SPECIAL FLOW - Will display Desk Officer Committee
+        // =============================================================
         if (indexNo == 9 && dropdownValue != null) {
 
             TestObject dropdownTrigger = new TestObject("dropdown_trigger")
@@ -559,8 +533,7 @@ def tickBox(indexValue, dropdownValue = null) {
     }
 }
 	
-//Call function
-//Desk Officer Committee - If choose [9] - Quotation Committee Display this
+//Call Function: Tick , Desk Officer Committee
 tickBox(tickAmendmentnAuthority, deskOfficer)
 
 /* =========================
@@ -603,46 +576,50 @@ fileRef.addProperty(
 t(fileRef, loaNumber)
 WebUI.delay(2)
 
-/*=================================================================================
- *                      CHANGE CONTRACT EXTENSION - Display A [1]
- * ================================================================================*/
-//fill Display A - FOR [ ] Change contract extension
+/* =======================================================
+ * XPATH FOR ALL INPUT 
+ * =======================================================*/
+//Months
 TestObject monthsField = new TestObject()
 monthsField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'extendMonthsId')]"
 )
 
+//Day
 TestObject daysField = new TestObject()
 daysField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'extendDaysId')]"
 )
 
+//Additional Contract Amount (RM)
 TestObject addContAmtField = new TestObject()
 addContAmtField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'addValueTxt')]"
 )
 
+//Effective Date
 TestObject openCalendarBtn = new TestObject('openCalendarBtn')
 openCalendarBtn.addProperty("xpath", ConditionType.EQUALS,
 	"//button[contains(@class,'ui-datepicker-trigger')]"
 )
 
+//New GST Amount (RM)
 TestObject newGSTField = new TestObject()
 newGSTField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'newGstAmtTxt')]"
 )
 
+//New Sales Tax/Service Tax Amount (RM)	
 TestObject newTaxField = new TestObject()
 newTaxField.addProperty("xpath", ConditionType.EQUALS,
 	"//input[contains(@id,'newStaxAmtTxt')]"
 )
 
 /* ==================================================
- * Fill Display A Fields
+ * Fill Display A Fields [1]
  * (Months & Days)
- * Using JavaScript to bypass PrimeFaces auto-reset ("0")
  * ==================================================*/
-//MONTHS FIELD
+//Months 
 if (WebUI.waitForElementVisible(monthsField, 10)) {
 
     WebElement monthEl = WebUiCommonHelper.findWebElement(monthsField, 10)
@@ -656,7 +633,7 @@ if (WebUI.waitForElementVisible(monthsField, 10)) {
     WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(monthEl))
 }
 
-//DAYS FIELD
+//Days
 if (WebUI.waitForElementVisible(daysField, 10)) {
 	
 	WebElement dayEl = WebUiCommonHelper.findWebElement(daysField, 10)
@@ -670,11 +647,16 @@ if (WebUI.waitForElementVisible(daysField, 10)) {
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(dayEl))
 }
 
-/*===================================================================================================================
- *   Change item price, Change quantity, Change contract value, Change of clause - Display B [2-4]
- * ==================================================================================================================*/
-//fill Display B - FOR [ ] 2-4
-
+/* ========================================================================================
+ * Fill Display B Fields [2,3,4]
+ * (Additional Contract Amount (RM) , Effective Date)
+ * ----------------------------------------------------------------------------------------
+ * Fill Display C Fields [6]
+ * (Additional Contract Amount (RM) ,Effective Date, GST, New Tax)
+ * ----------------------------------------------------------------------------------------
+ * Fill Display C Fields [5,7]
+ * (Effective Date)
+ * ========================================================================================*/
 //Additional Contract Amount (RM)
 if (WebUI.waitForElementVisible(addContAmtField, 10)) {
 	
@@ -689,17 +671,17 @@ if (WebUI.waitForElementVisible(addContAmtField, 10)) {
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(addEl))
 }
 
-//Calender - PICK DATE
+//Effective Date - Calender
 if (WebUI.waitForElementVisible(openCalendarBtn, 10)) {
 	
-		WebElement btnEl = WebUiCommonHelper.findWebElement(openCalendarBtn, 10)
+	WebElement btnEl = WebUiCommonHelper.findWebElement(openCalendarBtn, 10)
 	
-		WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(btnEl))
+	WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(btnEl))
 	
-		pickDate(dateValue)
-	}
-	
-//GST SST
+	pickDate(dateValue)
+}
+
+//GST
 if (WebUI.waitForElementVisible(newGSTField, 10)) {
 		
 	WebElement gstF = WebUiCommonHelper.findWebElement(newGSTField, 10)
@@ -727,7 +709,9 @@ if (WebUI.waitForElementVisible(newTaxField, 10)) {
 	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(taxF))
 }
 
-//Approval Letter - For Upload File
+/* ==================================================
+ * Approval Letter - For Upload File
+ * ==================================================*/
 TestObject uploadIcon = findTestObject('Object Repository/FD and Agreement/CM - Amendment/Upload Button')
 TestObject uploadBtn  = findTestObject('Object Repository/FD and Agreement/CM - Amendment/Upload File Button')
 
@@ -735,10 +719,10 @@ if (WebUI.waitForElementVisible(uploadIcon, 5, FailureHandling.OPTIONAL)) {
 
 	WebUI.click(uploadIcon)
 
-	// tunggu popup upload keluar
+	//Wait for popup Upload File
 	WebUI.delay(2)
 
-	// create fresh object setiap kali nak upload
+	// create fresh object everytime upload
 	TestObject fileInput = new TestObject()
 	fileInput.addProperty(
 		"xpath",
