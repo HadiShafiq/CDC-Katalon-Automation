@@ -43,7 +43,7 @@
       <variableId>ea4cad2d-0c94-41e3-a440-916f899ae326</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'690127065209'</defaultValue>
+      <defaultValue>'710527085562'</defaultValue>
       <description></description>
       <id>5b5ce961-c88f-4c8c-bbf2-3cca246803fb</id>
       <masked>false</masked>
@@ -57,7 +57,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'RN260000000002694'</defaultValue>
+      <defaultValue>'SQ260000000001422'</defaultValue>
       <description></description>
       <id>f8ee4008-76b1-4e8f-910f-d2118b04c27b</id>
       <masked>false</masked>
