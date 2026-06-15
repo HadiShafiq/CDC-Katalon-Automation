@@ -31,8 +31,8 @@
       <variableId>7ce30d29-24a8-462b-a221-bfd02c55aeaa</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'NURULAINMOF'</defaultValue>
-      <description></description>
+      <defaultValue>'900801087664'</defaultValue>
+      <description>*supplier</description>
       <id>60a75bde-c830-463a-ba04-662ccd6372ea</id>
       <masked>false</masked>
       <name>Username</name>
@@ -45,7 +45,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003201'</defaultValue>
+      <defaultValue>'PO260000000003404'</defaultValue>
       <description>*kena claim dulu</description>
       <id>e43e3cf8-54fb-4ae8-a37e-0e3e08177b17</id>
       <masked>false</masked>

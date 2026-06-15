@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>3b. Approve Stop Delivery Instruction</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>f57ef363-9175-48ae-a84e-fe25a7a70d57</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a7c9f3b4-dc93-4440-928d-e5120ab68b88</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>9b8f53cd-0bc6-4822-b5c5-c6121c6c06f2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d8538d92-6cdf-4a0e-939f-85a6e5896b09</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'690127065209'</defaultValue>
+      <description></description>
+      <id>a7c9f3b4-dc93-4440-928d-e5120ab68b88</id>
+      <masked>false</masked>
+      <name>Username</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>9b8f53cd-0bc6-4822-b5c5-c6121c6c06f2</id>
+      <masked>false</masked>
+      <name>Password</name>
+   </variable>
+   <variable>
+      <defaultValue>'SD260000000001001'</defaultValue>
+      <description></description>
+      <id>d8538d92-6cdf-4a0e-939f-85a6e5896b09</id>
+      <masked>false</masked>
+      <name>Document_Number</name>
+   </variable>
+</TestCaseEntity>

@@ -66,6 +66,7 @@ def waitBlockUI(int timeout = 30) {
 	}
 }
 
+
 /* =========================================================
  * 3) LIGHTWEIGHT ELEMENT WAIT / ACTION HELPERS
  * ========================================================= */
@@ -281,6 +282,7 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
 	WebUI.delay(0.5)
 }
 
+
 /* =========================================================
  * 6) SPECIAL RADIO / OPTION HELPER
  * ========================================================= */
@@ -293,21 +295,22 @@ def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
  * etc.
  */
 def clickProcurementType(int option) {
+	String xpath = "//*[@id='_Catalogue_WAR_NGePportlet_:form:procurementType:${option - 1}']"
 
-	String xpath =
-		"//input[@type='radio' and contains(@id,'procType:${option - 1}')]" +
-		"/ancestor::div[contains(@class,'ui-radiobutton')]" +
-		"//div[contains(@class,'ui-radiobutton-box')]"
-
-	TestObject obj = new TestObject("procType_" + option)
+	TestObject obj = new TestObject("procurementType_" + option)
 	obj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
+	WebUI.waitForElementVisible(obj, 20)
 	WebUI.waitForElementClickable(obj, 20)
-	WebUI.click(obj)
 
-	waitBlockUI(10)
-	WebUI.delay(0.5)
+	WebUI.executeJavaScript(
+		"arguments[0].click();",
+		Arrays.asList(WebUiCommonHelper.findWebElement(obj, 20))
+	)
+
+	waitBlockUI(20)
 }
+
 
 /* =========================================================
  * 7) CALENDAR PICKER DATE
@@ -360,34 +363,6 @@ def pickDate(String yyyyMmDd) {
 	WebUI.takeScreenshot()
 	assert false : "Date not found in datepicker: " + yyyyMmDd
 }
-
-	/*===================================
-	 function tick ikut index
-	 ===================================*/
-	def tickZoneTreeByIndex(int index) {
-	  String xpath = "(//*[contains(@id,'treeZoneLocationPopup')]/span/div/div)[" + index + "]"
-	  TestObject obj = new TestObject("zoneTreeTick_" + index)
-	  obj.addProperty("xpath", ConditionType.EQUALS, xpath)
-	
-	  if (WebUI.verifyElementPresent(obj, 5, FailureHandling.OPTIONAL)) {
-	
-		  WebElement element = WebUiCommonHelper.findWebElement(obj, 10)
-		  String checked = element.getAttribute("aria-checked")
-	
-		  // ONLY tick kalau belum tick
-		  if (checked == null || checked != "true") {
-	
-			  WebUI.executeJavaScript("arguments[0].scrollIntoView(true);", Arrays.asList(element))
-	
-			  WebUI.executeJavaScript(
-				  "arguments[0].click();",
-				  Arrays.asList(element)
-			  )
-	
-			  WebUI.delay(0.2)
-		  }
-	  }
-	}
 
 /* =========================================================
  * 8) BROWSER SETUP
@@ -480,132 +455,79 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-/* =========================
- * DLOA - Requestioner
- * ========================= */
-// Open Catalogue Search
-c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Click Catalogue Search'), 20)
-waitBlockUI(30)
-WebUI.delay(1)
-		
-// Input Item Keyword
-TestObject itemKeyword = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Item Keyword')
-wVisible(itemKeyword, 20)
-WebUI.click(itemKeyword)
-WebUI.clearText(itemKeyword)
-WebUI.setText(itemKeyword, Keyword)
-WebUI.delay(0.5)
-		
-// Input Supplier Name
-TestObject supplierName = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Supplier Name')
-wVisible(supplierName, 20)
-WebUI.click(supplierName)
-WebUI.clearText(supplierName)
-WebUI.setText(supplierName, SupplierName)
-WebUI.delay(0.5)
-	
-// Input Item Code
-TestObject itemCode = findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Input Item Code')
-wVisible(itemCode, 20)
-WebUI.click(itemCode)
-WebUI.clearText(itemCode)
-WebUI.setText(itemCode, ItemCode)
-WebUI.delay(0.5)
-		
-// Click Search
-c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/1. General Information/Button Search Supplier'), 20)
-waitBlockUI(30)
-WebUI.delay(1)
-		
-// Click Add to Cart Image
-c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/1. Click Add to Cart Button'), 20)
-waitBlockUI(20)
-WebUI.delay(0.5)
-	
-//Add to Cart Pop Up (Order Quantity)
-t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/2. Order Quantity TextField'), OrderQuantity)
-waitBlockUI(20)
-WebUI.delay(0.5)
-	
-selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/3. Price Type Dropdown'), PriceType)
-	
-//Add to Cart Pop Up (Price Type Dropdown)
-int rbType = Integer.parseInt(RBProcurementType.toString())
-	
-// Procurement Type Category
-clickProcurementType(rbType)
-	
-// IF NOT 1 OR 3 → isi Reason + Justification
-if (!(rbType == 1 || rbType == 3)) {
-	
-selectDropdownByIndex(
-	findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/4. Reason DropDown'),
-		ReasonPK7
+
+//TaskList
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
+
+//Input Document Number
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
+    Document_Number)
+
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
+
+//Click TaskList Description
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
+
+// Count all visible Assign buttons
+TestObject allAssignButtons = new TestObject("allAssignButtons")
+allAssignButtons.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "//button[.//span[normalize-space(.)='Assign']]"
 )
+
+int assignCount = WebUI.findWebElements(allAssignButtons, 20).size()
+
+WebUI.comment("Total Assign buttons found: " + assignCount)
+
+// Loop through even row indexes: 0,2,4,6...
+for (int i = 0; i < assignCount; i++) {
+    WebUI.comment("Click Assign button #" + i)
+
+    TestObject assignBtn = new TestObject("assignBtn")
+    assignBtn.addProperty(
+        "xpath",
+        ConditionType.EQUALS,
+        "(//button[.//span[normalize-space()='Assign']])[" + (i + 1) + "]"
+    )
+
+    WebUI.click(assignBtn)
+    WebUI.delay(1)
+
+    // STEP 3: DO WORK IN DETAIL PAGE
+    t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Item Code'),P_Item_Code)
+    c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Click Search'))
+	c(findTestObject ('Object Repository/DLOA/9. DLOA Supplier/Item Code Assignment/Click Hyperlink Product'))
 	
-WebUI.setText(
-	findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/5. Justification'),
-		Justification
-	)
+	//Choose dropdown type, measurement, color, brand
+	c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Zone Item/Zone Item Supplier Product/Item Details Pop Up Item Details'))
+
 }
-	
-// Click Proceed Button
-c(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/6. Click Proceed Button'), 20)
-waitBlockUI(20)
-WebUI.delay(0.5)
-	
-/* =========================
-* Request Note)
-* ========================= */
-t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/7. Delivery or Service Period'), DeliveryServicePeriod)
-waitBlockUI(20)
-WebUI.delay(0.5)
-	
-//Procurement Type Category
-selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/8. Procurement Type Category'), ProcurementTypeCategory)
-	  
-//Title
-t(findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/9. Tilte'), Title)
-waitBlockUI(20)
-WebUI.delay(0.5)
-	
-// =========================
-// Choose Approver
-// =========================
-TestObject approverGroup = findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/10. Approver Group Dropdown')
-TestObject approverName  = findTestObject('Object Repository/DP - Add To Cart/1. Add to Cart Requestioner/11. Approver Name Dropdown')
-				  
-// Select Approver Group
-selectDropdownByIndex(approverGroup, 20)
-waitBlockUI(20)
-WebUI.delay(2)
-				  
-// Wait until Approver Name dropdown is ready
-wVisible(approverName, 20)
-WebUI.waitForElementClickable(approverName, 20)
-WebUI.scrollToElement(approverName, 2)
- WebUI.delay(1)
-				  
-// Select Approver Name
-selectDropdownByIndex(approverName, 6)
-waitBlockUI(20)
-WebUI.delay(1)
-	
-/* =========================
-* Save LOA (unchanged)
-* ========================= */
-//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Submit LOA Application'))
-//c(findTestObject('Object Repository/DLOA/4. DLOA - Requestioner/2. Item List/Confirmation Pop up After Submit'))
 
+// ========================
+// SUBMIT BUTTON
+//=========================
+c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
 waitBlockUI(10)
+WebUI.delay(0.5)
+
+//If display button OK
+TestObject okBtn = new TestObject('okBtn')
+okBtn.addProperty("xpath", ConditionType.EQUALS,
+	"//button[span[normalize-space(text())='OK']]"
+)
+
+//Jumpa button OK - Click, if tak jumpa ignore
+if (WebUI.waitForElementVisible(okBtn, 10)) {
+    WebElement btnEl = WebUiCommonHelper.findWebElement(okBtn, 10) 
+    WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(btnEl)) //Menggunakan javascript untuk click OK secara direct pada browser.
+}
 
 /* =========================
- * WAIT LOADER + CAPTURE RN MESSAGE (DYNAMIC RNxxxx) + APPEND TO EXCEL (SAME FILE)
- * Example message:
- *   "Request Note RN260000000001152 is successfully submitted."
+ * WAIT LOADER + CAPTURE SQ MESSAGE (DYNAMIC SQxxxx) + APPEND TO EXCEL (SAME FILE)
  * ========================= */
-
 // ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -620,14 +542,14 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 TestObject msgObj = new TestObject('msg_RN_saved')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
 	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Request Note') and contains(.,'is successfully submitted')]"
+	"contains(.,'Request Note') and contains(.,'is successfully submitted.')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
 // Wait until message text contains "RN"
 String msg = ""
-for (int i = 0; i < 15; i++) {
+for (int i = 0; i < 2; i++) {
 	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
 	if (msg != null && msg.contains("RN")) break
 	WebUI.delay(1)
@@ -649,7 +571,7 @@ WebUI.comment("✅ Captured RN No: " + rnNo)
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DP_Add_to_Cart.xlsx"
+String filePath = baseDir + "/DLOA_RN_NO_Submitted_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -692,12 +614,9 @@ wb.close()
 WebUI.comment("✅ Appended to Excel: " + filePath)
 
 /* =========================
- * Sign Out
+ * SIGN OUT
  * ========================= */
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-
-// wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()

@@ -43,7 +43,7 @@
       <variableId>6d2cc1f2-8b6a-4e72-a358-a01ab6c166b8</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'nurulainmof'</defaultValue>
+      <defaultValue>'900801087664'</defaultValue>
       <description>*supplier</description>
       <id>9a7e5401-658f-447e-8b13-94247441946d</id>
       <masked>false</masked>
@@ -57,7 +57,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003403'</defaultValue>
+      <defaultValue>'PO260000000003404'</defaultValue>
       <description></description>
       <id>c61d89f5-e069-46da-a708-ba171f8c3741</id>
       <masked>false</masked>
@@ -78,7 +78,7 @@
       <name>DeliveryQuantity</name>
    </variable>
    <variable>
-      <defaultValue>15</defaultValue>
+      <defaultValue>40000</defaultValue>
       <description></description>
       <id>6d2cc1f2-8b6a-4e72-a358-a01ab6c166b8</id>
       <masked>false</masked>

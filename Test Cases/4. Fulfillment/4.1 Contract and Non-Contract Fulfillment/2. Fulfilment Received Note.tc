@@ -51,8 +51,8 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'01309H005M2600253'</defaultValue>
-      <description>*kena claim dulu</description>
+      <defaultValue>'01010J001P2600001'</defaultValue>
+      <description>*kena claim dulu + untuk dptkn value ni guna db cari no DO</description>
       <id>9cf4e7ee-7e04-415e-8531-e1f7c3979fac</id>
       <masked>false</masked>
       <name>Document_Number</name>
