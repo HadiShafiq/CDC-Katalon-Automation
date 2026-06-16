@@ -168,7 +168,7 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated - Dry Run for append'</defaultValue>
+      <defaultValue>'Automated - Dry Run for append 8.2'</defaultValue>
       <description></description>
       <id>83875ca3-169d-407f-b3c6-cbe4f1a987a5</id>
       <masked>false</masked>
@@ -182,7 +182,7 @@
       <name>ProcurementtypeCategory</name>
    </variable>
    <variable>
-      <defaultValue>5</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
       <id>4533820c-0316-4654-8d7f-2ab485bd94bd</id>
       <masked>false</masked>
@@ -273,7 +273,7 @@
       <name>AddSupplierNameNormal</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-10'</defaultValue>
+      <defaultValue>'2026-06-16'</defaultValue>
       <description></description>
       <id>8bf871ed-2c86-4eee-858d-60c6a6e0d814</id>
       <masked>false</masked>

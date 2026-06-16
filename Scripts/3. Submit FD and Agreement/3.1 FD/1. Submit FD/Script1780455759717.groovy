@@ -846,7 +846,7 @@ if (clickSideMenuIfExists(
 	c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 1'), 20)
 	WebUI.delay(0.5)
 	
-	pickDate("2026-06-03") //pick date here
+	pickDate(dateValue) //pick date here
 	
 	waitBlockUI(20)
 	WebUI.delay(1)
@@ -880,14 +880,14 @@ if (clickSideMenuIfExists(
 		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 2'), 20)
 		WebUI.delay(0.5)
 		
-		pickDate("2026-06-03") //pick date here
+		pickDate(dateValue) //pick date here
 		waitBlockUI(20)
 		WebUI.delay(1)
 		
 		c(findTestObject('Object Repository/FD and Agreement/Performance Bond/Click Icon Date 3'), 20)
 		WebUI.delay(0.5)
 		
-		pickDate("2026-06-03") //pick date here
+		pickDate(dateValue) //pick date here
 		waitBlockUI(20)
 		WebUI.delay(1)
 		

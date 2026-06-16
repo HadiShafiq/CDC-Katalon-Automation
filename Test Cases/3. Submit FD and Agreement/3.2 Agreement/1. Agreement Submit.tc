@@ -88,7 +88,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000002123'</defaultValue>
+      <defaultValue>'LA260000000002275'</defaultValue>
       <description></description>
       <id>2ccf60a7-2242-4ba5-96d7-a92f1e20701b</id>
       <masked>false</masked>
@@ -130,7 +130,7 @@
       <name>ApproverName</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-03'</defaultValue>
+      <defaultValue>'2026-06-15'</defaultValue>
       <description></description>
       <id>97993f93-ea1c-4c61-90cc-46d75b2c1f52</id>
       <masked>false</masked>

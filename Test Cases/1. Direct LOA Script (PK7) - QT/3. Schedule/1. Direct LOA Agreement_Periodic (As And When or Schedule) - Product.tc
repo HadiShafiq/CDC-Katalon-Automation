@@ -256,7 +256,7 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>e0f4be2f-f59e-44d6-965d-b9c81f56e620</id>
       <masked>false</masked>
@@ -298,7 +298,7 @@
       <name>TitleLetterofAcceptance</name>
    </variable>
    <variable>
-      <defaultValue>'Test000000000012'</defaultValue>
+      <defaultValue>'Test8.20000000012'</defaultValue>
       <description></description>
       <id>7e375eeb-08a3-433f-ae2f-0ff261e09981</id>
       <masked>false</masked>
@@ -319,7 +319,7 @@
       <name>LOAOfferedPrice</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
+      <defaultValue>2</defaultValue>
       <description></description>
       <id>da75349b-3c1f-4772-a007-ed8c2c53455d</id>
       <masked>false</masked>

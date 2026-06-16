@@ -496,7 +496,6 @@ WebUI.delay(1)
  *   "Request Note RN260000000001152 is successfully approve."
  * ========================= */
 
-
 // ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
@@ -585,12 +584,16 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 /* =========================
  * Sign Out
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-
+//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+TestObject signOutMenu = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out')
+if (WebUI.waitForElementVisible(signOutMenu, 20, FailureHandling.OPTIONAL)) {
+	WebUI.scrollToElement(signOutMenu, 2, FailureHandling.OPTIONAL)
+	WebUI.click(signOutMenu)
+} else {
+	KeywordUtil.markWarning('Sign out menu is not visible')
+}
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 
 // wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
-
-

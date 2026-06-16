@@ -132,6 +132,12 @@
       <value></value>
       <variableId>f873d493-dca0-48cf-b4a3-d66f696afc18</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>37e201ca-ca04-43e7-97b5-5863a6fd87f9</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'870926145529'</defaultValue>
       <description></description>
@@ -154,7 +160,7 @@
       <name>DocumentType</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000002123'</defaultValue>
+      <defaultValue>'LA260000000002275'</defaultValue>
       <description>*kena claim dulu</description>
       <id>0e90d95f-069c-4055-a987-72f58e791481</id>
       <masked>false</masked>
@@ -278,5 +284,12 @@
       <id>f873d493-dca0-48cf-b4a3-d66f696afc18</id>
       <masked>false</masked>
       <name>tickPerformanceBond</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-06-15'</defaultValue>
+      <description></description>
+      <id>37e201ca-ca04-43e7-97b5-5863a6fd87f9</id>
+      <masked>false</masked>
+      <name>dateValue</name>
    </variable>
 </TestCaseEntity>

@@ -256,30 +256,31 @@ def setZoneQtyByRow = { int rowIndex, String qtyValue ->
 }
 
 /**
- * Set unit price / rate by popup row index.
+ * Set order quantity/ rate by popup row index.
  * Used for popup table:
  * specAnswerTbl:{rowIndex}:ratePerUomAns
  */
-def setUnitPriceByRow = { int rowIndex, String unitPriceValue ->
-	String xpath = "//div[contains(@class,'ui-dialog')]//input[contains(@id,'specAnswerTbl:${rowIndex}:ratePerUomAns')]"
+def setOrderedQtyByRow = { int rowIndex, String qtyValue ->
 
-	TestObject priceObj = new TestObject("unitPrice_" + rowIndex)
-	priceObj.addProperty("xpath", ConditionType.EQUALS, xpath)
+    String xpath = "//div[contains(@class,'ui-dialog')]//tr[@data-ri='" + rowIndex + "']//input[contains(@name,'orderedQty')]"
 
-	WebUI.waitForElementVisible(priceObj, 20)
-	WebElement priceEl = WebUiCommonHelper.findWebElement(priceObj, 20)
+    TestObject qtyObj = new TestObject("orderedQty_" + rowIndex)
+    qtyObj.addProperty("xpath", ConditionType.EQUALS, xpath)
 
-	WebUI.executeJavaScript(
-		"""
+    WebUI.waitForElementVisible(qtyObj, 20)
+    WebElement qtyEl = WebUiCommonHelper.findWebElement(qtyObj, 20)
+
+    WebUI.executeJavaScript(
+        """
         arguments[0].value = arguments[1];
         arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
         arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
         """,
-		Arrays.asList(priceEl, unitPriceValue)
-	)
+        Arrays.asList(qtyEl, qtyValue)
+    )
 
-	waitBlockUI(30)
-	WebUI.delay(0.5)
+    waitBlockUI(30)
+    WebUI.delay(0.5)
 }
 
 
@@ -450,140 +451,12 @@ WebUI.delay(0.5)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * -Change language inside dashboard
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
+//Pending Delivery List Menu
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Contract List'))
 
-//TaskList
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+//Input Purchase Number
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Purchase Number'), Purchase_Number)
 
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
-
-//Input Document Number
-WebUI.setText(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
-    Document_Number)
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
-
-//Click TaskList Description
-WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
-
-/* =========================
- * General information
- * ========================= */
-String uploadFilePath = System.getProperty("user.dir") + "/TestData/UploadFiles/File_pdf_for_testing.pdf"
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Branch Information'))
-
-up(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Choose File Branch Information'),
-	uploadFilePath,3)
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click LOA Signing Date By Supplier'))
-WebUI.delay(1)
-
-//WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/General Information/Pick LOA Signer Date'))
-
-pickDate("2026-06-03")   // <-- put your date here
-waitBlockUI(20)
-WebUI.delay(1)
-
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Supplier Signer Details Dropdown'), Supplier_Signer_Dropdown)
-
-//Supplier Witness Details
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Name'), 
-    Witness_Name)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Identification No'), 
-    Witness_IC)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Designation'), 
-    Designation)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Address'), 
-    Address)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Telephone No'), 
-    Telephone_No)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Fax No'), 
-    Fax_no)
-
-/* =========================
- * LOA and Attachment 
- * ========================= */
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Side Menu Supplier/Side Menu Supplier LOA Attachment'))
-waitBlockUI(30)
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Click Perakuan Penerimaan Surat Setuju Terima'))
-
-up(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	uploadFilePath,3)
-	
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Click Lampiran C - Surat Akuan Sumpah Syarikat'))
-WebUI.delay(1)
-
-up(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	uploadFilePath,3)
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Click Lampiran 7 - Surat Akuan Pembida Berjaya'))
-WebUI.delay(1)
-
-up(findTestObject('Object Repository/DLOA/9. DLOA Supplier/LOA and Attachment/Upload File'),
-	uploadFilePath,3)
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/General Information/Click Upload File icon'))
-
-
-/* =========================
- * Zone Item Service
- * ========================= */
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Side Menu Supplier/Zone Item Service'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Assign Button Service'))
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Input Item Code for Services'), 
-    S_Item_Code)
-
-WebUI.setText(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Input Item Name for Services'), 
-    S_Item_Name)
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Search Item Code'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Hyperlink Item Code'))
-
-//click simbol YES at popup 
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Zone Item/Zone Item Supplier Service/Click Yes Popup'))
-
-/* =========================
- * Accept and Reject Button
- * ========================= */
-//WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Submit and Save Button/Save LOA Application'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Accept Button Supplier'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Confirmation Yes'))
-
-WebUI.click(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Accept and Reject Button/Pop up Soft Cert Yes'))
-
-//WebUI.click(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/Accept and Reject Button/Reject Button Supplier'))
-
-/* =========================
- * Sign Out
- * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-
-// wait until logout is completed (choose one)
-WebUI.waitForPageLoad(20)
-WebUI.closeBrowser()

@@ -123,7 +123,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'LA260000000002123'</defaultValue>
+      <defaultValue>'LA260000000002275'</defaultValue>
       <description>*kena claim dulu</description>
       <id>150a398d-723d-40d3-8205-37a8ec612310</id>
       <masked>false</masked>
