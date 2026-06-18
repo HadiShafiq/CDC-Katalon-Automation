@@ -42,6 +42,48 @@
       <value></value>
       <variableId>a6b71c0a-b388-4fe8-b8b6-c46e78a0b292</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>e24b6d0f-aaeb-41df-8e28-f8e34c4f1411</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>ece064b3-12fe-4d1f-ad92-5c3aa0fbf7d9</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c89958e0-2020-425a-9aaa-7435c81fc6b3</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>489c599f-592d-439d-8aa5-2cf19b9244c9</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>972b63ac-3e99-44f0-8d69-d567c092d814</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>4a94a623-f560-4632-b8a4-e7c022dbe738</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>771f0afa-138f-4578-a9e6-f52740650ae1</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -79,9 +121,58 @@
    </variable>
    <variable>
       <defaultValue>2</defaultValue>
-      <description></description>
+      <description>Dropdown Supplier Branch Name</description>
       <id>a6b71c0a-b388-4fe8-b8b6-c46e78a0b292</id>
       <masked>false</masked>
       <name>ddSupplier</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-06-19'</defaultValue>
+      <description></description>
+      <id>e24b6d0f-aaeb-41df-8e28-f8e34c4f1411</id>
+      <masked>false</masked>
+      <name>StartDate</name>
+   </variable>
+   <variable>
+      <defaultValue>'2026-07-18'</defaultValue>
+      <description></description>
+      <id>ece064b3-12fe-4d1f-ad92-5c3aa0fbf7d9</id>
+      <masked>false</masked>
+      <name>EndDate</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>c89958e0-2020-425a-9aaa-7435c81fc6b3</id>
+      <masked>false</masked>
+      <name>Address</name>
+   </variable>
+   <variable>
+      <defaultValue>'wisma'</defaultValue>
+      <description></description>
+      <id>489c599f-592d-439d-8aa5-2cf19b9244c9</id>
+      <masked>false</masked>
+      <name>Address_Input</name>
+   </variable>
+   <variable>
+      <defaultValue>2</defaultValue>
+      <description></description>
+      <id>972b63ac-3e99-44f0-8d69-d567c092d814</id>
+      <masked>false</masked>
+      <name>ddItemType</name>
+   </variable>
+   <variable>
+      <defaultValue>'8115160500'</defaultValue>
+      <description>2 - 8115160500 , 0 - 111416040</description>
+      <id>4a94a623-f560-4632-b8a4-e7c022dbe738</id>
+      <masked>false</masked>
+      <name>ItemCode</name>
+   </variable>
+   <variable>
+      <defaultValue>'10'</defaultValue>
+      <description></description>
+      <id>771f0afa-138f-4578-a9e6-f52740650ae1</id>
+      <masked>false</masked>
+      <name>OrderedQuantity</name>
    </variable>
 </TestCaseEntity>
