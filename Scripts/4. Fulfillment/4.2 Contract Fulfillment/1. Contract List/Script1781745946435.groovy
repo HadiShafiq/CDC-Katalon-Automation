@@ -312,7 +312,6 @@ def clickProcurementType(int option) {
 	waitBlockUI(20)
 }
 
-
 /* =========================================================
  * 7) CALENDAR PICKER DATE
  * ========================================================= */
@@ -363,6 +362,54 @@ def pickDate(String yyyyMmDd) {
 
 	WebUI.takeScreenshot()
 	assert false : "Date not found in datepicker: " + yyyyMmDd
+}
+/* =========================================================
+ * Dropdown for Select Supplier Branch Name
+ * ========================================================= */
+def selectSupplierBranchIfEnabledByIndex(int optionIndex) {
+	
+	// optionIndex is 1-based
+	// 1 = first option
+	// 2 = second option
+	// 3 = third option
+	
+	TestObject disabledDropdown = new TestObject('Supplier Branch Disabled')
+	disabledDropdown.addProperty('xpath', ConditionType.EQUALS,
+		"//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch' and contains(@class,'ui-state-disabled')]"
+	)
+	
+	TestObject disabledSelect = new TestObject('Supplier Branch Disabled Select')
+	disabledSelect.addProperty('xpath', ConditionType.EQUALS,
+		"//select[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_input' and @disabled='disabled']"
+	)
+	
+	boolean isDisabledByClass = WebUI.verifyElementPresent(disabledDropdown, 2, FailureHandling.OPTIONAL)
+	boolean isDisabledBySelect = WebUI.verifyElementPresent(disabledSelect, 2, FailureHandling.OPTIONAL)
+	
+	if (isDisabledByClass || isDisabledBySelect) {
+		println('Supplier Branch dropdown is disabled. Skip selection.')
+		return
+	}
+	
+	TestObject trigger = new TestObject('Supplier Branch Trigger')
+	trigger.addProperty('xpath', ConditionType.EQUALS,
+		"//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']//div[contains(@class,'ui-selectonemenu-trigger')]"
+	)
+	
+	WebUI.waitForElementClickable(trigger, 10)
+	WebUI.click(trigger)
+	
+	WebUI.delay(1)
+	
+	TestObject option = new TestObject('Supplier Branch Option Index ' + optionIndex)
+	option.addProperty('xpath', ConditionType.EQUALS,
+		"(//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_panel']//li[contains(@class,'ui-selectonemenu-item')])[${optionIndex}]"
+	)
+	
+	WebUI.waitForElementVisible(option, 10)
+	WebUI.click(option)
+	
+	println('Supplier Branch selected by index: ' + optionIndex)
 }
 
 /* =========================================================
@@ -520,61 +567,46 @@ c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - To 
 
 //Start Date
 c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - Start Date'))
-pickDate("2026-06-19")
+pickDate(StartDate)
 
 //End Date
 c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - End Date'))
-pickDate("2026-07-18")
+pickDate(EndDate)
 
 //Tick I declare
 c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I declare'))
 
 //Supplier Branch Name
-//selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Supplier Branch'),ddSupplier)
-def selectSupplierBranchIfEnabledByIndex(int optionIndex) {
+selectSupplierBranchIfEnabledByIndex(ddSupplier)
 
-    // optionIndex is 1-based
-    // 1 = first option
-    // 2 = second option
-    // 3 = third option
+/* =================================
+ * DELIVERY ADDRESS & ITEM
+ * ================================= */
+//Address PTJ
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
+selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Address)
+t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Address Input'), Address_Input)
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
+c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button'))
+waitBlockUI(20)
+WebUI.delay(0.5)
 
-    TestObject disabledDropdown = new TestObject('Supplier Branch Disabled')
-    disabledDropdown.addProperty('xpath', ConditionType.EQUALS,
-        "//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch' and contains(@class,'ui-state-disabled')]"
-    )
+//Add
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Button Add'))
+selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Item Type'), ddItemType)
+t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Item Code'),ItemCode)
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Search'))
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - Result'))
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Button Add Popup'))
 
-    TestObject disabledSelect = new TestObject('Supplier Branch Disabled Select')
-    disabledSelect.addProperty('xpath', ConditionType.EQUALS,
-        "//select[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_input' and @disabled='disabled']"
-    )
+//Table Add
+//t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Ordered Quantity'), OrderedQuantity)
+TestObject qtyField = findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Ordered Quantity')
+WebUI.click(qtyField)
+WebUI.clearText(qtyField)
+WebUI.sendKeys(qtyField, OrderedQuantity)
 
-    boolean isDisabledByClass = WebUI.verifyElementPresent(disabledDropdown, 2, FailureHandling.OPTIONAL)
-    boolean isDisabledBySelect = WebUI.verifyElementPresent(disabledSelect, 2, FailureHandling.OPTIONAL)
-
-    if (isDisabledByClass || isDisabledBySelect) {
-        println('Supplier Branch dropdown is disabled. Skip selection.')
-        return
-    }
-
-    TestObject trigger = new TestObject('Supplier Branch Trigger')
-    trigger.addProperty('xpath', ConditionType.EQUALS,
-        "//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']//div[contains(@class,'ui-selectonemenu-trigger')]"
-    )
-
-    WebUI.waitForElementClickable(trigger, 10)
-    WebUI.click(trigger)
-
-    WebUI.delay(1)
-
-    TestObject option = new TestObject('Supplier Branch Option Index ' + optionIndex)
-    option.addProperty('xpath', ConditionType.EQUALS,
-        "(//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_panel']//li[contains(@class,'ui-selectonemenu-item')])[${optionIndex}]"
-    )
-
-    WebUI.waitForElementVisible(option, 10)
-    WebUI.click(option)
-
-    println('Supplier Branch selected by index: ' + optionIndex)
-}
-
-selectSupplierBranchIfEnabledByIndex(2)
+// Click outside field to trigger UI update before submit (ensure value is properly saved)
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
