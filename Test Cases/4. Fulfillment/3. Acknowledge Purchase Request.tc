@@ -39,8 +39,8 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PR260000000002860'</defaultValue>
-      <description></description>
+      <defaultValue>'PO260000000003602'</defaultValue>
+      <description>1. Kena Run SQL Search PO By PR 2. Kena claim kalau x de dalam tasklist</description>
       <id>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</id>
       <masked>false</masked>
       <name>Document_Number</name>
