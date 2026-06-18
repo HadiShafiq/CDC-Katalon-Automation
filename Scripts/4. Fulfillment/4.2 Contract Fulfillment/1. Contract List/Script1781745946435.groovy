@@ -459,6 +459,12 @@ c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Butto
 /* =======================================================
  * XPATH FOR INPUT SCHEDULE & AS&WHEN
  * =======================================================*/
+//AS&WHEN
+TestObject actionIcon = new TestObject()
+actionIcon.addProperty("xpath", ConditionType.EQUALS,
+	"//img[contains(@src, 'ico-view.png') and @title='Contract Request']"
+)
+
 //SCHEDULE
 TestObject scheduleIcon = new TestObject()
 scheduleIcon.addProperty("xpath", ConditionType.EQUALS,
@@ -475,25 +481,23 @@ scheduleActionIcon.addProperty(
     "(//img[contains(@src, 'ico-view.png') and @title='Contract Request'])[${i}]"
 )
 
-//AS&WHEN
-TestObject actionIcon = new TestObject()
-actionIcon.addProperty("xpath", ConditionType.EQUALS,
-    "//img[contains(@src, 'ico-view.png') and @title='Contract Request']"
-)
+/* ==================================================
+ * AS & WHEN FIRST (TOP FLOW)
+ * ================================================== */
+boolean isSchedule = false
+
+if (WebUI.waitForElementVisible(actionIcon, 5, FailureHandling.OPTIONAL)) {
+
+    WebElement action = WebUiCommonHelper.findWebElement(actionIcon, 10)
+    WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(action))
+}
 
 /* ==================================================
- * Click which one display
- * AS&WHEN || SCHEDULE
+ * SCHEDULE FLOW (BOTTOM FLOW)
  * ================================================== */
+if (WebUI.waitForElementVisible(scheduleIcon, 5, FailureHandling.OPTIONAL)) {
 
-boolean isSchedule = false //Detect not Schedule
-
-/* =========================
- * CHECK & CLICK SCHEDULE
- * ========================= */
-if (WebUI.waitForElementVisible(scheduleIcon, 10, FailureHandling.OPTIONAL)) {
-
-    isSchedule = true //okay schedule -- proceed
+    isSchedule = true
 
     WebElement schedule = WebUiCommonHelper.findWebElement(scheduleIcon, 10)
     WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(schedule))
@@ -502,18 +506,6 @@ if (WebUI.waitForElementVisible(scheduleIcon, 10, FailureHandling.OPTIONAL)) {
 
         WebElement scheduleAction = WebUiCommonHelper.findWebElement(scheduleActionIcon, 10)
         WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(scheduleAction))
-    }
-}
-
-/* =================================
- * AS & WHEN (ONLY IF NOT SCHEDULE)
- * ================================= */
-if (!isSchedule) { //If not schdule proceed AS&WHEN
-
-    if (WebUI.waitForElementVisible(actionIcon, 10, FailureHandling.OPTIONAL)) {
-
-        WebElement action = WebUiCommonHelper.findWebElement(actionIcon, 10)
-        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(action))
     }
 }
 
@@ -539,55 +531,44 @@ c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I d
 
 //Supplier Branch Name
 //selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Supplier Branch'),ddSupplier)
-def selectSuppBranchIfEnabled(String optionText) {
-	
-	TestObject suppBranchContainer = new TestObject('suppBranchContainer')
-	suppBranchContainer.addProperty(
-		'xpath',
-		ConditionType.EQUALS,
-		"//div[@id='flContractRequest_WAR_NGePportlet:form:suppBranch']"
-		)
-	
-	TestObject suppBranchSelect = new TestObject('suppBranchHiddenSelect')
-	suppBranchSelect.addProperty(
-		'xpath',
-		ConditionType.EQUALS,
-		"//select[@id='flContractRequest_WAR_NGePportlet:form:suppBranch_input']"
-		)
-	
-	WebUI.waitForElementPresent(suppBranchContainer, 10)
-	
-	String parentClass = WebUI.getAttribute(suppBranchContainer, 'class', FailureHandling.OPTIONAL)
-	String disabledAttr = WebUI.getAttribute(suppBranchSelect, 'disabled', FailureHandling.OPTIONAL)
-	
-	boolean isDisabled =
-		parentClass?.contains('ui-state-disabled') ||
-		disabledAttr?.equalsIgnoreCase('disabled') ||
-		disabledAttr?.equalsIgnoreCase('true')
-	
-	if (isDisabled) {
-		println "Supplier Branch dropdown is disabled. Skipping selection."
-		return
-	}
-	
-	TestObject suppBranchTrigger = new TestObject('suppBranchTrigger')
-	suppBranchTrigger.addProperty(
-		'xpath',
-		ConditionType.EQUALS,
-		"//div[@id='flContractRequest_WAR_NGePportlet:form:suppBranch']/div[contains(@class,'ui-selectonemenu-trigger')]"
-	)
-	
-	WebUI.waitForElementClickable(suppBranchTrigger, 10)
-	WebUI.click(suppBranchTrigger)
-	
-	TestObject suppBranchOption = new TestObject('suppBranchOption_' + optionText)
-	suppBranchOption.addProperty(
-		'xpath',
-		ConditionType.EQUALS,
-		"//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[normalize-space(.)='${optionText}']"
-	)
-	
-	WebUI.waitForElementVisible(suppBranchOption, 10)
-	WebUI.click(suppBranchOption)
-			println "Supplier Branch selected: " + optionText
+def selectSupplierBranchIfEnabledByIndex(int optionIndex) {
+
+    // Main Supplier Branch dropdown
+    TestObject dropdown = new TestObject('Supplier Branch Dropdown')
+    dropdown.addProperty('xpath', ConditionType.EQUALS,
+        "//*[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']/div[3]"
+    )
+
+    WebUI.waitForElementPresent(dropdown, 10)
+
+    // Check disabled
+    String dropdownClass = WebUI.getAttribute(dropdown, 'class', FailureHandling.OPTIONAL)
+
+    if (dropdownClass != null && dropdownClass.contains('ui-state-disabled')) {
+        println('Supplier Branch dropdown is disabled. Skip selection.')
+        return
+    }
+
+    // Click dropdown trigger
+    TestObject trigger = new TestObject('Supplier Branch Trigger')
+    trigger.addProperty('xpath', ConditionType.EQUALS,
+        "//*[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']/div[3]"
+    )
+
+    WebUI.waitForElementClickable(trigger, 10)
+    WebUI.click(trigger)
+
+    // Select option by index
+    // optionIndex is 0-based, XPath is 1-based, so +1 is needed
+    TestObject option = new TestObject('Supplier Branch Option Index ' + optionIndex)
+    option.addProperty('xpath', ConditionType.EQUALS,
+        "(//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[contains(@class,'ui-selectonemenu-item')])[${optionIndex + 1}]"
+    )
+
+    WebUI.waitForElementVisible(option, 10)
+    WebUI.click(option)
+
+    println('Supplier Branch selected by index: ' + optionIndex)
 }
+
+selectSupplierBranchIfEnabledByIndex(1)
