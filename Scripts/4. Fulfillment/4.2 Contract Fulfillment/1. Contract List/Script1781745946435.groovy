@@ -510,7 +510,7 @@ if (WebUI.waitForElementVisible(scheduleIcon, 5, FailureHandling.OPTIONAL)) {
 }
 
 /* =================================
- * GENERAL - Request Details
+ * GENERAL - Request Detailss
  * ================================= */
 //Description
 t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Textarea Description'), Description)
