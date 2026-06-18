@@ -531,44 +531,4 @@ c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I d
 
 //Supplier Branch Name
 //selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Supplier Branch'),ddSupplier)
-def selectSupplierBranchIfEnabledByIndex(int optionIndex) {
 
-    // Main Supplier Branch dropdown
-    TestObject dropdown = new TestObject('Supplier Branch Dropdown')
-    dropdown.addProperty('xpath', ConditionType.EQUALS,
-        "//*[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']/div[3]"
-    )
-
-    WebUI.waitForElementPresent(dropdown, 10)
-
-    // Check disabled
-    String dropdownClass = WebUI.getAttribute(dropdown, 'class', FailureHandling.OPTIONAL)
-
-    if (dropdownClass != null && dropdownClass.contains('ui-state-disabled')) {
-        println('Supplier Branch dropdown is disabled. Skip selection.')
-        return
-    }
-
-    // Click dropdown trigger
-    TestObject trigger = new TestObject('Supplier Branch Trigger')
-    trigger.addProperty('xpath', ConditionType.EQUALS,
-        "//*[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']/div[3]"
-    )
-
-    WebUI.waitForElementClickable(trigger, 10)
-    WebUI.click(trigger)
-
-    // Select option by index
-    // optionIndex is 0-based, XPath is 1-based, so +1 is needed
-    TestObject option = new TestObject('Supplier Branch Option Index ' + optionIndex)
-    option.addProperty('xpath', ConditionType.EQUALS,
-        "(//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[contains(@class,'ui-selectonemenu-item')])[${optionIndex + 1}]"
-    )
-
-    WebUI.waitForElementVisible(option, 10)
-    WebUI.click(option)
-
-    println('Supplier Branch selected by index: ' + optionIndex)
-}
-
-selectSupplierBranchIfEnabledByIndex(1)

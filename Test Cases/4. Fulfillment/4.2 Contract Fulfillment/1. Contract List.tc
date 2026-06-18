@@ -64,7 +64,7 @@
       <name>ddContractList</name>
    </variable>
    <variable>
-      <defaultValue>'CT260000000001240'</defaultValue>
+      <defaultValue>'CT260000000001242'</defaultValue>
       <description></description>
       <id>aa2f9d71-a4a8-446f-82bb-f2ab4cb198c5</id>
       <masked>false</masked>
