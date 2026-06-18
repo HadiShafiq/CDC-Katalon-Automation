@@ -409,10 +409,6 @@ DriverFactory.changeWebDriver(driver)
 
 /* =========================
  * OPEN APPLICATION
- * Purpose:
- * - open NGeP SIT portal
- * - maximize browser
- * - wait initial page load
  * ========================= */
 WebUI.navigateToUrl('http://ngepsit.eperolehan.com.my/home')
 WebUI.maximizeWindow()
@@ -420,8 +416,6 @@ waitBlockUI(20)
 
 /* =========================
  * LANGUAGE
- * Purpose:
- * - switch system language to English
  * ========================= */
 wVisible(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 20)
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
@@ -431,10 +425,6 @@ WebUI.delay(1)
 
 /* =========================
  * LOGIN
- * Purpose:
- * - open login form
- * - enter username and password
- * - submit login
  * ========================= */
 c(findTestObject('Direct LOA/1. Direct LOA Requistioner/Login/Right Top Menu Login'), 20)
 WebUI.delay(0.5)
@@ -457,6 +447,147 @@ WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct
 //Pending Delivery List Menu
 c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Contract List'))
 
-//Input Purchase Number
-t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Purchase Number'), Purchase_Number)
+//Dropdown Search Contract List: 
+selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Dropdown Justification'), ddContractList)
 
+//Input Contract List:
+t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Contract List'), ContractList)
+
+//Click Button Search
+c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Button Search'))
+
+/* =======================================================
+ * XPATH FOR INPUT SCHEDULE & AS&WHEN
+ * =======================================================*/
+//SCHEDULE
+TestObject scheduleIcon = new TestObject()
+scheduleIcon.addProperty("xpath", ConditionType.EQUALS,
+    "//div[contains(@class, 'ui-row-toggler')]"
+)
+
+//SCHEDULE-ACTION
+int i = 1 //Boleh tukar based on nak click which one
+
+TestObject scheduleActionIcon = new TestObject()
+scheduleActionIcon.addProperty(
+    "xpath",
+    ConditionType.EQUALS,
+    "(//img[contains(@src, 'ico-view.png') and @title='Contract Request'])[${i}]"
+)
+
+//AS&WHEN
+TestObject actionIcon = new TestObject()
+actionIcon.addProperty("xpath", ConditionType.EQUALS,
+    "//img[contains(@src, 'ico-view.png') and @title='Contract Request']"
+)
+
+/* ==================================================
+ * Click which one display
+ * AS&WHEN || SCHEDULE
+ * ================================================== */
+
+boolean isSchedule = false //Detect not Schedule
+
+/* =========================
+ * CHECK & CLICK SCHEDULE
+ * ========================= */
+if (WebUI.waitForElementVisible(scheduleIcon, 10, FailureHandling.OPTIONAL)) {
+
+    isSchedule = true //okay schedule -- proceed
+
+    WebElement schedule = WebUiCommonHelper.findWebElement(scheduleIcon, 10)
+    WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(schedule))
+
+    if (WebUI.waitForElementVisible(scheduleActionIcon, 10, FailureHandling.OPTIONAL)) {
+
+        WebElement scheduleAction = WebUiCommonHelper.findWebElement(scheduleActionIcon, 10)
+        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(scheduleAction))
+    }
+}
+
+/* =================================
+ * AS & WHEN (ONLY IF NOT SCHEDULE)
+ * ================================= */
+if (!isSchedule) { //If not schdule proceed AS&WHEN
+
+    if (WebUI.waitForElementVisible(actionIcon, 10, FailureHandling.OPTIONAL)) {
+
+        WebElement action = WebUiCommonHelper.findWebElement(actionIcon, 10)
+        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(action))
+    }
+}
+
+/* =================================
+ * GENERAL - Request Details
+ * ================================= */
+//Description
+t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Textarea Description'), Description)
+
+//Tick to remain
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - To remain'))
+
+//Start Date
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - Start Date'))
+pickDate("2026-06-19")
+
+//End Date
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - End Date'))
+pickDate("2026-07-18")
+
+//Tick I declare
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I declare'))
+
+//Supplier Branch Name
+//selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Supplier Branch'),ddSupplier)
+def selectSuppBranchIfEnabled(String optionText) {
+	
+	TestObject suppBranchContainer = new TestObject('suppBranchContainer')
+	suppBranchContainer.addProperty(
+		'xpath',
+		ConditionType.EQUALS,
+		"//div[@id='flContractRequest_WAR_NGePportlet:form:suppBranch']"
+		)
+	
+	TestObject suppBranchSelect = new TestObject('suppBranchHiddenSelect')
+	suppBranchSelect.addProperty(
+		'xpath',
+		ConditionType.EQUALS,
+		"//select[@id='flContractRequest_WAR_NGePportlet:form:suppBranch_input']"
+		)
+	
+	WebUI.waitForElementPresent(suppBranchContainer, 10)
+	
+	String parentClass = WebUI.getAttribute(suppBranchContainer, 'class', FailureHandling.OPTIONAL)
+	String disabledAttr = WebUI.getAttribute(suppBranchSelect, 'disabled', FailureHandling.OPTIONAL)
+	
+	boolean isDisabled =
+		parentClass?.contains('ui-state-disabled') ||
+		disabledAttr?.equalsIgnoreCase('disabled') ||
+		disabledAttr?.equalsIgnoreCase('true')
+	
+	if (isDisabled) {
+		println "Supplier Branch dropdown is disabled. Skipping selection."
+		return
+	}
+	
+	TestObject suppBranchTrigger = new TestObject('suppBranchTrigger')
+	suppBranchTrigger.addProperty(
+		'xpath',
+		ConditionType.EQUALS,
+		"//div[@id='flContractRequest_WAR_NGePportlet:form:suppBranch']/div[contains(@class,'ui-selectonemenu-trigger')]"
+	)
+	
+	WebUI.waitForElementClickable(suppBranchTrigger, 10)
+	WebUI.click(suppBranchTrigger)
+	
+	TestObject suppBranchOption = new TestObject('suppBranchOption_' + optionText)
+	suppBranchOption.addProperty(
+		'xpath',
+		ConditionType.EQUALS,
+		"//div[contains(@class,'ui-selectonemenu-panel') and contains(@style,'display: block')]//li[normalize-space(.)='${optionText}']"
+	)
+	
+	WebUI.waitForElementVisible(suppBranchOption, 10)
+	WebUI.click(suppBranchOption)
+			println "Supplier Branch selected: " + optionText
+}
