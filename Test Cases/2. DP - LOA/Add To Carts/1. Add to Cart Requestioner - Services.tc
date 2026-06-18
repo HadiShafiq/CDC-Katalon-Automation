@@ -148,7 +148,7 @@
       <name>ReasonPK7</name>
    </variable>
    <variable>
-      <defaultValue>'Automated Add to Cart 1000001'</defaultValue>
+      <defaultValue>'Automated Add to Cart 1000002'</defaultValue>
       <description></description>
       <id>0ffc4010-f5d9-4ea2-844e-7a0305ee68b7</id>
       <masked>false</masked>
