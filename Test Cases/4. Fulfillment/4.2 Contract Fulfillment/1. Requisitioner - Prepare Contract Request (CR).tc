@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>1. Contract List</name>
+   <name>1. Requisitioner - Prepare Contract Request (CR)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -84,6 +84,42 @@
       <value></value>
       <variableId>771f0afa-138f-4578-a9e6-f52740650ae1</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>a2a7bbae-1091-4050-87e2-4039a3bd486f</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>04f7d32a-eadf-4395-8d26-a43887ae8034</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>541b22b4-3080-429c-ad29-8fcbc487c232</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>957127f7-e5dc-4d37-b0f7-f641faf65409</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>7a004b46-a470-4796-a49d-0cd0e1632203</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d8f16e01-09c5-4003-84f1-e490a4528c34</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>'710527085562'</defaultValue>
       <description></description>
@@ -107,7 +143,7 @@
    </variable>
    <variable>
       <defaultValue>'CT260000000001242'</defaultValue>
-      <description></description>
+      <description>CT260000000001240, CT260000000001242</description>
       <id>aa2f9d71-a4a8-446f-82bb-f2ab4cb198c5</id>
       <masked>false</masked>
       <name>ContractList</name>
@@ -127,14 +163,14 @@
       <name>ddSupplier</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-19'</defaultValue>
+      <defaultValue>'2026-06-23'</defaultValue>
       <description></description>
       <id>e24b6d0f-aaeb-41df-8e28-f8e34c4f1411</id>
       <masked>false</masked>
       <name>StartDate</name>
    </variable>
    <variable>
-      <defaultValue>'2026-07-18'</defaultValue>
+      <defaultValue>'2026-07-22'</defaultValue>
       <description></description>
       <id>ece064b3-12fe-4d1f-ad92-5c3aa0fbf7d9</id>
       <masked>false</masked>
@@ -156,14 +192,14 @@
    </variable>
    <variable>
       <defaultValue>2</defaultValue>
-      <description></description>
+      <description>0 -1 , 2 -2</description>
       <id>972b63ac-3e99-44f0-8d69-d567c092d814</id>
       <masked>false</masked>
       <name>ddItemType</name>
    </variable>
    <variable>
       <defaultValue>'8115160500'</defaultValue>
-      <description>2 - 8115160500 , 0 - 111416040</description>
+      <description> 0 - 111416040 , 2 - 8115160500 </description>
       <id>4a94a623-f560-4632-b8a4-e7c022dbe738</id>
       <masked>false</masked>
       <name>ItemCode</name>
@@ -173,6 +209,48 @@
       <description></description>
       <id>771f0afa-138f-4578-a9e6-f52740650ae1</id>
       <masked>false</masked>
-      <name>OrderedQuantity</name>
+      <name>Ordered_Quantity</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>a2a7bbae-1091-4050-87e2-4039a3bd486f</id>
+      <masked>false</masked>
+      <name>Transaction_Indicator</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>04f7d32a-eadf-4395-8d26-a43887ae8034</id>
+      <masked>false</masked>
+      <name>Listing_VOT</name>
+   </variable>
+   <variable>
+      <defaultValue>'B10'</defaultValue>
+      <description></description>
+      <id>541b22b4-3080-429c-ad29-8fcbc487c232</id>
+      <masked>false</masked>
+      <name>VOT_Search</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>957127f7-e5dc-4d37-b0f7-f641faf65409</id>
+      <masked>false</masked>
+      <name>Listing_Program</name>
+   </variable>
+   <variable>
+      <defaultValue>'010102'</defaultValue>
+      <description></description>
+      <id>7a004b46-a470-4796-a49d-0cd0e1632203</id>
+      <masked>false</masked>
+      <name>Program_Search</name>
+   </variable>
+   <variable>
+      <defaultValue>'B0'</defaultValue>
+      <description></description>
+      <id>d8f16e01-09c5-4003-84f1-e490a4528c34</id>
+      <masked>false</masked>
+      <name>Description_Search</name>
    </variable>
 </TestCaseEntity>

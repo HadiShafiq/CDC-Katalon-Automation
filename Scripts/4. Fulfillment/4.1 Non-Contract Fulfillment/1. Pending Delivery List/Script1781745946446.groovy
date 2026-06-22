@@ -589,7 +589,7 @@ msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
 // extract PO number
-def matcher = (msg =~ /(PO\d+)/)
+def matcher = (msg =~ /(DO-PO\d+)/)
 String poNum = matcher.find() ? matcher.group(1) : ""
 
 if (poNum == "") {

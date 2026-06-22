@@ -312,6 +312,7 @@ def clickProcurementType(int option) {
 	waitBlockUI(20)
 }
 
+
 /* =========================================================
  * 7) CALENDAR PICKER DATE
  * ========================================================= */
@@ -362,54 +363,6 @@ def pickDate(String yyyyMmDd) {
 
 	WebUI.takeScreenshot()
 	assert false : "Date not found in datepicker: " + yyyyMmDd
-}
-/* =========================================================
- * Dropdown for Select Supplier Branch Name
- * ========================================================= */
-def selectSupplierBranchIfEnabledByIndex(int optionIndex) {
-	
-	// optionIndex is 1-based
-	// 1 = first option
-	// 2 = second option
-	// 3 = third option
-	
-	TestObject disabledDropdown = new TestObject('Supplier Branch Disabled')
-	disabledDropdown.addProperty('xpath', ConditionType.EQUALS,
-		"//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch' and contains(@class,'ui-state-disabled')]"
-	)
-	
-	TestObject disabledSelect = new TestObject('Supplier Branch Disabled Select')
-	disabledSelect.addProperty('xpath', ConditionType.EQUALS,
-		"//select[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_input' and @disabled='disabled']"
-	)
-	
-	boolean isDisabledByClass = WebUI.verifyElementPresent(disabledDropdown, 2, FailureHandling.OPTIONAL)
-	boolean isDisabledBySelect = WebUI.verifyElementPresent(disabledSelect, 2, FailureHandling.OPTIONAL)
-	
-	if (isDisabledByClass || isDisabledBySelect) {
-		println('Supplier Branch dropdown is disabled. Skip selection.')
-		return
-	}
-	
-	TestObject trigger = new TestObject('Supplier Branch Trigger')
-	trigger.addProperty('xpath', ConditionType.EQUALS,
-		"//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch']//div[contains(@class,'ui-selectonemenu-trigger')]"
-	)
-	
-	WebUI.waitForElementClickable(trigger, 10)
-	WebUI.click(trigger)
-	
-	WebUI.delay(1)
-	
-	TestObject option = new TestObject('Supplier Branch Option Index ' + optionIndex)
-	option.addProperty('xpath', ConditionType.EQUALS,
-		"(//div[@id='_flContractRequest_WAR_NGePportlet_:form:suppBranch_panel']//li[contains(@class,'ui-selectonemenu-item')])[${optionIndex}]"
-	)
-	
-	WebUI.waitForElementVisible(option, 10)
-	WebUI.click(option)
-	
-	println('Supplier Branch selected by index: ' + optionIndex)
 }
 
 /* =========================================================
@@ -491,122 +444,159 @@ WebUI.delay(0.5)
  * ========================= */
 WebUI.selectOptionByValue(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Dropdown Language'), 'en_US', true)
 
-//Pending Delivery List Menu
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Click Contract List'))
+//TaskList
+c(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/Common Page/Click Task List'))
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/MyTask_Tasklist_Dropdown'))
 
-//Dropdown Search Contract List: 
-selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Dropdown Justification'), ddContractList)
+//Input Document Number
+t(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Input Document Number'), 
+    Document_Number)
 
-//Input Contract List:
-t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Input Contract List'), ContractList)
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Search TaskList'))
 
-//Click Button Search
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Button Search'))
+//Click TaskList Description
+c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-/* =======================================================
- * XPATH FOR INPUT SCHEDULE & AS&WHEN
- * =======================================================*/
-//AS&WHEN
-TestObject actionIcon = new TestObject()
-actionIcon.addProperty("xpath", ConditionType.EQUALS,
-	"//img[contains(@src, 'ico-view.png') and @title='Contract Request']"
+/* =========================
+ * FOR PAYMENT DESCRIPTION
+ * ------------------------
+ * Get Purchase Order No.
+ * =========================*/
+TestObject poNumObj = new TestObject('poNumObj')
+
+poNumObj.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"//td[label[normalize-space()='Purchase Order No.']]/following-sibling::td[contains(@class,'header-info-text')][1]"
 )
 
-//SCHEDULE
-TestObject scheduleIcon = new TestObject()
-scheduleIcon.addProperty("xpath", ConditionType.EQUALS,
-    "//div[contains(@class, 'ui-row-toggler')]"
+WebUI.waitForElementVisible(poNumObj, 20)
+
+String poNum = WebUI.getText(poNumObj).trim()
+
+println("Purchase Order No = " + poNum)
+
+/*  ============================
+ *  Prepare Purchase Order No
+ *  ============================*/
+String purchaseNo = "PM-" + poNum
+
+/* =========================
+ * Payment Description Field
+ * =========================*/
+TestObject paymentDesc = new TestObject('paymentDesc')
+
+paymentDesc.addProperty(
+	"xpath",
+	ConditionType.EQUALS,
+	"(//input[contains(@id,'form') and @type='text'])[12]"
 )
+/* ====================================
+ * Key In Input Payment Description
+ * ====================================*/
+t(paymentDesc, purchaseNo)
 
-//SCHEDULE-ACTION
-int i = 1 //Boleh tukar based on nak click which one
-
-TestObject scheduleActionIcon = new TestObject()
-scheduleActionIcon.addProperty(
-    "xpath",
-    ConditionType.EQUALS,
-    "(//img[contains(@src, 'ico-view.png') and @title='Contract Request'])[${i}]"
-)
-
-/* ==================================================
- * AS & WHEN FIRST (TOP FLOW)
- * ================================================== */
-boolean isSchedule = false
-
-if (WebUI.waitForElementVisible(actionIcon, 5, FailureHandling.OPTIONAL)) {
-
-    WebElement action = WebUiCommonHelper.findWebElement(actionIcon, 10)
-    WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(action))
-}
-
-/* ==================================================
- * SCHEDULE FLOW (BOTTOM FLOW)
- * ================================================== */
-if (WebUI.waitForElementVisible(scheduleIcon, 5, FailureHandling.OPTIONAL)) {
-
-    isSchedule = true
-
-    WebElement schedule = WebUiCommonHelper.findWebElement(scheduleIcon, 10)
-    WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(schedule))
-
-    if (WebUI.waitForElementVisible(scheduleActionIcon, 10, FailureHandling.OPTIONAL)) {
-
-        WebElement scheduleAction = WebUiCommonHelper.findWebElement(scheduleActionIcon, 10)
-        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(scheduleAction))
-    }
-}
-
-/* =================================
- * GENERAL - Request Detailss
- * ================================= */
-//Description
-t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Textarea Description'), Description)
-
-//Tick to remain
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - To remain'))
-
-//Start Date
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - Start Date'))
-pickDate(StartDate)
-
-//End Date
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Calender - End Date'))
-pickDate(EndDate)
-
-//Tick I declare
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I declare'))
-
-//Supplier Branch Name
-selectSupplierBranchIfEnabledByIndex(ddSupplier)
-
-/* =================================
- * DELIVERY ADDRESS & ITEM
- * ================================= */
-//Address PTJ
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Address)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Address Input'), Address_Input)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button'))
-waitBlockUI(20)
+//MATCH BUTTON 
+c(findTestObject('Object Repository/DP - Add To Cart/Create Invoice/Match Button'))
+waitBlockUI(10)
 WebUI.delay(0.5)
 
-//Add
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Button Add'))
-selectDropdownByIndex(findTestObject('Object Repository/DP - Add To Cart/Contract List/Dropdown Item Type'), ddItemType)
-t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Item Code'),ItemCode)
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Click Search'))
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - Result'))
-c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Button Add Popup'))
+c(findTestObject('Object Repository/DP - Add To Cart/Payment Match/Click Sign WO GPKI'))
+waitBlockUI(10)
+WebUI.delay(0.5)
 
-//Table Add
-//t(findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Ordered Quantity'), OrderedQuantity)
-TestObject qtyField = findTestObject('Object Repository/DP - Add To Cart/Contract List/Input Ordered Quantity')
-WebUI.click(qtyField)
-WebUI.clearText(qtyField)
-WebUI.sendKeys(qtyField, OrderedQuantity)
+/* ======================================
+ * SUCCESS MESSAGE - After click submit
+ * ====================================== */
+TestObject blockUI = new TestObject('blockUI')
+blockUI.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
+)
 
-// Click outside field to trigger UI update before submit (ensure value is properly saved)
-c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
+if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
+	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
+}
+
+//ambil ANY message
+TestObject msgObj = new TestObject('msg_any')
+msgObj.addProperty("xpath", ConditionType.EQUALS,
+	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
+)
+
+WebUI.waitForElementVisible(msgObj, 30)
+
+String msg = WebUI.getText(msgObj, FailureHandling.STOP_ON_FAILURE)
+msg = (msg == null) ? "" : msg.trim()
+
+WebUI.comment("Message: " + msg)
+
+// extract FN number
+def matcher = (msg =~ /(PA\d+)/)
+String paNo = matcher.find() ? matcher.group(1) : ""
+
+if (paNo == "") {
+	WebUI.takeScreenshot()
+	assert false : "❌ PA number not found. Message was: " + msg
+}
+
+WebUI.comment("✅ Captured PA No: " + paNo)
+
+/* =========================
+ * EXCEL APPEND 
+ * ========================= */
+
+String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
+String filePath = baseDir + '/Payment_Match.xlsx'
+String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
+
+new File(baseDir).mkdirs()
+
+XSSFWorkbook wb
+def sheet
+FileInputStream fis = null
+def path = Paths.get(filePath)
+
+try {
+	if (Files.exists(path)) {
+		fis = new FileInputStream(filePath)
+		wb = new XSSFWorkbook(fis)
+		sheet = wb.getSheet('Result') ?: wb.createSheet('Result')
+	} else {
+		wb = new XSSFWorkbook()
+		sheet = wb.createSheet('Result')
+
+		// header
+		def header = sheet.createRow(0)
+		header.createCell(0).setCellValue('DateTime')
+		header.createCell(1).setCellValue('PANo')
+		header.createCell(2).setCellValue('Message')
+	}
+
+	int nextRow = sheet.getLastRowNum() + 1
+	def row = sheet.createRow(nextRow)
+
+	row.createCell(0).setCellValue(now)
+	row.createCell(1).setCellValue(paNo)
+	row.createCell(2).setCellValue(msg)
+
+	FileOutputStream fos = new FileOutputStream(filePath)
+	wb.write(fos)
+	fos.flush()
+	fos.close()
+
+} catch (Exception e) {
+	WebUI.comment("❌ Gagal menulis ke Excel: " + e.getMessage())
+} finally {
+	if (fis != null) fis.close()
+	if (wb != null) wb.close()
+}
+
+WebUI.comment('✅ Appended to Excel: ' + filePath)
+
+/* =========================
+ * SIGN OUT
+ * ========================= */
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
+WebUI.waitForPageLoad(20)
+WebUI.closeBrowser()

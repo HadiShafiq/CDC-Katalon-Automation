@@ -470,196 +470,27 @@ c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList S
 //Click TaskList Description
 c(findTestObject('Object Repository/Direct LOA/2. Direct LOA Supplier/TaskList Supplier/Click TaskList Description'))
 
-// =========================
-// General - Tick 
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox'))
-waitBlockUI(20)
-WebUI.delay(0.5)
+/* ===============
+ * GENERAL 
+ * =============== */
+//Tick I declare
+c(findTestObject('Object Repository/DP - Add To Cart/Contract List/Tickbox - I declare'))
 
-// =========================
-// Delivery Address & Item - PTJ
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Delivery'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button PTJ Address'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Address)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Address Input'), Address_Input)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Checkbox Address'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button'))
-waitBlockUI(20)
-WebUI.delay(0.5)
-
-// =========================
-// Delivery Address & Item - Ordered Quantity
-// =========================
-int loopCount = 1
-
-for (int i = 0; i < loopCount; i++) {
-
-    String xpath = "(//input[contains(@name,'orderedQty')])[" + (i + 1) + "]"
-
-    TestObject orderedQuantityField = new TestObject("orderedQuantityField_" + i)
-    orderedQuantityField.addProperty("xpath", ConditionType.EQUALS, xpath)
-
-    WebUI.comment("Fill Ordered Quantity row #" + (i + 1))
-
-    WebUI.waitForElementVisible(orderedQuantityField, 20)
-
-    WebElement el = WebUiCommonHelper.findWebElement(orderedQuantityField, 20)
-
-    // 🔥 1. CLEAR VALUE FIRST
-    WebUI.executeJavaScript(
-        """
-        arguments[0].value = '';
-        arguments[0].dispatchEvent(new Event('input', { bubbles: true }));
-        arguments[0].dispatchEvent(new Event('change', { bubbles: true }));
-        """,
-        Arrays.asList(el)
-    )
-
-    WebUI.delay(0.5)
-
-    // 🔥 2. SET NEW VALUE
-    t(orderedQuantityField, Ordered_Quantity, 20)
-
-    waitBlockUI(20)
-    WebUI.delay(1)
-
-    // 🔥 3. TRIGGER TAB (force JSF update)
-    WebUI.sendKeys(orderedQuantityField, Keys.chord(Keys.TAB))
-
-    waitBlockUI(20)
-    WebUI.delay(1)
-}
-
-// =========================
-// Charge Line Assigment - TICK
-// =========================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Charge Line Assignment'))
-int loopCountA = 1
-
-for (int i = 0; i < loopCountA; i++) {
-
-    WebUI.comment("Tick row #" + (i + 1))
-
-    String chkXpath = "(//input[contains(@id,'chargeLineTbl') and contains(@type,'checkbox')])[" + (i + 1) + "]"
-
-    TestObject chkObj = new TestObject("chk_" + i)
-    chkObj.addProperty("xpath", ConditionType.EQUALS, chkXpath)
-
-    WebUI.waitForElementClickable(chkObj, 2)
-
-    WebElement chkEl = WebUiCommonHelper.findWebElement(chkObj, 2)
-
-    if (!chkEl.isSelected()) {
-        WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(chkEl))
-    }
-
-    WebUI.delay(0.5)
-}
-
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Transaction Indicator'), Transaction_Indicator)
-
-//VOT
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click VOT 1'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_VOT)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), VOT_Search)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Search Button'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
-
-//Program/Activity
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Program_Activity'))
-selectDropdownByIndex(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Dropdown Searching'), Listing_Program)
-t(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Listing-VOT_Input'), Program_Search)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search'))
-
-//Account Code
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Account Code'))
-
-// =========================
-// Input Description Search
-// =========================
-TestObject descriptionInput = findTestObject(
-	'Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Description_Input'
-)
-
-String descriptionValue = Description_Search.toString().trim()
-
-WebUI.waitForElementVisible(descriptionInput, 20)
-WebUI.waitForElementClickable(descriptionInput, 20)
-
-WebUI.click(descriptionInput)
-WebUI.delay(0.5)
-
-WebUI.sendKeys(descriptionInput, Keys.chord(Keys.CONTROL, 'a'))
-WebUI.delay(0.3)
-
-WebUI.sendKeys(descriptionInput, Keys.chord(Keys.BACK_SPACE))
-WebUI.delay(0.5)
-
-for (char ch : descriptionValue.toCharArray()) {
-	WebUI.sendKeys(descriptionInput, ch.toString())
-	WebUI.delay(0.15)
-}
-
-waitBlockUI(10)
-WebUI.delay(1)
-
-String finalDescription = WebUI.getAttribute(descriptionInput, 'value')
-println("Final Description Search = " + finalDescription)
-
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Button Search Code'))
-TestObject chooseResult1 = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Choose Result 1')
-
-wVisible(chooseResult1, 20)
-WebUI.scrollToElement(chooseResult1, 2)
-
-try {
-    WebUI.click(chooseResult1)
-} catch (Exception e) {
-    WebUI.enhancedClick(chooseResult1, FailureHandling.OPTIONAL)
-}
-
-WebUI.delay(0.5)
-WebUI.doubleClick(chooseResult1, FailureHandling.OPTIONAL)
-
-waitBlockUI(1)
-WebUI.delay(2)
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Select Button Search 1'))
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Click Button Update'))
-
-// ==================================
-// Approver List - Choose Approver
-// ==================================
-c(findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Menu Approver List'))
-TestObject approverGroup = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Group Dropdown')
-TestObject approverName  = findTestObject('Object Repository/DLOA/9. DLOA Supplier/Purchase Request/Approver Name Dropdown')
-			
-// Select Approver Group
-selectDropdownByIndex(approverGroup, 11)
-waitBlockUI(20)
-WebUI.delay(2)
-			
-// Wait until Approver Name dropdown is ready
-wVisible(approverName, 1)
-WebUI.waitForElementClickable(approverName, 1)
-WebUI.scrollToElement(approverName, 1)
-			
-// Select Approver Name
-selectDropdownByIndex(approverName, 5)
-WebUI.delay(1)
-
-// ========================
-// SUBMIT BUTTON
-//=========================
-c(findTestObject('Object Repository/FD and Agreement/FD Application/Approver Setting/Submit Button'))
+/* ========================
+ * APPROVE BUTTON
+ * ========================*/
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Approve Button'))
 waitBlockUI(10)
 WebUI.delay(0.5)
 
-// ===== 1) Wait loader/blockUI gone (PrimeFaces common) =====
+//click Sign
+c(findTestObject('Object Repository/DP - Add To Cart/Fulfilment Received Note/Click Sign WO GPKI'))
+waitBlockUI(20)
+WebUI.delay(0.5)
+
+/* ======================================
+ * SUCCESS MESSAGE - After click submit
+ * ====================================== */
 TestObject blockUI = new TestObject('blockUI')
 blockUI.addProperty("xpath", ConditionType.EQUALS,
 	"//*[contains(@class,'ui-blockui') or contains(@class,'blockUI') or contains(@class,'ui-widget-overlay')]"
@@ -669,80 +500,79 @@ if (WebUI.verifyElementPresent(blockUI, 2, FailureHandling.OPTIONAL)) {
 	WebUI.waitForElementNotVisible(blockUI, 30, FailureHandling.OPTIONAL)
 }
 
-// ===== 2) Wait success message (global text; RN number changes) =====
-TestObject msgObj = new TestObject('msg_PR_saved')
+// ambil ANY message
+TestObject msgObj = new TestObject('msg_any')
 msgObj.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@class,'ui-messages-info-detail') and " +
-	"contains(.,'Purchase Request') and contains(.,'is successfully submitted.')]" 
+	"//*[contains(@class,'ui-messages-info-detail') or contains(@class,'ui-messages-warn-detail') or contains(@class,'ui-messages-error-detail')]"
 )
 
 WebUI.waitForElementVisible(msgObj, 30)
 
-// Wait until message text contains "PR"
-String msg = ""
-for (int i = 0; i < 2; i++) {
-	msg = WebUI.getText(msgObj, FailureHandling.OPTIONAL)
-	if (msg != null && msg.contains("PR")) break
-	WebUI.delay(1)
-}
-
+String msg = WebUI.getText(msgObj, FailureHandling.STOP_ON_FAILURE)
 msg = (msg == null) ? "" : msg.trim()
+
 WebUI.comment("Message: " + msg)
 
-// ===== 3) Extract RN number dynamically =====
-def matcher = (msg =~ /(PR\d+)/)   // e.g. RN260000000001152
-String prNo = matcher.find() ? matcher.group(1) : ""
+// extract CR number
+def matcher = (msg =~ /(CR\d+)/)
+String CrNo = matcher.find() ? matcher.group(1) : ""
 
-if (prNo == "") {
+if (CrNo == "") {
 	WebUI.takeScreenshot()
-	assert false : "❌ PR number not found. Message was: " + msg
+	assert false : "❌ CR number not found. Message was: " + msg
 }
-WebUI.comment("✅ Captured PR No: " + prNo)
 
-// ===== 4) Append to SAME Excel file (no timestamp file) =====
-String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
-new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/DLOA_PURCHASE_REQUEST_2026.xlsx"
-String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+WebUI.comment("✅ Captured CR No: " + CrNo)
+/* =========================
+ * EXCEL APPEND
+ * ========================= */
+String baseDir  = System.getProperty('user.home') + '/Desktop/PrepDataFileNumber'
+String filePath = baseDir + '/Submit_For_Contract_List(Contract_Request).xlsx'
+String now      = new SimpleDateFormat('yyyy-MM-dd HH:mm:ss').format(new Date())
 
-def path = Paths.get(filePath)
+new File(baseDir).mkdirs()
+
 XSSFWorkbook wb
 def sheet
 FileInputStream fis = null
+def path = Paths.get(filePath)
 
-if (Files.exists(path)) {
-	fis = new FileInputStream(filePath)
-	wb = new XSSFWorkbook(fis)
-	sheet = wb.getSheet("Result")
-	if (sheet == null) sheet = wb.createSheet("Result")
-} else {
-	wb = new XSSFWorkbook()
-	sheet = wb.createSheet("Result")
+try {
+	if (Files.exists(path)) {
+		fis = new FileInputStream(filePath)
+		wb = new XSSFWorkbook(fis)
+		sheet = wb.getSheet('Result') ?: wb.createSheet('Result')
+	} else {
+		wb = new XSSFWorkbook()
+		sheet = wb.createSheet('Result')
 
-	def header = sheet.createRow(0)
-	header.createCell(0).setCellValue("DateTime")
-	header.createCell(1).setCellValue("PR No")
-	header.createCell(2).setCellValue("Message")
+		// header
+		def header = sheet.createRow(0)
+		header.createCell(0).setCellValue('DateTime')
+		header.createCell(1).setCellValue('CR No')
+		header.createCell(2).setCellValue('Message')
+	}
+
+	int nextRow = sheet.getLastRowNum() + 1
+	def row = sheet.createRow(nextRow)
+
+	row.createCell(0).setCellValue(now)
+	row.createCell(1).setCellValue(CrNo)
+	row.createCell(2).setCellValue(msg)
+
+	FileOutputStream fos = new FileOutputStream(filePath)
+	wb.write(fos)
+	fos.flush()
+	fos.close()
+
+} catch (Exception e) {
+	WebUI.comment("❌ Gagal menulis ke Excel: " + e.getMessage())
+} finally {
+	if (fis != null) fis.close()
+	if (wb != null) wb.close()
 }
 
-// Close input stream to avoid Excel file lock
-if (fis != null) fis.close()
-
-// Next empty row
-int nextRow = (sheet.getPhysicalNumberOfRows() == 0) ? 0 : sheet.getLastRowNum() + 1
-def row = sheet.createRow(nextRow)
-
-row.createCell(0).setCellValue(now)
-row.createCell(1).setCellValue(prNo)
-row.createCell(2).setCellValue(msg)
-
-// Save back to SAME file
-FileOutputStream fos = new FileOutputStream(filePath)
-wb.write(fos)
-fos.close()
-wb.close()
-
-WebUI.comment("✅ Appended to Excel: " + filePath)
+WebUI.comment('✅ Appended to Excel: ' + filePath)
 
 /* =========================
  * SIGN OUT
