@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>G2GAccountRegistration</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>af29b143-17ee-4821-b3db-546ea41c4fdc</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>2e3712a2-6e3b-4a4a-a186-d2f8ca88b4ba</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>806bf13e-d197-47a3-a319-79a2572ad8f0</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>f5af022f-b219-4778-8b1a-c29aebfd10ea</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>2e3712a2-6e3b-4a4a-a186-d2f8ca88b4ba</id>
+      <masked>false</masked>
+      <name>rbAccountType</name>
+   </variable>
+   <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>806bf13e-d197-47a3-a319-79a2572ad8f0</id>
+      <masked>false</masked>
+      <name>AgencyType</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test State'</defaultValue>
+      <description></description>
+      <id>f5af022f-b219-4778-8b1a-c29aebfd10ea</id>
+      <masked>false</masked>
+      <name>AgencyName</name>
+   </variable>
+</TestCaseEntity>

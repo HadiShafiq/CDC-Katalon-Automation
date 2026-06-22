@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>3. SoftCert_EmailVerification</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>946ecba9-6214-4a90-b3af-8914901b282c</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>33865eac-e397-49c9-9017-e1692fc32b0b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>704d4cf3-de77-4098-b884-eb8a44916ca5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>825ff03f-b596-4057-be27-e45f27c6edaf</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>2bd83d3d-e63f-441d-822b-e693c6994ffd</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>850dfcae-4d0e-474f-bbf1-e82b3910618c</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>23e1d8f3-db40-4ce8-a54b-4eb062ac3fa4</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>dc65553e-b286-44e2-928e-6c4e923520ef</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'izzcdctest@yopmail.com'</defaultValue>
+      <description></description>
+      <id>33865eac-e397-49c9-9017-e1692fc32b0b</id>
+      <masked>false</masked>
+      <name>SupplierEmail</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test 1'</defaultValue>
+      <description></description>
+      <id>704d4cf3-de77-4098-b884-eb8a44916ca5</id>
+      <masked>false</masked>
+      <name>Answer1</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test 2'</defaultValue>
+      <description></description>
+      <id>825ff03f-b596-4057-be27-e45f27c6edaf</id>
+      <masked>false</masked>
+      <name>Answer2</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test 3'</defaultValue>
+      <description></description>
+      <id>2bd83d3d-e63f-441d-822b-e693c6994ffd</id>
+      <masked>false</masked>
+      <name>Answer3</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test 4'</defaultValue>
+      <description></description>
+      <id>850dfcae-4d0e-474f-bbf1-e82b3910618c</id>
+      <masked>false</masked>
+      <name>Answer4</name>
+   </variable>
+   <variable>
+      <defaultValue>'Test 5'</defaultValue>
+      <description></description>
+      <id>23e1d8f3-db40-4ce8-a54b-4eb062ac3fa4</id>
+      <masked>false</masked>
+      <name>Answer5</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>dc65553e-b286-44e2-928e-6c4e923520ef</id>
+      <masked>false</masked>
+      <name>PIN</name>
+   </variable>
+</TestCaseEntity>

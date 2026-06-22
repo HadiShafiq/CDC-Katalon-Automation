@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>2. SPKI_SoftCert</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>8d77faa9-a878-4dcd-bf1b-c73ee090a08b</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>41993a33-c786-4ed4-92d0-6e060868c69e</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>e4d0d6d6-221a-4906-90fe-648eb28567a5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>6c4b073b-dd1d-427b-9fb4-6130ee364ee9</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'admin'</defaultValue>
+      <description></description>
+      <id>41993a33-c786-4ed4-92d0-6e060868c69e</id>
+      <masked>false</masked>
+      <name>SPKIUsername</name>
+   </variable>
+   <variable>
+      <defaultValue>'admin'</defaultValue>
+      <description></description>
+      <id>e4d0d6d6-221a-4906-90fe-648eb28567a5</id>
+      <masked>false</masked>
+      <name>SPKIPassword</name>
+   </variable>
+   <variable>
+      <defaultValue>'910511100491\t'</defaultValue>
+      <description></description>
+      <id>6c4b073b-dd1d-427b-9fb4-6130ee364ee9</id>
+      <masked>false</masked>
+      <name>UserID</name>
+   </variable>
+</TestCaseEntity>

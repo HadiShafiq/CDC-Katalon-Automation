@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>2. ReviewCatalogueRequest - Catalogue Adminstrator</name>
+   <tag></tag>
+   <comment></comment>
+   <recordOption>OTHER</recordOption>
+   <testCaseGuid>27175960-0d80-448f-8e9b-3fed8217bf24</testCaseGuid>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>5d000943-a775-4473-b924-a5992338771b</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>c6e86e71-6689-4a91-a1d8-229fc2b84e22</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId></testDataLinkId>
+      <type>DEFAULT</type>
+      <value></value>
+      <variableId>d3bd60c4-82f4-40f0-a51b-cace298831fe</variableId>
+   </variableLinks>
+   <variable>
+      <defaultValue>'901125105745'</defaultValue>
+      <description></description>
+      <id>5d000943-a775-4473-b924-a5992338771b</id>
+      <masked>false</masked>
+      <name>AssigneeUsername</name>
+   </variable>
+   <variable>
+      <defaultValue>'P@ssw0rd1234'</defaultValue>
+      <description></description>
+      <id>c6e86e71-6689-4a91-a1d8-229fc2b84e22</id>
+      <masked>false</masked>
+      <name>AssigneePassword</name>
+   </variable>
+   <variable>
+      <defaultValue>'RNC220626-0021'</defaultValue>
+      <description></description>
+      <id>d3bd60c4-82f4-40f0-a51b-cace298831fe</id>
+      <masked>false</masked>
+      <name>rncNumber</name>
+   </variable>
+</TestCaseEntity>
