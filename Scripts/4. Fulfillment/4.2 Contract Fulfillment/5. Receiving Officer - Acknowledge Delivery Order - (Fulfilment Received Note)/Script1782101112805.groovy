@@ -610,7 +610,6 @@ if (WebUI.waitForElementVisible(signOutMenu, 20, FailureHandling.OPTIONAL)) {
 } else {
 	KeywordUtil.markWarning('Sign out menu is not visible')
 }
+WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
-
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))

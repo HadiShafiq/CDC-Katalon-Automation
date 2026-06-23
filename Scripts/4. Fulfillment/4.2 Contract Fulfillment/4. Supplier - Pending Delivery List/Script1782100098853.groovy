@@ -530,20 +530,17 @@ WebUI.delay(0.5)
 //Input Delivery  Amount (FOR SERVICE ONLY)
 TestObject amountField = new TestObject()
 amountField.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@id,'doDelAddress:0:doItems:0:delAmountTxt') and contains(@class,'delAmountTxt')]/input"
+    "//span[contains(@id,'doDelAddress:0:doItems:0:delAmountTxt') and contains(@class,'delAmountTxt')]/input"
 )
 
-if (WebUI.waitForElementVisible(amountField, 10)) {
-	
-	WebElement amountEl = WebUiCommonHelper.findWebElement(amountField, 10)
-	
-	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(amountEl, DeliveryAmount)) //baca dr variable
-	
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(amountEl))
+if (WebUI.verifyElementPresent(amountField, 3, FailureHandling.OPTIONAL)) {
+
+    WebUI.waitForElementVisible(amountField, 5)
+    WebUI.scrollToElement(amountField, 5)
+	WebUI.setText(amountField, DeliveryAmount.toString())
+
+} else {
+    println "Element tak wujud, skip isi amount"
 }
 	
 //t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Delivery Amount (RM)'), DeliveryAmount)
@@ -589,7 +586,7 @@ msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
 // extract DO number
-def matcher = (msg =~ /(DO-PO\d+)/)
+def matcher = (msg =~ /(DO-[A-Z]{2}\d+)/) //sbb message keluar pelbagai
 String doNum = matcher.find() ? matcher.group(1) : ""
 
 if (doNum == "") {
@@ -653,7 +650,15 @@ WebUI.comment('✅ Appended to Excel: ' + filePath)
 /* =========================
  * SIGN OUT
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+TestObject signOutMenu = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out')
+
+if (WebUI.waitForElementVisible(signOutMenu, 20, FailureHandling.OPTIONAL)) {
+	WebUI.scrollToElement(signOutMenu, 2, FailureHandling.OPTIONAL)
+	WebUI.click(signOutMenu)
+} else {
+	KeywordUtil.markWarning('Sign out menu is not visible')
+}
+
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()

@@ -525,7 +525,7 @@ WebUI.comment("✅ Captured CO No: " + coNo)
 // ===== 4) Append to SAME Excel file (no timestamp file) =====
 String baseDir = System.getProperty("user.home") + "/Desktop/PrepDataFileNumber"
 new File(baseDir).mkdirs() //AUTO-CREATE FOLDER
-String filePath = baseDir + "/ACKNOWLEDGE_CONTRACT_ORDER_BYSUPPLIER_2026.xlsx"
+String filePath = baseDir + "/Acknowledge_Contract_Order_BySupplier_2026.xlsx"
 String now = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
 
 def path = Paths.get(filePath)
@@ -570,7 +570,15 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 /* =========================
  * SIGN OUT
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+TestObject signOutMenu = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out')
+
+if (WebUI.waitForElementVisible(signOutMenu, 20, FailureHandling.OPTIONAL)) {
+	WebUI.scrollToElement(signOutMenu, 2, FailureHandling.OPTIONAL)
+	WebUI.click(signOutMenu)
+} else {
+	KeywordUtil.markWarning('Sign out menu is not visible')
+}
+
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
