@@ -194,7 +194,7 @@
       <name>rbAccountType</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
+      <defaultValue>7</defaultValue>
       <description>Sabah = 1,2 Sarawak = 3,4 ROB = 5,6 ROC=7,8 9=LLP </description>
       <id>6e642a22-f67c-4f76-97d6-91456dc27d4b</id>
       <masked>false</masked>
@@ -306,7 +306,7 @@
       <name>BankAccNum</name>
    </variable>
    <variable>
-      <defaultValue>8</defaultValue>
+      <defaultValue>6</defaultValue>
       <description></description>
       <id>0db9088e-7187-451d-95b8-c96d68cd73fe</id>
       <masked>false</masked>

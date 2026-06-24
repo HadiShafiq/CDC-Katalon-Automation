@@ -708,9 +708,24 @@ c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/S
 	t(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/AccInfo/Bus_RegNo'), BusinessRegistrationNo)
 	
 //when SSM on, this must be on
-	c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/AccInfoPageNext'))
-	waitBlockUI(20)
+	if (BusinessCompanyType == 5 || BusinessCompanyType == 6 || BusinessCompanyType == 7 || BusinessCompanyType == 8) {
+    
+			// Clear field first
+	WebUI.clearText(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/SSM_Mykad'))
 	
+	// Type character by character
+	for (char ch : OwnerIC.toCharArray()) {
+	    WebUI.sendKeys(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/SSM_Mykad'), ch.toString())
+	    WebUI.delay(0.1)
+	}
+	waitBlockUI(20)
+		c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/AccInfoPageNext'))
+		waitBlockUI(20)
+    
+} else {
+    c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/AccInfoPageNext'))
+    waitBlockUI(20)
+}
 	
 	//End SSM section
 	
@@ -731,7 +746,7 @@ c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/S
 	// Click date input/calendar icon first
 	c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/CompanyInfo/CompanyInfoCalendar'))
 	WebUI.delay(1) 
-	pickDate("2026-05-03")
+	pickDate(EstablishDate)
 	
 	//Company address
 	t(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/CompanyInfo/CompAddress1'), CompanyAddress)
@@ -831,7 +846,7 @@ for (char c : bankValue.toCharArray()) {
 	
 
 //Position in Company
-	t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/PositionInCompany'),'Placeholder')
+	t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/PositionInCompany'),'Owner')
 	waitBlockUI(10)
 //Email and confirm email 
 	t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Email'),SupplierEmail)
@@ -841,7 +856,7 @@ for (char c : bankValue.toCharArray()) {
 //Date of Birth	
 	c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/DateOfBirth-Calendar'))
 	WebUI.delay(1)
-		pickDate("2003-05-11") 
+		pickDate(OwnerBirthDate) 
 		
 //Religion radio button
 	clickReligion(Religion)

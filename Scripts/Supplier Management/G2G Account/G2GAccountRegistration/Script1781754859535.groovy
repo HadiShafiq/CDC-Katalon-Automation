@@ -499,3 +499,123 @@ waitBlockUI(20)
 selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/AgencyPage/AgencyTypeChkbox'),AgencyType)
 t(findTestObject('Object Repository/SupplierRegistration/AgencyPage/AgencyNameSearch'),AgencyName)
 c(findTestObject('Object Repository/SupplierRegistration/AgencyPage/AgencySearchButton'))
+//Action
+c(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyAction'))
+
+//State, District, City
+selectDropdownByIndex(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/AgencyStateDropdown'), State)
+selectDropdownByIndex(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/AgencyDistrictDropdown'), District)
+selectDropdownByIndex(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/AgencyCityDropdown'), City)
+
+//Agency Info
+t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/AgencyAddressForm'),AgencyAddress)
+t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/AgencyPostcodeForm'),AgencyPostcode)
+
+//Map and Coordinate
+c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/CompanyInfo/ViewMap'))
+waitBlockUI(20)
+	c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/CompanyInfo/CloseMap'))
+	
+	//Bank Information
+	c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/BankInfo/BankInfoAddBtn'))
+	waitBlockUI(20)
+	//Bank name dropdown
+	selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/BankInfo/BankName'), BankName)
+	waitBlockUI(20)
+	//Bank acc number + type slower
+	TestObject bankField = findTestObject('Object Repository/SupplierRegistration/AccInfoPage/BankInfo/BankAccountNumber')
+	String bankValue = BankAccNum.toString()
+	
+	WebUI.click(bankField)
+	
+	for (char c : bankValue.toCharArray()) {
+		WebUI.sendKeys(bankField, c.toString())
+		WebUI.delay(0.2)
+	}
+	//Tick Head Quarters
+	c(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/AgencyInformation/HeadquatersCheckbox'))
+	
+	
+	//Bottom Next
+	c(findTestObject('Object Repository/SupplierRegistration/AccInfoPage/AccInfoPageNext'))
+	waitBlockUI(20)
+	
+	//Supplier Adminstrator Information //
+	
+	//Full Name
+	t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/SupplierAdminstratorInfo/FullNameForm'),AdminFullName)
+	
+	//Salutation
+	selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Salutation'),Salutation)
+	
+	//Date of Birth
+	c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/DateOfBirth-Calendar'))
+	WebUI.delay(1)
+		pickDate(AdminBirthDate)
+		
+	//Bumiputera radio button
+	clickBumiputera(Bumiputera)
+	waitBlockUI(10)
+	
+	//Religion radio button
+	clickReligion(Religion)
+	//IC
+	t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/SupplierAdminstratorInfo/AdminICForm'),AdminIC)
+	
+	//State
+	selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/State'),AdminState)
+	
+	//District //District depends on state
+	selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/District'),AdminDistrict)
+	
+	// City/Town
+	selectDropdownByIndex(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/City-Town'),AdminCity)
+	
+	//Admin Postcode + type slow
+	TestObject adminPostcodeField = findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/AdminPostcode')
+	String postcodeValue = AdminPostcode.toString()
+	
+	WebUI.click(adminPostcodeField)
+	
+	for (char c : postcodeValue.toCharArray()) {
+		WebUI.sendKeys(adminPostcodeField, c.toString())
+		WebUI.delay(0.2)
+	}
+	
+	//Address
+	t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/AdminAddress'),AdminAddress)
+		waitBlockUI(10)
+		
+	//Position in Company
+	t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/PositionInCompany'),AdminPosition)
+	waitBlockUI(10)
+	//Department in Company
+	t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/SupplierAdminstratorInfo/DepartmentForm'),AdminDepartment)	
+	//Unit/Section
+	t(findTestObject('Object Repository/G2G_Account/G2G_SupplierRegistration/SupplierAdminstratorInfo/Unit_SectionForm'),AdminUnit)
+	
+	//Admin Phone Number
+	String AdminCountryCode = AdminNum.substring(0, 3)
+	String AdminMobileCode = AdminNum.substring(3, 4)
+	String AdminMobile = AdminNum.substring(4)
+		t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/AdminMobileCode'), AdminMobileCode)
+		waitBlockUI(1)
+		t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/AdminMobile'), AdminMobile)
+		waitBlockUI(1)
+	
+	//Email and confirm email
+		t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Email'),AdminEmail)
+		// Confirm
+		t(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Email-Confirmation'),AdminEmail)
+		
+	//Correspondence address = same as above
+		c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/CorrespondenceAddress'))
+			waitBlockUI(10)
+			
+			//Submit and accept terms
+			c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Submission/SubmitSupplierRegistration'))
+				waitBlockUI(10)
+			c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Submission/I_AcceptTerms'))
+				waitBlockUI(10)
+			c(findTestObject('Object Repository/SupplierRegistration/SupplierAdminInfoPage/Submission/Submission_Proceed'))
+				waitBlockUI(10)
