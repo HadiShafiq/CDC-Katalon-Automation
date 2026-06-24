@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>2. Supplier Simple Quote Respond</name>
+   <name>7. Supplier - Create Invoice</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>2be1ed24-5092-4733-8cde-5844366e1960</testCaseGuid>
+   <testCaseGuid>acfa6697-387d-4a90-bb90-6ca93ecd5519</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>3672ac2c-0d96-4af8-8043-b8af989b452a</variableId>
+      <variableId>350b2f5f-fe7d-403b-9883-2d1d1b8dc837</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>e25605f2-fa4a-454f-88b9-3f374de56b0d</variableId>
+      <variableId>33427b9d-de3e-450a-8b7c-ceb0a033d238</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</variableId>
+      <variableId>c0443c01-6b5f-4ab1-9137-ddd3afb111f5</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</variableId>
+      <variableId>a00b13b3-913b-4fde-b5ff-423d10eb2011</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'900801087664'</defaultValue>
-      <description></description>
-      <id>3672ac2c-0d96-4af8-8043-b8af989b452a</id>
+      <description>*supplier</description>
+      <id>350b2f5f-fe7d-403b-9883-2d1d1b8dc837</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>e25605f2-fa4a-454f-88b9-3f374de56b0d</id>
+      <id>33427b9d-de3e-450a-8b7c-ceb0a033d238</id>
       <masked>false</masked>
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'100'</defaultValue>
-      <description></description>
-      <id>3c84b6f6-c8dc-4bc8-9cbd-10cdf6b9a51d</id>
+      <defaultValue>'CO260000000003858'</defaultValue>
+      <description>*Kena claim dulu</description>
+      <id>c0443c01-6b5f-4ab1-9137-ddd3afb111f5</id>
       <masked>false</masked>
-      <name>UnitPrice</name>
+      <name>Document_Number</name>
    </variable>
    <variable>
-      <defaultValue>'SQ260000000001475'</defaultValue>
+      <defaultValue>1</defaultValue>
       <description></description>
-      <id>7f3e51d2-2db9-4e3c-a2d4-de73d9a3cbe4</id>
+      <id>a00b13b3-913b-4fde-b5ff-423d10eb2011</id>
       <masked>false</masked>
-      <name>sqNo</name>
+      <name>ddBank</name>
    </variable>
 </TestCaseEntity>

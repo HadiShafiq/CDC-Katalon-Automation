@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>1. Purchase Request</name>
+   <name>1. Prepare Purchase Request (PR)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -79,7 +79,7 @@
       <variableId>d57d8a2b-09b0-4225-bfec-cd86a0011b14</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'710527085562'</defaultValue>
+      <defaultValue>'790101010101'</defaultValue>
       <description>710527085562</description>
       <id>a2313cd3-95e4-4bc0-b1d9-3a59d9e261fa</id>
       <masked>false</masked>
@@ -93,8 +93,8 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'RN260000000002748'</defaultValue>
-      <description>RN260000000002700</description>
+      <defaultValue>'RN260000000002796'</defaultValue>
+      <description>RN260000000002794</description>
       <id>34930917-bb67-41ab-b6f9-da2dfb362c87</id>
       <masked>false</masked>
       <name>Document_Number</name>
@@ -114,7 +114,7 @@
       <name>Address_Input</name>
    </variable>
    <variable>
-      <defaultValue>'10'</defaultValue>
+      <defaultValue>'11'</defaultValue>
       <description></description>
       <id>a57b82d2-b42b-4361-9bd5-bdf96b2e20f8</id>
       <masked>false</masked>

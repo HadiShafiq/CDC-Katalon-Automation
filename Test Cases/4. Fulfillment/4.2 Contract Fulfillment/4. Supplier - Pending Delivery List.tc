@@ -43,7 +43,7 @@
       <variableId>c38ef354-587d-4313-af48-c41c707b6199</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'bumiwarisanmaju'</defaultValue>
+      <defaultValue>'900801087664'</defaultValue>
       <description>*supplier</description>
       <id>774bb23a-9aaf-4df8-9430-fb0aa05a4ecf</id>
       <masked>false</masked>
@@ -57,7 +57,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'CO260000000003857'</defaultValue>
+      <defaultValue>'CO260000000003858'</defaultValue>
       <description></description>
       <id>7efcbdf9-c820-4cb4-b1d0-6fa5d5ae2c8f</id>
       <masked>false</masked>
@@ -78,7 +78,7 @@
       <name>DeliveryQuantity</name>
    </variable>
    <variable>
-      <defaultValue>30000</defaultValue>
+      <defaultValue>1000</defaultValue>
       <description></description>
       <id>c38ef354-587d-4313-af48-c41c707b6199</id>
       <masked>false</masked>

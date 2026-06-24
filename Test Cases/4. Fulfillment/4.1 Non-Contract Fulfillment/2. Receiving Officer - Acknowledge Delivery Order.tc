@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>2. Fulfilment Received Note</name>
+   <name>2. Receiving Officer - Acknowledge Delivery Order</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -51,7 +51,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'01010J001P2600001'</defaultValue>
+      <defaultValue>'01010J001P2600004'</defaultValue>
       <description>*kena claim dulu + untuk dptkn value ni guna db cari no DO</description>
       <id>9cf4e7ee-7e04-415e-8531-e1f7c3979fac</id>
       <masked>false</masked>

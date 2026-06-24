@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>3. Acknowledge Purchase Request</name>
+   <name>3. Supplier - Acknowledge Purchase Order</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -25,8 +25,8 @@
       <variableId>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'NURULAINMOF'</defaultValue>
-      <description></description>
+      <defaultValue>'900801087664'</defaultValue>
+      <description>*supplier</description>
       <id>a84e5fb4-88cc-4c50-a659-de1b8cb9325c</id>
       <masked>false</masked>
       <name>Username</name>
@@ -39,7 +39,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'PO260000000003602'</defaultValue>
+      <defaultValue>'PO260000000003802'</defaultValue>
       <description>1. Kena Run SQL Search PO By PR 2. Kena claim kalau x de dalam tasklist</description>
       <id>5c083969-dd8e-40f2-a43d-ccec44c2e6e1</id>
       <masked>false</masked>

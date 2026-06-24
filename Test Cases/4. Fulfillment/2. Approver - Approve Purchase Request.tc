@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>3. Approve Fulfilment Received Note</name>
+   <name>2. Approver - Approve Purchase Request</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>4fa50d7f-6ddb-4f4d-92c6-f88ef3c908d9</testCaseGuid>
+   <testCaseGuid>f449983f-d8c1-467a-90f8-90b15ab6d0b0</testCaseGuid>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>8fc854ca-7395-4188-a2d5-6a8cd379ca97</variableId>
+      <variableId>fd0abad4-b213-4531-b1bd-112351f23a73</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>4da430ca-de98-4547-9373-0276dfd81780</variableId>
+      <variableId>bbb1a171-1ff7-4bf8-9ea0-5362d67d43ab</variableId>
    </variableLinks>
    <variableLinks>
       <testDataLinkId></testDataLinkId>
       <type>DEFAULT</type>
       <value></value>
-      <variableId>9fa65307-28a2-44e0-9bf6-57eee0affd00</variableId>
+      <variableId>27c439b5-f99a-4867-9127-031c0a150980</variableId>
    </variableLinks>
    <variable>
       <defaultValue>'690127065209'</defaultValue>
       <description></description>
-      <id>8fc854ca-7395-4188-a2d5-6a8cd379ca97</id>
+      <id>fd0abad4-b213-4531-b1bd-112351f23a73</id>
       <masked>false</masked>
       <name>Username</name>
    </variable>
    <variable>
       <defaultValue>'P@ssw0rd1234'</defaultValue>
       <description></description>
-      <id>4da430ca-de98-4547-9373-0276dfd81780</id>
+      <id>bbb1a171-1ff7-4bf8-9ea0-5362d67d43ab</id>
       <masked>false</masked>
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'FN260000000003206'</defaultValue>
+      <defaultValue>'PR260000000003056'</defaultValue>
       <description></description>
-      <id>9fa65307-28a2-44e0-9bf6-57eee0affd00</id>
+      <id>27c439b5-f99a-4867-9127-031c0a150980</id>
       <masked>false</masked>
       <name>Document_Number</name>
    </variable>

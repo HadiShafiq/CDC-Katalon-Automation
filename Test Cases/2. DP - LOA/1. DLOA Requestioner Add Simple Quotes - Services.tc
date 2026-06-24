@@ -168,15 +168,15 @@
       <name>SupplierName</name>
    </variable>
    <variable>
-      <defaultValue>'Automated - Dry Run for append 8.2'</defaultValue>
+      <defaultValue>'Automated - Dry Run for append 8.1 One Off - DeliveryAmount'</defaultValue>
       <description></description>
       <id>83875ca3-169d-407f-b3c6-cbe4f1a987a5</id>
       <masked>false</masked>
       <name>DLAOTitle</name>
    </variable>
    <variable>
-      <defaultValue>1</defaultValue>
-      <description></description>
+      <defaultValue>2</defaultValue>
+      <description>1-Supply of Good, 2-Service</description>
       <id>c4ec2239-59b8-482f-9b2c-991a8df20b02</id>
       <masked>false</masked>
       <name>ProcurementtypeCategory</name>
@@ -210,8 +210,8 @@
       <name>ServiceSpecification1</name>
    </variable>
    <variable>
-      <defaultValue>3</defaultValue>
-      <description></description>
+      <defaultValue>1</defaultValue>
+      <description>1- One Off, 2-Schedule,3-As&amp;When</description>
       <id>84c00480-18ed-4c9e-9af0-6f0349ed9bea</id>
       <masked>false</masked>
       <name>Fulfilmenttype</name>
@@ -273,7 +273,7 @@
       <name>AddSupplierNameNormal</name>
    </variable>
    <variable>
-      <defaultValue>'2026-06-16'</defaultValue>
+      <defaultValue>'2026-06-24'</defaultValue>
       <description></description>
       <id>8bf871ed-2c86-4eee-858d-60c6a6e0d814</id>
       <masked>false</masked>

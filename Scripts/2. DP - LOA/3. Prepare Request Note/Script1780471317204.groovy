@@ -741,11 +741,16 @@ WebUI.comment("✅ Appended to Excel: " + filePath)
 /* =========================
  * Sign Out
  * ========================= */
-WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out'))
+TestObject signOutMenu = findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Menu For Sign Out')
+
+if (WebUI.waitForElementVisible(signOutMenu, 20, FailureHandling.OPTIONAL)) {
+    WebUI.scrollToElement(signOutMenu, 2, FailureHandling.OPTIONAL)
+    WebUI.click(signOutMenu)
+} else {
+    KeywordUtil.markWarning('Sign out menu is not visible')
+}
 
 WebUI.click(findTestObject('Object Repository/Direct LOA/1. Direct LOA Requistioner/LogOut/Click Sign Out'))
-
-// wait until logout is completed (choose one)
 WebUI.waitForPageLoad(20)
 WebUI.closeBrowser()
 

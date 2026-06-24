@@ -25,7 +25,7 @@
       <variableId>0ff424d0-0f14-4cb8-b1d3-96d60d00f021</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>'bumiwarisanmaju'</defaultValue>
+      <defaultValue>'900801087664'</defaultValue>
       <description>*Supplier</description>
       <id>25a1d05c-588b-4e43-b6bd-6ab0b6485d59</id>
       <masked>false</masked>
@@ -39,8 +39,8 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'CO260000000003857'</defaultValue>
-      <description></description>
+      <defaultValue>'CO260000000003858'</defaultValue>
+      <description>*Kena claim</description>
       <id>0ff424d0-0f14-4cb8-b1d3-96d60d00f021</id>
       <masked>false</masked>
       <name>Document_Number</name>

@@ -51,7 +51,7 @@
       <name>Password</name>
    </variable>
    <variable>
-      <defaultValue>'60000023132600005'</defaultValue>
+      <defaultValue>'01010J001P2600002'</defaultValue>
       <description>*kena claim dulu + untuk dptkn value ni guna db cari no DO</description>
       <id>720ce725-f64e-4964-a555-18472b384c5f</id>
       <masked>false</masked>

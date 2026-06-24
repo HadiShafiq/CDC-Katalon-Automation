@@ -530,26 +530,19 @@ WebUI.delay(0.5)
 //Input Delivery  Amount (FOR SERVICE ONLY)
 TestObject amountField = new TestObject()
 amountField.addProperty("xpath", ConditionType.EQUALS,
-	"//span[contains(@id,'doDelAddress:0:doItems:0:delAmountTxt') and contains(@class,'delAmountTxt')]/input"
+    "//span[contains(@id,'doDelAddress:0:doItems:0:delAmountTxt') and contains(@class,'delAmountTxt')]/input"
 )
 
-if (WebUI.waitForElementVisible(amountField, 10)) {
-	
-	WebElement amountEl = WebUiCommonHelper.findWebElement(amountField, 10)
-	
-	WebUI.executeJavaScript("arguments[0].focus();", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].value='';", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].value = arguments[1];", Arrays.asList(amountEl, DeliveryAmount)) //baca dr variable
-	
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('input'));", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('change'));", Arrays.asList(amountEl))
-	WebUI.executeJavaScript("arguments[0].dispatchEvent(new Event('blur'));", Arrays.asList(amountEl))
+if (WebUI.verifyElementPresent(amountField, 3, FailureHandling.OPTIONAL)) {
+
+    WebUI.waitForElementVisible(amountField, 5)
+    WebUI.scrollToElement(amountField, 5)
+	WebUI.setText(amountField, DeliveryAmount.toString())
+
+} else {
+    println "Element tak wujud, skip isi amount"
 }
 	
-//t(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Delivery Amount (RM)'), DeliveryAmount)
-//waitBlockUI(20)
-//WebUI.delay(0.5)
-
 // Click outside field to trigger UI update before submit (ensure value is properly saved)
 c(findTestObject('Object Repository/DP - Add To Cart/Pending Delivery List/Blank'))
 
@@ -589,7 +582,7 @@ msg = (msg == null) ? "" : msg.trim()
 WebUI.comment("Message: " + msg)
 
 // extract PO number
-def matcher = (msg =~ /(DO-PO\d+)/)
+def matcher = (msg =~ /(DO-[A-Z]{2}\d+)/) //sbb message keluar pelbagai
 String poNum = matcher.find() ? matcher.group(1) : ""
 
 if (poNum == "") {
